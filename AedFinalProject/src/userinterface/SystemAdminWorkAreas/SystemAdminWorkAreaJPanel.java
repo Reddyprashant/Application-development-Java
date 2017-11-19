@@ -104,8 +104,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jSplitPane1.setDividerLocation(150);
 
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        manageNetworkJButton.setBackground(new java.awt.Color(0, 0, 0));
+        manageNetworkJButton.setForeground(new java.awt.Color(255, 0, 51));
         manageNetworkJButton.setText("Manage Network");
         manageNetworkJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +117,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(manageNetworkJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 102, 179, -1));
 
+        manageAdminJButton.setBackground(new java.awt.Color(0, 0, 0));
+        manageAdminJButton.setForeground(new java.awt.Color(255, 255, 255));
         manageAdminJButton.setText("Manage Enterprise Admin");
         manageAdminJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +127,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
+        manageEnterpriseJButton.setBackground(new java.awt.Color(0, 0, 0));
+        manageEnterpriseJButton.setForeground(new java.awt.Color(153, 153, 255));
         manageEnterpriseJButton.setText("Manage Enterprise");
         manageEnterpriseJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,6 +145,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jSplitPane1.setRightComponent(jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+
+        JTree.setBackground(new java.awt.Color(204, 204, 204));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("System");
         JTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         JTree.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
