@@ -1,0 +1,69 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Business.Role;
+
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author raunak
+ */
+public abstract class Role {
+
+    public enum RoleType {
+
+        CountryAdmin("CountryAdmin"),
+        BeneficiaryAdmin("BeneficiaryAdmin"),
+        EntityAdmin("EntityAdmin"),
+        GovtAdmin("GovtAdmin"),
+        LogisticAdmin("LogisticAdmin"),
+        OldAgeAdmin("OldAgeAdmin"),
+        OrphanageAdmin("OrphanageAdmin"),
+        HomelessAdmin("HomelessAdmin"),
+        CommonPeopleAdmin("CommonPeopleAdmin"),
+        DisasterAdmin("DisasterAdmin"),
+        HospitalAdmin("HospitalAdmin"),
+        EducationAdmin("EducationAdmin"),
+        NGOAdmin("NGOAdmin"),
+        MNCAdmin("MNCAdmin"),
+        IndividualAdmin("IndividualAdmin"),
+        TransportationAdmin("TransportationAdmin"),
+        RentalAdmin("RentalAdmin"),
+        BGVAdmin("BGVAdmin");
+
+        private String value;
+
+        private RoleType(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+    }
+
+    public abstract JPanel createWorkArea(JPanel userProcessContainer,
+            UserAccount account,
+            Organization organization,
+            Enterprise enterprise,
+            Network network,
+            EcoSystem business);
+
+    @Override
+    public String toString() {
+        return this.getClass().getName();
+    }
+
+}
