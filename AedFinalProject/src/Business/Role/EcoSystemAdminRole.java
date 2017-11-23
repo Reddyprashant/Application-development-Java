@@ -12,22 +12,22 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 
 import javax.swing.JPanel;
-import userinterface.CountryAdminWorkAreas.CountryAdminWorkAreaJPanel;
+import userinterface.EcoSystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
  * @author raunak
  */
-public class CountryAdminRole extends Role{
+public class EcoSystemAdminRole extends Role{
 
   
      @Override
     public String toString(){
-        return RoleType.CountryAdmin.getValue();
+        return RoleType.EcoSystemAdmin.getValue();
     }
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
-       return new CountryAdminWorkAreaJPanel(userProcessContainer,account,cNetwork, business);
+       return new SystemAdminWorkAreaJPanel(userProcessContainer,account, business);
     }
 }

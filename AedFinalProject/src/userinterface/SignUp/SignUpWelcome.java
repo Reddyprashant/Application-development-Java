@@ -8,6 +8,7 @@ package userinterface.SignUp;
 import Business.EcoSystem;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestBeneficiary;
+import Business.SignUp.SignUpRequestCountry;
 import Business.SignUp.SignUpRequestState;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -85,17 +86,18 @@ public class SignUpWelcome extends javax.swing.JPanel {
     String type = (String)comboBoxSignUpType.getSelectedItem();
     CardLayout layout = (CardLayout) container.getLayout();
         if(type.equals(SignUpRequest.SignUpType.Beneficiary.getValue())){
-         SignUpRequestBeneficiary snb = new SignUpRequestBeneficiary();
-         snb.signUpForm(container, system);
+         container.add("workArea", new SignUpJPanelBeneficiary(container, system));
         }
         else if(type.equals(SignUpRequest.SignUpType.State.getValue())){
-         SignUpRequestState sns = new SignUpRequestState();
-         sns.signUpForm(container, system);
-         
-          container.add("workArea", new SignUpJPanelState(container, system));
-           // container.add("workArea", sns.signUpForm(container, system));
-            layout.next(container);
+          container.add("workArea", new SignUpJPanelState(container, system));           
         }
+        else if(type.equals(SignUpRequest.SignUpType.Country.getValue())){
+         container.add("workArea", new SignUpJPanelCountry(container, system));            
+        }
+         else if(type.equals(SignUpRequest.SignUpType.Enterprise.getValue())){
+          container.add("workArea", new SignUpJPanelEnterprise(container, system));           
+        }
+      layout.next(container);  
     }//GEN-LAST:event_btnSubmitActionPerformed
 
 

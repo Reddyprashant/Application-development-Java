@@ -2,11 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkAreas;
+package userinterface.CountryAdminWorkAreas;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Network.Network;
+import Business.Network.CountryNetwork;
+import Business.Network.StateNetwork;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -22,15 +23,15 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem system;
-
+    private CountryNetwork cNetwork;
     /**
      * Creates new form ManageEnterpriseJPanel
      */
-    public ManageEnterpriseJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public ManageEnterpriseJPanel(JPanel userProcessContainer, CountryNetwork cNetwork, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-
+        this.cNetwork=cNetwork;
         populateTable();
         populateComboBox();
     }
@@ -39,7 +40,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
 
         model.setRowCount(0);
-        for (Network network : system.getNetworkList()) {
+        for (StateNetwork network : cNetwork.getStateList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 Object[] row = new Object[3];
                 row[0] = enterprise;
@@ -55,7 +56,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         networkJComboBox.removeAllItems();
         enterpriseTypeJComboBox.removeAllItems();
 
-        for (Network network : system.getNetworkList()) {
+        for (StateNetwork network : cNetwork.getStateList()) {
             networkJComboBox.addItem(network);
         }
 
@@ -171,7 +172,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
         if(!nameJTextField.getText().equals("")){
-        Network network = (Network) networkJComboBox.getSelectedItem();
+        StateNetwork network = (StateNetwork) networkJComboBox.getSelectedItem();
         Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) enterpriseTypeJComboBox.getSelectedItem();
 
         if (network == null || type == null) {
@@ -194,7 +195,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
          Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        CountryAdminWorkAreaJPanel sysAdminwjp = (CountryAdminWorkAreaJPanel) component;
         sysAdminwjp.populateTree();
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -211,7 +212,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
             Enterprise p=(Enterprise) enterpriseJTable.getValueAt(selectedRow, 0);
 
-            for (Network network : system.getNetworkList()) {
+            for (StateNetwork network : cNetwork.getStateList()) {
                 for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                    
                         if(p==enterprise){

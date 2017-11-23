@@ -6,7 +6,8 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Network.Network;
+import Business.Network.CountryNetwork;
+import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -20,6 +21,7 @@ public abstract class Role {
     public enum RoleType {
 
         CountryAdmin("CountryAdmin"),
+        EcoSystemAdmin ("EcoSystemAdmin"),
         BeneficiaryAdmin("BeneficiaryAdmin"),
         EntityAdmin("EntityAdmin"),
         GovtAdmin("GovtAdmin"),
@@ -58,7 +60,8 @@ public abstract class Role {
             UserAccount account,
             Organization organization,
             Enterprise enterprise,
-            Network network,
+            StateNetwork network,
+            CountryNetwork cNetwork,
             EcoSystem business);
 
     @Override

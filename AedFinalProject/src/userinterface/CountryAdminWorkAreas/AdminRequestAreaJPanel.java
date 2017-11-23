@@ -3,13 +3,14 @@
  *
  * Created on October 10, 2008, 8:50 AM
  */
-package userinterface.SystemAdminWorkAreas;
+package userinterface.CountryAdminWorkAreas;
 
 
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
-import Business.Network.Network;
+import Business.Network.CountryNetwork;
+import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
@@ -31,16 +32,17 @@ public class AdminRequestAreaJPanel extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-
+    CountryNetwork cNetwork;
     /**
      * Creates new form AdminWorkAreaJPanel
      */
-    public AdminRequestAreaJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem business) {
+    public AdminRequestAreaJPanel(JPanel userProcessContainer,UserAccount account,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         
         this.business = business;
         this.account=account;
+        this.cNetwork=cNetwork;
        // populateCombo();
        // populateQuantity();
         populateWorkQueueTable();
@@ -206,7 +208,7 @@ public class AdminRequestAreaJPanel extends javax.swing.JPanel {
             if (p.getReceiver() != null) {
                 if (p.getStatus().equals("Pending")) {
                     
-                    Network net = business.createAndAddNetwork();
+                    StateNetwork net = cNetwork.createAndAddNetwork();
                     net.setName(p.getName());
                     p.setStatus("Complete");
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");

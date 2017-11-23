@@ -3,11 +3,12 @@
  *
  * Created on October 10, 2008, 8:50 AM
  */
-package userinterface.SystemAdminWorkAreas;
+package userinterface.CountryAdminWorkAreas;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Network.Network;
+import Business.Network.CountryNetwork;
+import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -21,34 +22,34 @@ import javax.swing.tree.DefaultTreeModel;
  *
  * @author raunak
  */
-public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     EcoSystem system;
     UserAccount account;
-
+    CountryNetwork cNetwork;
     /**
      * Creates new form AdminWorkAreaJPanel
      */
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
+    public CountryAdminWorkAreaJPanel(JPanel userProcessContainer,UserAccount account, CountryNetwork cNetwork, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.account= account;
-
+        this.cNetwork=cNetwork;
+       // this.cNetwork=new CountryNetwork();
         populateTree();
     }
 
     public void populateTree() {
         
         DefaultTreeModel model = (DefaultTreeModel) JTree.getModel();
-
         
-        
-        ArrayList<Network> networkList = system.getNetworkList();
+       // ArrayList<CountryNetwork> cnetworkList = system.getNetworkList();
+        ArrayList<StateNetwork> networkList = cNetwork.getStateList();
         ArrayList<Enterprise> enterpriseList;
         ArrayList<Organization> organizationList;
-        Network network;
+        StateNetwork network;
         Enterprise enterprise;
         Organization organization;
 
@@ -60,6 +61,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         DefaultMutableTreeNode networkNode;
         DefaultMutableTreeNode enterpriseNode;
         DefaultMutableTreeNode organizationNode;
+       // for (int h = 0; h < cnetworkList.size(); h++) {
+          
         for (int i = 0; i < networkList.size(); i++) {
             network = networkList.get(i);
             networkNode = new DefaultMutableTreeNode(network.getName());
@@ -80,6 +83,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 }
             }
         }
+    //}
 
         model.reload();
     }
@@ -108,11 +112,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jSplitPane1.setDividerLocation(150);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageNetworkJButton.setBackground(new java.awt.Color(0, 0, 0));
-        manageNetworkJButton.setForeground(new java.awt.Color(255, 0, 51));
+        manageNetworkJButton.setBackground(new java.awt.Color(71, 79, 112));
+        manageNetworkJButton.setForeground(new java.awt.Color(255, 255, 255));
         manageNetworkJButton.setText("Manage Network");
         manageNetworkJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +161,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jSplitPane1.setRightComponent(jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.setBackground(new java.awt.Color(71, 79, 112));
 
         JTree.setBackground(new java.awt.Color(204, 204, 204));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("System");
@@ -179,7 +183,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEnterpriseJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEnterpriseJButtonActionPerformed
 
-        ManageEnterpriseJPanel manageEnterpriseJPanel = new ManageEnterpriseJPanel(userProcessContainer, system);
+        ManageEnterpriseJPanel manageEnterpriseJPanel = new ManageEnterpriseJPanel(userProcessContainer, cNetwork, system);
         userProcessContainer.add("manageEnterpriseJPanel", manageEnterpriseJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -187,7 +191,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAdminJButtonActionPerformed
         // TODO add your handling code here:
-        ManageEnterpriseAdminJPanel manageEnterpriseAdminJPanel = new ManageEnterpriseAdminJPanel(userProcessContainer, system);
+        ManageEnterpriseAdminJPanel manageEnterpriseAdminJPanel = new ManageEnterpriseAdminJPanel(userProcessContainer, cNetwork, system);
         userProcessContainer.add("manageEnterpriseAdminJPanel", manageEnterpriseAdminJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -195,7 +199,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageAdminJButtonActionPerformed
 
     private void manageNetworkJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageNetworkJButtonActionPerformed
-        ManageNetworkJPanel manageNetworkJPanel = new ManageNetworkJPanel(userProcessContainer, system);
+        ManageNetworkJPanel manageNetworkJPanel = new ManageNetworkJPanel(userProcessContainer, cNetwork,system);
         userProcessContainer.add("manageNetworkJPanel", manageNetworkJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -211,7 +215,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnDiseaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiseaseActionPerformed
         // TODO add your handling code here:
-        AdminRequestAreaJPanel manageNetworkJPanel = new AdminRequestAreaJPanel(userProcessContainer,account, system);
+        AdminRequestAreaJPanel manageNetworkJPanel = new AdminRequestAreaJPanel(userProcessContainer,account,cNetwork, system);
         userProcessContainer.add("AdminRequestAreaJPanel", manageNetworkJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

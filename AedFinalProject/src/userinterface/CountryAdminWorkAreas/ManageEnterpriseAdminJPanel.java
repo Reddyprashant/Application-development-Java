@@ -2,12 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkAreas;
+package userinterface.CountryAdminWorkAreas;
 
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
-import Business.Network.Network;
+import Business.Network.CountryNetwork;
+import Business.Network.StateNetwork;
 import Business.Role.BeneficiaryAdminRole;
 import Business.Role.EntityAdminRole;
 import Business.Role.GovtAdminRole;
@@ -29,16 +30,16 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem system;
-
+    private CountryNetwork cNetwork;
     /**
      * Creates new form ManageEnterpriseJPanel
      */
-    public ManageEnterpriseAdminJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public ManageEnterpriseAdminJPanel(JPanel userProcessContainer,CountryNetwork cNetwork, EcoSystem system) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-
+        this.cNetwork=cNetwork;
         populateTable();
         populateNetworkComboBox();
     }
@@ -47,7 +48,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
 
         model.setRowCount(0);
-        for (Network network : system.getNetworkList()) {
+        for (StateNetwork network : cNetwork.getStateList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
                     Object[] row = new Object[3];
@@ -64,12 +65,12 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private void populateNetworkComboBox() {
         networkJComboBox.removeAllItems();
 
-        for (Network network : system.getNetworkList()) {
+        for (StateNetwork network : cNetwork.getStateList()) {
             networkJComboBox.addItem(network);
         }
     }
 
-    private void populateEnterpriseComboBox(Network network) {
+    private void populateEnterpriseComboBox(StateNetwork network) {
         enterpriseJComboBox.removeAllItems();
 
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -190,7 +191,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
 
-        Network network = (Network) networkJComboBox.getSelectedItem();
+        StateNetwork network = (StateNetwork) networkJComboBox.getSelectedItem();
         if (network != null) {
             populateEnterpriseComboBox(network);
         }
@@ -234,7 +235,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        CountryAdminWorkAreaJPanel sysAdminwjp = (CountryAdminWorkAreaJPanel) component;
         sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -249,7 +250,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
             UserAccount p = (UserAccount) enterpriseJTable.getValueAt(selectedRow, 2);
 
-            for (Network network : system.getNetworkList()) {
+            for (StateNetwork network : cNetwork.getStateList()) {
                 for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                     for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
                         if (p == userAccount) {

@@ -55,9 +55,6 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
-        txtImage = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        btnFile = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -91,7 +88,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 90, -1));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 90, -1));
 
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -115,25 +112,6 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         jLabel7.setText("Password:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 170, -1));
-
-        txtImage.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtImageKeyPressed(evt);
-            }
-        });
-        add(txtImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 170, -1));
-
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel14.setText("Documents :");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 100, -1));
-
-        btnFile.setText("Choose File");
-        btnFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFileActionPerformed(evt);
-            }
-        });
-        add(btnFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -175,44 +153,15 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailKeyPressed
 
-    private void txtImageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImageKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtImageKeyPressed
-
-    private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
-        // TODO add your handling code here:
-        openFile.setCurrentDirectory(new File("c:\\temp"));
-       int value=openFile.showOpenDialog(btnFile);
-       if(value==JFileChooser.APPROVE_OPTION){
-            try{
-                file=ImageIO.read(openFile.getSelectedFile());
-                //person.setImage(file);
-//                 Image smallImage = person.getImage().getScaledInstance(250, 250,Image.SCALE_SMOOTH);
-//       ImageIcon imgIcon=new ImageIcon(smallImage);
-//       imageLabel.setIcon(imgIcon);
-                txtImage.setText(openFile.getSelectedFile().getPath());
-                JOptionPane.showMessageDialog(null, "Image Loaded Successfully");
-            }catch(IOException ioe){
-                JOptionPane.showMessageDialog(null, "Image load unsuccessfull");
-            }
-       }
-       else{
-           JOptionPane.showMessageDialog(null, "No file");
-       }
-    }//GEN-LAST:event_btnFileActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
-    private javax.swing.JButton btnFile;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtImage;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;

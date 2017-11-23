@@ -2,7 +2,8 @@ package Business;
 
 
 import Business.Enterprise.Enterprise;
-import Business.Network.Network;
+import Business.Network.CountryNetwork;
+import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import Business.Role.BeneficiaryAdminRole;
 import Business.Role.EntityAdminRole;
@@ -20,7 +21,7 @@ import java.util.HashSet;
 public class EcoSystem extends Organization {
 
     private static EcoSystem business;
-    private ArrayList<Network> networkList;
+    private ArrayList<CountryNetwork> networkList;
 
 
     public static EcoSystem getInstance() {
@@ -36,7 +37,7 @@ public class EcoSystem extends Organization {
 
     }
 
-    public ArrayList<Network> getNetworkList() {
+    public ArrayList<CountryNetwork> getNetworkList() {
         return networkList;
     }
 
@@ -47,8 +48,8 @@ public class EcoSystem extends Organization {
     }
 
 
-    public Network createAndAddNetwork() {
-        Network network = new Network();
+    public CountryNetwork createAndAddNetwork() {
+        CountryNetwork network = new CountryNetwork();
         networkList.add(network);
         return network;
     }
@@ -65,8 +66,8 @@ public class EcoSystem extends Organization {
     public static boolean checkIfUsernameIsUnique(String username) {
 
       //  if (!this.getUserAccountDirectory().checkIfUsernameIsUnique(username)) {
-             for (Network network : business.getNetworkList()) {
-                 
+             for (CountryNetwork cnetwork : business.getNetworkList()) {
+                 for (StateNetwork network : cnetwork.getStateList()) {
                 for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                     for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
                         if(ua.getUsername().equals(username)){
@@ -83,6 +84,8 @@ public class EcoSystem extends Organization {
                             }
                         }
                     }
+    }
+             
         return true;
     }
 }

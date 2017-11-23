@@ -13,12 +13,12 @@ import java.util.ArrayList;
  *
  * @author raunak
  */
-public class Network{
+public class StateNetwork{
     
     private String name;
     private EnterpriseDirectory enterpriseDirectory;
 
-    public Network() {
+    public StateNetwork() {
        
         enterpriseDirectory = new EnterpriseDirectory();
     }

@@ -8,7 +8,8 @@ import Business.EcoSystem;
 import Business.ConfigureASystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.Enterprise.Enterprise;
-import Business.Network.Network;
+import Business.Network.CountryNetwork;
+import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -63,7 +64,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         loginJButton.setBackground(new java.awt.Color(0, 0, 0));
@@ -74,15 +75,17 @@ public class MainJFrame extends javax.swing.JFrame {
                 loginJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(loginJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 149, 100, -1));
-        jPanel1.add(userNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 50, 118, -1));
-        jPanel1.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 109, 118, -1));
+        jPanel1.add(loginJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 100, -1));
+        jPanel1.add(userNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 118, -1));
+        jPanel1.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 118, -1));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("User Name");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 21, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 86, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
         jPanel1.add(loginJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, -1));
 
         logoutJButton.setText("Logout");
@@ -92,7 +95,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 208, 92, -1));
+        jPanel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 100, -1));
 
         btnSignUp.setText("Sign Up");
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +103,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 btnSignUpActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 100, -1));
+        jPanel1.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 100, -1));
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -124,12 +127,15 @@ public class MainJFrame extends javax.swing.JFrame {
         //Step1: Check in the system user account directory if you have the user
         
         UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+        
         Enterprise inEnterprise = null;
         Organization inOrganization = null;
-        Network inNetwork= null;
+        StateNetwork inNetwork= null;
+        CountryNetwork outNetwork=null;
         if (userAccount == null) {
             //Step2: Go inside each network to check each enterprise
-            for (Network network : system.getNetworkList()) {
+            for (CountryNetwork cnetwork : system.getNetworkList()) {
+            for (StateNetwork network : cnetwork.getStateList()) {
                 //Step 2-a: Check against each enterprise
                 for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                     userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
@@ -143,12 +149,14 @@ public class MainJFrame extends javax.swing.JFrame {
                                 inEnterprise = enterprise;
                                 inOrganization = organization;
                                 inNetwork= network;
+                                outNetwork=cnetwork;
                                 break;
                             }
                         }
                     } else {
                         inNetwork= network;
                         inEnterprise = enterprise;
+                        outNetwork=cnetwork;
                         break;
                     }
                     if (inOrganization != null) {
@@ -160,13 +168,21 @@ public class MainJFrame extends javax.swing.JFrame {
                 }
             }
         }
+        }
+        else{
+            for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                if(countryNetwork.getName().equalsIgnoreCase(userName)){
+                    outNetwork=countryNetwork;
+                }
+            }
+        }
     
         if (userAccount == null) {
             JOptionPane.showMessageDialog(null, "Invalid Credentails!");
             return;
         } else {
             CardLayout layout = (CardLayout) container.getLayout();
-            container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, system));
+            container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, outNetwork, system));
             layout.next(container);
         }
          loginJButton.setEnabled(false);

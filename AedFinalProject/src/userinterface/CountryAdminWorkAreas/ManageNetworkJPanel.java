@@ -2,10 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkAreas;
+package userinterface.CountryAdminWorkAreas;
 
 import Business.EcoSystem;
-import Business.Network.Network;
+import Business.Network.CountryNetwork;
+import Business.Network.StateNetwork;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -21,17 +22,18 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem system;
-
+    private CountryNetwork cNetwork;
     /**
      *
      * Creates new form ManageNetworkJPanel
+     * 
      */
-    public ManageNetworkJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public ManageNetworkJPanel(JPanel userProcessContainer, CountryNetwork cNetwork, EcoSystem system) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-
+        this.cNetwork=cNetwork;
         populateNetworkTable();
     }
 
@@ -39,7 +41,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
 
         model.setRowCount(0);
-        for (Network network : system.getNetworkList()) {
+        for (StateNetwork network : cNetwork.getStateList()) {
             Object[] row = new Object[1];
             row[0] = network;
             model.addRow(row);
@@ -125,7 +127,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 352, -1, -1));
 
-        jLabel4.setText("Manage Network Panel");
+        jLabel4.setText("State Network Panel");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 150, 20));
 
         btnDelete.setText("Delete request");
@@ -141,7 +143,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         String name = nameJTextField.getText();
         if(!name.equals("")){
-        Network network = system.createAndAddNetwork();
+        StateNetwork network = cNetwork.createAndAddNetwork();
         network.setName(name);
 
         populateNetworkTable();
@@ -155,7 +157,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
          Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        CountryAdminWorkAreaJPanel sysAdminwjp = (CountryAdminWorkAreaJPanel) component;
         sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -169,11 +171,11 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         }
         else{
 
-            Network p=(Network) networkJTable.getValueAt(selectedRow, 0);
+            StateNetwork p=(StateNetwork) networkJTable.getValueAt(selectedRow, 0);
 
-            for (Network network : system.getNetworkList()) {
+            for (StateNetwork network : cNetwork.getStateList()) {
                     if(p==network){
-                      system.getNetworkList().remove(p);
+                      cNetwork.getStateList().remove(p);
                         break;
                     }
             }

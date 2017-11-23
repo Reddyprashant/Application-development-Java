@@ -2,6 +2,7 @@ package Business;
 
 import Business.Employee.Employee;
 import Business.Role.CountryAdminRole;
+import Business.Role.EcoSystemAdminRole;
 import Business.UserAccount.UserAccount;
 
 /**
@@ -23,7 +24,7 @@ public class ConfigureASystem {
         
         Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
         
-        UserAccount ua = system.getUserAccountDirectory().createUserAccount("admin", "admin", employee, new CountryAdminRole());
+        UserAccount ua = system.getUserAccountDirectory().createUserAccount("admin", "admin", employee, new EcoSystemAdminRole());
         
         return system;
     }
