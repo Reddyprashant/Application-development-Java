@@ -27,12 +27,12 @@ public class SignUpJPanelBeneficiary extends javax.swing.JPanel {
      * Creates new form SignUpJPanel
      */
     private JPanel userProcessContainer;
-    private EcoSystem business;
+    private EcoSystem system;
     private BufferedImage file;
     private JFileChooser openFile;
     public SignUpJPanelBeneficiary(JPanel userProcessContainer, EcoSystem business) {
         initComponents();
-        this.business = business;
+        this.system = business;
         this.userProcessContainer=userProcessContainer;
     }
 
