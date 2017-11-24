@@ -39,12 +39,12 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         organizationJComboBox.removeAllItems();
       //  for (Type type : Organization.Type.values()){
        //     if (!type.getValue().equals(Type.Clinic.getValue()))
-                organizationJComboBox.addItem(Type.Education);
-                organizationJComboBox.addItem(Type.Hospital);
-                organizationJComboBox.addItem(Type.MNC);
-                organizationJComboBox.addItem(Type.NGO);
-                organizationJComboBox.addItem(Type.Individuals);
-                
+                organizationJComboBox.addItem(Type.Rental);
+                organizationJComboBox.addItem(Type.Transportation);
+//                organizationJComboBox.addItem(Type.MNC);
+//                organizationJComboBox.addItem(Type.NGO);
+//                organizationJComboBox.addItem(Type.Individuals);
+//                
       //  }
     }
 

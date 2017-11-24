@@ -9,9 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-import Business.SignUp.SignUpRequestEnterprise;
 import Business.SignUp.SignUpRequestState;
-import Business.UserAccount.UserAccount;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -40,21 +38,12 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         initComponents();
         this.system = business;
         this.userProcessContainer=userProcessContainer;
-        populateComboBox();
-      
-    }
-    
-    public void populateComboBox(){
-        for (CountryNetwork countryNetwork : system.getNetworkList()) {
+        
+       for (CountryNetwork countryNetwork : system.getNetworkList()) {
             comboCountry.addItem(countryNetwork);
         }
-        comboEnterprise.addItem(Enterprise.EnterpriseType.Beneficiary);
-        comboEnterprise.addItem(Enterprise.EnterpriseType.Entity);
-        comboEnterprise.addItem(Enterprise.EnterpriseType.Government);
-        comboEnterprise.addItem(Enterprise.EnterpriseType.Logistic);
-        
-        
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,11 +114,6 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 170, -1));
 
-        comboCountry.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboCountryActionPerformed(evt);
-            }
-        });
         add(comboCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 170, -1));
 
         txtImage.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -221,21 +205,14 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
                 
                   CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem();
                   StateNetwork state= (StateNetwork) comboState.getSelectedItem();
-                SignUpRequestEnterprise enterpriseRequest= new SignUpRequestEnterprise();
-                enterpriseRequest.setName(txtName.getText());
-                enterpriseRequest.setUserName(txtUserName.getText());
-                enterpriseRequest.setPassword(txtPassword.getText());
-                enterpriseRequest.setEmail(txtEmail.getText());
-                enterpriseRequest.setCountry(country);
-                enterpriseRequest.setState(state);
-                enterpriseRequest.setStatus("Requested");
-                enterpriseRequest.setEnterprise((Enterprise.EnterpriseType)comboEnterprise.getSelectedItem());
-                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
-                    if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
-                        userAccount.getWorkQueue().getWorkRequestList().add(enterpriseRequest);
-                    }
-                }
-                
+                SignUpRequestState stateRequest= new SignUpRequestState();
+                stateRequest.setName(txtName.getText());
+                stateRequest.setUserName(txtUserName.getText());
+                stateRequest.setPassword(txtPassword.getText());
+                stateRequest.setEmail(txtEmail.getText());
+                stateRequest.setCountry(country);
+                stateRequest.setStatus("Requested");
+                stateRequest.setEnterprise((Enterprise)comboEnterprise.getSelectedItem());
                 
                //business.getWorkQueue().getWorkRequestList().add(stateRequest);
                 
@@ -255,15 +232,6 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameKeyPressed
-
-    private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
-        // TODO add your handling code here:
-        //comboCountry.removeAllItems();
-        CountryNetwork c= (CountryNetwork) comboCountry.getSelectedItem();
-        for (StateNetwork state : c.getStateList()) {
-            comboState.addItem(state);
-        }
-    }//GEN-LAST:event_comboCountryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -12,14 +12,6 @@ import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.Organization;
-import Business.Role.BeneficiaryAdminRole;
-import Business.Role.CountryAdminRole;
-import Business.Role.EntityAdminRole;
-import Business.Role.GovtAdminRole;
-import Business.Role.LogisticAdminRole;
-import Business.Role.Role;
-import Business.SignUp.SignUpRequest;
-import Business.SignUp.SignUpRequestEnterprise;
 import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PharmacyWorkRequest;
@@ -39,7 +31,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     UserAccount account;
     Enterprise enterprise;
-    EcoSystem system;
+    EcoSystem business;
     CountryNetwork cNetwork;
     /**
      * Creates new form AdminWorkAreaJPanel
@@ -48,7 +40,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         
-        this.system = business;
+        this.business = business;
         this.account=account;
         this.cNetwork=cNetwork;
        // populateCombo();
@@ -64,14 +56,10 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
 
         model.setRowCount(0);
-        SignUpRequest s=null;
+
         for (WorkRequest work : account.getWorkQueue().getWorkRequestList()) {
             if (work instanceof SignUpRequestState) {
-                 s= (SignUpRequestState) work;
-            }
-            else if(work instanceof SignUpRequestEnterprise){
-                s= (SignUpRequestEnterprise) work;
-            }
+                SignUpRequestState s= (SignUpRequestState) work;
                 Object[] row = new Object[4];
                 row[0] = s.getName();
                 row[1] = s.getReceiver();
@@ -79,7 +67,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
                   row[3] = s; 
                  
                 model.addRow(row);
-            
+            }
         }
     }
 
@@ -170,7 +158,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
             WorkRequest p = (WorkRequest) requestTable.getValueAt(selectedRow, 3);
 
             // s.getWorkQueue().getWorkRequestList().remove(p);
-            account.getWorkQueue().getWorkRequestList().remove(p);
+            business.getWorkQueue().getWorkRequestList().remove(p);
            // account.getWorkQueue().getWorkRequestList().remove(p);
           //  business.getWorkQueue().getWorkRequestList().remove(p);
             JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
@@ -183,11 +171,10 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-          
-            SignUpRequest p = (SignUpRequest) requestTable.getValueAt(selectedRow, 3);
-          
+
+            SignUpRequestState p = (SignUpRequestState) requestTable.getValueAt(selectedRow, 3);
             if(p.getStatus().equals("Requested")){
-              //  System.out.println("admin name"+ account.getUsername());
+                System.out.println("admin name"+ account.getUsername());
                 p.setStatus("Pending");
                 p.setReceiver(account);
 
@@ -214,39 +201,15 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            SignUpRequest p = (SignUpRequest) requestTable.getValueAt(selectedRow, 3);
-            SignUpRequestState s=null;
-              SignUpRequestEnterprise e=null;
-            
-            
+
+            SignUpRequestState p = (SignUpRequestState) requestTable.getValueAt(selectedRow, 3);
             
             
             if (p.getReceiver() != null) {
                 if (p.getStatus().equals("Pending")) {
-                     if (p instanceof SignUpRequestState) {
-                 s= (SignUpRequestState) p;
-                StateNetwork net = cNetwork.createAndAddNetwork();
+                    
+                    StateNetwork net = cNetwork.createAndAddNetwork();
                     net.setName(p.getName());
-             }
-            else if(p instanceof SignUpRequestEnterprise){
-                e= (SignUpRequestEnterprise) p;
-                //You can check for non duplicate of enterprise here.
-                Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
-                Employee emp= new Employee();
-                    emp.setName(p.getName());
-                    if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Beneficiary) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new BeneficiaryAdminRole());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Entity) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new EntityAdminRole());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Government) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new GovtAdminRole());
-            }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Logistic) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new LogisticAdminRole());
-            }
-                    
-                    
-            }
-                   
                     p.setStatus("Complete");
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     

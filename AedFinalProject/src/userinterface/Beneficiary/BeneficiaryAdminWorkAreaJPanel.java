@@ -104,8 +104,8 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        EntityManageUserAccountJPanel muajp = new EntityManageUserAccountJPanel(userProcessContainer, enterprise);
-        userProcessContainer.add("EntityManageUserAccountJPanel", muajp);
+        BeneficiaryManageUserAccountJPanel muajp = new BeneficiaryManageUserAccountJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("BeneficiaryManageUserAccountJPanel", muajp);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -113,8 +113,8 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        EntityManageEmployeeJPanel manageEmployeeJPanel = new EntityManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("EntityManageEmployeeJPanel", manageEmployeeJPanel);
+        BeneficiaryManageEmployeeJPanel manageEmployeeJPanel = new BeneficiaryManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("BeneficiaryManageEmployeeJPanel", manageEmployeeJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -123,16 +123,16 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
 
-        EntityManageOrganizationJPanel manageOrganizationJPanel = new EntityManageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("EntityManageOrganizationJPanel", manageOrganizationJPanel);
+        BeneficiaryManageOrganizationJPanel manageOrganizationJPanel = new BeneficiaryManageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("BeneficiaryManageOrganizationJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         EntityRequestAreaJPanel manageOrganizationJPanel = new EntityRequestAreaJPanel(userProcessContainer, account, enterprise,state,country,system);
-        userProcessContainer.add("EntityRequestAreaJPanel", manageOrganizationJPanel);
+         BeneficiaryRequestAreaJPanel manageRequestJPanel = new BeneficiaryRequestAreaJPanel(userProcessContainer, account, enterprise,state,country,system);
+        userProcessContainer.add("BeneficiaryRequestAreaJPanel", manageRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 

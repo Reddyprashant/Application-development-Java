@@ -19,10 +19,18 @@ import userinterface.SignUp.SignUpJPanelState;
 public class SignUpRequestState extends SignUpRequest{
     
     private CountryNetwork Country;
-  
+    private Enterprise enterprise;
     
     public SignUpRequestState(){
     super();
+    }
+
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
     }
 
     public CountryNetwork getCountry() {

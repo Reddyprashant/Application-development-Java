@@ -38,11 +38,11 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         organizationJComboBox.removeAllItems();
       //  for (Type type : Organization.Type.values()){
        //     if (!type.getValue().equals(Type.Clinic.getValue()))
-                organizationJComboBox.addItem(Type.Education);
-                organizationJComboBox.addItem(Type.Hospital);
-                organizationJComboBox.addItem(Type.MNC);
-                organizationJComboBox.addItem(Type.NGO);
-                organizationJComboBox.addItem(Type.Individuals);
+                organizationJComboBox.addItem(Type.CommonPeople);
+                organizationJComboBox.addItem(Type.Homeless);
+                organizationJComboBox.addItem(Type.OldAge);
+                organizationJComboBox.addItem(Type.Orphanage);
+                organizationJComboBox.addItem(Type.Disaster);
                 
       //  }
     }
@@ -78,6 +78,7 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         orgNameTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -122,10 +123,15 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 310, -1, -1));
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                organizationJComboBoxActionPerformed(evt);
+            }
+        });
         add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 225, 81, -1));
 
-        jLabel1.setText("Organization Type ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 228, -1, -1));
+        jLabel1.setText("beni o");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +150,9 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 80, -1));
+
+        jLabel3.setText("Organization Type ");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 228, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -165,11 +174,16 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_orgNameTextFieldActionPerformed
 
+    private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_organizationJComboBoxActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField orgNameTextField;
     private javax.swing.JComboBox organizationJComboBox;
