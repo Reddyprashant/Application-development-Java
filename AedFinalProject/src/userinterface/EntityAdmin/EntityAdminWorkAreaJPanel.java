@@ -130,8 +130,8 @@ public class EntityAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         EntityRequestAreaJPanel manageOrganizationJPanel = new EntityRequestAreaJPanel(userProcessContainer, account, enterprise,state,country,system);
-        userProcessContainer.add("EntityRequestAreaJPanel", manageOrganizationJPanel);
+         EntityRequestAreaJPanel manageRequestJPanel = new EntityRequestAreaJPanel(userProcessContainer, account, enterprise,state,country,system);
+        userProcessContainer.add("EntityRequestAreaJPanel", manageRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 
