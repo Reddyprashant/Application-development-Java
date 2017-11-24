@@ -111,6 +111,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageAdminJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         selectedNodeJLabel = new javax.swing.JLabel();
+        btnRequestArea = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTree = new javax.swing.JTree();
@@ -140,13 +141,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageAdminJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
+        jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 180, -1));
 
         jLabel1.setText("Selected Node:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 36, -1, -1));
 
         selectedNodeJLabel.setText("<view_selected_node>");
         jPanel1.add(selectedNodeJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 36, -1, -1));
+
+        btnRequestArea.setText("Manage Request Catalog");
+        btnRequestArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestAreaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRequestArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 180, -1));
 
         jSplitPane1.setRightComponent(jPanel1);
 
@@ -194,8 +203,17 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_valueChangedAction
 
+    private void btnRequestAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestAreaActionPerformed
+        // TODO add your handling code here:
+        SystemAdminRequestAreaJPanel manageNetworkJPanel = new SystemAdminRequestAreaJPanel(userProcessContainer,account, system);
+        userProcessContainer.add("SystemAdminRequestAreaJPanel", manageNetworkJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnRequestAreaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTree JTree;
+    private javax.swing.JButton btnRequestArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

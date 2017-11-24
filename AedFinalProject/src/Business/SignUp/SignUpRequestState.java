@@ -2,6 +2,7 @@ package Business.SignUp;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.CountryNetwork;
 import javax.swing.JPanel;
 import userinterface.SignUp.SignUpJPanelState;
 
@@ -17,7 +18,7 @@ import userinterface.SignUp.SignUpJPanelState;
  */
 public class SignUpRequestState extends SignUpRequest{
     
-    private String Country;
+    private CountryNetwork Country;
     private Enterprise enterprise;
     
     public SignUpRequestState(){
@@ -32,11 +33,11 @@ public class SignUpRequestState extends SignUpRequest{
         this.enterprise = enterprise;
     }
 
-    public String getCountry() {
+    public CountryNetwork getCountry() {
         return Country;
     }
 
-    public void setCountry(String Country) {
+    public void setCountry(CountryNetwork Country) {
         this.Country = Country;
     }
     
