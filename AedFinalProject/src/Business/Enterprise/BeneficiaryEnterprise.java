@@ -6,6 +6,11 @@
 package Business.Enterprise;
 
 
+import Business.Role.CommonPeopleAdmin;
+import Business.Role.DisasterAdmin;
+import Business.Role.HomelessAdmin;
+import Business.Role.OldAgeAdmin;
+import Business.Role.OrphanageAdmin;
 import Business.Role.Role;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,8 +28,11 @@ public class BeneficiaryEnterprise extends Enterprise{
     @Override
     public HashSet<Role> getSupportedRole() {
          roles= new HashSet<>();
-//        roles.add(new ProviderRole());
-//        roles.add(new SupplierRole());
+       roles.add(new OldAgeAdmin());
+        roles.add(new HomelessAdmin());
+        roles.add(new CommonPeopleAdmin());
+        roles.add(new DisasterAdmin());
+        roles.add(new OrphanageAdmin());
         return roles;
     }
 }

@@ -12,8 +12,10 @@ import java.util.HashSet;
 
 public class MNCOrganization extends Organization{
     private String name;
-    public MNCOrganization() {
-        super(Type.MNC.getValue());
+    public MNCOrganization(String name) {
+         super(name);
+        this.name=name;
+       
     }
      public String getName() {
         return name;

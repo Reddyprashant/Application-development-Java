@@ -8,10 +8,13 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.MNCOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 
 import javax.swing.JPanel;
+import userinterface.EntityAdmin.MNCAdmin.MNCAdminWorkAreaJPanel;
+
 
 
 /**
@@ -22,7 +25,7 @@ public class MNCAdmin extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new MNCAdminWorkAreaJPanel(userProcessContainer,account,(MNCOrganization)organization,enterprise,network,cNetwork,business);
     }
     
     @Override

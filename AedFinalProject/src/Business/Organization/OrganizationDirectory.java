@@ -61,7 +61,7 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.MNC.getValue())){
-            organization = new MNCOrganization();
+            organization = new MNCOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Individuals.getValue())){
