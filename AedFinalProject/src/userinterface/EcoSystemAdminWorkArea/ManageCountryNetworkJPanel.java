@@ -101,8 +101,8 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 63, 404, 91));
 
-        jLabel1.setText("Name");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 257, -1, -1));
+        jLabel1.setText("Country Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {

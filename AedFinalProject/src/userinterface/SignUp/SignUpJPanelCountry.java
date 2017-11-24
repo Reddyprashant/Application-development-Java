@@ -6,6 +6,7 @@
 package userinterface.SignUp;
 
 import Business.EcoSystem;
+import Business.SignUp.SignUpRequestCountry;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -27,12 +28,12 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
      * Creates new form SignUpJPanel
      */
     private JPanel userProcessContainer;
-    private EcoSystem business;
+    private EcoSystem system;
     private BufferedImage file;
     private JFileChooser openFile;
-    public SignUpJPanelCountry(JPanel userProcessContainer, EcoSystem business) {
+    public SignUpJPanelCountry(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
-        this.business = business;
+        this.system = system;
         this.userProcessContainer=userProcessContainer;
     }
 
@@ -127,11 +128,18 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         try{
-            if(!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty()  && !txtPassword.getText().isEmpty() ){
-
-             
+            if(!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty()  && !txtPassword.getText().isEmpty()){
+                if(txtUserName.getText().equalsIgnoreCase(txtName.getText())){
+                SignUpRequestCountry countryRequest= new SignUpRequestCountry();
+                countryRequest.setUserName(txtUserName.getText());
+                countryRequest.setName(txtName.getText());
+                countryRequest.setPassword(txtPassword.getText());
+                countryRequest.setEmail(txtEmail.getText());
+                countryRequest.setStatus("Requested");
+             system.getWorkQueue().getWorkRequestList().add(countryRequest);
 
                 JOptionPane.showMessageDialog(null, "Updated successfully");
+            }
             }
             else{
                 JOptionPane.showMessageDialog(null, "Please enter all values");

@@ -26,9 +26,6 @@ public class SignUpRequestCountry extends SignUpRequest{
         return new SignUpJPanelCountry(userProcessContainer,business);
     }
     
-    @Override
-    public String toString(){
-    return SignUpRequest.SignUpType.Country.getValue();
-    }
+ 
     
 }

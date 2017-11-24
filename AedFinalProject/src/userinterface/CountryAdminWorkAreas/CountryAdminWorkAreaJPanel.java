@@ -215,7 +215,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnDiseaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiseaseActionPerformed
         // TODO add your handling code here:
-        AdminRequestAreaJPanel manageNetworkJPanel = new AdminRequestAreaJPanel(userProcessContainer,account,cNetwork, system);
+        CountryAdminRequestAreaJPanel manageNetworkJPanel = new CountryAdminRequestAreaJPanel(userProcessContainer,account,cNetwork, system);
         userProcessContainer.add("AdminRequestAreaJPanel", manageNetworkJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

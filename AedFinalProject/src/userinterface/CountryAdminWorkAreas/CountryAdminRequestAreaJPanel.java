@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author vinya
  */
-public class AdminRequestAreaJPanel extends javax.swing.JPanel {
+public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     UserAccount account;
@@ -36,7 +36,7 @@ public class AdminRequestAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AdminWorkAreaJPanel
      */
-    public AdminRequestAreaJPanel(JPanel userProcessContainer,UserAccount account,CountryNetwork cNetwork, EcoSystem business) {
+    public CountryAdminRequestAreaJPanel(JPanel userProcessContainer,UserAccount account,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         
@@ -57,7 +57,7 @@ public class AdminRequestAreaJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
 
-        for (WorkRequest work : business.getWorkQueue().getWorkRequestList()) {
+        for (WorkRequest work : account.getWorkQueue().getWorkRequestList()) {
             if (work instanceof SignUpRequestState) {
                 SignUpRequestState s= (SignUpRequestState) work;
                 Object[] row = new Object[4];

@@ -7,7 +7,9 @@ package userinterface.SignUp;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.CountryNetwork;
 import Business.SignUp.SignUpRequestState;
+import Business.UserAccount.UserAccount;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -29,16 +31,17 @@ public class SignUpJPanelState extends javax.swing.JPanel {
      * Creates new form SignUpJPanel
      */
     private JPanel userProcessContainer;
-    private EcoSystem business;
+    private EcoSystem system;
     private BufferedImage file;
     private JFileChooser openFile;
     public SignUpJPanelState(JPanel userProcessContainer, EcoSystem business) {
         initComponents();
-        this.business = business;
+        this.system = business;
         this.userProcessContainer=userProcessContainer;
         
-        comboCountry.addItem("USA");
-        comboCountry.addItem("India");
+        for (CountryNetwork countryNetwork : system.getNetworkList()) {
+            comboCountry.addItem(countryNetwork);
+        }
     }
 
     /**
@@ -99,24 +102,25 @@ public class SignUpJPanelState extends javax.swing.JPanel {
         try{
             if(!txtName.getText().isEmpty()  ){
                 
-                String country= (String) comboCountry.getSelectedItem();
-                if(country.equals("USA")){
+                CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem(); 
                 SignUpRequestState stateRequest= new SignUpRequestState();
                 stateRequest.setName(txtName.getText());
                 stateRequest.setCountry(country);
                 stateRequest.setStatus("Requested");
-                
-               business.getWorkQueue().getWorkRequestList().add(stateRequest);
-              // EcoSystem.getInstance().getWorkQueue().getWorkRequestList().add(stateRequest);
-                JOptionPane.showMessageDialog(null, "Updated successfully");
+                for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
+                    if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
+                        userAccount.getWorkQueue().getWorkRequestList().add(stateRequest);
+                    }
                 }
+                
+                JOptionPane.showMessageDialog(null, "State Created successfully");
+                
             }
             else{
                 JOptionPane.showMessageDialog(null, "Please enter all values");
             }
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Enter integer for Salary", "Warning", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCreateStateActionPerformed
