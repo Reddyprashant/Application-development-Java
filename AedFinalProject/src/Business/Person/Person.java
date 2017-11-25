@@ -63,6 +63,14 @@ public class Person {
     public static void setpCount(int pCount) {
         Person.pCount = pCount;
     }
+
+    public Date getDateOfJoining() {
+        return dateOfJoining;
+    }
+
+    public void setDateOfJoining(Date dateOfJoining) {
+        this.dateOfJoining = dateOfJoining;
+    }
     
     
 }

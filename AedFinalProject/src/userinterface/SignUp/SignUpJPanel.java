@@ -11,6 +11,9 @@ import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import Business.SignUp.SignUpRequest;
+import Business.SignUp.SignUpRequestEnterprise;
+import Business.SignUp.SignUpRequestOrganization;
+import Business.UserAccount.UserAccount;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -237,7 +240,27 @@ public class SignUpJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         try{
             if(!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty() && !txtCity.getText().isEmpty() && !txtPassword.getText().isEmpty() ){
-
+                CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem();
+                  StateNetwork state= (StateNetwork) comboState.getSelectedItem();
+                  Enterprise e= (Enterprise) comboEnterprise.getSelectedItem();
+                SignUpRequestOrganization orgRequest= new SignUpRequestOrganization();
+                orgRequest.setName(txtName.getText());
+                orgRequest.setUserName(txtUserName.getText());
+                orgRequest.setPassword(txtPassword.getText());
+                orgRequest.setEmail(txtEmail.getText());
+                orgRequest.setCountry(country);
+                orgRequest.setState(state);
+                
+                orgRequest.setStatus("Requested");
+                
+                
+                
+             //   orgRequest.setEnterprise((Enterprise.EnterpriseType)comboEnterprise.getSelectedItem());
+                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
+                    if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
+                        userAccount.getWorkQueue().getWorkRequestList().add(orgRequest);
+                    }
+                }
              
 
                 JOptionPane.showMessageDialog(null, "Registration succesfull. Your account will be available in 24 hrs");
