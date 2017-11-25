@@ -5,6 +5,7 @@
  */
 package Business.Enterprise;
 
+import Business.Organization.Organization;
 import Business.Role.Role;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,7 +18,13 @@ public class LogisticEnterprise extends Enterprise{
       public LogisticEnterprise(String name) {
         super(name, Enterprise.EnterpriseType.Logistic);
     }
-
+      
+     @Override
+     public ArrayList<Type> getOrganizations() {
+        ArrayList<Type> orgs = new ArrayList<>();
+        orgs.add(Organization.Type.Transportation);
+        return orgs;
+    }
     @Override
     public HashSet<Role> getSupportedRole() {
          roles= new HashSet<>();

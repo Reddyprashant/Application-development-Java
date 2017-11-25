@@ -62,9 +62,5 @@ public class SignUpRequestEnterprise extends SignUpRequest{
         return new SignUpJPanelBeneficiary(userProcessContainer,business);
     }
     
-    @Override
-    public String toString(){
-    return SignUpRequest.SignUpType.Beneficiary.getValue();
-    }
     
 }

@@ -6,6 +6,7 @@
 package Business.Enterprise;
 
 
+import Business.Organization.Organization;
 import Business.Role.CommonPeopleAdmin;
 import Business.Role.DisasterAdmin;
 import Business.Role.HomelessAdmin;
@@ -24,7 +25,18 @@ public class BeneficiaryEnterprise extends Enterprise{
       public BeneficiaryEnterprise(String name) {
         super(name, Enterprise.EnterpriseType.Beneficiary);
     }
-
+      
+      @Override
+      public ArrayList<Type> getOrganizations() {
+        ArrayList<Type> orgs = new ArrayList<>();
+        orgs.add(Organization.Type.CommonPeople);
+        orgs.add(Organization.Type.Disaster);
+        orgs.add(Organization.Type.Homeless);
+        orgs.add(Type.Orphanage);
+        orgs.add(Type.OldAge);
+        return orgs;
+    }
+      
     @Override
     public HashSet<Role> getSupportedRole() {
          roles= new HashSet<>();

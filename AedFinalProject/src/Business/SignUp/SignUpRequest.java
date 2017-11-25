@@ -30,9 +30,8 @@ public abstract class SignUpRequest extends WorkRequest{
     
     public enum SignUpType{
         
-        Individual("Individual"),
+        
         Organization("Organization"),
-        Beneficiary("Beneficiary"),
         Country("Country"),
         Enterprise("Enterprise"),
         State("State");

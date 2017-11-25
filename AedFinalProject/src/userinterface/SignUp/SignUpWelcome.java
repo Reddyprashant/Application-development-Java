@@ -7,6 +7,7 @@ package userinterface.SignUp;
 
 import Business.EcoSystem;
 import Business.SignUp.SignUpRequest;
+import Business.SignUp.SignUpRequest.SignUpType;
 import Business.SignUp.SignUpRequestBeneficiary;
 import Business.SignUp.SignUpRequestCountry;
 import Business.SignUp.SignUpRequestState;
@@ -34,7 +35,7 @@ public class SignUpWelcome extends javax.swing.JPanel {
     private void populateRoleComboBox() {
         comboBoxSignUpType.removeAllItems();
         for(SignUpRequest.SignUpType e: Business.SignUp.SignUpRequest.SignUpType.values()){
-        comboBoxSignUpType.addItem(e.getValue());
+        comboBoxSignUpType.addItem(e);
         }
     }
 
@@ -83,12 +84,22 @@ public class SignUpWelcome extends javax.swing.JPanel {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         
-    String type = (String)comboBoxSignUpType.getSelectedItem();
+    SignUpType type = (SignUpType)comboBoxSignUpType.getSelectedItem();
     CardLayout layout = (CardLayout) container.getLayout();
-        if(type.equals(SignUpRequest.SignUpType.Beneficiary.getValue())){
-         container.add("workArea", new SignUpJPanelBeneficiary(container, system));
-        }
-        else if(type.equals(SignUpRequest.SignUpType.State.getValue())){
+//        if(type.equals(SignUpRequest.SignUpType.Beneficiary.getValue())){
+//         container.add("workArea", new SignUpJPanelBeneficiary(container, system, type));
+//        }
+//        else if(type.equals(SignUpRequest.SignUpType.State.getValue())){
+//          container.add("workArea", new SignUpJPanelState(container, system));           
+//        }
+//        else if(type.equals(SignUpRequest.SignUpType.Country.getValue())){
+//         container.add("workArea", new SignUpJPanelCountry(container, system));            
+//        }
+//         else if(type.equals(SignUpRequest.SignUpType.Enterprise.getValue())){
+//          container.add("workArea", new SignUpJPanelEnterprise(container, system));           
+//        }
+
+         if(type.equals(SignUpRequest.SignUpType.State.getValue())){
           container.add("workArea", new SignUpJPanelState(container, system));           
         }
         else if(type.equals(SignUpRequest.SignUpType.Country.getValue())){
@@ -96,6 +107,9 @@ public class SignUpWelcome extends javax.swing.JPanel {
         }
          else if(type.equals(SignUpRequest.SignUpType.Enterprise.getValue())){
           container.add("workArea", new SignUpJPanelEnterprise(container, system));           
+        }
+         else {
+         container.add("workArea", new SignUpJPanel(container, system, type));
         }
       layout.next(container);  
     }//GEN-LAST:event_btnSubmitActionPerformed

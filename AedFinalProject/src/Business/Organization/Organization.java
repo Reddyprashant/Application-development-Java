@@ -7,6 +7,7 @@
 package Business.Organization;
 
 import Business.Employee.EmployeeDirectory;
+import Business.Person.PersonDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -21,6 +22,7 @@ private String name;
     private int organizationID;
     private static int counter=0;
     public HashSet<Role> roles;
+    private PersonDirectory personList;
     
     public enum Type{
         OldAge("Oldage Home Organization"),Orphanage("Orphanage Organization"),Homeless("Homeless Shelter Organization"), CommonPeople("Common People Organization"), Disaster("Disaster Recovery Organization"),Hospital("Hospital Organization"),Education("Education Organization"),NGO("NGO Organization"),MNC("MNC Organization"),Individuals("Individuals Organization"),Transportation("Transportation Organization"),Rental("Rental Organization"),BGV("BGV Organization");
@@ -40,6 +42,7 @@ private String name;
         userAccountDirectory = new UserAccountDirectory();
         organizationID = counter;
         roles = new HashSet<>();
+        personList= new PersonDirectory();
         ++counter;
     }
 
@@ -59,6 +62,14 @@ private String name;
     
     public String getName() {
         return name;
+    }
+
+    public PersonDirectory getPersonList() {
+        return personList;
+    }
+
+    public void setPersonList(PersonDirectory personList) {
+        this.personList = personList;
     }
 
     public WorkQueue getWorkQueue() {

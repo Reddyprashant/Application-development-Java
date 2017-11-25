@@ -6,6 +6,9 @@ package Business.Enterprise;
 
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Role.Role;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 
 /**
@@ -41,7 +44,9 @@ public abstract class Enterprise extends Organization{
             return value;
         }
     }
-
+    
+    public abstract ArrayList<Type> getOrganizations();
+    
     public EnterpriseType getEnterpriseType() {
         return enterpriseType;
     }

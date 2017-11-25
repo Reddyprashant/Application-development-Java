@@ -33,9 +33,6 @@ public class SignUpRequestIndividual extends SignUpRequest{
         return new SignUpJPanelIndividual(userProcessContainer,business);
     }
 
-    @Override
-    public String toString(){
-    return SignUpRequest.SignUpType.Individual.getValue();
-    }    
+  
     
 }
