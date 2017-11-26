@@ -180,7 +180,6 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
                // System.out.println("admin name"+ account.getUsername());
                 p.setStatus("Pending");
                 p.setReceiver(account);
-
                 populateWorkQueueTable();
             }
             else{

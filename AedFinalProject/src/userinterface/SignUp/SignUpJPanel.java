@@ -10,6 +10,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.Organization;
+import Business.Organization.Organization.Type;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestEnterprise;
 import Business.SignUp.SignUpRequestOrganization;
@@ -243,6 +244,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem();
                   StateNetwork state= (StateNetwork) comboState.getSelectedItem();
                   Enterprise e= (Enterprise) comboEnterprise.getSelectedItem();
+                  Organization.Type type= (Type) comboOrganization.getSelectedItem();
                 SignUpRequestOrganization orgRequest= new SignUpRequestOrganization();
                 orgRequest.setName(txtName.getText());
                 orgRequest.setUserName(txtUserName.getText());
@@ -250,16 +252,30 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 orgRequest.setEmail(txtEmail.getText());
                 orgRequest.setCountry(country);
                 orgRequest.setState(state);
-                
+                orgRequest.setCity(txtCity.getText());
+                orgRequest.setOrgType(type);
                 orgRequest.setStatus("Requested");
-                
+                orgRequest.setOrgName(txtOrgName.getText());
+                orgRequest.setEnterprise(e);
                 
                 
              //   orgRequest.setEnterprise((Enterprise.EnterpriseType)comboEnterprise.getSelectedItem());
-                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
-                    if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
-                        userAccount.getWorkQueue().getWorkRequestList().add(orgRequest);
-                    }
+//                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
+//                    if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
+//                        userAccount.getWorkQueue().getWorkRequestList().add(orgRequest);
+//                    }
+//                }
+                 
+                 for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                     for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
+                         for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+                              System.out.println("enterall"+e.getEnterpriseType()+stateNetwork.getName()+countryNetwork.getName());
+                             if(enterprise == e){
+                                 System.out.println("enter"+e.getEnterpriseType()+" "+enterprise);
+                                 e.getWorkQueue().getWorkRequestList().add(orgRequest);
+                             }
+                         }
+                     }
                 }
              
 
@@ -344,7 +360,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
          Enterprise e= (Enterprise) comboEnterprise.getSelectedItem();
          if(e!= null){
         for (Organization.Type org : e.getOrganizations()) {
-            comboOrganization.addItem(org.getValue());
+            comboOrganization.addItem(org);
         }
          }
     }//GEN-LAST:event_comboEnterpriseActionPerformed
