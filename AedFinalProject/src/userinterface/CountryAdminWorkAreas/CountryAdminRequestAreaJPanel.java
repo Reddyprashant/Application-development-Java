@@ -236,6 +236,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
                 Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
                 Employee emp= new Employee();
                     emp.setName(p.getName());
+                    emp.setEmailId(p.getEmail());
                     if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Beneficiary) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new BeneficiaryAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Entity) {

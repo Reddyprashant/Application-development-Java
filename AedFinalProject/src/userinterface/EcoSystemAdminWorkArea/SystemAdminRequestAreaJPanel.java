@@ -27,9 +27,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
 import utility.Validator;
 /**
  *
@@ -219,6 +216,7 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
                     net.setName(p.getName());
                     Employee e= new Employee();
                     e.setName(p.getName());
+                    e.setEmailId(p.getEmail());
                     system.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), e, new CountryAdminRole());
                     p.setStatus("Complete");
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
