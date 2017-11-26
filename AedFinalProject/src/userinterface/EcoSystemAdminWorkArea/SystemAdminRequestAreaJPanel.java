@@ -27,9 +27,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
 import utility.Validator;
 /**
  *
