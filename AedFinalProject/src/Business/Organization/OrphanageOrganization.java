@@ -13,7 +13,8 @@ import java.util.HashSet;
 public class OrphanageOrganization extends Organization{
     private String name;
     public OrphanageOrganization(String name) {
-        super(Type.Orphanage.getValue());
+        super(name);
+        this.name=name;
     }
      public String getName() {
         return name;
