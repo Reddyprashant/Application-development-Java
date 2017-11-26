@@ -22,10 +22,15 @@ import Business.WorkQueue.PharmacyWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.HashMap;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
+import utility.Validator;
 /**
  *
  * @author vinya
@@ -219,6 +224,8 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     
                     populateWorkQueueTable();
+                    Validator.sendMessage(p.getEmail());
+                   
                 } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
                 }

@@ -99,13 +99,13 @@ public class SignUpWelcome extends javax.swing.JPanel {
 //          container.add("workArea", new SignUpJPanelEnterprise(container, system));           
 //        }
 
-         if(type.equals(SignUpRequest.SignUpType.State.getValue())){
+         if(type == (SignUpRequest.SignUpType.State)){
           container.add("workArea", new SignUpJPanelState(container, system));           
         }
-        else if(type.equals(SignUpRequest.SignUpType.Country.getValue())){
+        else if(type==(SignUpRequest.SignUpType.Country)){
          container.add("workArea", new SignUpJPanelCountry(container, system));            
         }
-         else if(type.equals(SignUpRequest.SignUpType.Enterprise.getValue())){
+         else if(type==(SignUpRequest.SignUpType.Enterprise)){
           container.add("workArea", new SignUpJPanelEnterprise(container, system));           
         }
          else {

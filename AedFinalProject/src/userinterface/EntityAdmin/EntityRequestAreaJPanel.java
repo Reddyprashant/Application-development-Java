@@ -16,6 +16,7 @@ import Business.SignUp.SignUpRequestOrganization;
 import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -81,7 +82,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         tblReq = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnAssign = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -125,8 +126,13 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 337, 660, 198));
 
-        jButton1.setText("Assign to me");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, -1));
+        btnAssign.setText("Assign to me");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, -1));
 
         jButton2.setText("Serve");
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, -1, -1));
@@ -145,9 +151,33 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = tblReq.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+          
+            SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
+          
+            if(p.getStatus().equals("Requested")){
+              //  System.out.println("admin name"+ account.getUsername());
+                p.setStatus("Pending");
+                p.setReceiver(account);
+
+                populateWorkQueueTable();
+               
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Already assigned");
+            }
+
+        }
+    }//GEN-LAST:event_btnAssignActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAssign;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

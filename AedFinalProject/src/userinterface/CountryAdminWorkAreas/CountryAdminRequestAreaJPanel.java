@@ -29,6 +29,7 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import utility.Validator;
 
 /**
  *
@@ -192,6 +193,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
                 p.setReceiver(account);
 
                 populateWorkQueueTable();
+               
             }
             else{
                 JOptionPane.showMessageDialog(null, "Already assigned");
@@ -244,9 +246,10 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
                 account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new LogisticAdminRole());
             }
                     
-                    
+              Validator.sendMessage(p.getEmail());      
             }
-                   
+                     
+                    
                     p.setStatus("Complete");
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     
