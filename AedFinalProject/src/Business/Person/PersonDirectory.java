@@ -5,7 +5,9 @@
  */
 package Business.Person;
 
+import Business.Employee.Employee;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PersonDirectory {
 
@@ -22,5 +24,13 @@ public class PersonDirectory {
     public void setPersonList(ArrayList<Person> personList) {
         this.personList = personList;
     }
+public Person createperson(String name, Date dateOfBirth, String reason ){
+        Person person = new Person();
+        person.setName(name);
+        person.setDateOfBirth(dateOfBirth);
+        person.setReason(reason);
 
+        personList.add(person);
+        return person;
+    }
 }
