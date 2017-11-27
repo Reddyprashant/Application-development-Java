@@ -32,7 +32,7 @@ public class EcoSystem extends Organization {
     }
 
     private EcoSystem() {
-        super(null);
+        super(null,null);
         networkList = new ArrayList<>();
 
     }

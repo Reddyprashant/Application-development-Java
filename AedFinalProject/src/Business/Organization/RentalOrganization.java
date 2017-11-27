@@ -12,8 +12,9 @@ import java.util.HashSet;
 
 public class RentalOrganization extends Organization{
     private String name;
-    public RentalOrganization(String name) {
-        super(Type.Rental.getValue());
+    public RentalOrganization(String name, String city) {
+        super(name,city);
+        this.name=name;
     }
 
      public String getName() {

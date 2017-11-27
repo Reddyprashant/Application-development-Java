@@ -6,11 +6,10 @@
 package utility;
 
 import java.awt.event.KeyEvent;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.SendFailedException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -46,13 +45,15 @@ public class Validator {
         }
      }
      
-     public static void sendMessage(String emailId){
+     public static void sendMessage(String emailId) throws SendFailedException{
            // Recipient's email ID needs to be mentioned.
       String to = emailId;
 
       // Sender's email ID needs to be mentioned
-      String from = "poojithshtt";
-      String pass = "passwordcodename";
+     // String from = "poojithshtt";
+     // String pass = "passwordcodename";
+      String from = "poojithsshetty";
+      String pass = "Fall@2017";
       // Assuming you are sending email from localhost
      // String host = "192.168.0.16";
 

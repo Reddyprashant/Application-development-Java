@@ -81,7 +81,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         btnAssign = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnServe = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -114,8 +114,13 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         });
         add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 266, -1, -1));
 
-        jButton2.setText("Serve");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 266, -1, -1));
+        btnServe.setText("Serve");
+        btnServe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServeActionPerformed(evt);
+            }
+        });
+        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 266, -1, -1));
 
         jButton3.setText("Send Request to BGV");
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 553, -1, -1));
@@ -175,10 +180,14 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAssignActionPerformed
 
+    private void btnServeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnServeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnServe;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -55,6 +55,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
             Object[] row = new Object[3];
             row[0] = organization.getOrganizationID();
             row[1] = organization.getName();
+            row[2] = organization.getCity();
            
             
             model.addRow(row);
@@ -77,6 +78,8 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         orgNameTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtcity = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -85,7 +88,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Name", "Organization Type"
+                "ID", "Name", "City"
             }
         ) {
             Class[] types = new Class [] {
@@ -143,13 +146,24 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 80, -1));
+
+        jLabel3.setText("Organization City");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
+
+        txtcity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcityActionPerformed(evt);
+            }
+        });
+        add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 80, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
         String name = orgNameTextField.getText();
-        directory.createOrganization(type, name);
+        String city= txtcity.getText();
+        directory.createOrganization(type, name, city);
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 
@@ -164,14 +178,20 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_orgNameTextFieldActionPerformed
 
+    private void txtcityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcityActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField orgNameTextField;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;
+    private javax.swing.JTextField txtcity;
     // End of variables declaration//GEN-END:variables
 }

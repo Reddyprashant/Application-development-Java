@@ -26,6 +26,9 @@ import Business.WorkQueue.PharmacyWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -247,7 +250,11 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
                 account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new LogisticAdminRole());
             }
                     
-              Validator.sendMessage(p.getEmail());      
+                         try {      
+                             Validator.sendMessage(p.getEmail());
+                         } catch (SendFailedException ex) {
+                             JOptionPane.showMessageDialog(null, "User has a wrong email address");
+                         }
             }
                      
                     

@@ -12,8 +12,9 @@ import java.util.HashSet;
 
 public class OldAgeOrganization extends Organization{
     private String name;
-    public OldAgeOrganization(String name) {
-        super(Type.OldAge.getValue());
+    public OldAgeOrganization(String name, String city) {
+        super(name,city);
+        this.name=name;
     }
      public String getName() {
         return name;

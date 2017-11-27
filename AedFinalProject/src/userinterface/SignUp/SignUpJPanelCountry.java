@@ -140,6 +140,9 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(null, "Updated successfully");
             }
+                else{
+                     JOptionPane.showMessageDialog(null, "Username and Country name should be same");
+                }
             }
             else{
                 JOptionPane.showMessageDialog(null, "Please enter all values");
@@ -147,6 +150,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Enter integer for Salary", "Warning", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 

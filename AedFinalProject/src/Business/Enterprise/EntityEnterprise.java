@@ -7,6 +7,7 @@ package Business.Enterprise;
 
 import Business.Organization.Organization;
 import Business.Role.EducationAdmin;
+import Business.Role.HospitalAdmin;
 import Business.Role.IndividualAdmin;
 import Business.Role.MNCAdmin;
 import Business.Role.NGOAdmin;
@@ -42,6 +43,7 @@ public class EntityEnterprise extends Enterprise {
         roles.add(new MNCAdmin());
         roles.add(new NGOAdmin());
         roles.add(new IndividualAdmin());
+        roles.add(new HospitalAdmin());
 
 //        roles.add(new SupplierRole());
         return roles;

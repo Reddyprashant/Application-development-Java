@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
+import javax.mail.SendFailedException;
 import utility.Validator;
 /**
  *
@@ -222,8 +223,14 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     
                     populateWorkQueueTable();
+                    try{
                     Validator.sendMessage(p.getEmail());
-                   
+                    }
+                    catch(SendFailedException s){
+                        JOptionPane.showMessageDialog(null, "Wrong email Id given in this request.");
+                         p.setStatus("Ignored");
+                    }
+                     populateWorkQueueTable();
                 } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
                 }

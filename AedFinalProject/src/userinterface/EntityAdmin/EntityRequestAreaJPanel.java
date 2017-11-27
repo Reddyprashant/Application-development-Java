@@ -10,17 +10,26 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.Role.BeneficiaryAdminRole;
+import Business.Role.EducationAdmin;
 import Business.Role.EntityAdminRole;
 import Business.Role.GovtAdminRole;
+import Business.Role.HospitalAdmin;
+import Business.Role.IndividualAdmin;
 import Business.Role.LogisticAdminRole;
+import Business.Role.MNCAdmin;
+import Business.Role.NGOAdmin;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestEnterprise;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -41,40 +50,42 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
     StateNetwork state;
     EcoSystem system;
     JPanel userProcessContainer;
-    public EntityRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+
+    public EntityRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
-     //this.organizationDir = organizationDir;
-     this.userProcessContainer = userProcessContainer;
+        //this.organizationDir = organizationDir;
+        this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-         this.system=business;
-        this.state=network;
-        this.country=cNetwork;
-        this.account=account;
+        this.system = business;
+        this.state = network;
+        this.country = cNetwork;
+        this.account = account;
         populateWorkQueueTable();
     }
-    
+
     public void populateWorkQueueTable() {
         DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
 
         model.setRowCount(0);
-        System.out.println("qasda"+enterprise.getWorkQueue().getWorkRequestList().size()+" "+enterprise);
-       // SignUpRequest s=null;
+        System.out.println("qasda" + enterprise.getWorkQueue().getWorkRequestList().size() + " " + enterprise);
+        // SignUpRequest s=null;
         for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
-            System.out.println("q"+work);
+            System.out.println("q" + work);
             if (work instanceof SignUpRequestOrganization) {
-               SignUpRequestOrganization  s= (SignUpRequestOrganization) work;
+                SignUpRequestOrganization s = (SignUpRequestOrganization) work;
                 Object[] row = new Object[6];
                 row[0] = s.getOrgName();
                 row[1] = s.getReceiver();
-                 row[2] = s.getEnterprise();
-                 row[3]= s.getOrgType().getValue();
-                 row[4]=s.getCity();
-                  row[5] = s; 
-                 
+                row[2] = s.getEnterprise();
+                row[3] = s.getOrgType().getValue();
+                row[4] = s.getCity();
+                row[5] = s;
+
                 model.addRow(row);
             }
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -164,22 +175,21 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
-         int selectedRow = tblReq.getSelectedRow();
+        int selectedRow = tblReq.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-          
+
             SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
-          
-            if(p.getStatus().equals("Requested")){
-              //  System.out.println("admin name"+ account.getUsername());
+
+            if (p.getStatus().equals("Requested")) {
+                //  System.out.println("admin name"+ account.getUsername());
                 p.setStatus("Pending");
                 p.setReceiver(account);
 
                 populateWorkQueueTable();
-               
-            }
-            else{
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Already assigned");
             }
 
@@ -193,43 +203,54 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
-            SignUpRequestState s=null;
-              SignUpRequestEnterprise e=null;
-            
-            
-            
-            
+            SignUpRequestOrganization orgRequest = null;
+            //SignUpRequestEnterprise e = null;
+            UserAccount acc=null;
+
             if (p.getReceiver() != null) {
                 if (p.getStatus().equals("Pending")) {
-                     if (p instanceof SignUpRequestState) {
-                 s= (SignUpRequestState) p;
-               // StateNetwork net = cNetwork.createAndAddNetwork();
-               //     net.setName(p.getName());
-             }
-            else if(p instanceof SignUpRequestEnterprise){
-                e= (SignUpRequestEnterprise) p;
-                //You can check for non duplicate of enterprise here.
-                Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
-                Employee emp= new Employee();
-                    emp.setName(p.getName());
-                    emp.setEmailId(p.getEmail());
-                    if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Beneficiary) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new BeneficiaryAdminRole());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Entity) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new EntityAdminRole());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Government) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new GovtAdminRole());
-            }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Logistic) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new LogisticAdminRole());
-            }
-                    
-              Validator.sendMessage(p.getEmail());      
-            }
-                     
-                    
+                    if (p instanceof SignUpRequestOrganization) {
+                        orgRequest = (SignUpRequestOrganization) p;
+                        //You can check for non duplicate of enterprise here.
+                       // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
+                        Employee emp = new Employee();
+                        emp.setName(p.getName());
+                        emp.setEmailId(p.getEmail());
+                        Enterprise e= orgRequest.getEnterprise();
+                        CountryNetwork country = orgRequest.getCountry();
+                        StateNetwork state= orgRequest.getState();
+                        
+                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity());
+                        
+                        if(orgRequest.getOrgType()== Organization.Type.MNC){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new MNCAdmin());
+                        }
+                        else if(orgRequest.getOrgType()== Organization.Type.Education){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new EducationAdmin());
+                        }
+                        else if(orgRequest.getOrgType()== Organization.Type.Individuals){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new IndividualAdmin());
+                        }
+                        else if(orgRequest.getOrgType()== Organization.Type.Hospital){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new HospitalAdmin());
+                        }
+                        else if(orgRequest.getOrgType()== Organization.Type.NGO){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new NGOAdmin());
+                        }
+
+                        try {
+                            Validator.sendMessage(p.getEmail());
+                        } catch (SendFailedException ex) {
+                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
+                             p.setStatus("Cancelled");
+                             populateWorkQueueTable();
+                             return;
+                        }
+                    }
+
                     p.setStatus("Complete");
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
-                    
+
                     populateWorkQueueTable();
                 } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.");

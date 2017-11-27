@@ -23,6 +23,7 @@ private String name;
     private static int counter=0;
     public HashSet<Role> roles;
     private PersonDirectory personList;
+    private String city;
     
     public enum Type{
         OldAge("Oldage Home Organization"),Orphanage("Orphanage Organization"),Homeless("Homeless Shelter Organization"), CommonPeople("Common People Organization"), Disaster("Disaster Recovery Organization"),Hospital("Hospital Organization"),Education("Education Organization"),NGO("NGO Organization"),MNC("MNC Organization"),Individuals("Individuals Organization"),Transportation("Transportation Organization"),Rental("Rental Organization"),BGV("BGV Organization");
@@ -35,7 +36,7 @@ private String name;
         }
     }
 
-   public Organization(String name) {
+   public Organization(String name, String city) {
         this.name = name;
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
@@ -43,6 +44,7 @@ private String name;
         organizationID = counter;
         roles = new HashSet<>();
         personList= new PersonDirectory();
+        this.city=city;
         ++counter;
     }
 
@@ -62,6 +64,14 @@ private String name;
     
     public String getName() {
         return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public PersonDirectory getPersonList() {

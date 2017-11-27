@@ -12,9 +12,9 @@ import java.util.HashSet;
 
 public class BGVOrganization extends Organization{
     private String name;
-    public BGVOrganization(String name) {
-        super(Type.BGV.getValue());
-       
+    public BGVOrganization(String name, String city) {
+        super(name,city);
+       this.name=name;
     }
 
     public String getName() {
