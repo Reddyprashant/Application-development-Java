@@ -8,17 +8,28 @@ package userinterface.Logistics;
 import userinterface.Government.*;
 import userinterface.EntityAdmin.*;
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Role.CommonPeopleAdmin;
+import Business.Role.DisasterAdmin;
+import Business.Role.HomelessAdmin;
+import Business.Role.OldAgeAdmin;
+import Business.Role.OrphanageAdmin;
+import Business.Role.RentalAdmin;
+import Business.Role.TransportationAdmin;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
+import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import utility.Validator;
 
 /**
  *
@@ -82,7 +93,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         btnAssign = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnServe = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -115,8 +126,13 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         });
         add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 266, -1, -1));
 
-        jButton2.setText("Serve");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 266, -1, -1));
+        btnServe.setText("Serve");
+        btnServe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServeActionPerformed(evt);
+            }
+        });
+        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 266, -1, -1));
 
         jButton3.setText("Send Request to BGV");
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 553, -1, -1));
@@ -176,10 +192,68 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAssignActionPerformed
 
+    private void btnServeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServeActionPerformed
+        // TODO add your handling code here:
+           int selectedRow = tblReq.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
+            SignUpRequestOrganization orgRequest = null;
+            //SignUpRequestEnterprise e = null;
+            UserAccount acc=null;
+
+            if (p.getReceiver() != null) {
+                if (p.getStatus().equals("Pending")) {
+                    if (p instanceof SignUpRequestOrganization) {
+                        orgRequest = (SignUpRequestOrganization) p;
+                        //You can check for non duplicate of enterprise here.
+                       // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
+                        Employee emp = new Employee();
+                        emp.setName(p.getName());
+                        emp.setEmailId(p.getEmail());
+                        Enterprise e= orgRequest.getEnterprise();
+                        CountryNetwork country = orgRequest.getCountry();
+                        StateNetwork state= orgRequest.getState();
+                        
+                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity());
+                        
+                        if(orgRequest.getOrgType()== Organization.Type.Transportation){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new TransportationAdmin());
+                        }
+                        else if(orgRequest.getOrgType()== Organization.Type.Rental){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new RentalAdmin());
+                        }
+                       
+
+                        try {
+                            Validator.sendMessage(p.getEmail());
+                        } catch (SendFailedException ex) {
+                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
+                             p.setStatus("Cancelled");
+                             populateWorkQueueTable();
+                             return;
+                        }
+                    }
+
+                    p.setStatus("Complete");
+                    JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+
+                    populateWorkQueueTable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please assign first");
+            }
+
+        }
+    }//GEN-LAST:event_btnServeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnServe;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

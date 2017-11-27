@@ -7,17 +7,31 @@ package userinterface.Beneficiary;
 
 import userinterface.EntityAdmin.*;
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Role.CommonPeopleAdmin;
+import Business.Role.DisasterAdmin;
+import Business.Role.EducationAdmin;
+import Business.Role.HomelessAdmin;
+import Business.Role.HospitalAdmin;
+import Business.Role.IndividualAdmin;
+import Business.Role.MNCAdmin;
+import Business.Role.NGOAdmin;
+import Business.Role.OldAgeAdmin;
+import Business.Role.OrphanageAdmin;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
+import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import utility.Validator;
 
 /**
  *
@@ -182,6 +196,68 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnServeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServeActionPerformed
         // TODO add your handling code here:
+         int selectedRow = tblReq.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
+            SignUpRequestOrganization orgRequest = null;
+            //SignUpRequestEnterprise e = null;
+            UserAccount acc=null;
+
+            if (p.getReceiver() != null) {
+                if (p.getStatus().equals("Pending")) {
+                    if (p instanceof SignUpRequestOrganization) {
+                        orgRequest = (SignUpRequestOrganization) p;
+                        //You can check for non duplicate of enterprise here.
+                       // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
+                        Employee emp = new Employee();
+                        emp.setName(p.getName());
+                        emp.setEmailId(p.getEmail());
+                        Enterprise e= orgRequest.getEnterprise();
+                        CountryNetwork country = orgRequest.getCountry();
+                        StateNetwork state= orgRequest.getState();
+                        
+                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity());
+                        
+                        if(orgRequest.getOrgType()== Organization.Type.CommonPeople){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new CommonPeopleAdmin());
+                        }
+                        else if(orgRequest.getOrgType()== Organization.Type.Disaster){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new DisasterAdmin());
+                        }
+                        else if(orgRequest.getOrgType()== Organization.Type.Homeless){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new HomelessAdmin());
+                        }
+                        else if(orgRequest.getOrgType()== Organization.Type.OldAge){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new OldAgeAdmin());
+                        }
+                        else if(orgRequest.getOrgType()== Organization.Type.Orphanage){
+                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new OrphanageAdmin());
+                        }
+
+                        try {
+                            Validator.sendMessage(p.getEmail());
+                        } catch (SendFailedException ex) {
+                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
+                             p.setStatus("Cancelled");
+                             populateWorkQueueTable();
+                             return;
+                        }
+                    }
+
+                    p.setStatus("Complete");
+                    JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+
+                    populateWorkQueueTable();
+                } else {
+                    JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please assign first");
+            }
+
+        }
     }//GEN-LAST:event_btnServeActionPerformed
 
 

@@ -210,6 +210,14 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
             if (p.getReceiver() != null) {
                 if (p.getStatus().equals("Pending")) {
                     if (p instanceof SignUpRequestOrganization) {
+                         try {
+                            Validator.sendMessage(p.getEmail());
+                        } catch (SendFailedException ex) {
+                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
+                             p.setStatus("Cancelled");
+                            // populateWorkQueueTable();
+                             return;
+                        }
                         orgRequest = (SignUpRequestOrganization) p;
                         //You can check for non duplicate of enterprise here.
                        // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
@@ -238,14 +246,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                             acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new NGOAdmin());
                         }
 
-                        try {
-                            Validator.sendMessage(p.getEmail());
-                        } catch (SendFailedException ex) {
-                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
-                             p.setStatus("Cancelled");
-                             populateWorkQueueTable();
-                             return;
-                        }
+                       
                     }
 
                     p.setStatus("Complete");
