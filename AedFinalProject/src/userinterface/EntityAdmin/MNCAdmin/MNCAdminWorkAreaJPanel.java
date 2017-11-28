@@ -28,6 +28,9 @@ public class MNCAdminWorkAreaJPanel extends javax.swing.JPanel {
     MNCOrganization organization; 
     Enterprise enterprise; 
     EcoSystem business;
+       
+    StateNetwork state;
+    CountryNetwork country;
     /** Creates new form AdminWorkAreaJPanel */
     public MNCAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, MNCOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
@@ -36,6 +39,8 @@ public class MNCAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.account=account;
         this.business=business;
         this.organization= organization;
+        this.state=network;
+        this.country=cNetwork;
         valueLabel.setText(enterprise.getName());
     }
     
@@ -91,10 +96,10 @@ public class MNCAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-//        ClinicManageEmployeeJPanel manageEmployeeJPanel = new ClinicManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,  business);
-//        userProcessContainer.add("ClinicManageEmployeeJPanel", manageEmployeeJPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        MNCManageEmployeeJPanel manageEmployeeJPanel = new MNCManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        userProcessContainer.add("MNCManageEmployeeJPanel", manageEmployeeJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
     
