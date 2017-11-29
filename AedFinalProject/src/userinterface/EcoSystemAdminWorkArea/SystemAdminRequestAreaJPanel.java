@@ -98,6 +98,7 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         reqBtn = new javax.swing.JButton();
         btnComplete = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -127,7 +128,7 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(requestTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 850, 330));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 850, 330));
 
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +153,14 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 140, -1));
+
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -241,8 +250,16 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCompleteActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        userProcessContainer.remove(this);
+    
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
     private javax.swing.JButton btnComplete;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
