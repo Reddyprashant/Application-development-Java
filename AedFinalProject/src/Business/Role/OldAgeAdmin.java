@@ -8,10 +8,14 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.MNCOrganization;
+import Business.Organization.OldAgeOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 
 import javax.swing.JPanel;
+import userinterface.Beneficiary.OlgAgeHome.OldAgeHomeAdminWorkAreaJPanel;
+import userinterface.EntityAdmin.MNCAdmin.MNCAdminWorkAreaJPanel;
 
 
 /**
@@ -22,7 +26,7 @@ public class OldAgeAdmin extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new OldAgeHomeAdminWorkAreaJPanel(userProcessContainer,account,(OldAgeOrganization)organization,enterprise,network,cNetwork,business);
     }
     
     @Override

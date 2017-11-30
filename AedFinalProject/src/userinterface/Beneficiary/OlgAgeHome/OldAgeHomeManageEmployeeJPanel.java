@@ -11,6 +11,7 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.OldAgeOrganization;
 //import Business.Organization.ClinicOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
@@ -35,7 +36,7 @@ public class OldAgeHomeManageEmployeeJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     UserAccount account; 
-    OrphanageOrganization organization; 
+    OldAgeOrganization organization; 
     Enterprise enterprise; 
     EcoSystem business;
      StateNetwork state;
@@ -43,7 +44,7 @@ public class OldAgeHomeManageEmployeeJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public OldAgeHomeManageEmployeeJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public OldAgeHomeManageEmployeeJPanel(JPanel userProcessContainer, UserAccount account, OldAgeOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
          this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -74,7 +75,7 @@ public class OldAgeHomeManageEmployeeJPanel extends javax.swing.JPanel {
 //        }
 //    }
 
-    private void populateTable(OrphanageOrganization organization){
+    private void populateTable(OldAgeOrganization organization){
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
         
         model.setRowCount(0);

@@ -11,8 +11,11 @@ import Business.Event.Event;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.MNCOrganization;
+import Business.Person.Person;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,6 +39,7 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
 MNCOrganization organization;
 BeneficiaryWorkRequest workRequest;
+private MNCRequestAreaJPanel mncRequestPanel;
     public ViewDetailsJPanel(JPanel userProcessContainer, UserAccount account, MNCOrganization organization,Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business, BeneficiaryWorkRequest p)  {
         initComponents();
             this.userProcessContainer = userProcessContainer;
@@ -46,9 +50,11 @@ BeneficiaryWorkRequest workRequest;
         this.account = account;
         this.organization=organization;
         this.workRequest=p;
+        
         reqComboBox.setSelectedItem(p.getRequestType());
         eventNameTextfield.setText(p.getEventName());
         reqVolText.setText(String.valueOf(p.getNumberOfVolunteersRequest()));
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         dateField.setText(String.valueOf(p.getEventDate()));
     }
 
@@ -93,6 +99,12 @@ BeneficiaryWorkRequest workRequest;
 
         jLabel2.setText("Available Volunteers");
 
+        availVolTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                availVolTextFieldActionPerformed(evt);
+            }
+        });
+
         dateField.setEditable(false);
         dateField.setEnabled(false);
         dateField.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +131,11 @@ BeneficiaryWorkRequest workRequest;
         });
 
         jButton2.setText("<<Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Required Volunteers");
 
@@ -216,9 +233,18 @@ BeneficiaryWorkRequest workRequest;
         int availableVolunteers= Integer.parseInt(availVolTextField.getText());
         int requiredVolunteers = Integer.parseInt(reqVolText.getText());
         Date eventDate = date.parse(dateField.getText());
-        
-//        (Event) event= (Event) organization.getEventDirectory().createEvent();
-//            event.setAvailVolunteers(availVolTextField.getText());
+//         Person p= business.getEmployeeDirectory().addPerson();
+//        p.setName(name);
+//        p.setUserName(username);
+//        p.setPassword(password);
+//        p.setRole(role);
+        Event event=  organization.getEventDirectory().createEvent();
+            event.setAvailVolunteers(availableVolunteers);
+            event.setRequiredVolunteers(requiredVolunteers);
+            event.setEventDate(eventDate);
+            event.setEventName(name);
+            
+            workRequest.setNumberOfVolunteersRequest(requiredVolunteers-availableVolunteers);
             
         }
         catch(ParseException e)
@@ -231,6 +257,23 @@ BeneficiaryWorkRequest workRequest;
     private void dateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dateFieldActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+               userProcessContainer.remove(this);
+        
+        Component[] componentArray=userProcessContainer.getComponents();
+        mncRequestPanel =(MNCRequestAreaJPanel)userProcessContainer.getComponent(componentArray.length -1);
+        mncRequestPanel.populateUpdatedTable();
+        mncRequestPanel.populateWorkQueueTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void availVolTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availVolTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_availVolTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

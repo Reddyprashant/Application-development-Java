@@ -16,6 +16,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 //import Business.Network.Network;
 import Business.Network.StateNetwork;
+import Business.Organization.OldAgeOrganization;
 import Business.Organization.OrphanageOrganization;
 import Business.Organization.Organization;
 //import Business.Supplier.Vaccine;
@@ -37,14 +38,14 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     UserAccount account; 
-    OrphanageOrganization organization; 
+    OldAgeOrganization organization; 
     Enterprise enterprise; 
     EcoSystem business;
      StateNetwork state;
     CountryNetwork country;
     
     /** Creates new form AdminWorkAreaJPanel */
-    public OldAgeHomeRequestWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public OldAgeHomeRequestWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, OldAgeOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -217,20 +218,11 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
-//         if(!txtquant.getText().equals("")){
-//        PharmacyWorkRequest request= new PharmacyWorkRequest();
-//        request.setVaccine((Vaccine)comboVaccine.getSelectedItem());
-//        request.setQuantity(Integer.parseInt(txtquant.getText()));
-//        request.setStatus("Requested");
-//        request.setSender(account);
-//        organization.getWorkQueue().getWorkRequestList().add(request);
-//        account.getWorkQueue().getWorkRequestList().add(request);
-//        business.getWorkQueue().getWorkRequestList().add(request);
-//        populateWorkQueueTable();
-//        }else{
-//             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-//        }
 
+  OldAgeHomeRequestHelpJPanel muajp = new OldAgeHomeRequestHelpJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
+        userProcessContainer.add("OldAgeHomeRequestHelpJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_reqBtnActionPerformed
 

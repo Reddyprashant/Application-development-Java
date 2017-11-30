@@ -15,10 +15,19 @@ public class Event {
     private String eventName;
     private int availVolunteers;
     private Date eventDate;
-    private int requiredVolunteers;
+   private int requiredVolunteers;
+    private String senderOrganization;
+    private String servingOrganization;
+    private static int count=0;
+    private String eventId;
 
+    public Event() {
+        eventId= "EventId" +  ++count;
+    }
+    
     public String getEventName() {
         return eventName;
+        
     }
 
     public void setEventName(String eventName) {
@@ -48,5 +57,31 @@ public class Event {
     public void setRequiredVolunteers(int requiredVolunteers) {
         this.requiredVolunteers = requiredVolunteers;
     }
+
+    public String getSenderOrganization() {
+        return senderOrganization;
+    }
+
+    public void setSenderOrganization(String senderOrganization) {
+        this.senderOrganization = senderOrganization;
+    }
+
+    public String getServingOrganization() {
+        return servingOrganization;
+    }
+
+    public void setServingOrganization(String servingOrganization) {
+        this.servingOrganization = servingOrganization;
+    }
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    @Override
+    public String toString() {
+        return this.eventName;
+    }
+    
     
 }

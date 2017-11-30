@@ -9,6 +9,8 @@ import userinterface.EntityAdmin.*;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Event.Event;
+import Business.Event.EventDirectory;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.MNCOrganization;
@@ -66,33 +68,53 @@ MNCOrganization organization;
         this.account = account;
         this.organization=organization;
         populateWorkQueueTable();
+        //populateUpdatedTable();
         
     }
 
 
     public void populateWorkQueueTable() {
+        System.out.println("entity");
         DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
 
         model.setRowCount(0);
         //System.out.println("qasda" + enterprise.getWorkQueue().getWorkRequestList().size() + " " + enterprise);
         // SignUpRequest s=null;
+        
         for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
-            
+            System.out.println("work request");
             
                   BeneficiaryWorkRequest s = (BeneficiaryWorkRequest) work;
                 Object[] row = new Object[6];
-                row[0] = organization.getName();
+                row[0] = s.getSenderOrganization();
                 row[1] = s.getEventName();
                 row[2] = s.getNumberOfVolunteersRequest();
                 row[3] = s.getEventDate();
                 row[4] = s;
-               
-
                 model.addRow(row);
             
         }
     }
+public void populateUpdatedTable()
+{
+     DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
 
+        model.setRowCount(0);
+        if(organization.getEventDirectory()==null){
+            organization.setEventDirectory(new EventDirectory());
+            System.out.println("uevent");
+        }
+        for (Event event : organization.getEventDirectory().getEventDirectory()) {
+                Object[] row = new Object[6];
+                row[0]=event.getEventId();
+                row[1] = event.getServingOrganization();
+                row[2] = event.getAvailVolunteers();
+                row[3] = event;
+                row[4] = event.getEventDate();
+                model.addRow(row);
+    }
+        
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,7 +127,7 @@ MNCOrganization organization;
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        UpdatedJTable = new javax.swing.JTable();
         btnAssign = new javax.swing.JButton();
         btnComplete = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -135,12 +157,12 @@ MNCOrganization organization;
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 77, 690, 182));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        UpdatedJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Organization Name", "Available Volunteers", "Event Name", "Event Date", "Status"
+                "Event Id", "Organization Name", "Available Volunteers", "Event Name", "Event Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -151,7 +173,7 @@ MNCOrganization organization;
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(UpdatedJTable);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 337, 660, 198));
 
@@ -176,8 +198,6 @@ MNCOrganization organization;
 
         jLabel1.setText("Request Recieved");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 43, -1, -1));
-
-        jLabel2.setText("jLabel2");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 308, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -192,9 +212,9 @@ MNCOrganization organization;
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 5);
+            BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
 
-            if (p.getStatus().equals("Requested")) {
+           // if (p.getStatus().equals("Requested")) {
                 //  System.out.println("admin name"+ account.getUsername());
                 p.setStatus("Pending");
                 
@@ -205,9 +225,9 @@ MNCOrganization organization;
         userProcessContainer.add("ViewDetailsJPanel", RequestAreaJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-            } else {
-                JOptionPane.showMessageDialog(null, "Already assigned");
-            }
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Already assigned");
+//            }
 
         }
     }//GEN-LAST:event_btnAssignActionPerformed
@@ -218,69 +238,50 @@ MNCOrganization organization;
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
-            SignUpRequestOrganization orgRequest = null;
+            BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
+            BeneficiaryWorkRequest orgRequest = null;
             //SignUpRequestEnterprise e = null;
             UserAccount acc=null;
-
-            if (p.getReceiver() != null) {
-                if (p.getStatus().equals("Pending")) {
-                    if (p instanceof SignUpRequestOrganization) {
-                         try {
-                            Validator.sendMessage(p.getEmail());
-                        } catch (SendFailedException ex) {
-                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
-                             p.setStatus("Cancelled");
-                            // populateWorkQueueTable();
-                             return;
-                        }
-                        orgRequest = (SignUpRequestOrganization) p;
-                        //You can check for non duplicate of enterprise here.
+    Event event = organization.getEventDirectory().createEvent();
+      event.setAvailVolunteers(p.getNumberOfVolunteersRequest());
+      event.setEventDate(p.getEventDate());
+      event.setEventName(p.getEventName());
+      event.setRequiredVolunteers(p.getNumberOfVolunteersRequest());
+          p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
+      if(p.getNumberOfVolunteersRequest()==0){
+      p.setStatus("Complete");
+      }
+                //if (p.getStatus().equals("Pending")) {
+//                    if (p instanceof BeneficiaryWorkRequest) {
+//                         try {
+//                            Validator.sendMessage(p.getEmail());
+//                        } catch (SendFailedException ex) {
+//                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
+//                             p.setStatus("Cancelled");
+//                            // populateWorkQueueTable();
+//                             return;
+                        //}
+                                               //You can check for non duplicate of enterprise here.
                        // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
-                        Employee emp = new Employee();
-                        emp.setName(p.getName());
-                        emp.setEmailId(p.getEmail());
-                        Enterprise e= orgRequest.getEnterprise();
-                        CountryNetwork country = orgRequest.getCountry();
-                        StateNetwork state= orgRequest.getState();
                         
-                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity());
-                        
-                        if(orgRequest.getOrgType()== Organization.Type.MNC){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new MNCAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.Education){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new EducationAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.Individuals){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new IndividualAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.Hospital){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new HospitalAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.NGO){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new NGOAdmin());
-                        }
-
                        
-                    }
+                    
 
-                    p.setStatus("Complete");
+                    
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
 
                     populateWorkQueueTable();
-                } else {
-                    JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Please assign first");
-            }
-
         }
+           
+            
+
+
+        
     }//GEN-LAST:event_btnCompleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable UpdatedJTable;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnComplete;
     private javax.swing.JButton jButton3;
@@ -289,7 +290,6 @@ MNCOrganization organization;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable tblReq;
     // End of variables declaration//GEN-END:variables
 }

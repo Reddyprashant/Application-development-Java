@@ -13,6 +13,10 @@ import java.util.ArrayList;
  */
 public class EventDirectory {
     ArrayList<Event> eventDirectory;
+    
+    public EventDirectory(){
+        eventDirectory= new ArrayList<>();
+    }
 
     public ArrayList<Event> getEventDirectory() {
         return eventDirectory;

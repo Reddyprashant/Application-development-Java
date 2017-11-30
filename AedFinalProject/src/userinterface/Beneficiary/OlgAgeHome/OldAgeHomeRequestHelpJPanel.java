@@ -7,14 +7,21 @@ package userinterface.Beneficiary.OlgAgeHome;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.EntityEnterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.EducationOrganization;
 import Business.Organization.HomelessOrganization;
+import Business.Organization.HospitalOrganization;
+import Business.Organization.MNCOrganization;
+import Business.Organization.NGOOrganization;
 import Business.Organization.OldAgeOrganization;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -78,7 +85,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         dateField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        reqComboBox = new javax.swing.JComboBox<>();
+        reqComboBox = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         transCheckbox = new javax.swing.JCheckBox();
         spaceCheckBox = new javax.swing.JCheckBox();
@@ -103,6 +110,11 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         });
 
         jButton2.setText("<<Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Logistics");
 
@@ -193,11 +205,11 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
 public void populateComboBox()
 {
      reqComboBox.removeAllItems();
-     reqComboBox.addItem(Organization.RequestType.Education.getValue());
-     reqComboBox.addItem(Organization.RequestType.Hospital.getValue());
-     reqComboBox.addItem(Organization.RequestType.MNC.getValue());
-     reqComboBox.addItem(Organization.RequestType.NGO.getValue());
-     reqComboBox.addItem(Organization.RequestType.ANY.getValue());
+     reqComboBox.addItem(Organization.RequestType.Education);
+     reqComboBox.addItem(Organization.RequestType.Hospital);
+     reqComboBox.addItem(Organization.RequestType.MNC);
+     reqComboBox.addItem(Organization.RequestType.NGO);
+     reqComboBox.addItem(Organization.RequestType.ANY);
 }
 
 
@@ -213,6 +225,7 @@ public void populateComboBox()
         String eventName = eventNameTextfield.getText();
         BeneficiaryWorkRequest requests= new BeneficiaryWorkRequest();
        requests.setEventDate(date);
+       requests.setSenderOrganization(organization.getName()+ Organization.Type.OldAge);
       //if(Organization.RequestType.Education.getValue()==request.getValue())
       requests.setRequestType(request);
        requests.setEventName(eventName);
@@ -220,57 +233,84 @@ public void populateComboBox()
     
        requests.setSender(account);
        requests.setStatus("Requested");
-       
+            System.out.println("type is"+request);
        if(request==Organization.RequestType.ANY)
        {
+           for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+               if(enter instanceof EntityEnterprise){
            enterprise.getWorkQueue().getWorkRequestList().add(requests);
+               }
+           }
        }
        else if(request==Organization.RequestType.Education)
        {
            //enterprise.getOrganizationDirectory().getOrganizationList().
-           for (Organization organization1 : enterprise.getOrganizationDirectory().getOrganizationList()) {
-               if(organization1.equals(Organization.Type.Education))
+           for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+           for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+               if(organization1 instanceof EducationOrganization)
                {
                    organization1.getWorkQueue().getWorkRequestList().add(requests);
                }
+           }
            }
        }
        else if(request==Organization.RequestType.Hospital)
        {
            //enterprise.getOrganizationDirectory().getOrganizationList().
-           for (Organization organization1 : enterprise.getOrganizationDirectory().getOrganizationList()) {
-               if(organization1.equals(Organization.Type.Hospital))
+           for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+           for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+               if(organization1 instanceof HospitalOrganization)
                {
                    organization1.getWorkQueue().getWorkRequestList().add(requests);
                }
            }
+       }
        }
        else if(request==Organization.RequestType.MNC)
        {
            //enterprise.getOrganizationDirectory().getOrganizationList().
-           for (Organization organization1 : enterprise.getOrganizationDirectory().getOrganizationList()) {
-               if(organization1.equals(Organization.Type.MNC))
+           for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+           for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+               if(organization1 instanceof MNCOrganization)
                {
+                   System.out.println("userinterface MNC" );
                    organization1.getWorkQueue().getWorkRequestList().add(requests);
                }
            }
+       }
        }
        else if(request==Organization.RequestType.NGO)
        {
            //enterprise.getOrganizationDirectory().getOrganizationList().
-           for (Organization organization1 : enterprise.getOrganizationDirectory().getOrganizationList()) {
-               if(organization1.equals(Organization.Type.NGO))
+           for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+           for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+               if(organization1 instanceof NGOOrganization)
                {
+                   
                    organization1.getWorkQueue().getWorkRequestList().add(requests);
                }
            }
        }
+       }
+       JOptionPane.showMessageDialog(null, "Help request complete");
         }
         catch(ParseException p)
         {
             JOptionPane.showMessageDialog(null, "Please enter date in MM/dd/yyyy format");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+            userProcessContainer.remove(this);
+        
+        Component[] componentArray=userProcessContainer.getComponents();
+        OldAgeHomeRequestWorkAreaJPanel oldAgeRequestPanel =(OldAgeHomeRequestWorkAreaJPanel)userProcessContainer.getComponent(componentArray.length -1);
+       // oldAgeRequestPanel.populateUpdatedTable();
+       
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);  
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -286,7 +326,7 @@ public void populateComboBox()
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField noVolTextField;
     private javax.swing.JCheckBox noneCheckBox;
-    private javax.swing.JComboBox<String> reqComboBox;
+    private javax.swing.JComboBox reqComboBox;
     private javax.swing.JCheckBox spaceCheckBox;
     private javax.swing.JCheckBox transCheckbox;
     // End of variables declaration//GEN-END:variables

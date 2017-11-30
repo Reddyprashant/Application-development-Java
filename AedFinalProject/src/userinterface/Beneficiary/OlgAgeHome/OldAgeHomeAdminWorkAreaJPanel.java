@@ -12,6 +12,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.OldAgeOrganization;
 //import Business.Organization.ClinicOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrphanageOrganization;
@@ -23,17 +24,17 @@ import javax.swing.JPanel;
  *
  * @author  raunak
  */
-public class OlgAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     UserAccount account; 
-    OrphanageOrganization organization; 
+    OldAgeOrganization organization; 
     Enterprise enterprise; 
     EcoSystem business;
     StateNetwork state;
     CountryNetwork country;
     /** Creates new form AdminWorkAreaJPanel */
-    public OlgAgeHomeAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public OldAgeHomeAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, OldAgeOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -89,17 +90,17 @@ public class OlgAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        OrphanageRequestWorkAreaJPanel muajp = new OrphanageRequestWorkAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
-        userProcessContainer.add("OrphanageRequestWorkAreaJPanel", muajp);
+        OldAgeHomeRequestWorkAreaJPanel muajp = new OldAgeHomeRequestWorkAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
+        userProcessContainer.add("OldAgeHomeRequestWorkAreaJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        OrphanageManageEmployeeJPanel manageEmployeeJPanel;
-        manageEmployeeJPanel = new OrphanageManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
-        userProcessContainer.add("OrphanageManageEmployeeJPanel", manageEmployeeJPanel);
+        OldAgeHomeManageEmployeeJPanel manageEmployeeJPanel;
+        manageEmployeeJPanel = new OldAgeHomeManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        userProcessContainer.add("OldAgeHomeManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         
