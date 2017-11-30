@@ -5,6 +5,7 @@
  */
 package Business.WorkQueue;
 
+import Business.Organization.Organization.RequestType;
 import java.util.Date;
 
 /**
@@ -13,29 +14,42 @@ import java.util.Date;
  */
 public class BeneficiaryWorkRequest extends WorkRequest{
     private int numberOfVolunteersRequest;
-    private  Date date;
-    private String message;
+    private  Date eventDate;
     private boolean add;
+    private String eventName;
+    private RequestType requestType;
     
     public BeneficiaryWorkRequest(){
         add = false;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getEventDate() {
+        return eventDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public RequestType getRequestType() {
+        return requestType;
     }
 
-    public String getMessage() {
-        return message;
+    public void setRequestType(RequestType requestType) {
+        this.requestType = requestType;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setEventDate(Date eventDate) {
+        this.eventDate = eventDate;
     }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+
+
+
     
    
     public int getNumberOfVolunteersRequest() {

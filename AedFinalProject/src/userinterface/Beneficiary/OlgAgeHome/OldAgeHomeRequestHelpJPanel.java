@@ -10,6 +10,9 @@ import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.HomelessOrganization;
+import Business.Organization.OldAgeOrganization;
+import Business.Organization.Organization;
+import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
 import java.text.ParseException;
@@ -27,7 +30,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
 
         JPanel userProcessContainer;
     UserAccount account; 
-    HomelessOrganization organization; 
+   OldAgeOrganization organization; 
     Enterprise enterprise; 
     EcoSystem business;
      StateNetwork state;
@@ -35,7 +38,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
     /**
      * Creates new form RequestHelpJPanel
      */
-    public OldAgeHomeRequestHelpJPanel(JPanel userProcessContainer, UserAccount account, HomelessOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public OldAgeHomeRequestHelpJPanel(JPanel userProcessContainer, UserAccount account, OldAgeOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
          this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -44,6 +47,18 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         this.organization= organization;
         this.state=network;
         this.country=cNetwork;
+        populateComboBox();
+       
+//        for (StateNetwork stateNetwork : country.getStateList()) {
+//            for (Enterprise enterprise1 : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+//                for (Organization organization1 : enterprise1.getOrganizationDirectory().getOrganizationList()) {
+//                    reqComboBox.addItem(organization1.);
+//                    
+//                }
+//                
+//            }
+//        }
+          
     }
 
     /**
@@ -57,13 +72,19 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
 
         enterpriseLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        requestTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         noVolTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         dateField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        reqComboBox = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        transCheckbox = new javax.swing.JCheckBox();
+        spaceCheckBox = new javax.swing.JCheckBox();
+        noneCheckBox = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
+        eventNameTextfield = new javax.swing.JTextField();
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
@@ -72,7 +93,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Number of Volunteers Required");
 
-        jLabel3.setText("Date ");
+        jLabel3.setText("Event Date ");
 
         jButton1.setText("Request Help");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,12 +104,22 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
 
         jButton2.setText("<<Back");
 
+        jLabel4.setText("Logistics");
+
+        transCheckbox.setText("Transportaion");
+
+        spaceCheckBox.setText("Space");
+
+        noneCheckBox.setText("Not Required");
+
+        jLabel5.setText("Event Name");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -96,29 +127,49 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel1)
-                                .addComponent(jLabel3)))
-                        .addGap(149, 149, 149)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(requestTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                            .addComponent(noVolTextField)
-                            .addComponent(dateField)))
-                    .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(transCheckbox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                                .addComponent(spaceCheckBox))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(149, 149, 149)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(noVolTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                    .addComponent(dateField)
+                                    .addComponent(reqComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(eventNameTextfield)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap(386, Short.MAX_VALUE))
+                        .addComponent(jButton2)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(noneCheckBox)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(73, 73, 73))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(requestTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(reqComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(eventNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(noVolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -126,30 +177,94 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(82, 82, 82)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(transCheckbox)
+                    .addComponent(spaceCheckBox)
+                    .addComponent(noneCheckBox))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+public void populateComboBox()
+{
+     reqComboBox.removeAllItems();
+     reqComboBox.addItem(Organization.RequestType.Education.getValue());
+     reqComboBox.addItem(Organization.RequestType.Hospital.getValue());
+     reqComboBox.addItem(Organization.RequestType.MNC.getValue());
+     reqComboBox.addItem(Organization.RequestType.NGO.getValue());
+     reqComboBox.addItem(Organization.RequestType.ANY.getValue());
+}
+
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try
         {
         SimpleDateFormat dates = new SimpleDateFormat("MM/dd/yyyy");
-        String request = requestTextField.getText();
+       
+        Organization.RequestType request = (Organization.RequestType) reqComboBox.getSelectedItem();
         int noVolunteer= Integer.parseInt(noVolTextField.getText());
         Date date= dates.parse(dateField.getText());
+        String eventName = eventNameTextfield.getText();
         BeneficiaryWorkRequest requests= new BeneficiaryWorkRequest();
-       requests.setDate(date);
-       requests.setMessage(request);
+       requests.setEventDate(date);
+      //if(Organization.RequestType.Education.getValue()==request.getValue())
+      requests.setRequestType(request);
+       requests.setEventName(eventName);
        requests.setNumberOfVolunteersRequest(noVolunteer);
-       //requests.setReceiver(account);
+    
        requests.setSender(account);
        requests.setStatus("Requested");
        
+       if(request==Organization.RequestType.ANY)
+       {
+           enterprise.getWorkQueue().getWorkRequestList().add(requests);
+       }
+       else if(request==Organization.RequestType.Education)
+       {
+           //enterprise.getOrganizationDirectory().getOrganizationList().
+           for (Organization organization1 : enterprise.getOrganizationDirectory().getOrganizationList()) {
+               if(organization1.equals(Organization.Type.Education))
+               {
+                   organization1.getWorkQueue().getWorkRequestList().add(requests);
+               }
+           }
+       }
+       else if(request==Organization.RequestType.Hospital)
+       {
+           //enterprise.getOrganizationDirectory().getOrganizationList().
+           for (Organization organization1 : enterprise.getOrganizationDirectory().getOrganizationList()) {
+               if(organization1.equals(Organization.Type.Hospital))
+               {
+                   organization1.getWorkQueue().getWorkRequestList().add(requests);
+               }
+           }
+       }
+       else if(request==Organization.RequestType.MNC)
+       {
+           //enterprise.getOrganizationDirectory().getOrganizationList().
+           for (Organization organization1 : enterprise.getOrganizationDirectory().getOrganizationList()) {
+               if(organization1.equals(Organization.Type.MNC))
+               {
+                   organization1.getWorkQueue().getWorkRequestList().add(requests);
+               }
+           }
+       }
+       else if(request==Organization.RequestType.NGO)
+       {
+           //enterprise.getOrganizationDirectory().getOrganizationList().
+           for (Organization organization1 : enterprise.getOrganizationDirectory().getOrganizationList()) {
+               if(organization1.equals(Organization.Type.NGO))
+               {
+                   organization1.getWorkQueue().getWorkRequestList().add(requests);
+               }
+           }
+       }
         }
         catch(ParseException p)
         {
@@ -161,12 +276,18 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField dateField;
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JTextField eventNameTextfield;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField noVolTextField;
-    private javax.swing.JTextField requestTextField;
+    private javax.swing.JCheckBox noneCheckBox;
+    private javax.swing.JComboBox<String> reqComboBox;
+    private javax.swing.JCheckBox spaceCheckBox;
+    private javax.swing.JCheckBox transCheckbox;
     // End of variables declaration//GEN-END:variables
 }

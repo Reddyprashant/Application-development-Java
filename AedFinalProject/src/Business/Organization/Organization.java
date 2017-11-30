@@ -7,6 +7,7 @@
 package Business.Organization;
 
 import Business.Employee.EmployeeDirectory;
+import Business.Event.EventDirectory;
 import Business.Person.PersonDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
@@ -24,7 +25,7 @@ private String name;
     public HashSet<Role> roles;
     private PersonDirectory personList;
     private String city;
-    
+    private EventDirectory eventDirectory;
     public enum Type{
         OldAge("Oldage Home Organization"),Orphanage("Orphanage Organization"),Homeless("Homeless Shelter Organization"), CommonPeople("Common People Organization"), Disaster("Disaster Recovery Organization"),Hospital("Hospital Organization"),Education("Education Organization"),NGO("NGO Organization"),MNC("MNC Organization"),Individuals("Individuals Organization"),Transportation("Transportation Organization"),Rental("Rental Organization"),BGV("BGV Organization");
         private String value;
@@ -35,6 +36,18 @@ private String name;
             return value;
         }
     }
+    
+       public enum RequestType{
+        Education("Education Institution"),Hospital("Hospital"),MNC("MNC"),NGO("NGO"),ANY("ANY");
+         
+        private String value;
+        private RequestType(String value) {
+            this.value = value;
+        }
+        public String getValue() {
+            return value;
+        }
+    } 
 
    public Organization(String name, String city) {
         this.name = name;
@@ -44,6 +57,7 @@ private String name;
         organizationID = counter;
         roles = new HashSet<>();
         personList= new PersonDirectory();
+        eventDirectory= new EventDirectory();
         this.city=city;
         ++counter;
     }
@@ -92,6 +106,14 @@ private String name;
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
+    }
+
+    public EventDirectory getEventDirectory() {
+        return eventDirectory;
+    }
+
+    public void setEventDirectory(EventDirectory eventDirectory) {
+        this.eventDirectory = eventDirectory;
     }
 
     @Override

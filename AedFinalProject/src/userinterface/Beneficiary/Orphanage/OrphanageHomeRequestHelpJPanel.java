@@ -143,7 +143,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         int noVolunteer= Integer.parseInt(noVolTextField.getText());
         Date date= dates.parse(dateField.getText());
         BeneficiaryWorkRequest requests= new BeneficiaryWorkRequest();
-       requests.setDate(date);
+       requests.setEventDate(date);
        requests.setMessage(request);
        requests.setNumberOfVolunteersRequest(noVolunteer);
        //requests.setReceiver(account);
