@@ -87,7 +87,7 @@ public class BGVManageEmployeeJPanel extends javax.swing.JPanel {
             Object[] row = new Object[5];
             row[0] = person.getPersonId();
             row[1] = person.getName();
-            row[2]=person.getDateOfBirth();
+            //row[2]=person.getDateOfBirth();
             row[3]=person.getDateOfJoining();
             row[4]=person.getReason();
             model.addRow(row);

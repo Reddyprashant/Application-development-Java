@@ -6,6 +6,7 @@
 package Business.WorkQueue;
 
 import Business.Event.EventDirectory;
+import Business.Organization.Organization;
 import Business.Organization.Organization.RequestType;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ import java.util.Date;
  */
 public class BeneficiaryWorkRequest extends WorkRequest{
     private int numberOfVolunteersRequest;
-    private String senderOrganization;
+    private Organization senderOrganization;
     private  Date eventDate;
     private boolean add;
     private String eventName;
@@ -57,13 +58,15 @@ public class BeneficiaryWorkRequest extends WorkRequest{
         this.eventName = eventName;
     }
 
-    public String getSenderOrganization() {
+    public Organization getSenderOrganization() {
         return senderOrganization;
     }
 
-    public void setSenderOrganization(String senderOrganization) {
+    public void setSenderOrganization(Organization senderOrganization) {
         this.senderOrganization = senderOrganization;
     }
+
+   
 
     public EventDirectory getEventDirectory() {
         return eventDirectory;

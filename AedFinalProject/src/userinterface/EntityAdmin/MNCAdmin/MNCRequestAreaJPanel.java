@@ -83,15 +83,17 @@ MNCOrganization organization;
         
         for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
             System.out.println("work request");
-            
+            if(work instanceof BeneficiaryWorkRequest ){
                   BeneficiaryWorkRequest s = (BeneficiaryWorkRequest) work;
                 Object[] row = new Object[6];
+                 //System.out.println("qwe"+s.getSenderOrganization());
                 row[0] = s.getSenderOrganization();
                 row[1] = s.getEventName();
                 row[2] = s.getNumberOfVolunteersRequest();
                 row[3] = s.getEventDate();
                 row[4] = s;
                 model.addRow(row);
+            }
             
         }
     }
@@ -107,7 +109,7 @@ public void populateUpdatedTable()
         for (Event event : organization.getEventDirectory().getEventDirectory()) {
                 Object[] row = new Object[6];
                 row[0]=event.getEventId();
-                row[1] = event.getServingOrganization();
+                row[1] = event.getSenderOrganization();
                 row[2] = event.getAvailVolunteers();
                 row[3] = event;
                 row[4] = event.getEventDate();

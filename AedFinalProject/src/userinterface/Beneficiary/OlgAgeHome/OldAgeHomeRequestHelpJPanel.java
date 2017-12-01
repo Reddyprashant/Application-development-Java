@@ -307,7 +307,8 @@ public void populateComboBox()
         
         BeneficiaryWorkRequest requests= new BeneficiaryWorkRequest();
        requests.setEventDate(date);
-       requests.setSenderOrganization(organization.getName()+ Organization.Type.OldAge);
+       requests.setSenderOrganization(organization);
+            System.out.println("userss"+organization.getName());
       //if(Organization.RequestType.Education.getValue()==request.getValue())
       requests.setRequestType(request);
        requests.setEventName(eventName);

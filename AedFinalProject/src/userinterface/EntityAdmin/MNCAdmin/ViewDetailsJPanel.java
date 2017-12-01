@@ -51,7 +51,7 @@ private MNCRequestAreaJPanel mncRequestPanel;
         this.account = account;
         this.organization=organization;
         this.workRequest=p;
-        
+        nameLabel.setText(organization.getName());
         reqComboBox.setSelectedItem(p.getRequestType());
         eventNameTextfield.setText(p.getEventName());
         reqVolText.setText(String.valueOf(p.getNumberOfVolunteersRequest()));
@@ -86,11 +86,13 @@ private MNCRequestAreaJPanel mncRequestPanel;
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         detailTextArea = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
+        enterpriseLabel.setText("Enterprise:");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 120, 30));
 
         jLabel1.setText("Request Type:");
@@ -161,6 +163,8 @@ private MNCRequestAreaJPanel mncRequestPanel;
         jScrollPane1.setViewportView(detailTextArea);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 280, 232, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 130, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
@@ -181,7 +185,9 @@ if(organization.getEventDirectory().getEventDirectory() == null){
             
            event.setEventDate(eventDate);
             event.setEventName(name);
-            event.setSenderOrganization(organization);
+            event.setServingOrganization(organization);
+            event.setSenderOrganization(workRequest.getSenderOrganization());
+            
             workRequest.setNumberOfVolunteersRequest(requiredVolunteers-availableVolunteers);
             
        if(workRequest.getNumberOfVolunteersRequest()==0 && workRequest.isLogisticRequest()==true){
@@ -230,10 +236,12 @@ if(organization.getEventDirectory().getEventDirectory() == null){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JComboBox<String> reqComboBox;
     private javax.swing.JTextField reqVolText;
     // End of variables declaration//GEN-END:variables
