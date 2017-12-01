@@ -27,11 +27,14 @@ import Business.Role.OrphanageAdmin;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.BeneficiaryWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.EntityAdmin.MNCAdmin.ViewDetailsJPanel;
 import utility.Validator;
 
 /**
@@ -104,6 +107,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
+        userJButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -128,7 +132,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 266, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, -1, -1));
 
         btnServe.setText("Serve");
         btnServe.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +140,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
                 btnServeActionPerformed(evt);
             }
         });
-        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 266, -1, -1));
+        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, -1, -1));
 
         jButton3.setText("Send Request to BGV");
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 553, -1, -1));
@@ -169,7 +173,15 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 750, 182));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 750, 182));
+
+        userJButton.setText("View Details");
+        userJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userJButtonActionPerformed(evt);
+            }
+        });
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -262,6 +274,34 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnServeActionPerformed
 
+    private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
+        // TODO add your handling code here:
+        
+       
+         int selectedRow = tblReq.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            SignUpRequestOrganization p = (SignUpRequestOrganization) tblReq.getValueAt(selectedRow, 5);
+
+           // if (p.getStatus().equals("Requested")) {
+                //  System.out.println("admin name"+ account.getUsername());
+               // p.setStatus("Pending");
+                
+                //p.setReceiver(account);
+
+        BGVViewDetailsJPane requestAreaJPanel = new BGVViewDetailsJPane(userProcessContainer,  account,  organization,  enterprise,state,country,  system, p);
+        userProcessContainer.add("BGVViewDetailsJPane", requestAreaJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Already assigned");
+//            }
+
+        }
+    }//GEN-LAST:event_userJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
@@ -274,5 +314,6 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable tblReq;
+    private javax.swing.JButton userJButton;
     // End of variables declaration//GEN-END:variables
 }
