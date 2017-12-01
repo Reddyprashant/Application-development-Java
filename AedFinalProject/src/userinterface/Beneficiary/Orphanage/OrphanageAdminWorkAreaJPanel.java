@@ -96,8 +96,8 @@ public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        OrphanageManageEmployeeJPanel manageEmployeeJPanel;
-        manageEmployeeJPanel = new OrphanageManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        OrphanagePersonJPanel manageEmployeeJPanel;
+        manageEmployeeJPanel = new OrphanagePersonJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
         userProcessContainer.add("OrphanageManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

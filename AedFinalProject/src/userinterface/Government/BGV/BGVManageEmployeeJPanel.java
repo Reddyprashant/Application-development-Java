@@ -2,18 +2,22 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Beneficiary.Orphanage;
+package userinterface.Government.BGV;
 
+
+import userinterface.EntityAdmin.MNCAdmin.*;
 import Business.EcoSystem;
 //import userinterface.Hospital.*;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.BGVOrganization;
+import Business.Organization.MNCOrganization;
 //import Business.Organization.ClinicOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
-import Business.Organization.OrphanageOrganization;
+//import Business.Organization.OrphanageOrganization;
 import Business.Person.Person;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
@@ -30,11 +34,11 @@ import utility.Validator;
  *
  * @author raunak
  */
-public class OrphanageManageEmployeeJPanel extends javax.swing.JPanel {
+public class BGVManageEmployeeJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     UserAccount account; 
-    OrphanageOrganization organization; 
+    BGVOrganization organization; 
     Enterprise enterprise; 
     EcoSystem business;
      StateNetwork state;
@@ -42,7 +46,7 @@ public class OrphanageManageEmployeeJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public OrphanageManageEmployeeJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public BGVManageEmployeeJPanel(JPanel userProcessContainer, UserAccount account, BGVOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
          this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -52,7 +56,7 @@ public class OrphanageManageEmployeeJPanel extends javax.swing.JPanel {
         populateTable(organization);
           this.state=network;
         this.country=cNetwork;
-        TextArea.enable(false);
+        //TextArea.enable(false);
       //  populateOrganizationComboBox();
        // populateOrganizationEmpComboBox();
     }
@@ -73,7 +77,7 @@ public class OrphanageManageEmployeeJPanel extends javax.swing.JPanel {
 //        }
 //    }
 
-    private void populateTable(OrphanageOrganization organization){
+    private void populateTable(BGVOrganization organization){
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
         
         model.setRowCount(0);
@@ -109,13 +113,6 @@ public class OrphanageManageEmployeeJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         dobTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        ARadioButton = new javax.swing.JRadioButton();
-        BRadioButton2 = new javax.swing.JRadioButton();
-        CRadioButton3 = new javax.swing.JRadioButton();
-        ORadioButton4 = new javax.swing.JRadioButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TextArea = new javax.swing.JTextArea();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -188,94 +185,23 @@ public class OrphanageManageEmployeeJPanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 130, 30));
         add(dobTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 130, -1));
 
-        jLabel1.setText("Date Of Birth");
+        jLabel1.setText("email id");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
-
-        jLabel6.setText("Reason For Joining");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 363, -1, -1));
-
-        buttonGroup1.add(ARadioButton);
-        ARadioButton.setText("A");
-        ARadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ARadioButtonActionPerformed(evt);
-            }
-        });
-        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 397, -1, -1));
-
-        buttonGroup1.add(BRadioButton2);
-        BRadioButton2.setText("B");
-        BRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BRadioButton2ActionPerformed(evt);
-            }
-        });
-        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 426, -1, -1));
-
-        buttonGroup1.add(CRadioButton3);
-        CRadioButton3.setText("C");
-        CRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CRadioButton3ActionPerformed(evt);
-            }
-        });
-        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 461, -1, -1));
-
-        buttonGroup1.add(ORadioButton4);
-        ORadioButton4.setText("Others");
-        ORadioButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ORadioButton4ActionPerformed(evt);
-            }
-        });
-        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 490, -1, -1));
-
-        TextArea.setColumns(20);
-        TextArea.setRows(5);
-        jScrollPane2.setViewportView(TextArea);
-
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 490, -1, 52));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
          if(!nameJTextField.getText().equals("")){
-             try
-             {
-             SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+           
         //ClinicOrganization organization = (ClinicOrganization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
-       Date dobdate = date.parse(dobTextField.getText());
+       String Email = (dobTextField.getText());
        
-       String reason= null;
-       if(ARadioButton.isSelected())
-      {
-          reason="W";
-      }
-             
-      else if(BRadioButton2.isSelected())
-      {
-          reason="M";
-      }
-      else if(CRadioButton3.isSelected())
-        {
-                  reason="A";
-        }
-      
-      else if(ORadioButton4.isSelected())
-               {
-                 reason=TextArea.getText();
-               }
-        organization.getPersonList().createperson(name, dobdate,reason);
+       organization.getEmployeeDirectory().createEmployee(name);
         
         
         
         populateTable(organization);
         
-        }
-             catch(ParseException p)
-        {
-            JOptionPane.showMessageDialog(null, "Please enter date in MM/dd/yyyy format");
-        }
          }else{
              JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -295,32 +221,7 @@ public class OrphanageManageEmployeeJPanel extends javax.swing.JPanel {
         Validator.onlyString(evt, nameJTextField);
     }//GEN-LAST:event_nameJTextFieldKeyPressed
 
-    private void ORadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ORadioButton4ActionPerformed
-        // TODO add your handling code here:
-        TextArea.enable(true);
-    }//GEN-LAST:event_ORadioButton4ActionPerformed
-
-    private void ARadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARadioButtonActionPerformed
-        // TODO add your handling code here:
-        TextArea.enable(false);
-    }//GEN-LAST:event_ARadioButtonActionPerformed
-
-    private void BRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRadioButton2ActionPerformed
-        // TODO add your handling code here:
-        TextArea.enable(false);
-    }//GEN-LAST:event_BRadioButton2ActionPerformed
-
-    private void CRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CRadioButton3ActionPerformed
-        // TODO add your handling code here:
-        TextArea.enable(false);
-    }//GEN-LAST:event_CRadioButton3ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton ARadioButton;
-    private javax.swing.JRadioButton BRadioButton2;
-    private javax.swing.JRadioButton CRadioButton3;
-    private javax.swing.JRadioButton ORadioButton4;
-    private javax.swing.JTextArea TextArea;
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -329,9 +230,7 @@ public class OrphanageManageEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JTable organizationJTable;
     // End of variables declaration//GEN-END:variables

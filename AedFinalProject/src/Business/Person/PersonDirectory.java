@@ -24,12 +24,15 @@ public class PersonDirectory {
     public void setPersonList(ArrayList<Person> personList) {
         this.personList = personList;
     }
-public Person createperson(String name, Date dateOfBirth, String reason ){
+public Person createperson(String name, int age, String reason, String ethnicity, String sex, String educationBG ){
         Person person = new Person();
         person.setName(name);
-        person.setDateOfBirth(dateOfBirth);
+        person.setAge(age);
         person.setReason(reason);
-
+        person.setEducationBackground(educationBG);
+        person.setEthnicity(ethnicity);
+        person.setSex(sex);
+        
         personList.add(person);
         return person;
     }

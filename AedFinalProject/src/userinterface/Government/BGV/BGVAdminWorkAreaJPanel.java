@@ -13,6 +13,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.BGVOrganization;
 //import Business.Organization.ClinicOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrphanageOrganization;
@@ -28,13 +29,13 @@ public class BGVAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     UserAccount account; 
-    OrphanageOrganization organization; 
+    BGVOrganization organization; 
     Enterprise enterprise; 
     EcoSystem business;
     StateNetwork state;
     CountryNetwork country;
     /** Creates new form AdminWorkAreaJPanel */
-    public BGVAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public BGVAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, BGVOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -63,7 +64,7 @@ public class BGVAdminWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Clinic Work Area -Adminstrative Role");
+        jLabel1.setText("BGV Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
         userJButton.setText("Manage Request");
@@ -90,16 +91,16 @@ public class BGVAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        OrphanageRequestWorkAreaJPanel muajp = new OrphanageRequestWorkAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
-        userProcessContainer.add("OrphanageRequestWorkAreaJPanel", muajp);
+        BGVRequestAreaJPanel muajp = new BGVRequestAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
+        userProcessContainer.add("BGVRequestAreaJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        OrphanageManageEmployeeJPanel manageEmployeeJPanel;
-        manageEmployeeJPanel = new OrphanageManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        BGVManageEmployeeJPanel manageEmployeeJPanel;
+        manageEmployeeJPanel = new BGVManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise, state,country, business);
         userProcessContainer.add("OrphanageManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

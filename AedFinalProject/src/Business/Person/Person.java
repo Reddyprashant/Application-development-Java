@@ -12,9 +12,12 @@ import java.util.Date;
 public class Person {
     
     private String personId;
-    private Date dateOfBirth;
+    private int age;
     private Date dateOfJoining;
+    private String ethnicity;
+    private String educationBackground;
     private String name;
+    private String sex;
     private String reason;
     private static int pCount;
     public Person(){
@@ -24,20 +27,46 @@ public class Person {
       
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getEthnicity() {
+        return ethnicity;
+    }
+
+    public void setEthnicity(String ethnicity) {
+        this.ethnicity = ethnicity;
+    }
+
+    public String getEducationBackground() {
+        return educationBackground;
+    }
+
+    public void setEducationBackground(String educationBackground) {
+        this.educationBackground = educationBackground;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    
+    
     public String getPersonId() {
         return personId;
     }
 
     public void setPersonId(String personId) {
         this.personId = personId;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public String getName() {
@@ -72,5 +101,10 @@ public class Person {
         this.dateOfJoining = dateOfJoining;
     }
     
+    @Override
+    public String toString(){
+    return personId;    
+    }
+
     
 }
