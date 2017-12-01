@@ -164,7 +164,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Orphanage Work Area -Adminstrative Role");
+        jLabel1.setText("OldAge Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         reqBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -197,11 +197,11 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 700, 90));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel4.setText("Vaccines Requested");
+        jLabel4.setText("Volunteers Requested");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 170, 30));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel5.setText("Vaccines Available");
+        jLabel5.setText("Volunteers Available");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 150, 30));
 
         requestTable.setModel(new javax.swing.table.DefaultTableModel(

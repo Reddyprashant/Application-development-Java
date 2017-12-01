@@ -96,6 +96,20 @@ MNCOrganization organization;
             }
             
         }
+         for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
+            if(work instanceof BeneficiaryWorkRequest ){
+                  BeneficiaryWorkRequest s = (BeneficiaryWorkRequest) work;
+                Object[] row = new Object[6];
+                 //System.out.println("qwe"+s.getSenderOrganization());
+                row[0] = s.getSenderOrganization();
+                row[1] = s.getEventName();
+                row[2] = s.getNumberOfVolunteersRequest();
+                row[3] = s.getEventDate();
+                row[4] = s;
+                model.addRow(row);
+            }
+            
+        }
     }
 public void populateUpdatedTable()
 {
@@ -203,7 +217,7 @@ public void populateUpdatedTable()
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 308, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel3.setText("Entity Admin Request Area Panel");
+        jLabel3.setText("MNC Admin Request Area Panel");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
     }// </editor-fold>//GEN-END:initComponents
 

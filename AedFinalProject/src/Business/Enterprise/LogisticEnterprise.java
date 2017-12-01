@@ -7,6 +7,7 @@ package Business.Enterprise;
 
 import Business.Organization.Organization;
 import Business.Role.Role;
+import Business.Role.TransportationAdmin;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -28,7 +29,7 @@ public class LogisticEnterprise extends Enterprise{
     @Override
     public HashSet<Role> getSupportedRole() {
          roles= new HashSet<>();
-       // roles.add(new CDCManagerRole());
+        roles.add(new TransportationAdmin());
         return roles;
     }
 }

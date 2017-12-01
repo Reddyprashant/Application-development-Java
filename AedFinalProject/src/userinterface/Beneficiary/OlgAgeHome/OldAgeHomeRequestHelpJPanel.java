@@ -332,10 +332,14 @@ public void populateComboBox()
             requests.setTypeOfVehicle("Bus");
        }
        requests.setNoOfVehicle(no);
-       for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+      
+       }
+       if(!requests.isLogisticRequest()){
+        for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
            for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
                if(organization1 instanceof TransportOrganization)
                {
+                   System.out.println("sending to transport");
                    organization1.getWorkQueue().getWorkRequestList().add(requests);
                }
            }
@@ -346,7 +350,7 @@ public void populateComboBox()
        {
            for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
                if(enter instanceof EntityEnterprise){
-           enterprise.getWorkQueue().getWorkRequestList().add(requests);
+           enter.getWorkQueue().getWorkRequestList().add(requests);
                }
            }
        }
