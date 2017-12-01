@@ -5,6 +5,7 @@
 package Business.Enterprise;
 
 import Business.Organization.Organization;
+import Business.Role.BGVAdmin;
 import Business.Role.Role;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,7 +29,7 @@ public class GovernmentEnterprise extends Enterprise{
     @Override
     public HashSet<Role> getSupportedRole() {
          roles= new HashSet<>();
-//        roles.add(new ClinicAdminRole());
+        roles.add(new BGVAdmin());
         return roles;
     }
     

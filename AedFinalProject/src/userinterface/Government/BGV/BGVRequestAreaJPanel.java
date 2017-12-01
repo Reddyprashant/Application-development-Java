@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Beneficiary;
+package userinterface.Government.BGV;
 
+import userinterface.Beneficiary.*;
 import userinterface.EntityAdmin.*;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-import Business.Organization.BGVOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.Role.CommonPeopleAdmin;
@@ -38,7 +38,7 @@ import utility.Validator;
  *
  * @author prashantreddy
  */
-public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
+public class BGVRequestAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form EntityManageRequestJPanel
@@ -49,10 +49,11 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
     CountryNetwork country;
     StateNetwork state;
     EcoSystem system;
+    Organization organization;
     JPanel userProcessContainer;
-    public BeneficiaryRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public BGVRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
-     //this.organizationDir = organizationDir;
+     this.organization = organization;
      this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.container = container;
@@ -68,7 +69,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         System.out.println("qasda"+enterprise.getWorkQueue().getWorkRequestList().size()+" "+enterprise);
        // SignUpRequest s=null;
-        for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
+        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
             System.out.println("q"+work);
             if (work instanceof SignUpRequestOrganization) {
                SignUpRequestOrganization  s= (SignUpRequestOrganization) work;
@@ -121,7 +122,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 337, -1, 198));
 
-        btnAssign.setText("Assign to BGV");
+        btnAssign.setText("Assign to me");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
@@ -140,14 +141,14 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         jButton3.setText("Send Request to BGV");
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 553, -1, -1));
 
-        jLabel1.setText("Request Recieved");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 43, -1, -1));
+        jLabel1.setText("Verification Table");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 110, 20));
 
         jLabel2.setText("jLabel2");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 308, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel3.setText("Beneficiary Admin Request Area Panel");
+        jLabel3.setText("BGV Admin Request Area Panel");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
 
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
@@ -168,7 +169,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 77, 690, 182));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 750, 182));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -180,17 +181,11 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
           
             SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
           
-            if(p.getStatus().equals("Requested")){
+            if(p.getStatus().equals("Background Verification")){
               //  System.out.println("admin name"+ account.getUsername());
-                p.setStatus("Background Verification");
-              //  p.setReceiver(account);
-                for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
-                    for (Organization organization1 : enterprise1.getOrganizationDirectory().getOrganizationList()) {
-                        if(organization1 instanceof BGVOrganization){
-                            organization1.getWorkQueue().getWorkRequestList().add(p);
-                        }
-                    }
-                }
+                p.setStatus("Pending");
+                p.setReceiver(account);
+
                 populateWorkQueueTable();
                
             }
