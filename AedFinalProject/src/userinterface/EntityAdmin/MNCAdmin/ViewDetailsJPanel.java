@@ -8,6 +8,7 @@ package userinterface.EntityAdmin.MNCAdmin;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Event.Event;
+import Business.Event.EventDirectory;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.MNCOrganization;
@@ -55,7 +56,8 @@ private MNCRequestAreaJPanel mncRequestPanel;
         eventNameTextfield.setText(p.getEventName());
         reqVolText.setText(String.valueOf(p.getNumberOfVolunteersRequest()));
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        dateField.setText(String.valueOf(p.getEventDate()));
+        dateField.setText(sdf.format(p.getEventDate()));
+        detailTextArea.setText(p.getEventDetails());
     }
 
     /**
@@ -67,6 +69,7 @@ private MNCRequestAreaJPanel mncRequestPanel;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         enterpriseLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         reqComboBox = new javax.swing.JComboBox<>();
@@ -76,34 +79,42 @@ private MNCRequestAreaJPanel mncRequestPanel;
         availVolTextField = new javax.swing.JTextField();
         dateField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        transCheckbox = new javax.swing.JCheckBox();
-        spaceCheckBox = new javax.swing.JCheckBox();
-        noneCheckBox = new javax.swing.JCheckBox();
         UpdateBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         reqVolText = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        detailTextArea = new javax.swing.JTextArea();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 120, 30));
 
         jLabel1.setText("Request Type:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 106, -1, -1));
 
         reqComboBox.setEnabled(false);
+        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 102, 232, -1));
 
         eventNameTextfield.setEditable(false);
         eventNameTextfield.setEnabled(false);
+        add(eventNameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 132, 232, -1));
 
         jLabel5.setText("Event Name");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 137, -1, -1));
 
         jLabel2.setText("Available Volunteers");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 182, -1, -1));
 
         availVolTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 availVolTextFieldActionPerformed(evt);
             }
         });
+        add(availVolTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 177, 232, -1));
 
         dateField.setEditable(false);
         dateField.setEnabled(false);
@@ -112,16 +123,10 @@ private MNCRequestAreaJPanel mncRequestPanel;
                 dateFieldActionPerformed(evt);
             }
         });
+        add(dateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 248, 232, -1));
 
         jLabel3.setText("Event Date ");
-
-        jLabel4.setText("Logistics");
-
-        transCheckbox.setText("Transportaion");
-
-        spaceCheckBox.setText("Space");
-
-        noneCheckBox.setText("Not Required");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 253, -1, -1));
 
         UpdateBtn.setText("Update");
         UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +134,7 @@ private MNCRequestAreaJPanel mncRequestPanel;
                 UpdateBtnActionPerformed(evt);
             }
         });
+        add(UpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, -1, -1));
 
         jButton2.setText("<<Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -136,92 +142,25 @@ private MNCRequestAreaJPanel mncRequestPanel;
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 547, -1, -1));
 
         jLabel6.setText("Required Volunteers");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 220, -1, -1));
 
         reqVolText.setEditable(false);
         reqVolText.setEnabled(false);
+        add(reqVolText, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 210, 232, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(45, 45, 45)
-                                .addComponent(transCheckbox)
-                                .addGap(42, 42, 42)
-                                .addComponent(spaceCheckBox)
-                                .addGap(37, 37, 37)
-                                .addComponent(noneCheckBox))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel5)))
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel3))
-                                .addGap(149, 149, 149)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(availVolTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                        .addComponent(reqComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(eventNameTextfield)
-                                        .addComponent(reqVolText))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
-                .addComponent(UpdateBtn)
-                .addGap(73, 73, 73))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(reqComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(eventNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(availVolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel6))
-                    .addComponent(reqVolText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(transCheckbox)
-                    .addComponent(spaceCheckBox)
-                    .addComponent(noneCheckBox))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UpdateBtn)
-                    .addComponent(jButton2))
-                .addContainerGap(155, Short.MAX_VALUE))
-        );
+        jLabel7.setText("Event Details");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 280, -1, -1));
+
+        detailTextArea.setEditable(false);
+        detailTextArea.setColumns(20);
+        detailTextArea.setRows(5);
+        detailTextArea.setEnabled(false);
+        jScrollPane1.setViewportView(detailTextArea);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 280, 232, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
@@ -233,18 +172,21 @@ private MNCRequestAreaJPanel mncRequestPanel;
         int availableVolunteers= Integer.parseInt(availVolTextField.getText());
         int requiredVolunteers = Integer.parseInt(reqVolText.getText());
         Date eventDate = date.parse(dateField.getText());
-//         Person p= business.getEmployeeDirectory().addPerson();
-//        p.setName(name);
-//        p.setUserName(username);
-//        p.setPassword(password);
-//        p.setRole(role);
+if(organization.getEventDirectory().getEventDirectory() == null){
+    organization.setEventDirectory(new EventDirectory());
+}
         Event event=  organization.getEventDirectory().createEvent();
             event.setAvailVolunteers(availableVolunteers);
             event.setRequiredVolunteers(requiredVolunteers);
-            event.setEventDate(eventDate);
-            event.setEventName(name);
             
+           event.setEventDate(eventDate);
+            event.setEventName(name);
+            event.setSenderOrganization(organization);
             workRequest.setNumberOfVolunteersRequest(requiredVolunteers-availableVolunteers);
+            
+       if(workRequest.getNumberOfVolunteersRequest()==0 && workRequest.isLogisticRequest()==true){
+            workRequest.setStatus("Complete");
+        }
             
         }
         catch(ParseException e)
@@ -263,7 +205,7 @@ private MNCRequestAreaJPanel mncRequestPanel;
                userProcessContainer.remove(this);
         
         Component[] componentArray=userProcessContainer.getComponents();
-        mncRequestPanel =(MNCRequestAreaJPanel)userProcessContainer.getComponent(componentArray.length -1);
+        MNCRequestAreaJPanel mncRequestPanel =(MNCRequestAreaJPanel)userProcessContainer.getComponent(componentArray.length -1);
         mncRequestPanel.populateUpdatedTable();
         mncRequestPanel.populateWorkQueueTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -279,20 +221,20 @@ private MNCRequestAreaJPanel mncRequestPanel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton UpdateBtn;
     private javax.swing.JTextField availVolTextField;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField dateField;
+    private javax.swing.JTextArea detailTextArea;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JTextField eventNameTextfield;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JCheckBox noneCheckBox;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> reqComboBox;
     private javax.swing.JTextField reqVolText;
-    private javax.swing.JCheckBox spaceCheckBox;
-    private javax.swing.JCheckBox transCheckbox;
     // End of variables declaration//GEN-END:variables
 }

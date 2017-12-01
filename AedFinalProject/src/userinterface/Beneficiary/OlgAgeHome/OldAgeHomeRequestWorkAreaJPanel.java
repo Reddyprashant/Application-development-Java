@@ -13,6 +13,8 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 //import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
+import Business.Event.Event;
+import Business.Event.EventDirectory;
 import Business.Network.CountryNetwork;
 //import Business.Network.Network;
 import Business.Network.StateNetwork;
@@ -21,6 +23,7 @@ import Business.Organization.OrphanageOrganization;
 import Business.Organization.Organization;
 //import Business.Supplier.Vaccine;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.BeneficiaryWorkRequest;
 import Business.WorkQueue.PharmacyWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -56,8 +59,8 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         this.country=cNetwork;
        // populateCombo();
         //populateQuantity();
-       //populateWorkQueueTable();
-       //populateAvailable();
+       populateWorkQueueTable();
+      // populateAvailable();
        
     }
     
@@ -67,37 +70,50 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
 //        }
 //        
 //    }
-//    public void populateWorkQueueTable(){
-//         DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
-//        
-//        model.setRowCount(0);
-//        
-//        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-//           if(work instanceof PharmacyWorkRequest){ 
-//            Object[] row = new Object[4];
-//            row[0] = work.getVaccine().getVaccineName();
-//            row[1] = ((PharmacyWorkRequest) work).getQuantity();
-//            row[2] = work;
-//            row[3] = work.getReceiver();
-//            model.addRow(row);
-//           }
-//        }
-//    }
-//     public void populateAvailable(){
-//         DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
-//        
-//        model.setRowCount(0);
-//        Pharmacy p= organization.getP();
-//         System.out.println("pharmacy"+ p.getVaccine().getVaccineList().size());
-//        for (Vaccine vaccine : p.getVaccine().getVaccineList()){
-//          
-//            Object[] row = new Object[2];
-//            row[0] = vaccine.getVaccineName();
-//            row[1] = vaccine.getQuantity();
-//            model.addRow(row);
-//           
-//        }
-//    }
+    public void populateWorkQueueTable(){
+        DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
+           if(work instanceof BeneficiaryWorkRequest)
+           {
+            Object[] row = new Object[6];
+            row[0] = ((BeneficiaryWorkRequest) work).getRequestType();
+            row[1] = ((BeneficiaryWorkRequest) work).getEventName();
+            row[2] = ((BeneficiaryWorkRequest) work).getEventDate();
+            row[3] = ((BeneficiaryWorkRequest) work).getNumberOfVolunteersRequest();
+            row[4]= work;
+            row[5]=((BeneficiaryWorkRequest) work).isLogisticRequest();
+            model.addRow(row);
+           }
+           
+        }
+    }
+     public void populateAvailable(int rows){
+         DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
+        
+        model.setRowCount(0);
+        //Pharmacy p= organization.getP();
+         WorkRequest p=(WorkRequest) requestTable.getValueAt(rows, 4);
+         if(p instanceof BeneficiaryWorkRequest)
+           {
+         EventDirectory eventDir= ((BeneficiaryWorkRequest) p).getEventDirectory();
+           
+          for (Event e : eventDir.getEventDirectory()){
+           
+               
+            Object[] row = new Object[4];
+            row[0] = e.getEventName();
+            row[1] = e.getServingOrganization().getName();
+            row[2] = e.getAvailVolunteers();
+            row[3] = e.getEventDate();
+            model.addRow(row);
+           
+           
+        }
+           }
+    }
 //     public void populateQuantity(){
 //         
 //         for ( WorkRequest workRequest : account.getWorkQueue().getWorkRequestList()) {
@@ -165,27 +181,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Vaccine Name", "Quantity"
-            }
-        ));
-        jScrollPane1.setViewportView(availableTable);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 650, 90));
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel4.setText("Vaccines Requested");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 170, 30));
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel5.setText("Vaccines Available");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 150, 30));
-
-        requestTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Vaccine Name", "Quantity", "Status", "Receiver"
+                "Event Name", "Serving Organization", "Volunteers", "Event Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -196,9 +192,42 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jScrollPane1.setViewportView(availableTable);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 700, 90));
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setText("Vaccines Requested");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 170, 30));
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel5.setText("Vaccines Available");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 150, 30));
+
+        requestTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Request Type", "Event Name", "Event Date", "Volunteers Required", "Status", "Logistics Served"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        requestTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                requestTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(requestTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 640, 90));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 720, 90));
 
         backJButton.setText("Refresh");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -214,7 +243,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, -1, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
@@ -239,7 +268,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         }
         else{
 
-            WorkRequest p=(WorkRequest) requestTable.getValueAt(selectedRow, 2);
+            WorkRequest p=(WorkRequest) requestTable.getValueAt(selectedRow, 4);
 
            // s.getWorkQueue().getWorkRequestList().remove(p);
             organization.getWorkQueue().getWorkRequestList().remove(p);
@@ -249,6 +278,16 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
             //populateWorkQueueTable();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRow= requestTable.getSelectedRow();
+        if(selectedRow >=0){
+            //JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        populateAvailable(selectedRow);
+        
+        }
+    }//GEN-LAST:event_requestTableMouseClicked
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

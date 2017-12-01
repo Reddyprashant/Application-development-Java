@@ -19,13 +19,18 @@ public class BeneficiaryWorkRequest extends WorkRequest{
     private  Date eventDate;
     private boolean add;
     private String eventName;
+    private String eventDetails;
     private RequestType requestType;
     private EventDirectory eventDirectory;
     private String email;
+    private String logistics;
+    private String typeOfVehicle;
+    private int noOfVehicle;
+    private boolean logisticRequest;
     public BeneficiaryWorkRequest(){
         add = false;
         eventDirectory=new EventDirectory();
-          
+          logisticRequest= true;
     }
 
     public Date getEventDate() {
@@ -74,6 +79,46 @@ public class BeneficiaryWorkRequest extends WorkRequest{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getEventDetails() {
+        return eventDetails;
+    }
+
+    public void setEventDetails(String eventDetails) {
+        this.eventDetails = eventDetails;
+    }
+
+    public String getLogistics() {
+        return logistics;
+    }
+
+    public void setLogistics(String logistics) {
+        this.logistics = logistics;
+    }
+
+    public String getTypeOfVehicle() {
+        return typeOfVehicle;
+    }
+
+    public void setTypeOfVehicle(String typeOfVehicle) {
+        this.typeOfVehicle = typeOfVehicle;
+    }
+
+    public int getNoOfVehicle() {
+        return noOfVehicle;
+    }
+
+    public void setNoOfVehicle(int noOfVehicle) {
+        this.noOfVehicle = noOfVehicle;
+    }
+
+    public boolean isLogisticRequest() {
+        return logisticRequest;
+    }
+
+    public void setLogisticRequest(boolean logisticRequest) {
+        this.logisticRequest = logisticRequest;
     }
 
 

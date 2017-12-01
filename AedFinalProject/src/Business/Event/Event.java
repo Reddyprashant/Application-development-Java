@@ -5,7 +5,10 @@
  */
 package Business.Event;
 
+import Business.Organization.Organization;
+import Business.Role.Role;
 import java.util.Date;
+import java.util.HashSet;
 
 /**
  *
@@ -16,13 +19,14 @@ public class Event {
     private int availVolunteers;
     private Date eventDate;
    private int requiredVolunteers;
-    private String senderOrganization;
-    private String servingOrganization;
+    private Organization senderOrganization;
+    private Organization servingOrganization;
     private static int count=0;
     private String eventId;
 
     public Event() {
         eventId= "EventId" +  ++count;
+       
     }
     
     public String getEventName() {
@@ -58,21 +62,23 @@ public class Event {
         this.requiredVolunteers = requiredVolunteers;
     }
 
-    public String getSenderOrganization() {
+    public Organization getSenderOrganization() {
         return senderOrganization;
     }
 
-    public void setSenderOrganization(String senderOrganization) {
+    public void setSenderOrganization(Organization senderOrganization) {
         this.senderOrganization = senderOrganization;
     }
 
-    public String getServingOrganization() {
+    public Organization getServingOrganization() {
         return servingOrganization;
     }
 
-    public void setServingOrganization(String servingOrganization) {
+    public void setServingOrganization(Organization servingOrganization) {
         this.servingOrganization = servingOrganization;
     }
+
+ 
 
     public String getEventId() {
         return eventId;

@@ -97,7 +97,7 @@ MNCOrganization organization;
     }
 public void populateUpdatedTable()
 {
-     DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
+     DefaultTableModel model = (DefaultTableModel) UpdatedJTable.getModel();
 
         model.setRowCount(0);
         if(organization.getEventDirectory()==null){
@@ -242,15 +242,25 @@ public void populateUpdatedTable()
             BeneficiaryWorkRequest orgRequest = null;
             //SignUpRequestEnterprise e = null;
             UserAccount acc=null;
+            if(organization.getEventDirectory()== null){
+                organization.setEventDirectory(new EventDirectory());
+                System.out.println("event dir null");
+            }
     Event event = organization.getEventDirectory().createEvent();
       event.setAvailVolunteers(p.getNumberOfVolunteersRequest());
       event.setEventDate(p.getEventDate());
       event.setEventName(p.getEventName());
       event.setRequiredVolunteers(p.getNumberOfVolunteersRequest());
+      event.setServingOrganization(organization);
+      
+      
+      
           p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
-      if(p.getNumberOfVolunteersRequest()==0){
+          p.getEventDirectory().getEventDirectory().add(event);
+      if(p.getNumberOfVolunteersRequest()==0 && p.isLogisticRequest()==true){
       p.setStatus("Complete");
       }
+      
                 //if (p.getStatus().equals("Pending")) {
 //                    if (p instanceof BeneficiaryWorkRequest) {
 //                         try {

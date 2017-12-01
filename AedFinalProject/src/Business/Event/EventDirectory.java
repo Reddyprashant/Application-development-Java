@@ -15,7 +15,7 @@ public class EventDirectory {
     ArrayList<Event> eventDirectory;
     
     public EventDirectory(){
-        eventDirectory= new ArrayList<>();
+        eventDirectory= new ArrayList<Event>();
     }
 
     public ArrayList<Event> getEventDirectory() {

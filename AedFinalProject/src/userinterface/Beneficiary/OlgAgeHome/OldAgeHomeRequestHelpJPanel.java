@@ -8,6 +8,7 @@ package userinterface.Beneficiary.OlgAgeHome;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.EntityEnterprise;
+import Business.Enterprise.LogisticEnterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.EducationOrganization;
@@ -17,6 +18,7 @@ import Business.Organization.MNCOrganization;
 import Business.Organization.NGOOrganization;
 import Business.Organization.OldAgeOrganization;
 import Business.Organization.Organization;
+import Business.Organization.TransportOrganization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
@@ -54,6 +56,12 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         this.organization= organization;
         this.state=network;
         this.country=cNetwork;
+        carBtn.setVisible(false);
+        busBtn.setVisible(false);
+        vanBtn.setVisible(false);
+        noOfVehText.setVisible(false);
+        noVehLabel.setVisible(false);
+        typeLabel.setVisible(false);
         populateComboBox();
        
 //        for (StateNetwork stateNetwork : country.getStateList()) {
@@ -77,6 +85,8 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         enterpriseLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -86,12 +96,20 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         reqComboBox = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        transCheckbox = new javax.swing.JCheckBox();
-        spaceCheckBox = new javax.swing.JCheckBox();
-        noneCheckBox = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         eventNameTextfield = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        detailTextArea = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        reqBtn = new javax.swing.JRadioButton();
+        notReqBtn = new javax.swing.JRadioButton();
+        noOfVehText = new javax.swing.JTextField();
+        noVehLabel = new javax.swing.JLabel();
+        typeLabel = new javax.swing.JLabel();
+        carBtn = new javax.swing.JRadioButton();
+        vanBtn = new javax.swing.JRadioButton();
+        busBtn = new javax.swing.JRadioButton();
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
@@ -116,57 +134,101 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setText("Event Name");
+
+        jLabel7.setText("Event Details");
+
+        detailTextArea.setColumns(20);
+        detailTextArea.setRows(5);
+        jScrollPane1.setViewportView(detailTextArea);
+
         jLabel4.setText("Logistics");
 
-        transCheckbox.setText("Transportaion");
+        buttonGroup2.add(reqBtn);
+        reqBtn.setText("Required");
+        reqBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reqBtnActionPerformed(evt);
+            }
+        });
 
-        spaceCheckBox.setText("Space");
+        buttonGroup2.add(notReqBtn);
+        notReqBtn.setText("Not Required");
+        notReqBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notReqBtnActionPerformed(evt);
+            }
+        });
 
-        noneCheckBox.setText("Not Required");
+        noVehLabel.setText("Number Of Vehicles");
 
-        jLabel5.setText("Event Name");
+        typeLabel.setText("Type of vehicle");
+
+        buttonGroup1.add(carBtn);
+        carBtn.setText("Car");
+        carBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carBtnActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(vanBtn);
+        vanBtn.setText("Mini Van");
+
+        buttonGroup1.add(busBtn);
+        busBtn.setText("Bus");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(transCheckbox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                                .addComponent(spaceCheckBox))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(149, 149, 149)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(noVolTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                    .addComponent(dateField)
-                                    .addComponent(reqComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(eventNameTextfield)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(noneCheckBox)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(73, 73, 73))))
+                        .addComponent(jLabel4)
+                        .addGap(278, 278, 278)
+                        .addComponent(reqBtn)
+                        .addGap(31, 31, 31)
+                        .addComponent(notReqBtn))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(typeLabel)
+                            .addComponent(noVehLabel))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(noOfVehText, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(carBtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(vanBtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(busBtn))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5)))
+                            .addComponent(jLabel7))
+                        .addGap(149, 149, 149)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(noVolTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                .addComponent(dateField)
+                                .addComponent(reqComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(eventNameTextfield))))
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(274, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(78, 78, 78))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,17 +251,35 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(transCheckbox)
-                    .addComponent(spaceCheckBox)
-                    .addComponent(noneCheckBox))
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(reqBtn)
+                            .addComponent(notReqBtn)
+                            .addComponent(jLabel4))
+                        .addGap(87, 87, 87)
+                        .addComponent(noVehLabel))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(carBtn)
+                            .addComponent(vanBtn)
+                            .addComponent(busBtn)
+                            .addComponent(typeLabel))
+                        .addGap(18, 18, 18)
+                        .addComponent(noOfVehText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(65, 65, 65))))
         );
     }// </editor-fold>//GEN-END:initComponents
 public void populateComboBox()
@@ -218,22 +298,49 @@ public void populateComboBox()
         try
         {
         SimpleDateFormat dates = new SimpleDateFormat("MM/dd/yyyy");
-       
+        
         Organization.RequestType request = (Organization.RequestType) reqComboBox.getSelectedItem();
         int noVolunteer= Integer.parseInt(noVolTextField.getText());
         Date date= dates.parse(dateField.getText());
         String eventName = eventNameTextfield.getText();
+        String eventDetails= detailTextArea.getText();
+        
         BeneficiaryWorkRequest requests= new BeneficiaryWorkRequest();
        requests.setEventDate(date);
        requests.setSenderOrganization(organization.getName()+ Organization.Type.OldAge);
       //if(Organization.RequestType.Education.getValue()==request.getValue())
       requests.setRequestType(request);
        requests.setEventName(eventName);
+       requests.setEventDetails(eventDetails);
        requests.setNumberOfVolunteersRequest(noVolunteer);
     
        requests.setSender(account);
        requests.setStatus("Requested");
-            System.out.println("type is"+request);
+       if(reqBtn.isSelected())
+       {
+            int no = Integer.parseInt(noOfVehText.getText());
+       requests.setLogisticRequest(false);
+       if(carBtn.isSelected()){
+           requests.setTypeOfVehicle("Car");
+          
+       }
+       else if(vanBtn.isSelected()){
+            requests.setTypeOfVehicle("Van");
+       }
+       else if(busBtn.isSelected()){
+            requests.setTypeOfVehicle("Bus");
+       }
+       requests.setNoOfVehicle(no);
+       for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+           for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+               if(organization1 instanceof TransportOrganization)
+               {
+                   organization1.getWorkQueue().getWorkRequestList().add(requests);
+               }
+           }
+           }
+       }
+       System.out.println("type is"+request);
        if(request==Organization.RequestType.ANY)
        {
            for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
@@ -292,7 +399,11 @@ public void populateComboBox()
            }
        }
        }
+       organization.getWorkQueue().getWorkRequestList().add(requests);
        JOptionPane.showMessageDialog(null, "Help request complete");
+        }
+        catch(NumberFormatException p){
+            JOptionPane.showMessageDialog(null, "Enter integer value");
         }
         catch(ParseException p)
         {
@@ -308,13 +419,44 @@ public void populateComboBox()
         OldAgeHomeRequestWorkAreaJPanel oldAgeRequestPanel =(OldAgeHomeRequestWorkAreaJPanel)userProcessContainer.getComponent(componentArray.length -1);
        // oldAgeRequestPanel.populateUpdatedTable();
        
+       oldAgeRequestPanel.populateWorkQueueTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);  
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void carBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_carBtnActionPerformed
+
+    private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
+        // TODO add your handling code here:
+        
+        carBtn.setVisible(true);
+        busBtn.setVisible(true);
+        vanBtn.setVisible(true);
+        noOfVehText.setVisible(true);
+         noVehLabel.setVisible(true);
+        typeLabel.setVisible(true);
+    }//GEN-LAST:event_reqBtnActionPerformed
+
+    private void notReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notReqBtnActionPerformed
+        // TODO add your handling code here:
+         carBtn.setVisible(false);
+        busBtn.setVisible(false);
+        vanBtn.setVisible(false);
+        noOfVehText.setVisible(false);
+         noVehLabel.setVisible(false);
+        typeLabel.setVisible(false);
+    }//GEN-LAST:event_notReqBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton busBtn;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JRadioButton carBtn;
     private javax.swing.JTextField dateField;
+    private javax.swing.JTextArea detailTextArea;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JTextField eventNameTextfield;
     private javax.swing.JButton jButton1;
@@ -324,10 +466,15 @@ public void populateComboBox()
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField noOfVehText;
+    private javax.swing.JLabel noVehLabel;
     private javax.swing.JTextField noVolTextField;
-    private javax.swing.JCheckBox noneCheckBox;
+    private javax.swing.JRadioButton notReqBtn;
+    private javax.swing.JRadioButton reqBtn;
     private javax.swing.JComboBox reqComboBox;
-    private javax.swing.JCheckBox spaceCheckBox;
-    private javax.swing.JCheckBox transCheckbox;
+    private javax.swing.JLabel typeLabel;
+    private javax.swing.JRadioButton vanBtn;
     // End of variables declaration//GEN-END:variables
 }
