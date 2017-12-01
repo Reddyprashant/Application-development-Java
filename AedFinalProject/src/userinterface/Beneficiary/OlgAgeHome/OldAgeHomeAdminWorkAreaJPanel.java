@@ -98,8 +98,8 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        OldAgeHomeManageEmployeeJPanel manageEmployeeJPanel;
-        manageEmployeeJPanel = new OldAgeHomeManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        OldAgeHomePersonJPanel manageEmployeeJPanel;
+        manageEmployeeJPanel = new OldAgeHomePersonJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
         userProcessContainer.add("OldAgeHomeManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

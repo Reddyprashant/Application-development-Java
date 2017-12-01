@@ -6,7 +6,6 @@
 
 package userinterface.Beneficiary.Homeless;
 
-import userinterface.Beneficiary.OlgAgeHome.*;
 import userinterface.Beneficiary.Orphanage.*;
 import Business.EcoSystem;
 //import userinterface.Hospital.*;
@@ -14,7 +13,6 @@ import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 //import Business.Organization.ClinicOrganization;
-import Business.Organization.Organization;
 import Business.Organization.OrphanageOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -98,11 +96,11 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        OrphanageManageEmployeeJPanel manageEmployeeJPanel;
-        manageEmployeeJPanel = new OrphanageManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
-        userProcessContainer.add("OrphanageManageEmployeeJPanel", manageEmployeeJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+//        OrphanageManageEmployeeJPanel manageEmployeeJPanel;
+//        manageEmployeeJPanel = new OrphanageManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+//        userProcessContainer.add("OrphanageManageEmployeeJPanel", manageEmployeeJPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
     
