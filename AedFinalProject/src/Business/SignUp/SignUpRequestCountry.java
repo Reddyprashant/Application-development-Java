@@ -3,7 +3,6 @@ package Business.SignUp;
 import Business.EcoSystem;
 import javax.swing.JPanel;
 import userinterface.SignUp.SignUpJPanelCountry;
-import userinterface.SignUp.SignUpJPanelIndividual;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

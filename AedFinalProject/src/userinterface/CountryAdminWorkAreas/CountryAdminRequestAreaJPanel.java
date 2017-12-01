@@ -22,7 +22,6 @@ import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestEnterprise;
 import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.PharmacyWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.HashMap;

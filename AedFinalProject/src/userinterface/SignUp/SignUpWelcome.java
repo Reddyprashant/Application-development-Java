@@ -8,7 +8,6 @@ package userinterface.SignUp;
 import Business.EcoSystem;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequest.SignUpType;
-import Business.SignUp.SignUpRequestBeneficiary;
 import Business.SignUp.SignUpRequestCountry;
 import Business.SignUp.SignUpRequestState;
 import java.awt.CardLayout;

@@ -7,8 +7,7 @@ import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import javax.swing.JPanel;
-import userinterface.SignUp.SignUpJPanelBeneficiary;
-import userinterface.SignUp.SignUpJPanelIndividual;
+import userinterface.SignUp.SignUpJPanel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -84,7 +83,7 @@ public class SignUpRequestOrganization extends SignUpRequest{
     
     @Override
     public JPanel signUpForm(JPanel userProcessContainer, EcoSystem business) {
-        return new SignUpJPanelBeneficiary(userProcessContainer,business);
+        return new SignUpJPanel(userProcessContainer,business,SignUpType.Organization);
     }
     
     
