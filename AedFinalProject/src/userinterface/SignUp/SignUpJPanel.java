@@ -150,6 +150,11 @@ public class SignUpJPanel extends javax.swing.JPanel {
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 170, -1));
 
+        txtCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCityActionPerformed(evt);
+            }
+        });
         txtCity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCityKeyPressed(evt);
@@ -307,7 +312,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
     private void txtCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCityKeyPressed
         // TODO add your handling code here:
-        Validator.onlyInteger(evt, txtCity);
+        Validator.onlyString(evt, txtCity);
     }//GEN-LAST:event_txtCityKeyPressed
 
     private void txtOrgNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOrgNameKeyPressed
@@ -368,6 +373,10 @@ public class SignUpJPanel extends javax.swing.JPanel {
         }
          }
     }//GEN-LAST:event_comboEnterpriseActionPerformed
+
+    private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCityActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -10,6 +10,7 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.BGVOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.Role.BeneficiaryAdminRole;
@@ -105,6 +106,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btnAssign1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -171,6 +173,14 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Entity Admin Request Area Panel");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
+
+        btnAssign1.setText("Assign to BGV");
+        btnAssign1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssign1ActionPerformed(evt);
+            }
+        });
+        add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -263,9 +273,40 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCompleteActionPerformed
 
+    private void btnAssign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssign1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblReq.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
+
+            if(p.getStatus().equals("Requested")){
+                //  System.out.println("admin name"+ account.getUsername());
+                p.setStatus("Background Verification");
+                //  p.setReceiver(account);
+                for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
+                    for (Organization organization1 : enterprise1.getOrganizationDirectory().getOrganizationList()) {
+                        if(organization1 instanceof BGVOrganization){
+                            organization1.getWorkQueue().getWorkRequestList().add(p);
+                        }
+                    }
+                }
+                populateWorkQueueTable();
+
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Already assigned");
+            }
+
+        }
+    }//GEN-LAST:event_btnAssign1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnAssign1;
     private javax.swing.JButton btnComplete;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
