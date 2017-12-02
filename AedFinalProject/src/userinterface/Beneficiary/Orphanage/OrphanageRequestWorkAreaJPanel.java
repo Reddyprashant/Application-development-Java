@@ -9,23 +9,22 @@ package userinterface.Beneficiary.Orphanage;
 //import Business.Clinic.Pharmacy;
 //import userinterface.Hospital.Clinic.*;
 import Business.EcoSystem;
-import Business.Employee.Employee;
 //import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
+import Business.Event.Event;
+import Business.Event.EventDirectory;
 import Business.Network.CountryNetwork;
 //import Business.Network.Network;
 import Business.Network.StateNetwork;
 import Business.Organization.OrphanageOrganization;
-import Business.Organization.Organization;
 //import Business.Supplier.Vaccine;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.BeneficiaryWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import utility.Validator;
 
 /**
  *
@@ -58,70 +57,50 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
        
     }
     
-//    public void populateCombo(){
-//        for (Vaccine vaccine : business.getVaccineList().getVaccineList()) {
-//            comboVaccine.addItem(vaccine);
-//        }
-//        
-//    }
-//    public void populateWorkQueueTable(){
-//         DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
-//        
-//        model.setRowCount(0);
-//        
-//        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-//           if(work instanceof PharmacyWorkRequest){ 
-//            Object[] row = new Object[4];
-//            row[0] = work.getVaccine().getVaccineName();
-//            row[1] = ((PharmacyWorkRequest) work).getQuantity();
-//            row[2] = work;
-//            row[3] = work.getReceiver();
-//            model.addRow(row);
-//           }
-//        }
-//    }
-//     public void populateAvailable(){
-//         DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
-//        
-//        model.setRowCount(0);
-//        Pharmacy p= organization.getP();
-//         System.out.println("pharmacy"+ p.getVaccine().getVaccineList().size());
-//        for (Vaccine vaccine : p.getVaccine().getVaccineList()){
-//          
-//            Object[] row = new Object[2];
-//            row[0] = vaccine.getVaccineName();
-//            row[1] = vaccine.getQuantity();
-//            model.addRow(row);
-//           
-//        }
-//    }
-//     public void populateQuantity(){
-//         
-//         for ( WorkRequest workRequest : account.getWorkQueue().getWorkRequestList()) {
-//            // HashMap<WorkRequest,Integer> map = new HashMap<WorkRequest,Integer>();
-//             int temp=0;
-//             PharmacyWorkRequest p= (PharmacyWorkRequest) workRequest;
-//             if(workRequest.getStatus().equals("Complete") && !p.isAdd() ){ //&& add == false
-//                 Vaccine v = workRequest.getVaccine();
-//                
-//                  for (Vaccine vaccine : organization.getP().getVaccine().getVaccineList()) {
-//                     if(v.getVaccineName().equals(vaccine.getVaccineName())){
-//                         temp=1;
-//                          vaccine.setQuantity(p.getQuantity()+vaccine.getQuantity());
-//                     }
-//                     
-//                 }
-//                  if(temp==0){
-//                       Vaccine vac= organization.getP().getVaccine().addVaccine();
-//                       vac.setDisease(v.getDisease());
-//                       vac.setVaccineName(v.getVaccineName());
-//                       vac.setQuantity(p.getQuantity());
-//                   }
-//                 p.setAdd(true); 
-//             }
-//         }
-//        
-//     }
+    public void populateWorkQueueTable(){
+        DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
+           if(work instanceof BeneficiaryWorkRequest)
+           {
+            Object[] row = new Object[6];
+            row[0] = ((BeneficiaryWorkRequest) work).getRequestType();
+            row[1] = ((BeneficiaryWorkRequest) work).getEventName();
+            row[2] = ((BeneficiaryWorkRequest) work).getEventDate();
+            row[3] = ((BeneficiaryWorkRequest) work).getNumberOfVolunteersRequest();
+            row[4]= work;
+            row[5]=((BeneficiaryWorkRequest) work).isLogisticRequest();
+            model.addRow(row);
+           }
+           
+        }
+    }
+     public void populateAvailable(int rows){
+         DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
+        
+        model.setRowCount(0);
+        //Pharmacy p= organization.getP();
+         WorkRequest p=(WorkRequest) requestTable.getValueAt(rows, 4);
+         if(p instanceof BeneficiaryWorkRequest)
+           {
+         EventDirectory eventDir= ((BeneficiaryWorkRequest) p).getEventDirectory();
+           
+          for (Event e : eventDir.getEventDirectory()){
+           
+               
+            Object[] row = new Object[4];
+            row[0] = e.getEventName();
+            row[1] = e.getServingOrganization().getName();
+            row[2] = e.getAvailVolunteers();
+            row[3] = e.getEventDate();
+            model.addRow(row);
+           
+           
+        }
+           }
+    }
 //    
     /** This method is called from within the constructor to
      * initialize the form.
@@ -132,15 +111,15 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        reqBtn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        availableTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
         requestTable = new javax.swing.JTable();
-        backJButton = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        availableTable = new javax.swing.JTable();
         btnDelete = new javax.swing.JButton();
+        reqBtn = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -148,33 +127,12 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("Orphanage Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
-        reqBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        reqBtn.setText("Request For Help");
-        reqBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reqBtnActionPerformed(evt);
-            }
-        });
-        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 190, 50));
-
-        availableTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Vaccine Name", "Quantity"
-            }
-        ));
-        jScrollPane1.setViewportView(availableTable);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 650, 90));
-
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel4.setText("Vaccines Requested");
+        jLabel4.setText("Volunteers Requested");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 170, 30));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel5.setText("Vaccines Available");
+        jLabel5.setText("Volunteers Available");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 150, 30));
 
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -182,7 +140,32 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Vaccine Name", "Quantity", "Status", "Receiver"
+                "Request Type", "Event Name", "Event Date", "Volunteers Required", "Status", "Logistics Served"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        requestTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                requestTableMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(requestTable);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 720, 90));
+
+        availableTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Event Name", "Serving Organization", "Volunteers", "Event Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -193,17 +176,9 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(requestTable);
+        jScrollPane4.setViewportView(availableTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 640, 90));
-
-        backJButton.setText("Refresh");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 700, 90));
 
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -211,31 +186,35 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, -1, -1));
+
+        reqBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        reqBtn.setText("Request For Help");
+        reqBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reqBtnActionPerformed(evt);
+            }
+        });
+        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 180, 40));
+
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
-//         if(!txtquant.getText().equals("")){
-//        PharmacyWorkRequest request= new PharmacyWorkRequest();
-//        request.setVaccine((Vaccine)comboVaccine.getSelectedItem());
-//        request.setQuantity(Integer.parseInt(txtquant.getText()));
-//        request.setStatus("Requested");
-//        request.setSender(account);
-//        organization.getWorkQueue().getWorkRequestList().add(request);
-//        account.getWorkQueue().getWorkRequestList().add(request);
-//        business.getWorkQueue().getWorkRequestList().add(request);
-//        populateWorkQueueTable();
-//        }else{
-//             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-//        }
+    private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRow= requestTable.getSelectedRow();
+        if(selectedRow >=0){
+            //JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            populateAvailable(selectedRow);
 
-        
-    }//GEN-LAST:event_reqBtnActionPerformed
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        new OrphanageRequestWorkAreaJPanel(userProcessContainer, account, organization, enterprise,state,country, business);
-    }//GEN-LAST:event_backJButtonActionPerformed
+        }
+    }//GEN-LAST:event_requestTableMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
@@ -245,9 +224,9 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
         }
         else{
 
-            WorkRequest p=(WorkRequest) requestTable.getValueAt(selectedRow, 2);
+            WorkRequest p=(WorkRequest) requestTable.getValueAt(selectedRow, 4);
 
-           // s.getWorkQueue().getWorkRequestList().remove(p);
+            // s.getWorkQueue().getWorkRequestList().remove(p);
             organization.getWorkQueue().getWorkRequestList().remove(p);
             account.getWorkQueue().getWorkRequestList().remove(p);
             business.getWorkQueue().getWorkRequestList().remove(p);
@@ -255,17 +234,34 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
             //populateWorkQueueTable();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
+
+        OrphanageHomeRequestHelpJPanel muajp = new OrphanageHomeRequestHelpJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
+        userProcessContainer.add("OrphanageHomeRequestHelpJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
+    }//GEN-LAST:event_reqBtnActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+       userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
+    }//GEN-LAST:event_btnBackActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable availableTable;
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton reqBtn;
     private javax.swing.JTable requestTable;
     // End of variables declaration//GEN-END:variables

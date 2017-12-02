@@ -8,25 +8,23 @@ package userinterface.Beneficiary.Homeless;
 
 //import Business.Clinic.Pharmacy;
 //import userinterface.Hospital.Clinic.*;
-import userinterface.Beneficiary.Orphanage.*;
 import Business.EcoSystem;
-import Business.Employee.Employee;
 //import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
+import Business.Event.Event;
+import Business.Event.EventDirectory;
 import Business.Network.CountryNetwork;
 //import Business.Network.Network;
 import Business.Network.StateNetwork;
 import Business.Organization.HomelessOrganization;
-import Business.Organization.Organization;
 //import Business.Supplier.Vaccine;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.BeneficiaryWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import utility.Validator;
 
 /**
  *
@@ -124,6 +122,50 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
 //        
 //     }
 //    
+    public void populateWorkQueueTable(){
+        DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
+           if(work instanceof BeneficiaryWorkRequest)
+           {
+            Object[] row = new Object[6];
+            row[0] = ((BeneficiaryWorkRequest) work).getRequestType();
+            row[1] = ((BeneficiaryWorkRequest) work).getEventName();
+            row[2] = ((BeneficiaryWorkRequest) work).getEventDate();
+            row[3] = ((BeneficiaryWorkRequest) work).getNumberOfVolunteersRequest();
+            row[4]= work;
+            row[5]=((BeneficiaryWorkRequest) work).isLogisticRequest();
+            model.addRow(row);
+           }
+           
+        }
+    }
+     public void populateAvailable(int rows){
+         DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
+        
+        model.setRowCount(0);
+        //Pharmacy p= organization.getP();
+         WorkRequest p=(WorkRequest) requestTable.getValueAt(rows, 4);
+         if(p instanceof BeneficiaryWorkRequest)
+           {
+         EventDirectory eventDir= ((BeneficiaryWorkRequest) p).getEventDirectory();
+           
+          for (Event e : eventDir.getEventDirectory()){
+           
+               
+            Object[] row = new Object[4];
+            row[0] = e.getEventName();
+            row[1] = e.getServingOrganization().getName();
+            row[2] = e.getAvailVolunteers();
+            row[3] = e.getEventDate();
+            model.addRow(row);
+           
+           
+        }
+           }
+    }    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -140,49 +182,30 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         requestTable = new javax.swing.JTable();
-        backJButton = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Orphanage Work Area -Adminstrative Role");
+        jLabel1.setText("Homeless Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
-        reqBtn.setText("Request Help");
+        reqBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        reqBtn.setText("Request For Help");
         reqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reqBtnActionPerformed(evt);
             }
         });
-        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 170, -1));
+        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 180, 40));
 
         availableTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Vaccine Name", "Quantity"
-            }
-        ));
-        jScrollPane1.setViewportView(availableTable);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 650, 90));
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel4.setText("Vaccines Requested");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 170, 30));
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel5.setText("Vaccines Available");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 150, 30));
-
-        requestTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Vaccine Name", "Quantity", "Status", "Receiver"
+                "Event Name", "Serving Organization", "Volunteers", "Event Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -193,17 +216,42 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(requestTable);
+        jScrollPane1.setViewportView(availableTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 640, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 700, 90));
 
-        backJButton.setText("Refresh");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setText("Volunteers Requested");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 170, 30));
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel5.setText("Volunteers Available");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 150, 30));
+
+        requestTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Request Type", "Event Name", "Event Date", "Volunteers Required", "Status", "Logistics Served"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
+        requestTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                requestTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(requestTable);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 720, 90));
 
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -211,31 +259,35 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, -1, -1));
+
+        btnBack.setText("back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
-//         if(!txtquant.getText().equals("")){
-//        PharmacyWorkRequest request= new PharmacyWorkRequest();
-//        request.setVaccine((Vaccine)comboVaccine.getSelectedItem());
-//        request.setQuantity(Integer.parseInt(txtquant.getText()));
-//        request.setStatus("Requested");
-//        request.setSender(account);
-//        organization.getWorkQueue().getWorkRequestList().add(request);
-//        account.getWorkQueue().getWorkRequestList().add(request);
-//        business.getWorkQueue().getWorkRequestList().add(request);
-//        populateWorkQueueTable();
-//        }else{
-//             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-//        }
 
-        
+        HomelessRequestHelpJPanel muajp = new HomelessRequestHelpJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
+        userProcessContainer.add("HomelessRequestHelpJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
     }//GEN-LAST:event_reqBtnActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+    private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRow= requestTable.getSelectedRow();
+        if(selectedRow >=0){
+            //JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            populateAvailable(selectedRow);
 
-        new HomelessRequestWorkAreaJPanel(userProcessContainer, account, organization, enterprise,state,country, business);
-    }//GEN-LAST:event_backJButtonActionPerformed
+        }
+    }//GEN-LAST:event_requestTableMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
@@ -245,9 +297,9 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
         }
         else{
 
-            WorkRequest p=(WorkRequest) requestTable.getValueAt(selectedRow, 2);
+            WorkRequest p=(WorkRequest) requestTable.getValueAt(selectedRow, 4);
 
-           // s.getWorkQueue().getWorkRequestList().remove(p);
+            // s.getWorkQueue().getWorkRequestList().remove(p);
             organization.getWorkQueue().getWorkRequestList().remove(p);
             account.getWorkQueue().getWorkRequestList().remove(p);
             business.getWorkQueue().getWorkRequestList().remove(p);
@@ -255,11 +307,19 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
             //populateWorkQueueTable();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+
+    }//GEN-LAST:event_btnBackActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable availableTable;
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
