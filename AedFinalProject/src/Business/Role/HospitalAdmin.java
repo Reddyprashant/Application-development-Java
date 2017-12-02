@@ -8,10 +8,14 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.HospitalOrganization;
+import Business.Organization.IndividualOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 
 import javax.swing.JPanel;
+import userinterface.EntityAdmin.Hospital.HospitalAdminWorkAreaJPanel;
+import userinterface.EntityAdmin.Individuals.IndividualRequestAreaJPanel;
 
 
 /**
@@ -22,7 +26,7 @@ public class HospitalAdmin extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new HospitalAdminWorkAreaJPanel(userProcessContainer,account,(HospitalOrganization)organization,enterprise,network,cNetwork,business);
     }
     
     @Override
