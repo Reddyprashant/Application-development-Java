@@ -109,7 +109,7 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        NGOManageEmployeeJPanel manageEmployeeJPanel = new NGOManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        NGOManageEmployeeJPanel manageEmployeeJPanel = new NGOManageEmployeeJPanel(userProcessContainer,  enterprise.getOrganizationDirectory());
         userProcessContainer.add("NGOManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

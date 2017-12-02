@@ -109,7 +109,7 @@ public class EducationAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        EducationManageEmployeeJPanel manageEmployeeJPanel = new EducationManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        EducationManageEmployeeJPanel manageEmployeeJPanel = new EducationManageEmployeeJPanel(userProcessContainer,  enterprise.getOrganizationDirectory());
         userProcessContainer.add("EducationManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

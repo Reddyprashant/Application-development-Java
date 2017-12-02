@@ -22,7 +22,7 @@ public class ConfigureASystem {
         //create user account
         
         
-        Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
+        Employee employee = system.getEmployeeDirectory().createEmployee("Admin","poojithshtt@gmail.com");
         
         UserAccount ua = system.getUserAccountDirectory().createUserAccount("admin", "admin", employee, new EcoSystemAdminRole());
         

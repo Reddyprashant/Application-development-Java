@@ -114,7 +114,7 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "State Name", "Receiver", "Status"
+                "Country Name", "Receiver", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {

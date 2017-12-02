@@ -107,7 +107,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        HospitalManageEmployeeJPanel manageEmployeeJPanel = new HospitalManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        HospitalManageEmployeeJPanel manageEmployeeJPanel = new HospitalManageEmployeeJPanel(userProcessContainer,  enterprise.getOrganizationDirectory());
         userProcessContainer.add("HospitalManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

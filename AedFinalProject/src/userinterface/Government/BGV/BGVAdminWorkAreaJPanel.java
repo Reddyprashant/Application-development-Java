@@ -100,8 +100,8 @@ public class BGVAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
         BGVManageEmployeeJPanel manageEmployeeJPanel;
-        manageEmployeeJPanel = new BGVManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise, state,country, business);
-        userProcessContainer.add("OrphanageManageEmployeeJPanel", manageEmployeeJPanel);
+        manageEmployeeJPanel = new BGVManageEmployeeJPanel(userProcessContainer,  enterprise.getOrganizationDirectory());
+        userProcessContainer.add("BGVManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         

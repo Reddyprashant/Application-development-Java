@@ -70,10 +70,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
 
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Name"
@@ -125,7 +122,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 352, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
 
         jLabel4.setText("Country Network Panel");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 150, 20));
@@ -143,6 +140,12 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
 
         String name = nameJTextField.getText();
         if(!name.equals("")){
+            for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                if(name.equalsIgnoreCase(countryNetwork.getName())){
+                     JOptionPane.showMessageDialog(null, "Country already created");
+                     return;
+                }
+            }
         CountryNetwork network = system.createAndAddNetwork();
         network.setName(name);
 
@@ -150,6 +153,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
          }else{
              JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }
+        nameJTextField.setText("");
 
     }//GEN-LAST:event_submitJButtonActionPerformed
 
@@ -174,8 +178,8 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
             CountryNetwork p=(CountryNetwork) networkJTable.getValueAt(selectedRow, 0);
 
             for (CountryNetwork network : system.getNetworkList()) {
-                    if(p==network){
-                     network.getStateList().remove(p);
+                    if(p.getName().equalsIgnoreCase(network.getName())){
+                     system.getNetworkList().remove(p);
                         break;
                     }
             }
