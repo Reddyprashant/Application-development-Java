@@ -14,6 +14,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.Beneficiary.BeneficiaryAdminWorkAreaJPanel;
+
 import userinterface.EntityAdmin.EntityAdminWorkAreaJPanel;
 
 
@@ -28,6 +29,7 @@ public class BeneficiaryAdminRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
        return new BeneficiaryAdminWorkAreaJPanel(userProcessContainer,account,enterprise,network,cNetwork,business);
+       
     }
       @Override
     public String toString(){
