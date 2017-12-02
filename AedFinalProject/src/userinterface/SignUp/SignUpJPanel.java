@@ -250,6 +250,10 @@ public class SignUpJPanel extends javax.swing.JPanel {
                   StateNetwork state= (StateNetwork) comboState.getSelectedItem();
                   Enterprise e= (Enterprise) comboEnterprise.getSelectedItem();
                   Organization.Type type= (Type) comboOrganization.getSelectedItem();
+                  if(EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
+                      JOptionPane.showMessageDialog(null, "Please enter unique username");
+                      return;
+                  }
                 SignUpRequestOrganization orgRequest= new SignUpRequestOrganization();
                 orgRequest.setName(txtName.getText());
                 orgRequest.setUserName(txtUserName.getText());

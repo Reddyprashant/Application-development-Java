@@ -218,7 +218,10 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         // TODO add your handling code here:
         try{
             if(!txtUserName.getText().isEmpty()  && !txtPassword.getText().isEmpty() ){
-                
+                if(EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
+                      JOptionPane.showMessageDialog(null, "Please enter unique username");
+                      return;
+                  }
                   CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem();
                   StateNetwork state= (StateNetwork) comboState.getSelectedItem();
                 SignUpRequestEnterprise enterpriseRequest= new SignUpRequestEnterprise();

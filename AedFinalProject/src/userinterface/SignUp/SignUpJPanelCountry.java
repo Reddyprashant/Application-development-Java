@@ -130,6 +130,10 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         try{
             if(!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty()  && !txtPassword.getText().isEmpty()){
                 if(txtUserName.getText().equalsIgnoreCase(txtName.getText())){
+                    if(EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
+                      JOptionPane.showMessageDialog(null, "Please enter unique username");
+                      return;
+                  }
                 SignUpRequestCountry countryRequest= new SignUpRequestCountry();
                 countryRequest.setUserName(txtUserName.getText());
                 countryRequest.setName(txtName.getText());
