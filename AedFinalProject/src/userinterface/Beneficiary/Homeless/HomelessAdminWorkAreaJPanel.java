@@ -89,18 +89,18 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
         HomelessRequestWorkAreaJPanel muajp = new HomelessRequestWorkAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
-        userProcessContainer.add("OrphanageRequestWorkAreaJPanel", muajp);
+        userProcessContainer.add("HomelessRequestWorkAreaJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-//        OrphanageManageEmployeeJPanel manageEmployeeJPanel;
-//        manageEmployeeJPanel = new OrphanageManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
-//        userProcessContainer.add("OrphanageManageEmployeeJPanel", manageEmployeeJPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        HomelessManagePersonJPanel manageEmployeeJPanel;
+        manageEmployeeJPanel = new HomelessManagePersonJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        userProcessContainer.add("HomelessManagePersonJPanel", manageEmployeeJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
     

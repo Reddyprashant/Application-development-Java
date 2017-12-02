@@ -54,7 +54,7 @@ private HospitalRequestAreaJPanel hosRequestPanel;
         this.organization=organization;
         this.workRequest=p;
         nameLabel.setText(organization.getName());
-        reqComboBox.setSelectedItem(p.getRequestType());
+        reqComboBox.setText(p.getRequestType().getValue());
         eventNameTextfield.setText(p.getEventName());
         reqVolText.setText(String.valueOf(p.getNumberOfVolunteersRequest()));
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -74,7 +74,6 @@ private HospitalRequestAreaJPanel hosRequestPanel;
         buttonGroup1 = new javax.swing.ButtonGroup();
         enterpriseLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        reqComboBox = new javax.swing.JComboBox<>();
         eventNameTextfield = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -91,22 +90,20 @@ private HospitalRequestAreaJPanel hosRequestPanel;
         jLabel4 = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
+        reqComboBox = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Organization:");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 120, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 150, 30));
 
         jLabel1.setText("Request Type:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 106, -1, -1));
 
-        reqComboBox.setEnabled(false);
-        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 102, 232, -1));
-
         eventNameTextfield.setEditable(false);
         eventNameTextfield.setEnabled(false);
-        add(eventNameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 132, 232, -1));
+        add(eventNameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 232, -1));
 
         jLabel5.setText("Event Name");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 137, -1, -1));
@@ -176,6 +173,10 @@ private HospitalRequestAreaJPanel hosRequestPanel;
             }
         });
         add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+
+        reqComboBox.setEditable(false);
+        reqComboBox.setEnabled(false);
+        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 232, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
@@ -200,7 +201,7 @@ if(organization.getEventDirectory().getEventDirectory() == null){
             event.setSenderOrganization(workRequest.getSenderOrganization());
             
             workRequest.setNumberOfVolunteersRequest(requiredVolunteers-availableVolunteers);
-            
+            workRequest.getEventDirectory().getEventDirectory().add(event);
        if(workRequest.getNumberOfVolunteersRequest()==0 && workRequest.isLogisticRequest()==true){
             workRequest.setStatus("Complete");
         }
@@ -260,7 +261,7 @@ if(organization.getEventDirectory().getEventDirectory() == null){
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JComboBox<String> reqComboBox;
+    private javax.swing.JTextField reqComboBox;
     private javax.swing.JTextField reqVolText;
     // End of variables declaration//GEN-END:variables
 }

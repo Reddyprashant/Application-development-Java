@@ -70,7 +70,7 @@ HospitalOrganization organization;
         this.account = account;
         this.organization=organization;
         populateWorkQueueTable();
-        //populateUpdatedTable();
+        populateUpdatedTable();
         
     }
 
@@ -85,6 +85,20 @@ HospitalOrganization organization;
         
         for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
             System.out.println("work request");
+            if(work instanceof BeneficiaryWorkRequest ){
+                  BeneficiaryWorkRequest s = (BeneficiaryWorkRequest) work;
+                Object[] row = new Object[6];
+                 //System.out.println("qwe"+s.getSenderOrganization());
+                row[0] = s.getSenderOrganization();
+                row[1] = s.getEventName();
+                row[2] = s.getNumberOfVolunteersRequest();
+                row[3] = s.getEventDate();
+                row[4] = s;
+                model.addRow(row);
+            }
+            
+        }
+         for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
             if(work instanceof BeneficiaryWorkRequest ){
                   BeneficiaryWorkRequest s = (BeneficiaryWorkRequest) work;
                 Object[] row = new Object[6];

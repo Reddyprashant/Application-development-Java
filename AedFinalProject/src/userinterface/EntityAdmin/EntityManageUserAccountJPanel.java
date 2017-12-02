@@ -54,7 +54,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         }
     }
     
-    private void populateRoleComboBox(Enterprise e){
+    private void populateRoleComboBox(Organization e){
         roleJComboBox.removeAllItems();
         for (Role role : e.getSupportedRole()){
             roleJComboBox.addItem(role);
@@ -215,7 +215,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         if (organization != null){
             populateEmployeeComboBox(organization);
-            populateRoleComboBox(enterprise);
+            populateRoleComboBox(organization);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 

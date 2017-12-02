@@ -6,6 +6,8 @@
 
 package Business.Organization;
 
+import Business.Role.DisasterAdmin;
+import Business.Role.OrphanageAdmin;
 import Business.Role.Role;
 import java.util.HashSet;
 
@@ -27,7 +29,9 @@ public class DisasterOrganization extends Organization{
     
     @Override
     public HashSet<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     roles= new HashSet<>();
+        roles.add(new DisasterAdmin()); 
+        return roles;
     }
 
 }

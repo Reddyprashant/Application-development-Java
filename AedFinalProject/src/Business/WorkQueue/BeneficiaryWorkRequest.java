@@ -124,11 +124,6 @@ public class BeneficiaryWorkRequest extends WorkRequest{
         this.logisticRequest = logisticRequest;
     }
 
-
-
-
-    
-   
     public int getNumberOfVolunteersRequest() {
         return numberOfVolunteersRequest;
     }

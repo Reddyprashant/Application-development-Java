@@ -186,6 +186,7 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.next(container);
         }
          loginJButton.setEnabled(false);
+         btnSignUp.setEnabled(false);
         logoutJButton.setEnabled(true);
         userNameJTextField.setEnabled(false);
         passwordField.setEnabled(false);
@@ -196,7 +197,7 @@ public class MainJFrame extends javax.swing.JFrame {
         userNameJTextField.setEnabled(true);
         passwordField.setEnabled(true);
         loginJButton.setEnabled(true);
-
+        btnSignUp.setEnabled(true);
         userNameJTextField.setText("");
         passwordField.setText("");
 

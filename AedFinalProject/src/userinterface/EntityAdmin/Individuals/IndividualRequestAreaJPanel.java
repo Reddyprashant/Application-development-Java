@@ -72,7 +72,7 @@ IndividualOrganization organization;
         this.account = account;
         this.organization=organization;
         populateWorkQueueTable();
-        //populateUpdatedTable();
+        populateUpdatedTable();
         
     }
 
@@ -134,7 +134,6 @@ public void populateUpdatedTable()
         tblReq = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         UpdatedJTable = new javax.swing.JTable();
-        btnAssign = new javax.swing.JButton();
         btnComplete = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -183,14 +182,6 @@ public void populateUpdatedTable()
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 337, 660, 198));
 
-        btnAssign.setText("View Details");
-        btnAssign.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignActionPerformed(evt);
-            }
-        });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, -1, -1));
-
         btnComplete.setText("Serve");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,30 +201,6 @@ public void populateUpdatedTable()
         jLabel3.setText("Individual Request Area Panel");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblReq.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-
-            BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
-
-           // if (p.getStatus().equals("Requested")) {
-                //  System.out.println("admin name"+ account.getUsername());
-                p.setStatus("Pending");
-                
-                //p.setReceiver(account);
-
-                populateWorkQueueTable();
-                       
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Already assigned");
-//            }
-
-        }
-    }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
         // TODO add your handling code here:
@@ -261,7 +228,7 @@ public void populateUpdatedTable()
       
           p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
           p.getEventDirectory().getEventDirectory().add(event);
-      if(p.isLogisticRequest()==true){
+      if(p.isLogisticRequest()==true && p.getNumberOfVolunteersRequest()==0){
       p.setStatus("Complete");
       }
       
@@ -297,7 +264,6 @@ public void populateUpdatedTable()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable UpdatedJTable;
-    private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnComplete;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

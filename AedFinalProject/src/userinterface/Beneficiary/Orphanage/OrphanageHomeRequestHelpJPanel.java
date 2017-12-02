@@ -51,8 +51,17 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         this.organization= organization;
         this.state=network;
         this.country=cNetwork;
+        populateComboBox();
     }
-
+public void populateComboBox()
+{
+     reqComboBox.removeAllItems();
+     reqComboBox.addItem(Organization.RequestType.Education);
+     reqComboBox.addItem(Organization.RequestType.Hospital);
+     reqComboBox.addItem(Organization.RequestType.MNC);
+     reqComboBox.addItem(Organization.RequestType.NGO);
+     reqComboBox.addItem(Organization.RequestType.ANY);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

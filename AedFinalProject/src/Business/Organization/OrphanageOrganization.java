@@ -6,6 +6,8 @@
 
 package Business.Organization;
 
+import Business.Role.OldAgeAdmin;
+import Business.Role.OrphanageAdmin;
 import Business.Role.Role;
 import java.util.HashSet;
 
@@ -26,7 +28,9 @@ public class OrphanageOrganization extends Organization{
     
     @Override
     public HashSet<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      roles= new HashSet<>();
+        roles.add(new OrphanageAdmin()); 
+        return roles;
     }
 
 }

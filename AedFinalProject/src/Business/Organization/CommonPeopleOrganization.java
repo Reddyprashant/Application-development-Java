@@ -6,6 +6,8 @@
 
 package Business.Organization;
 
+import Business.Role.CommonPeopleAdmin;
+import Business.Role.DisasterAdmin;
 import Business.Role.Role;
 import java.util.HashSet;
 
@@ -28,7 +30,9 @@ private String name;
     
     @Override
     public HashSet<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     roles= new HashSet<>();
+        roles.add(new CommonPeopleAdmin()); 
+        return roles;
     }
 
 }

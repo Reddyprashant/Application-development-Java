@@ -68,7 +68,7 @@ MNCOrganization organization;
         this.account = account;
         this.organization=organization;
         populateWorkQueueTable();
-        //populateUpdatedTable();
+        populateUpdatedTable();
         
     }
 

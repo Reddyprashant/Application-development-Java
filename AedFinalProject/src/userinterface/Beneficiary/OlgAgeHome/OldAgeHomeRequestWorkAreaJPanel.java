@@ -95,7 +95,6 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
            
           for (Event e : eventDir.getEventDirectory()){
            
-               
             Object[] row = new Object[4];
             row[0] = e.getEventName();
             row[1] = e.getServingOrganization().getName();
