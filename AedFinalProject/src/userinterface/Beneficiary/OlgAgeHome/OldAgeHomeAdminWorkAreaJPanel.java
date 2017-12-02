@@ -6,7 +6,6 @@
 
 package userinterface.Beneficiary.OlgAgeHome;
 
-import userinterface.Beneficiary.Orphanage.*;
 import Business.EcoSystem;
 //import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
@@ -14,8 +13,6 @@ import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.OldAgeOrganization;
 //import Business.Organization.ClinicOrganization;
-import Business.Organization.Organization;
-import Business.Organization.OrphanageOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;

@@ -12,7 +12,6 @@ import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 //import Business.Organization.ClinicOrganization;
-import Business.Organization.Organization;
 import Business.Organization.OrphanageOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;

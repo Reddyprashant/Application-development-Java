@@ -13,7 +13,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 //import Business.Organization.ClinicOrganization;
-import Business.Organization.OrphanageOrganization;
+import Business.Organization.HomelessOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -26,13 +26,13 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     UserAccount account; 
-    OrphanageOrganization organization; 
+    HomelessOrganization organization; 
     Enterprise enterprise; 
     EcoSystem business;
     StateNetwork state;
     CountryNetwork country;
     /** Creates new form AdminWorkAreaJPanel */
-    public HomelessAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public HomelessAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, HomelessOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -88,7 +88,7 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        OrphanageRequestWorkAreaJPanel muajp = new OrphanageRequestWorkAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
+        HomelessRequestWorkAreaJPanel muajp = new HomelessRequestWorkAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
         userProcessContainer.add("OrphanageRequestWorkAreaJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

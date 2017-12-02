@@ -8,9 +8,7 @@ package userinterface.Beneficiary.OlgAgeHome;
 
 //import Business.Clinic.Pharmacy;
 //import userinterface.Hospital.Clinic.*;
-import userinterface.Beneficiary.Orphanage.*;
 import Business.EcoSystem;
-import Business.Employee.Employee;
 //import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
 import Business.Event.Event;
@@ -19,18 +17,14 @@ import Business.Network.CountryNetwork;
 //import Business.Network.Network;
 import Business.Network.StateNetwork;
 import Business.Organization.OldAgeOrganization;
-import Business.Organization.OrphanageOrganization;
-import Business.Organization.Organization;
 //import Business.Supplier.Vaccine;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import utility.Validator;
 
 /**
  *
@@ -157,8 +151,8 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         requestTable = new javax.swing.JTable();
-        backJButton = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -228,14 +222,6 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 720, 90));
 
-        backJButton.setText("Refresh");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
-
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,6 +229,14 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, -1, -1));
+
+        btnBack.setText("back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
@@ -253,11 +247,6 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
         
     }//GEN-LAST:event_reqBtnActionPerformed
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        new OldAgeHomeRequestWorkAreaJPanel(userProcessContainer, account, organization, enterprise,state,country, business);
-    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
@@ -287,11 +276,19 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         
         }
     }//GEN-LAST:event_requestTableMouseClicked
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
+    }//GEN-LAST:event_btnBackActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable availableTable;
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
