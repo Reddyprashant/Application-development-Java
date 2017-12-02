@@ -11,6 +11,8 @@ import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import utility.Validator;
 
@@ -47,17 +49,22 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
     }
     public void populateValues(){
         txtName.setText(request.getName());
-        txtName.setText(request.getName());
-        txtName.setText(request.getName());
-        txtName.setText(request.getName());
-        txtName.setText(request.getName());
-        txtName.setText(request.getName());
-        txtName.setText(request.getName());
-        txtName.setText(request.getName());
-        txtName.setText(request.getName());
-        
-        
-        
+        txtCity.setText(request.getCity());
+        txtEmail.setText(request.getEmail());
+        txtOrgName.setText(request.getOrgName());
+        txtUserName.setText(request.getUserName());
+        txtState.setText(request.getState().getName());
+        txtOrg.setText(request.getOrgType().getValue());
+        txtEnterprise.setText(request.getEnterprise().getName());
+        txtCountry.setText(request.getCountry().getName());
+       if(request.getImage() !=null){
+       Image smallImage = request.getImage().getScaledInstance(250, 250,Image.SCALE_SMOOTH);
+       ImageIcon imgIcon=new ImageIcon(smallImage);
+       lblImage.setIcon(imgIcon);
+       }
+       else{
+           System.out.println("No image");
+       }       
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,33 +83,29 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         txtUserName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
-        txtCity = new javax.swing.JTextField();
-        comboCountry = new javax.swing.JComboBox();
+        txtEnterprise = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        comboState = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        comboEnterprise = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
-        comboOrganization = new javax.swing.JComboBox();
         txtOrgName = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        txtImage = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        btnFile = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblImage = new javax.swing.JLabel();
+        txtState = new javax.swing.JTextField();
+        txtOrg = new javax.swing.JTextField();
+        txtCountry = new javax.swing.JTextField();
+        txtCity = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setText("Register");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 160, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 160, 30));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setText("Name :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         txtName.setEnabled(false);
         txtName.addActionListener(new java.awt.event.ActionListener() {
@@ -115,15 +118,15 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
                 txtNameKeyPressed(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 170, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 170, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel4.setText("Country:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 80, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 80, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel5.setText("User Name :");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         txtUserName.setEnabled(false);
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -131,11 +134,11 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
                 txtUserNameKeyPressed(evt);
             }
         });
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 170, -1));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel6.setText("Email Id :");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         txtEmail.setEnabled(false);
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -143,65 +146,31 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
                 txtEmailKeyPressed(evt);
             }
         });
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 170, -1));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 170, -1));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel7.setText("Password:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
-
-        txtPassword.setEnabled(false);
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 170, -1));
-
-        txtCity.setEnabled(false);
-        txtCity.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtEnterprise.setEnabled(false);
+        txtEnterprise.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCityKeyPressed(evt);
+                txtEnterpriseKeyPressed(evt);
             }
         });
-        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 170, -1));
-
-        comboCountry.setEnabled(false);
-        comboCountry.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboCountryActionPerformed(evt);
-            }
-        });
-        add(comboCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 170, -1));
+        add(txtEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 170, -1));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel9.setText("State :");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 80, -1));
-
-        comboState.setEnabled(false);
-        comboState.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboStateActionPerformed(evt);
-            }
-        });
-        add(comboState, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 170, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 80, -1));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel10.setText("City :");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 80, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 80, -1));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel11.setText("Enterprise :");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 90, -1));
-
-        comboEnterprise.setEnabled(false);
-        comboEnterprise.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEnterpriseActionPerformed(evt);
-            }
-        });
-        add(comboEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, 170, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 90, -1));
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel12.setText("Organization :");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 100, -1));
-
-        comboOrganization.setEnabled(false);
-        add(comboOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 170, -1));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 100, -1));
 
         txtOrgName.setEnabled(false);
         txtOrgName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -209,33 +178,50 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
                 txtOrgNameKeyPressed(evt);
             }
         });
-        add(txtOrgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 170, -1));
+        add(txtOrgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 170, -1));
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel13.setText("Organization Name :");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, 150, -1));
-
-        txtImage.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtImageKeyPressed(evt);
-            }
-        });
-        add(txtImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 510, 170, -1));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 150, -1));
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel14.setText("Documents :");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 510, 100, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 100, -1));
 
-        btnFile.setText("Choose File");
-        btnFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFileActionPerformed(evt);
+        lblImage.setText("Image");
+        add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 220, 210));
+
+        txtState.setEnabled(false);
+        txtState.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtStateKeyPressed(evt);
             }
         });
-        add(btnFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 270, -1, -1));
+        add(txtState, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 170, -1));
 
-        jLabel2.setText("Image");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 220, 180));
+        txtOrg.setEnabled(false);
+        txtOrg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtOrgKeyPressed(evt);
+            }
+        });
+        add(txtOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 170, -1));
+
+        txtCountry.setEnabled(false);
+        txtCountry.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCountryKeyPressed(evt);
+            }
+        });
+        add(txtCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 170, -1));
+
+        txtCity.setEnabled(false);
+        txtCity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCityKeyPressed(evt);
+            }
+        });
+        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -256,81 +242,53 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailKeyPressed
 
-    private void txtCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCityKeyPressed
+    private void txtEnterpriseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnterpriseKeyPressed
         // TODO add your handling code here:
-        Validator.onlyInteger(evt, txtCity);
-    }//GEN-LAST:event_txtCityKeyPressed
-
-    private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_comboCountryActionPerformed
-
-    private void comboStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboStateActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_comboStateActionPerformed
-
-    private void comboEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEnterpriseActionPerformed
-
-    }//GEN-LAST:event_comboEnterpriseActionPerformed
+        Validator.onlyInteger(evt, txtEnterprise);
+    }//GEN-LAST:event_txtEnterpriseKeyPressed
 
     private void txtOrgNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOrgNameKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtOrgNameKeyPressed
 
-    private void txtImageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImageKeyPressed
+    private void txtStateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStateKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtImageKeyPressed
+    }//GEN-LAST:event_txtStateKeyPressed
 
-    private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
+    private void txtOrgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOrgKeyPressed
         // TODO add your handling code here:
-//        openFile.setCurrentDirectory(new File("c:\\temp"));
-//        int value=openFile.showOpenDialog(btnFile);
-//        if(value==JFileChooser.APPROVE_OPTION){
-//            try{
-//                file=ImageIO.read(openFile.getSelectedFile());
-//                //person.setImage(file);
-//                //                 Image smallImage = person.getImage().getScaledInstance(250, 250,Image.SCALE_SMOOTH);
-//                //       ImageIcon imgIcon=new ImageIcon(smallImage);
-//                //       imageLabel.setIcon(imgIcon);
-//                txtImage.setText(openFile.getSelectedFile().getPath());
-//                JOptionPane.showMessageDialog(null, "Image Loaded Successfully");
-//            }catch(IOException ioe){
-//                JOptionPane.showMessageDialog(null, "Image load unsuccessfull");
-//            }
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(null, "No file");
-//        }
-    }//GEN-LAST:event_btnFileActionPerformed
+    }//GEN-LAST:event_txtOrgKeyPressed
+
+    private void txtCountryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCountryKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCountryKeyPressed
+
+    private void txtCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCityKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCityKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFile;
-    private javax.swing.JComboBox comboCountry;
-    private javax.swing.JComboBox comboEnterprise;
-    private javax.swing.JComboBox comboOrganization;
-    private javax.swing.JComboBox comboState;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtCountry;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtImage;
+    private javax.swing.JTextField txtEnterprise;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtOrg;
     private javax.swing.JTextField txtOrgName;
-    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtState;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

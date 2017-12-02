@@ -230,6 +230,10 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
                 enterpriseRequest.setState(state);
                 enterpriseRequest.setStatus("Requested");
                 enterpriseRequest.setEnterprise((Enterprise.EnterpriseType)comboEnterprise.getSelectedItem());
+                 enterpriseRequest.setImage(file);
+              
+                
+               
                  for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
                     if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
                         userAccount.getWorkQueue().getWorkRequestList().add(enterpriseRequest);

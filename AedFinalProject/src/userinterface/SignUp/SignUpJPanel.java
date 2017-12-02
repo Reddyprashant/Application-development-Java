@@ -38,7 +38,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private BufferedImage file;
-    private JFileChooser openFile;
+    private JFileChooser openFile= new JFileChooser();
     private String type;
     public SignUpJPanel(JPanel userProcessContainer, EcoSystem business, SignUpRequest.SignUpType type) {
         initComponents();
@@ -257,7 +257,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 orgRequest.setStatus("Requested");
                 orgRequest.setOrgName(txtOrgName.getText());
                 orgRequest.setEnterprise(e);
-                
+                orgRequest.setImage(file);
                 
              //   orgRequest.setEnterprise((Enterprise.EnterpriseType)comboEnterprise.getSelectedItem());
 //                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
@@ -265,7 +265,10 @@ public class SignUpJPanel extends javax.swing.JPanel {
 //                        userAccount.getWorkQueue().getWorkRequestList().add(orgRequest);
 //                    }
 //                }
-                 
+                   if(orgRequest.getImage() == (null)){
+             JOptionPane.showMessageDialog(null, "Please load the Authorised Organization Document");
+             return;
+        }
                  for (CountryNetwork countryNetwork : system.getNetworkList()) {
                      for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
                          for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
@@ -287,6 +290,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Enter integer for Salary", "Warning", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
