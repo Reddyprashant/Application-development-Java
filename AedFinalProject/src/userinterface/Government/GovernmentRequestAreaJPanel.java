@@ -11,6 +11,7 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.BGVOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.Role.BGVAdmin;
@@ -98,6 +99,7 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
+        btnAssign1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -122,7 +124,7 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 266, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, -1, -1));
 
         btnServe.setText("Serve");
         btnServe.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +166,14 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblReq);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 77, 690, 182));
+
+        btnAssign1.setText("Assign to BGV");
+        btnAssign1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssign1ActionPerformed(evt);
+            }
+        });
+        add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 266, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -244,9 +254,40 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnServeActionPerformed
 
+    private void btnAssign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssign1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblReq.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
+
+            if(p.getStatus().equals("Requested")){
+                //  System.out.println("admin name"+ account.getUsername());
+                p.setStatus("Background Verification");
+                //  p.setReceiver(account);
+                for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
+                    for (Organization organization1 : enterprise1.getOrganizationDirectory().getOrganizationList()) {
+                        if(organization1 instanceof BGVOrganization){
+                            organization1.getWorkQueue().getWorkRequestList().add(p);
+                        }
+                    }
+                }
+                populateWorkQueueTable();
+
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Already assigned");
+            }
+
+        }
+    }//GEN-LAST:event_btnAssign1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnAssign1;
     private javax.swing.JButton btnServe;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

@@ -35,6 +35,8 @@ public class BeneficiaryManageEmployeeJPanel extends javax.swing.JPanel {
         populateOrganizationComboBox();
         populateOrganizationEmpComboBox();
     }
+
+    
     
     public void populateOrganizationComboBox(){
         organizationJComboBox.removeAllItems();
