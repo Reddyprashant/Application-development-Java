@@ -68,10 +68,10 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
 
         model.setRowCount(0);
-        System.out.println("qasda" + enterprise.getWorkQueue().getWorkRequestList().size() + " " + enterprise);
+        //System.out.println("qasda" + enterprise.getWorkQueue().getWorkRequestList().size() + " " + enterprise);
         // SignUpRequest s=null;
         for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
-            System.out.println("q" + work);
+            //System.out.println("q" + work);
             if (work instanceof SignUpRequestOrganization) {
                 SignUpRequestOrganization s = (SignUpRequestOrganization) work;
                 Object[] row = new Object[6];

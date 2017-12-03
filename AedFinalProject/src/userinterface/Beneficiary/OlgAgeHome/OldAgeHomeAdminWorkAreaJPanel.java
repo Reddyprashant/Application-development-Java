@@ -16,6 +16,8 @@ import Business.Organization.OldAgeOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -57,29 +59,40 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(0, 171, 56));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Clinic Work Area -Adminstrative Role");
+        jLabel1.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel1.setText("Old Age Home Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
         userJButton.setText("Manage Request");
+        userJButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 204), 3, true));
         userJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 170, -1));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 170, 60));
 
+        manageEmployeeJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        manageEmployeeJButton.setForeground(new java.awt.Color(0, 153, 204));
         manageEmployeeJButton.setText("Manage Employee");
+        manageEmployeeJButton.setBorder(null);
+        manageEmployeeJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        manageEmployeeJButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 170, -1));
+        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 160, 60));
+        manageEmployeeJButton.getAccessibleContext().setAccessibleDescription("");
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(0, 151, 38));
         enterpriseLabel.setText("Enterprise :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 120, 30));
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 130, 20));
@@ -87,6 +100,7 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
+       
         OldAgeHomeRequestWorkAreaJPanel muajp = new OldAgeHomeRequestWorkAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
         userProcessContainer.add("OldAgeHomeRequestWorkAreaJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

@@ -111,7 +111,11 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         vanBtn = new javax.swing.JRadioButton();
         busBtn = new javax.swing.JRadioButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        enterpriseLabel.setBackground(new java.awt.Color(51, 51, 255));
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(0, 154, 40));
         enterpriseLabel.setText("EnterPrise :");
 
         jLabel1.setText("Request Type:");

@@ -185,6 +185,11 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -315,6 +320,10 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
 
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseReleased
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -22,23 +22,23 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.jsmpp.InvalidResponseException;
-import org.jsmpp.PDUException;
-import org.jsmpp.bean.Alphabet;
-import org.jsmpp.bean.BindType;
-import org.jsmpp.bean.ESMClass;
-import org.jsmpp.bean.GeneralDataCoding;
-import org.jsmpp.bean.MessageClass;
-import org.jsmpp.bean.NumberingPlanIndicator;
-import org.jsmpp.bean.RegisteredDelivery;
-import org.jsmpp.bean.SMSCDeliveryReceipt;
-import org.jsmpp.bean.TypeOfNumber;
-import org.jsmpp.extra.NegativeResponseException;
-import org.jsmpp.extra.ResponseTimeoutException;
-import org.jsmpp.session.BindParameter;
-import org.jsmpp.session.SMPPSession;
-import org.jsmpp.util.AbsoluteTimeFormatter;
-import org.jsmpp.util.TimeFormatter;
+//import org.jsmpp.InvalidResponseException;
+//import org.jsmpp.PDUException;
+//import org.jsmpp.bean.Alphabet;
+//import org.jsmpp.bean.BindType;
+//import org.jsmpp.bean.ESMClass;
+//import org.jsmpp.bean.GeneralDataCoding;
+//import org.jsmpp.bean.MessageClass;
+//import org.jsmpp.bean.NumberingPlanIndicator;
+//import org.jsmpp.bean.RegisteredDelivery;
+//import org.jsmpp.bean.SMSCDeliveryReceipt;
+//import org.jsmpp.bean.TypeOfNumber;
+//import org.jsmpp.extra.NegativeResponseException;
+//import org.jsmpp.extra.ResponseTimeoutException;
+//import org.jsmpp.session.BindParameter;
+//import org.jsmpp.session.SMPPSession;
+//import org.jsmpp.util.AbsoluteTimeFormatter;
+//import org.jsmpp.util.TimeFormatter;
 /**
  *
  * @author Administrator
@@ -124,7 +124,7 @@ public class Validator {
       }
      }
      
-    private static TimeFormatter timeFormatter = new AbsoluteTimeFormatter();;
+//    private static TimeFormatter timeFormatter = new AbsoluteTimeFormatter();;
     
     public static void sendMessageText(String phone, String network) {
          try {
