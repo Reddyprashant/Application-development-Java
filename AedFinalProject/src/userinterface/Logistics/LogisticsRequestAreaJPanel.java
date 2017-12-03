@@ -72,7 +72,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                SignUpRequestOrganization  s= (SignUpRequestOrganization) work;
                 Object[] row = new Object[6];
                 row[0] = s.getOrgName();
-                row[1] = s.getReceiver();
+                row[1] = s.getSender();
                  row[2] = s.getEnterprise();
                  row[3]= s.getOrgType().getValue();
                  row[4]=s.getCity();
@@ -91,13 +91,9 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         btnAssign = new javax.swing.JButton();
         btnServe = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
@@ -105,28 +101,13 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 337, -1, 198));
-
         btnAssign.setText("Assign to me");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, -1, -1));
 
         btnServe.setText("Serve");
         btnServe.addActionListener(new java.awt.event.ActionListener() {
@@ -134,27 +115,21 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                 btnServeActionPerformed(evt);
             }
         });
-        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 266, -1, -1));
-
-        jButton3.setText("Send Request to BGV");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 553, -1, -1));
+        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, -1, -1));
 
         jLabel1.setText("Request Recieved");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 43, -1, -1));
-
-        jLabel2.setText("jLabel2");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 308, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Logistics Admin Request Area Panel");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 389, -1));
 
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Organization Name", "Reciever", "Enterprise", "Org Type", "City", "Status"
+                "Organization Name", "Sender", "Enterprise", "Org Type", "City", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -167,7 +142,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 77, 690, 182));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 690, 182));
 
         btnAssign1.setText("Assign to BGV");
         btnAssign1.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +150,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                 btnAssign1ActionPerformed(evt);
             }
         });
-        add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 266, -1, -1));
+        add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -295,13 +270,9 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnAssign1;
     private javax.swing.JButton btnServe;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable tblReq;
     // End of variables declaration//GEN-END:variables
 }
