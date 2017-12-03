@@ -59,7 +59,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
      this.organization = organization;
      this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.container = container;
+        //this.container = container;
          this.system=business;
         this.state=network;
         this.country=cNetwork;
@@ -225,43 +225,44 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
                         orgRequest = (SignUpRequestOrganization) p;
                         //You can check for non duplicate of enterprise here.
                        // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
-                        Employee emp = new Employee();
-                        emp.setName(p.getName());
-                        emp.setEmailId(p.getEmail());
+//                        Employee emp = new Employee();
+//                        emp.setName(p.getName());
+//                        emp.setEmailId(p.getEmail());
                         Enterprise e= orgRequest.getEnterprise();
-                        CountryNetwork country = orgRequest.getCountry();
-                        StateNetwork state= orgRequest.getState();
-                        
-                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity());
-                        
-                        if(orgRequest.getOrgType()== Organization.Type.CommonPeople){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new CommonPeopleAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.Disaster){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new DisasterAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.Homeless){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new HomelessAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.OldAge){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new OldAgeAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.Orphanage){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new OrphanageAdmin());
-                        }
+                        //e.getWorkQueue().getWorkRequestList().add(p);
+//                        CountryNetwork country = orgRequest.getCountry();
+//                        StateNetwork state= orgRequest.getState();
+//                        
+//                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity());
+//                        
+//                        if(orgRequest.getOrgType()== Organization.Type.CommonPeople){
+//                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new CommonPeopleAdmin());
+//                        }
+//                        else if(orgRequest.getOrgType()== Organization.Type.Disaster){
+//                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new DisasterAdmin());
+//                        }
+//                        else if(orgRequest.getOrgType()== Organization.Type.Homeless){
+//                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new HomelessAdmin());
+//                        }
+//                        else if(orgRequest.getOrgType()== Organization.Type.OldAge){
+//                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new OldAgeAdmin());
+//                        }
+//                        else if(orgRequest.getOrgType()== Organization.Type.Orphanage){
+//                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new OrphanageAdmin());
+//                        }
+//
+//                        try {
+//                            Validator.sendMessage(p.getEmail());
+//                        } catch (SendFailedException ex) {
+//                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
+//                             p.setStatus("Cancelled");
+//                             populateWorkQueueTable();
+//                             return;
+//                        }
+//                    }
 
-                        try {
-                            Validator.sendMessage(p.getEmail());
-                        } catch (SendFailedException ex) {
-                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
-                             p.setStatus("Cancelled");
-                             populateWorkQueueTable();
-                             return;
-                        }
-                    }
-
-                    p.setStatus("Complete");
-                    JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+                    p.setStatus("Verified");
+                    JOptionPane.showMessageDialog(null, "You have successfully Verified the request");
 
                     populateWorkQueueTable();
                 } else {
@@ -271,6 +272,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Please assign first");
             }
 
+        }
         }
     }//GEN-LAST:event_btnServeActionPerformed
 

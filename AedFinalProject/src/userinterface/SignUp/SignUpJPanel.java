@@ -127,6 +127,16 @@ public class SignUpJPanel extends javax.swing.JPanel {
         });
         add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 550, 90, -1));
 
+        txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUserNameFocusLost(evt);
+            }
+        });
+        txtUserName.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                txtUserNameMouseWheelMoved(evt);
+            }
+        });
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUserNameKeyPressed(evt);
@@ -148,6 +158,12 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel7.setText("Password:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
+
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 170, -1));
 
         txtCity.addActionListener(new java.awt.event.ActionListener() {
@@ -281,9 +297,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
                  for (CountryNetwork countryNetwork : system.getNetworkList()) {
                      for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
                          for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
-                              System.out.println("enterall"+e.getEnterpriseType()+stateNetwork.getName()+countryNetwork.getName());
+                             // System.out.println("enterall"+e.getEnterpriseType()+stateNetwork.getName()+countryNetwork.getName());
                              if(enterprise == e){
-                                 System.out.println("enter"+e.getEnterpriseType()+" "+enterprise);
+                              //   System.out.println("enter"+e.getEnterpriseType()+" "+enterprise);
                                  e.getWorkQueue().getWorkRequestList().add(orgRequest);
                              }
                          }
@@ -381,6 +397,22 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCityActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtUserNameMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_txtUserNameMouseWheelMoved
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_txtUserNameMouseWheelMoved
+
+    private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
+        // TODO add your handling code here:
+        if(!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
+             JOptionPane.showMessageDialog(null, "Enter unique username");
+        }
+    }//GEN-LAST:event_txtUserNameFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

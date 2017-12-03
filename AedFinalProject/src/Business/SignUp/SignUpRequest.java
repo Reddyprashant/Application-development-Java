@@ -23,6 +23,7 @@ public abstract class SignUpRequest extends WorkRequest{
     private BufferedImage image;
     private Date requestDate;
     private String email;
+    private String phone;
     
     public SignUpRequest(){
         requestDate=new Date();
@@ -99,6 +100,14 @@ public abstract class SignUpRequest extends WorkRequest{
 
     public void setImage(BufferedImage image) {
         this.image = image;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
     
         public abstract JPanel signUpForm(JPanel userProcessContainer,EcoSystem business);

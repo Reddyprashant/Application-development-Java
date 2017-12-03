@@ -213,7 +213,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
             UserAccount acc=null;
 
             if (p.getReceiver() != null) {
-                if (p.getStatus().equals("Pending")) {
+                if (p.getStatus().equals("Verified") || p.getStatus().equals("Requested") ) {
                     if (p instanceof SignUpRequestOrganization) {
                         orgRequest = (SignUpRequestOrganization) p;
                         //You can check for non duplicate of enterprise here.

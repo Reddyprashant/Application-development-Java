@@ -102,6 +102,11 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         jLabel5.setText("User Name :");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
 
+        txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUserNameFocusLost(evt);
+            }
+        });
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUserNameKeyPressed(evt);
@@ -271,6 +276,13 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
             comboState.addItem(state);
         }
     }//GEN-LAST:event_comboCountryActionPerformed
+
+    private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
+        // TODO add your handling code here:
+        if(!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
+             JOptionPane.showMessageDialog(null, "Enter unique username");
+        }
+    }//GEN-LAST:event_txtUserNameFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -56,6 +56,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        txtPhone = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -89,8 +90,13 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 90, -1));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 90, -1));
 
+        txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUserNameFocusLost(evt);
+            }
+        });
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUserNameKeyPressed(evt);
@@ -113,6 +119,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         jLabel7.setText("Password:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 170, -1));
+        add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -139,6 +146,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                 countryRequest.setName(txtName.getText());
                 countryRequest.setPassword(txtPassword.getText());
                 countryRequest.setEmail(txtEmail.getText());
+                countryRequest.setPhone(txtPhone.getText());
                 countryRequest.setStatus("Requested");
              system.getWorkQueue().getWorkRequestList().add(countryRequest);
 
@@ -169,6 +177,13 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailKeyPressed
 
+    private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
+        // TODO add your handling code here:
+        if(!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
+             JOptionPane.showMessageDialog(null, "Enter unique username");
+        }
+    }//GEN-LAST:event_txtUserNameFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
@@ -180,6 +195,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
