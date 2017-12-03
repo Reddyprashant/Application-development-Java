@@ -287,6 +287,7 @@ public void populateComboBox()
         typeLabel.setVisible(false);
     }//GEN-LAST:event_notReqBtnActionPerformed
 
+    
     private void btnRequestHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestHelpActionPerformed
         // TODO add your handling code here:
         try

@@ -16,7 +16,12 @@ import Business.Organization.OldAgeOrganization;
 import Business.Person.Person;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.io.File;
 import java.text.SimpleDateFormat;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -28,13 +33,14 @@ import utility.Validator;
  */
 public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
-    UserAccount account; 
-    OldAgeOrganization organization; 
-    Enterprise enterprise; 
-    EcoSystem business;
-     StateNetwork state;
-    CountryNetwork country;
+    private JPanel userProcessContainer;
+    private UserAccount account; 
+    private OldAgeOrganization organization; 
+    private Enterprise enterprise; 
+    private EcoSystem business;
+     private StateNetwork state;
+    private CountryNetwork country;
+    private ImageIcon photo;
     /**
      * Creates new form ManageOrganizationJPanel
      */
@@ -109,13 +115,6 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         ageTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        ARadioButton = new javax.swing.JRadioButton();
-        BRadioButton2 = new javax.swing.JRadioButton();
-        CRadioButton3 = new javax.swing.JRadioButton();
-        ORadioButton4 = new javax.swing.JRadioButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TextArea = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         sexTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -124,6 +123,17 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         rdBtnHighschoolGrad = new javax.swing.JRadioButton();
         rdBtnCollegeGrad = new javax.swing.JRadioButton();
         rdBtnUneducated = new javax.swing.JRadioButton();
+        btnViewDetails = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        ARadioButton = new javax.swing.JRadioButton();
+        BRadioButton2 = new javax.swing.JRadioButton();
+        CRadioButton3 = new javax.swing.JRadioButton();
+        ORadioButton4 = new javax.swing.JRadioButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TextArea = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
+        btnUpload = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -201,51 +211,6 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         jLabel1.setText("Age:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 50, -1));
 
-        jLabel6.setText("Reason For Joining");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, -1, -1));
-
-        btnGrpReasons.add(ARadioButton);
-        ARadioButton.setText("Individual and relational factors");
-        ARadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ARadioButtonActionPerformed(evt);
-            }
-        });
-        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, -1));
-
-        btnGrpReasons.add(BRadioButton2);
-        BRadioButton2.setText("Economic Issues");
-        BRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BRadioButton2ActionPerformed(evt);
-            }
-        });
-        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, -1, -1));
-
-        btnGrpReasons.add(CRadioButton3);
-        CRadioButton3.setText("System failures");
-        CRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CRadioButton3ActionPerformed(evt);
-            }
-        });
-        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, -1, -1));
-
-        btnGrpReasons.add(ORadioButton4);
-        ORadioButton4.setText("Others");
-        ORadioButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ORadioButton4ActionPerformed(evt);
-            }
-        });
-        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, -1, -1));
-
-        TextArea.setColumns(20);
-        TextArea.setRows(5);
-        jScrollPane2.setViewportView(TextArea);
-
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, -1, 52));
-
         jLabel3.setText("Sex:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 40, -1));
 
@@ -276,6 +241,69 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
         rdBtnUneducated.setText("Uneducated");
         add(rdBtnUneducated, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 380, -1, -1));
+
+        btnViewDetails.setText("View Details");
+        btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetailsActionPerformed(evt);
+            }
+        });
+        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, -1, -1));
+
+        jLabel6.setText("Reason For Joining");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, -1, -1));
+
+        ARadioButton.setText("Individual and relational factors");
+        ARadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ARadioButtonActionPerformed(evt);
+            }
+        });
+        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
+
+        BRadioButton2.setText("Economic Issues");
+        BRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BRadioButton2ActionPerformed(evt);
+            }
+        });
+        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, -1, -1));
+
+        CRadioButton3.setText("System failures");
+        CRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CRadioButton3ActionPerformed(evt);
+            }
+        });
+        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, -1, -1));
+
+        ORadioButton4.setText("Others");
+        ORadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ORadioButton4ActionPerformed(evt);
+            }
+        });
+        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 420, -1, -1));
+
+        TextArea.setColumns(20);
+        TextArea.setRows(5);
+        jScrollPane2.setViewportView(TextArea);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, -1, 52));
+
+        jLabel9.setText("Description: ");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, -1, -1));
+
+        btnUpload.setText("Upload ");
+        btnUpload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUploadActionPerformed(evt);
+            }
+        });
+        add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, -1, -1));
+
+        jLabel10.setText("Photo:");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
@@ -318,9 +346,11 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
       
       else if(ORadioButton4.isSelected())
                {
-                 reason=TextArea.getText();
+                 reason="Others";
                }
-        organization.getPersonList().createperson(name, age, reason,ethnicity,sex,educationBG);
+       
+       String description = TextArea.getText();
+        organization.getPersonList().createperson(name, age, reason,ethnicity,sex,educationBG,description,photo);
         
         
         
@@ -350,26 +380,6 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         Validator.onlyString(evt, nameJTextField);
     }//GEN-LAST:event_nameJTextFieldKeyPressed
 
-    private void ORadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ORadioButton4ActionPerformed
-        // TODO add your handling code here:
-        TextArea.enable(true);
-    }//GEN-LAST:event_ORadioButton4ActionPerformed
-
-    private void ARadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARadioButtonActionPerformed
-        // TODO add your handling code here:
-        TextArea.enable(false);
-    }//GEN-LAST:event_ARadioButtonActionPerformed
-
-    private void BRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRadioButton2ActionPerformed
-        // TODO add your handling code here:
-        TextArea.enable(false);
-    }//GEN-LAST:event_BRadioButton2ActionPerformed
-
-    private void CRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CRadioButton3ActionPerformed
-        // TODO add your handling code here:
-        TextArea.enable(false);
-    }//GEN-LAST:event_CRadioButton3ActionPerformed
-
     private void sexTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sexTextFieldKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_sexTextFieldKeyPressed
@@ -377,6 +387,68 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
     private void sexTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sexTextFieldActionPerformed
+
+    private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedrow = organizationJTable.getSelectedRow();
+        
+        if(selectedrow <0)
+        {
+            JOptionPane.showMessageDialog(null, "Please select a Row from table first to view details","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        else {
+        Person p = (Person) organizationJTable.getValueAt(selectedrow, 0);    
+        HomelessPersonViewJPanel muajp = new HomelessPersonViewJPanel( userProcessContainer,p);
+        userProcessContainer.add("HomelessPersonViewJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+            
+        }
+    }//GEN-LAST:event_btnViewDetailsActionPerformed
+
+    private void ARadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARadioButtonActionPerformed
+        // TODO add your handling code here:
+        TextArea.enable(true);
+    }//GEN-LAST:event_ARadioButtonActionPerformed
+
+    private void BRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRadioButton2ActionPerformed
+        // TODO add your handling code here:
+        TextArea.enable(true);
+    }//GEN-LAST:event_BRadioButton2ActionPerformed
+
+    private void CRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CRadioButton3ActionPerformed
+        // TODO add your handling code here:
+        TextArea.enable(true);
+    }//GEN-LAST:event_CRadioButton3ActionPerformed
+
+    private void ORadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ORadioButton4ActionPerformed
+        // TODO add your handling code here:
+        TextArea.enable(true);
+    }//GEN-LAST:event_ORadioButton4ActionPerformed
+
+    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f1 = chooser.getSelectedFile();
+        if (f1 != null) {
+            try {
+                Image pic = ImageIO.read(f1);
+                pic = pic.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
+                photo = new ImageIcon(pic);
+
+            } catch (Exception e) {
+
+            }
+        }
+        else {
+
+            JOptionPane.showMessageDialog(null, "Please select a picture","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnUploadActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ARadioButton;
@@ -389,8 +461,11 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCreatePerson;
     private javax.swing.ButtonGroup btnGrpEducationBackGround;
     private javax.swing.ButtonGroup btnGrpReasons;
+    private javax.swing.JButton btnUpload;
+    private javax.swing.JButton btnViewDetails;
     private javax.swing.JTextField ethnicityTextField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -398,6 +473,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nameJTextField;

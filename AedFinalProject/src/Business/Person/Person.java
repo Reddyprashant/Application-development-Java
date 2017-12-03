@@ -7,6 +7,7 @@
 package Business.Person;
 
 import java.util.Date;
+import javax.swing.ImageIcon;
 
 
 public class Person {
@@ -20,6 +21,27 @@ public class Person {
     private String sex;
     private String reason;
     private static int pCount;
+    private String reasonDescription;
+    private ImageIcon phtoto;
+
+    public ImageIcon getPhtoto() {
+        return phtoto;
+    }
+
+    public void setPhtoto(ImageIcon phtoto) {
+        this.phtoto = phtoto;
+    }
+    
+
+    public String getReasonDescription() {
+        return reasonDescription;
+    }
+
+    public void setReasonDescription(String reasonDescription) {
+        this.reasonDescription = reasonDescription;
+    }
+    
+    
     public Person(){
         dateOfJoining= new Date();
         pCount++;

@@ -8,6 +8,7 @@ package Business.Person;
 import Business.Employee.Employee;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.ImageIcon;
 
 public class PersonDirectory {
 
@@ -24,7 +25,7 @@ public class PersonDirectory {
     public void setPersonList(ArrayList<Person> personList) {
         this.personList = personList;
     }
-public Person createperson(String name, int age, String reason, String ethnicity, String sex, String educationBG ){
+public Person createperson(String name, int age, String reason, String ethnicity, String sex, String educationBG,String reasonDesc,ImageIcon photo ){
         Person person = new Person();
         person.setName(name);
         person.setAge(age);
@@ -32,6 +33,10 @@ public Person createperson(String name, int age, String reason, String ethnicity
         person.setEducationBackground(educationBG);
         person.setEthnicity(ethnicity);
         person.setSex(sex);
+        person.setReasonDescription(reasonDesc);
+        person.setPhtoto(photo);
+        
+        
         
         personList.add(person);
         return person;

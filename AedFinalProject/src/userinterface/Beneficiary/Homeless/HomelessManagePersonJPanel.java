@@ -14,7 +14,12 @@ import Business.Organization.HomelessOrganization;
 import Business.Person.Person;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.io.File;
 import java.text.SimpleDateFormat;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -26,13 +31,14 @@ import utility.Validator;
  */
 public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
-    UserAccount account; 
-    HomelessOrganization organization; 
-    Enterprise enterprise; 
-    EcoSystem business;
-     StateNetwork state;
-    CountryNetwork country;
+    private JPanel userProcessContainer;
+    private UserAccount account; 
+    private HomelessOrganization organization; 
+    private Enterprise enterprise; 
+    private EcoSystem business;
+     private StateNetwork state;
+    private CountryNetwork country;
+    private ImageIcon photo;
     /**
      * Creates new form ManageOrganizationJPanel
      */
@@ -49,7 +55,20 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         TextArea.enable(false);
       //  populateOrganizationComboBox();
        // populateOrganizationEmpComboBox();
+       populateComboBox();
     }
+    
+        public void populateComboBox()
+{
+     reqComboBox.removeAllItems();
+     reqComboBox.addItem("White American");
+     reqComboBox.addItem("African American");
+     reqComboBox.addItem("Asian American");
+     reqComboBox.addItem("Native American");
+     reqComboBox.addItem("Native Hawaiians");
+     reqComboBox.addItem("Middle Eastern");
+     reqComboBox.addItem("Others");
+}
     
 //    public void populateOrganizationComboBox(){
 //        organizationJComboBox.removeAllItems();
@@ -74,14 +93,12 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         
         for (Person person : organization.getPersonList().getPersonList()){
             
-            Object[] row = new Object[7];
+            Object[] row = new Object[5];
             row[0] = person.getPersonId();
             row[1] = person.getName();
             row[2]=person.getAge();
             row[3]=person.getSex();
-            row[4]=person.getEthnicity();
-            row[5]=person.getDateOfJoining();
-            row[6]=person.getEducationBackground();
+            row[4]=person.getDateOfJoining();
             
             model.addRow(row);
         }
@@ -97,6 +114,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
         btnGrpReasons = new javax.swing.ButtonGroup();
         btnGrpEducationBackGround = new javax.swing.ButtonGroup();
+        btnGrpSex = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         organizationJTable = new javax.swing.JTable();
         btnCreatePerson = new javax.swing.JButton();
@@ -115,13 +133,19 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         TextArea = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        sexTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        ethnicityTextField = new javax.swing.JTextField();
         rdBtnHighschoolGrad = new javax.swing.JRadioButton();
         rdBtnCollegeGrad = new javax.swing.JRadioButton();
         rdBtnUneducated = new javax.swing.JRadioButton();
+        rdBtnMale = new javax.swing.JRadioButton();
+        rdBtnFemale = new javax.swing.JRadioButton();
+        rdBtnOthers = new javax.swing.JRadioButton();
+        reqComboBox = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        btnUpload = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        btnViewDetails = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -130,14 +154,14 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Name", "Age", "Sex", "Ethnicity", "Date Of Joining", "Education Background"
+                "ID", "Name", "Age", "Sex", "Date Of Joining"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -155,8 +179,6 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
             organizationJTable.getColumnModel().getColumn(2).setResizable(false);
             organizationJTable.getColumnModel().getColumn(3).setResizable(false);
             organizationJTable.getColumnModel().getColumn(4).setResizable(false);
-            organizationJTable.getColumnModel().getColumn(5).setResizable(false);
-            organizationJTable.getColumnModel().getColumn(6).setResizable(false);
         }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 850, 92));
@@ -209,7 +231,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                 ARadioButtonActionPerformed(evt);
             }
         });
-        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, -1));
+        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
 
         btnGrpReasons.add(BRadioButton2);
         BRadioButton2.setText("Economic Issues");
@@ -218,7 +240,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                 BRadioButton2ActionPerformed(evt);
             }
         });
-        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, -1, -1));
+        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, -1, -1));
 
         btnGrpReasons.add(CRadioButton3);
         CRadioButton3.setText("System failures");
@@ -227,7 +249,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                 CRadioButton3ActionPerformed(evt);
             }
         });
-        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, -1, -1));
+        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, -1, -1));
 
         btnGrpReasons.add(ORadioButton4);
         ORadioButton4.setText("Others");
@@ -236,44 +258,71 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                 ORadioButton4ActionPerformed(evt);
             }
         });
-        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, -1, -1));
+        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 420, -1, -1));
 
         TextArea.setColumns(20);
         TextArea.setRows(5);
         jScrollPane2.setViewportView(TextArea);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, -1, 52));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, -1, 52));
 
         jLabel3.setText("Sex:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 40, -1));
-
-        sexTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sexTextFieldActionPerformed(evt);
-            }
-        });
-        sexTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                sexTextFieldKeyPressed(evt);
-            }
-        });
-        add(sexTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, 126, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 40, -1));
 
         jLabel7.setText("Ethnicity:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 70, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 70, -1));
 
         jLabel8.setText("Education Background:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
-        add(ethnicityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 130, -1));
 
+        btnGrpEducationBackGround.add(rdBtnHighschoolGrad);
         rdBtnHighschoolGrad.setText("Highschool Graduate");
         add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, -1, -1));
 
+        btnGrpEducationBackGround.add(rdBtnCollegeGrad);
         rdBtnCollegeGrad.setText("College Graduate");
         add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, -1, -1));
 
+        btnGrpEducationBackGround.add(rdBtnUneducated);
         rdBtnUneducated.setText("Uneducated");
         add(rdBtnUneducated, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 380, -1, -1));
+
+        btnGrpSex.add(rdBtnMale);
+        rdBtnMale.setText("Male");
+        add(rdBtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
+
+        btnGrpSex.add(rdBtnFemale);
+        rdBtnFemale.setText("Female");
+        add(rdBtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, -1));
+
+        btnGrpSex.add(rdBtnOthers);
+        rdBtnOthers.setText("Others");
+        add(rdBtnOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, -1, -1));
+
+        reqComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 110, -1));
+
+        jLabel9.setText("Description: ");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, -1, -1));
+
+        btnUpload.setText("Upload ");
+        btnUpload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUploadActionPerformed(evt);
+            }
+        });
+        add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, -1, -1));
+
+        jLabel10.setText("Photo:");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, -1, -1));
+
+        btnViewDetails.setText("View Details");
+        btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetailsActionPerformed(evt);
+            }
+        });
+        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
@@ -284,18 +333,30 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         //ClinicOrganization organization = (ClinicOrganization) organizationEmpJComboBox.getSelectedItem();
        String name = nameJTextField.getText();
        int age = Integer.parseInt(ageTextField.getText());
-       String ethnicity = ethnicityTextField.getText();
-       String sex = sexTextField.getText();
+       String ethnicity= (String)reqComboBox.getSelectedItem();
+       
+       String sex = null;
+       if(rdBtnMale.isSelected()){
+           sex = "M";
+       }
+       
+       else if(rdBtnFemale.isSelected()){
+           sex = "F";
+       }
+       
+       else if(rdBtnFemale.isSelected()){
+           sex = "O";
+       }       
        String educationBG = null;
        if(rdBtnCollegeGrad.isSelected()){
            educationBG = "College Graduate";
        }
        
-       if(rdBtnHighschoolGrad.isSelected()){
+       else if(rdBtnHighschoolGrad.isSelected()){
            educationBG = "HighSchool Graduate";
        }
        
-       if(rdBtnUneducated.isSelected()){
+       else if(rdBtnUneducated.isSelected()){
            educationBG = "Uneducated";
        }
        
@@ -316,9 +377,11 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
       
       else if(ORadioButton4.isSelected())
                {
-                 reason=TextArea.getText();
+                 reason="Others";
                }
-        organization.getPersonList().createperson(name, age, reason,ethnicity,sex,educationBG);
+       
+       String reasonDescription = TextArea.getText();
+        organization.getPersonList().createperson(name, age, reason,ethnicity,sex,educationBG,reasonDescription,photo);
         
         
         
@@ -355,26 +418,64 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
     private void ARadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARadioButtonActionPerformed
         // TODO add your handling code here:
-        TextArea.enable(false);
+        TextArea.enable(true);
     }//GEN-LAST:event_ARadioButtonActionPerformed
 
     private void BRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRadioButton2ActionPerformed
         // TODO add your handling code here:
-        TextArea.enable(false);
+        TextArea.enable(true);
     }//GEN-LAST:event_BRadioButton2ActionPerformed
 
     private void CRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CRadioButton3ActionPerformed
         // TODO add your handling code here:
-        TextArea.enable(false);
+        TextArea.enable(true);
     }//GEN-LAST:event_CRadioButton3ActionPerformed
 
-    private void sexTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sexTextFieldKeyPressed
+    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_sexTextFieldKeyPressed
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f1 = chooser.getSelectedFile();
+        if (f1 != null) {
+            try {
+                Image pic = ImageIO.read(f1);
+                pic = pic.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
+                photo = new ImageIcon(pic);
+                
 
-    private void sexTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexTextFieldActionPerformed
+           } catch (Exception e) {
+
+           }
+        }
+        else {
+            
+            JOptionPane.showMessageDialog(null, "Please select a picture","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnUploadActionPerformed
+
+    private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_sexTextFieldActionPerformed
+        
+                
+        int selectedrow = organizationJTable.getSelectedRow();
+        
+        if(selectedrow <0)
+        {
+            JOptionPane.showMessageDialog(null, "Please select a Row from table first to view details","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        else {
+        Person p = (Person) organizationJTable.getValueAt(selectedrow, 0);    
+        HomelessPersonViewJPanel muajp = new HomelessPersonViewJPanel( userProcessContainer,p);
+        userProcessContainer.add("HomelessPersonViewJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+            
+        }
+        
+        
+    }//GEN-LAST:event_btnViewDetailsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ARadioButton;
@@ -387,8 +488,11 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCreatePerson;
     private javax.swing.ButtonGroup btnGrpEducationBackGround;
     private javax.swing.ButtonGroup btnGrpReasons;
-    private javax.swing.JTextField ethnicityTextField;
+    private javax.swing.ButtonGroup btnGrpSex;
+    private javax.swing.JButton btnUpload;
+    private javax.swing.JButton btnViewDetails;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -396,13 +500,17 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JTable organizationJTable;
     private javax.swing.JRadioButton rdBtnCollegeGrad;
+    private javax.swing.JRadioButton rdBtnFemale;
     private javax.swing.JRadioButton rdBtnHighschoolGrad;
+    private javax.swing.JRadioButton rdBtnMale;
+    private javax.swing.JRadioButton rdBtnOthers;
     private javax.swing.JRadioButton rdBtnUneducated;
-    private javax.swing.JTextField sexTextField;
+    private javax.swing.JComboBox<String> reqComboBox;
     // End of variables declaration//GEN-END:variables
 }
