@@ -12,8 +12,8 @@ import java.util.HashSet;
 
 public class NGOOrganization extends Organization{
     private String name;
-    public NGOOrganization(String name, String city) {
-        super(name,city);
+    public NGOOrganization(String name, String city,String address) {
+        super(name,city, address);
         this.name=name;
     }
 

@@ -95,7 +95,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
             
             Object[] row = new Object[5];
             row[0] = person.getPersonId();
-            row[1] = person.getName();
+            row[1] = person;
             row[2]=person.getAge();
             row[3]=person.getSex();
             row[4]=person.getDateOfJoining();
@@ -197,7 +197,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jLabel2.setText("Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 40, -1));
@@ -466,7 +466,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         }
         
         else {
-        Person p = (Person) organizationJTable.getValueAt(selectedrow, 0);    
+        Person p = (Person) organizationJTable.getValueAt(selectedrow, 1);    
         HomelessPersonViewJPanel muajp = new HomelessPersonViewJPanel( userProcessContainer,p);
         userProcessContainer.add("HomelessPersonViewJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

@@ -27,6 +27,7 @@ public class SignUpRequestOrganization extends SignUpRequest{
     private Organization.Type orgType;
     private String city;
     private String orgName;
+    private String address;
     
     public SignUpRequestOrganization(){
         super();
@@ -79,7 +80,16 @@ public class SignUpRequestOrganization extends SignUpRequest{
     public void setOrgName(String orgName) {
         this.orgName = orgName;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
  
+    
     
     @Override
     public JPanel signUpForm(JPanel userProcessContainer, EcoSystem business) {

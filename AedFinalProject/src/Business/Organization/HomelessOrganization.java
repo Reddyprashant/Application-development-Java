@@ -13,8 +13,8 @@ import java.util.HashSet;
 
 public class HomelessOrganization extends Organization{
     private String name;
-    public HomelessOrganization(String name, String city) {
-        super(name,city);
+    public HomelessOrganization(String name, String city,String address) {
+        super(name,city, address);
         this.name=name;
     }
      public String getName() {
