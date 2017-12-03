@@ -12,8 +12,8 @@ import java.util.HashSet;
 
 public class BGVOrganization extends Organization{
     private String name;
-    public BGVOrganization(String name, String city) {
-        super(name,city);
+    public BGVOrganization(String name, String city,String address) {
+        super(name,city, address);
        this.name=name;
     }
 

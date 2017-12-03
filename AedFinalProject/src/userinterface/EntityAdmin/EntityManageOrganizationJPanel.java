@@ -80,6 +80,8 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         orgNameTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtcity = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -156,6 +158,16 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 80, -1));
+
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 80, -1));
+
+        jLabel4.setText("Organization Address");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -163,7 +175,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         Type type = (Type) organizationJComboBox.getSelectedItem();
         String name = orgNameTextField.getText();
         String city= txtcity.getText();
-        directory.createOrganization(type, name, city);
+        directory.createOrganization(type, name, city,txtAddress.getText());
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 
@@ -182,16 +194,22 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcityActionPerformed
 
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField orgNameTextField;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtcity;
     // End of variables declaration//GEN-END:variables
 }

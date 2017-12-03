@@ -25,59 +25,59 @@ public class OrganizationDirectory {
         return organizationList;
     }
     
-    public Organization createOrganization(Type type, String name, String city){
+    public Organization createOrganization(Type type, String name, String city, String address){
         Organization organization = null;
         if (type.getValue().equals(Type.OldAge.getValue())){
-            organization = new OldAgeOrganization(name,city);
+            organization = new OldAgeOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Orphanage.getValue())){
-            organization = new OrphanageOrganization(name,city);
+            organization = new OrphanageOrganization(name,city,address);
             organizationList.add(organization);
         }
        
         else if (type.getValue().equals(Type.Homeless.getValue())){
-            organization = new HomelessOrganization(name,city);
+            organization = new HomelessOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.CommonPeople.getValue())){
-            organization = new CommonPeopleOrganization(name,city);
+            organization = new CommonPeopleOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Disaster.getValue())){
-            organization = new DisasterOrganization(name,city);
+            organization = new DisasterOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Hospital.getValue())){
-            organization = new HospitalOrganization(name,city);
+            organization = new HospitalOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Education.getValue())){
-            organization = new EducationOrganization(name,city);
+            organization = new EducationOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.NGO.getValue())){
-            organization = new NGOOrganization(name,city);
+            organization = new NGOOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.MNC.getValue())){
-            organization = new MNCOrganization(name,city);
+            organization = new MNCOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Individuals.getValue())){
-            organization = new IndividualOrganization(name,city);
+            organization = new IndividualOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Transportation.getValue())){
-            organization = new TransportOrganization(name,city);
+            organization = new TransportOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Rental.getValue())){
-            organization = new RentalOrganization(name,city);
+            organization = new RentalOrganization(name,city,address);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.BGV.getValue())){
-            organization = new BGVOrganization(name,city);
+            organization = new BGVOrganization(name,city,address);
             organizationList.add(organization);
         }
  

@@ -226,7 +226,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                         CountryNetwork country = orgRequest.getCountry();
                         StateNetwork state= orgRequest.getState();
                         
-                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity());
+                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity(), orgRequest.getAddress());
                         
                         if(orgRequest.getOrgType()== Organization.Type.Transportation){
                             acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new TransportationAdmin());
