@@ -6,6 +6,7 @@
 
 package Business.Organization;
 
+import Business.Role.MNCAdmin;
 import Business.Role.Role;
 import java.util.HashSet;
 
@@ -28,7 +29,9 @@ public class MNCOrganization extends Organization{
     
     @Override
     public HashSet<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        roles= new HashSet<>();
+        roles.add(new MNCAdmin()); 
+        return roles;
     }
 
 }
