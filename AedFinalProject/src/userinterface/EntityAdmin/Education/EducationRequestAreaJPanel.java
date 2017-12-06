@@ -278,7 +278,12 @@ public void populateUpdatedTable()
           p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
           p.getEventDirectory().getEventDirectory().add(event);
       if(p.getNumberOfVolunteersRequest()==0 && p.isLogisticRequest()==true){
-      p.setStatus("Complete");
+                try {
+                    p.setStatus("Complete");
+                    Validator.sendMessage(p.getSender().getEmployee().getEmailId());
+                } catch (SendFailedException ex) {
+                    Logger.getLogger(EducationRequestAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
       }
       
                 //if (p.getStatus().equals("Pending")) {

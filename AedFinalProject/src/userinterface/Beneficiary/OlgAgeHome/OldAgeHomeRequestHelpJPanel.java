@@ -30,6 +30,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.Beneficiary.Homeless.*;
+import utility.Validator;
 
 /**
  *
@@ -96,7 +97,6 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         noVolTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        dateField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         reqComboBox = new javax.swing.JComboBox();
@@ -118,6 +118,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         timeField = new javax.swing.JTextField();
         addLabel = new javax.swing.JLabel();
         addressText = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -133,6 +134,12 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Number of Volunteers Required");
+
+        noVolTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                noVolTextFieldKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
@@ -192,6 +199,12 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
             }
         });
 
+        noOfVehText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                noOfVehTextKeyPressed(evt);
+            }
+        });
+
         noVehLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         noVehLabel.setForeground(new java.awt.Color(71, 79, 112));
         noVehLabel.setText("Number Of Vehicles");
@@ -233,69 +246,71 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addGap(278, 278, 278)
-                .addComponent(reqComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel5)
-                .addGap(293, 293, 293)
-                .addComponent(eventNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel2)
-                .addGap(149, 149, 149)
-                .addComponent(noVolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel3)
-                .addGap(296, 296, 296)
-                .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel7)
-                .addGap(283, 283, 283)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel4)
-                .addGap(278, 278, 278)
-                .addComponent(reqBtn)
-                .addGap(31, 31, 31)
-                .addComponent(notReqBtn))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(248, 248, 248)
-                .addComponent(typeLabel)
-                .addGap(59, 59, 59)
-                .addComponent(carBtn)
-                .addGap(18, 18, 18)
-                .addComponent(vanBtn)
-                .addGap(18, 18, 18)
-                .addComponent(busBtn))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(248, 248, 248)
-                .addComponent(noVehLabel)
-                .addGap(24, 24, 24)
-                .addComponent(noOfVehText, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(248, 248, 248)
-                .addComponent(timelabel)
-                .addGap(79, 79, 79)
-                .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(248, 248, 248)
-                .addComponent(addLabel)
-                .addGap(58, 58, 58)
-                .addComponent(addressText, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jButton2)
-                .addGap(557, 557, 557)
-                .addComponent(jButton1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1)
+                        .addGap(278, 278, 278)
+                        .addComponent(reqComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel5)
+                        .addGap(293, 293, 293)
+                        .addComponent(eventNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel2)
+                        .addGap(149, 149, 149)
+                        .addComponent(noVolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel4)
+                        .addGap(278, 278, 278)
+                        .addComponent(reqBtn)
+                        .addGap(31, 31, 31)
+                        .addComponent(notReqBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(typeLabel)
+                        .addGap(59, 59, 59)
+                        .addComponent(carBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(vanBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(busBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(noVehLabel)
+                        .addGap(24, 24, 24)
+                        .addComponent(noOfVehText, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(timelabel)
+                        .addGap(79, 79, 79)
+                        .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(addLabel)
+                        .addGap(58, 58, 58)
+                        .addComponent(addressText, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton2)
+                        .addGap(557, 557, 557)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel3))
+                        .addGap(283, 283, 283)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,30 +318,29 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel1))
-                    .addComponent(reqComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel5))
-                    .addComponent(eventNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel2))
-                    .addComponent(noVolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel1))
+                            .addComponent(reqComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel5))
+                            .addComponent(eventNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel2))
+                            .addComponent(noVolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
                         .addComponent(jLabel3))
-                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -383,21 +397,26 @@ public void populateComboBox()
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+          if(reqComboBox.getSelectedItem().equals(null)||jDateChooser1.getDate().equals(null)||eventNameTextfield.getText().isEmpty()||detailTextArea.getText().isEmpty()||reqBtn.isSelected()||notReqBtn.isSelected())
+{ 
         try
         {
-        SimpleDateFormat dates = new SimpleDateFormat("MM/dd/yyyy");
-        SimpleDateFormat times = new SimpleDateFormat("hh:mm");
+            
+        //SimpleDateFormat dates = new SimpleDateFormat("MM/dd/yyyy");
+      
         Organization.RequestType request = (Organization.RequestType) reqComboBox.getSelectedItem();
         int noVolunteer= Integer.parseInt(noVolTextField.getText());
-        Date date= dates.parse(dateField.getText());
+        //Date date= dates.parse(dateField.getText());
+        Date d= jDateChooser1.getDate();
         String eventName = eventNameTextfield.getText();
         String eventDetails= detailTextArea.getText();
-        Date time= dates.parse(timeField.getText());
-                 String address= addressText.getText();
+        
+                 
+         
         BeneficiaryWorkRequest requests= new BeneficiaryWorkRequest();
-       requests.setEventDate(date);
+       requests.setEventDate(d);
        requests.setSenderOrganization(organization);
-            System.out.println("userss"+organization.getName());
+            //System.out.println("userss"+organization.getName());
       //if(Organization.RequestType.Education.getValue()==request.getValue())
       requests.setRequestType(request);
        requests.setEventName(eventName);
@@ -408,7 +427,10 @@ public void populateComboBox()
        requests.setStatus("Requested");
        if(reqBtn.isSelected())
        {
+             SimpleDateFormat times = new SimpleDateFormat("hh:mm");
             int no = Integer.parseInt(noOfVehText.getText());
+            Date time= times.parse(timeField.getText());
+                 String address= addressText.getText();
        requests.setLogisticRequest(false);
        if(carBtn.isSelected()){
            requests.setTypeOfVehicle("Car");
@@ -429,7 +451,7 @@ public void populateComboBox()
            for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
                if(organization1 instanceof TransportOrganization)
                {
-                   System.out.println("sending to transport");
+                   //System.out.println("sending to transport");
                    organization1.getWorkQueue().getWorkRequestList().add(requests);
                }
            }
@@ -496,16 +518,23 @@ public void populateComboBox()
        }
        organization.getWorkQueue().getWorkRequestList().add(requests);
        JOptionPane.showMessageDialog(null, "Help request complete");
+
         }
         catch(NumberFormatException p){
             JOptionPane.showMessageDialog(null, "Enter integer value");
         }
         catch(ParseException p)
         {
-            JOptionPane.showMessageDialog(null, "Please enter date in MM/dd/yyyy format");
+            JOptionPane.showMessageDialog(null, "Please enter time in hh:mm format");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+      
+       else
+{
+    JOptionPane.showMessageDialog(null, "Fields cannot be left empty");
+}
+}
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
             userProcessContainer.remove(this);
@@ -552,6 +581,16 @@ public void populateComboBox()
         addLabel.setVisible(false);
     }//GEN-LAST:event_notReqBtnActionPerformed
 
+    private void noVolTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noVolTextFieldKeyPressed
+        // TODO add your handling code here:
+        Validator.onlyInteger(evt, noVolTextField);
+    }//GEN-LAST:event_noVolTextFieldKeyPressed
+
+    private void noOfVehTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noOfVehTextKeyPressed
+        // TODO add your handling code here:
+         Validator.onlyInteger(evt, noOfVehText);
+    }//GEN-LAST:event_noOfVehTextKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addLabel;
@@ -560,12 +599,12 @@ public void populateComboBox()
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JRadioButton carBtn;
-    private javax.swing.JTextField dateField;
     private javax.swing.JTextArea detailTextArea;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JTextField eventNameTextfield;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
