@@ -7,7 +7,6 @@ package Business.Enterprise;
 
 
 import Business.Organization.Organization;
-import Business.Role.CommonPeopleAdmin;
 import Business.Role.DisasterAdmin;
 import Business.Role.HomelessAdmin;
 import Business.Role.OldAgeAdmin;
@@ -29,7 +28,6 @@ public class BeneficiaryEnterprise extends Enterprise{
       @Override
       public ArrayList<Type> getOrganizations() {
         ArrayList<Type> orgs = new ArrayList<>();
-        orgs.add(Organization.Type.CommonPeople);
         orgs.add(Organization.Type.Disaster);
         orgs.add(Organization.Type.Homeless);
         orgs.add(Type.Orphanage);
@@ -42,7 +40,6 @@ public class BeneficiaryEnterprise extends Enterprise{
          roles= new HashSet<>();
        roles.add(new OldAgeAdmin());
         roles.add(new HomelessAdmin());
-        roles.add(new CommonPeopleAdmin());
         roles.add(new DisasterAdmin());
         roles.add(new OrphanageAdmin());
         return roles;

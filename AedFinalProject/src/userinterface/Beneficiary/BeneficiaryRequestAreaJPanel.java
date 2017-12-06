@@ -5,7 +5,6 @@
  */
 package userinterface.Beneficiary;
 
-import userinterface.EntityAdmin.*;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
@@ -13,15 +12,8 @@ import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.BGVOrganization;
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
-import Business.Role.CommonPeopleAdmin;
 import Business.Role.DisasterAdmin;
-import Business.Role.EducationAdmin;
 import Business.Role.HomelessAdmin;
-import Business.Role.HospitalAdmin;
-import Business.Role.IndividualAdmin;
-import Business.Role.MNCAdmin;
-import Business.Role.NGOAdmin;
 import Business.Role.OldAgeAdmin;
 import Business.Role.OrphanageAdmin;
 import Business.SignUp.SignUpRequest;
@@ -227,10 +219,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
                         
                         Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity(), orgRequest.getAddress());
                         
-                        if(orgRequest.getOrgType()== Organization.Type.CommonPeople){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new CommonPeopleAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.Disaster){
+                        if(orgRequest.getOrgType()== Organization.Type.Disaster){
                             acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new DisasterAdmin());
                         }
                         else if(orgRequest.getOrgType()== Organization.Type.Homeless){

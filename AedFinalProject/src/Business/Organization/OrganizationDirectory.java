@@ -40,10 +40,6 @@ public class OrganizationDirectory {
             organization = new HomelessOrganization(name,city,address);
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.CommonPeople.getValue())){
-            organization = new CommonPeopleOrganization(name,city,address);
-            organizationList.add(organization);
-        }
         else if (type.getValue().equals(Type.Disaster.getValue())){
             organization = new DisasterOrganization(name,city,address);
             organizationList.add(organization);

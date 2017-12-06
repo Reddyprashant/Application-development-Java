@@ -38,7 +38,6 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         organizationJComboBox.removeAllItems();
       //  for (Type type : Organization.Type.values()){
        //     if (!type.getValue().equals(Type.Clinic.getValue()))
-                organizationJComboBox.addItem(Type.CommonPeople);
                 organizationJComboBox.addItem(Type.Homeless);
                 organizationJComboBox.addItem(Type.OldAge);
                 organizationJComboBox.addItem(Type.Orphanage);
