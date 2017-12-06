@@ -177,14 +177,20 @@ public class EntityManageEmployeeJPanel extends javax.swing.JPanel {
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
          if(!nameJTextField.getText().equals("")){
+             if(!(txtEmail.getText().isEmpty())){ 
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
         String email= txtEmail.getText();
         organization.getEmployeeDirectory().createEmployee(name,email);
          populateTable(organization);
          }else{
-             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+             JOptionPane.showMessageDialog(null, "Enter value for Email Id", "Warning", JOptionPane.WARNING_MESSAGE);
+           }
         }
+         else{
+             JOptionPane.showMessageDialog(null, "Enter value for Name", "Warning", JOptionPane.WARNING_MESSAGE);   
+        } 
+         
 
     }//GEN-LAST:event_addJButtonActionPerformed
 
