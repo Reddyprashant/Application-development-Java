@@ -18,6 +18,7 @@ import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import utility.Validator;
 
@@ -66,18 +67,20 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
             if (work instanceof BeneficiaryWorkRequest) {
                 BeneficiaryWorkRequest b= (BeneficiaryWorkRequest)work;
-                Object[] row = new Object[7];
-                row[0] = b.getTypeOfVehicle();
-                row[1] = b.getNoOfVehicle();
-                row[2] = b.getSenderOrganization();
-                row[3] = b.getEventName();
-                row[4] = b.getEventDate();
-                row[5] = b;
-                row[6]=b.isLogisticRequest();
+                Object[] row = new Object[5];
+
+                row[0] = b.getSenderOrganization();
+                row[1] = b.getEventName();
+                row[2] = b.getEventDate();
+                row[3] = b;
+                row[4]=b.isLogisticRequest();
                 model.addRow(row);
             }
         }
     }
+    
+    
+    
 
     public void populateAvailable() {
 //        DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
@@ -92,6 +95,39 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
 //            model.addRow(row);
 //
 //        }
+    }
+    public void populateView(int selectedRow){
+        // DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
+        
+        String[] columns = {"Field","Value"};
+DefaultTableModel model = (DefaultTableModel) tblView.getModel();
+ model.setRowCount(0);
+         WorkRequest p=(WorkRequest) requestTable.getValueAt(selectedRow, 3);
+           System.out.println("out ");
+         if(p instanceof BeneficiaryWorkRequest){
+             System.out.println("inside ");
+            Object[] rowData1 = { "Event Name", ((BeneficiaryWorkRequest) p).getEventName() };
+            model.addRow(rowData1);
+             Object[] rowData2 = { "Event Date", ((BeneficiaryWorkRequest) p).getEventDate() };
+            model.addRow(rowData2);
+             Object[] rowData3 = { "Event Details", ((BeneficiaryWorkRequest) p).getEventDetails() };
+            model.addRow(rowData3);
+             Object[] rowData4 = { "Vehicle Type", ((BeneficiaryWorkRequest) p).getTypeOfVehicle()};
+            model.addRow(rowData4);
+             Object[] rowData5 = { "No Of Vehicle", ((BeneficiaryWorkRequest) p).getNoOfVehicle()};
+            model.addRow(rowData5);
+            Object[] rowData6 = { "Pick up Time", ((BeneficiaryWorkRequest) p).getPickupTime()};
+            model.addRow(rowData6);
+            Object[] rowData7 = { "Pick up Address", ((BeneficiaryWorkRequest) p).getAddress()};
+            model.addRow(rowData7);
+             
+//              Object[] row = new Object[4];
+//            row[0] = e.getEventName();
+//            row[1] = e.getServingOrganization().getName();
+//            row[2] = e.getAvailVolunteers();
+//            row[3] = e.getEventDate();
+//            model.addRow(row);
+         }
     }
 
     /**
@@ -116,6 +152,8 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         sellBtn = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblView = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -130,7 +168,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnCompleteActionPerformed(evt);
             }
         });
-        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 140, -1));
+        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 140, -1));
 
         availableTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,7 +188,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(availableTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 790, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 790, 90));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel4.setText("Vehicles Requested");
@@ -158,39 +196,44 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel5.setText("Vehicles Available");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 150, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 150, 30));
 
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Vehicle Type", "Number of Vehicles", "Requested Organization", "Event Name", "Event Date", "Status", "Logistic Served"
+                "Requested Organization", "Event Name", "Event Date", "Status", "Logistic Served"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        requestTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                requestTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(requestTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 790, 90));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 650, 270));
 
-        add(comboVaccine, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 220, -1));
+        add(comboVaccine, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 220, -1));
 
         txtquant.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtquantKeyPressed(evt);
             }
         });
-        add(txtquant, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 100, -1));
+        add(txtquant, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 100, -1));
 
         jLabel2.setText("Vehicle Type");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 90, 20));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, 90, 20));
 
         sellBtn.setText("Add Vehicle");
         sellBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +241,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
                 sellBtnActionPerformed(evt);
             }
         });
-        add(sellBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 170, -1));
+        add(sellBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 650, 170, -1));
 
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +249,27 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, -1, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, -1, -1));
+
+        tblView.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Field", "Value"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tblView);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, 410, 150));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
@@ -215,7 +278,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            BeneficiaryWorkRequest work = (BeneficiaryWorkRequest) requestTable.getValueAt(selectedRow, 5);
+            BeneficiaryWorkRequest work = (BeneficiaryWorkRequest) requestTable.getValueAt(selectedRow, 3);
            // SupplierWorkRequest p = (SupplierWorkRequest) requestTable.getValueAt(selectedRow, 2);
                 
            
@@ -254,7 +317,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) requestTable.getValueAt(selectedRow, 5);
+            BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) requestTable.getValueAt(selectedRow, 3);
             organization.getWorkQueue().getWorkRequestList().remove(p);
             JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
             populateWorkQueueTable();
@@ -265,6 +328,14 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Validator.onlyInteger(evt, txtquant);
     }//GEN-LAST:event_txtquantKeyPressed
+
+    private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
+        // TODO add your handling code here:
+          int selectedRow= requestTable.getSelectedRow();
+        if(selectedRow >=0){
+        populateView(selectedRow);
+        }
+    }//GEN-LAST:event_requestTableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -278,8 +349,10 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable requestTable;
     private javax.swing.JButton sellBtn;
+    private javax.swing.JTable tblView;
     private javax.swing.JTextField txtquant;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables

@@ -69,6 +69,8 @@ public class MainJFrame extends javax.swing.JFrame {
         logoutJButton = new javax.swing.JButton();
         btnSignUp = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnHomeless = new javax.swing.JButton();
+        lblWelcome = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -127,6 +129,17 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
+
+        btnHomeless.setText("Homeless Found");
+        btnHomeless.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomelessActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 110, 50));
+
+        lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 40));
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -208,6 +221,7 @@ public class MainJFrame extends javax.swing.JFrame {
             CardLayout layout = (CardLayout) container.getLayout();
             container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, outNetwork, system));
             layout.next(container);
+            lblWelcome.setText("Welcome"+userAccount.getEmployee().getName());
         }
          loginJButton.setEnabled(false);
          btnSignUp.setEnabled(false);
@@ -333,6 +347,14 @@ public class MainJFrame extends javax.swing.JFrame {
         layout.next(container);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnHomelessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomelessActionPerformed
+        // TODO add your handling code here:
+         DistanceJPanel manageOrganizationJPanel = new DistanceJPanel(container);
+        container.add("DistanceJPanel", manageOrganizationJPanel);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.next(container);
+    }//GEN-LAST:event_btnHomelessActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -368,6 +390,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHomeless;
     private javax.swing.JButton btnSignUp;
     private javax.swing.JPanel container;
     private javax.swing.JButton jButton1;
@@ -375,6 +398,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblWelcome;
     private javax.swing.JButton loginJButton;
     private javax.swing.JLabel loginJLabel;
     private javax.swing.JButton logoutJButton;
