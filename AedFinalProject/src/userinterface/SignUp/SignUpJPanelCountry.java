@@ -58,13 +58,17 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         txtPassword = new javax.swing.JPasswordField();
         txtPhone = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(71, 79, 112));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel1.setText("Register");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 160, 30));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel1.setText("Register Country");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 210, 30));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Name :");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
 
@@ -80,17 +84,20 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         });
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 170, -1));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("User Name :");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, -1, -1));
 
+        btnCreate.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(71, 79, 112));
         btnCreate.setText("Register");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 90, -1));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 160, 40));
 
         txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -104,7 +111,8 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         });
         add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 170, -1));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("Email Id :");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
 
@@ -115,7 +123,8 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 170, -1));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Password:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 170, -1));
@@ -137,10 +146,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         try{
             if(!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty()  && !txtPassword.getText().isEmpty()){
                 if(txtUserName.getText().equalsIgnoreCase(txtName.getText())){
-                    if(EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
-                      JOptionPane.showMessageDialog(null, "Please enter unique username");
-                      return;
-                  }
+                    
                 SignUpRequestCountry countryRequest= new SignUpRequestCountry();
                 countryRequest.setUserName(txtUserName.getText());
                 countryRequest.setName(txtName.getText());
