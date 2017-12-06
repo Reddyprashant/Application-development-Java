@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import utility.Validator;
 
 /**
  *
@@ -136,6 +137,11 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
         txtFieldAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldAgeActionPerformed(evt);
+            }
+        });
+        txtFieldAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFieldAgeKeyPressed(evt);
             }
         });
 
@@ -419,6 +425,11 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtFieldAgeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFieldAgeKeyPressed
+        // TODO add your handling code here:
+        Validator.onlyInteger(evt, txtFieldAge);
+    }//GEN-LAST:event_txtFieldAgeKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

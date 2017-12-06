@@ -6,6 +6,7 @@
 
 package Business.Organization;
 
+import Business.Role.HospitalAdmin;
 import Business.Role.Role;
 import java.util.HashSet;
 
@@ -26,7 +27,9 @@ public class HospitalOrganization extends Organization{
 
     @Override
     public HashSet<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        roles= new HashSet<>();
+        roles.add(new HospitalAdmin()); 
+        return roles;
     }
 
     
