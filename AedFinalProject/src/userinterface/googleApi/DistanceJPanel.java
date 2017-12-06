@@ -5,7 +5,7 @@
  */
 package userinterface.googleApi;
 
-import Business.Position;
+import Business.LatLong;
 import Business.WorkQueue.BeneficiaryWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JPanel;
@@ -58,7 +58,7 @@ JPanel userProcessContainer;
 //        double distances= distance(d1.getLatitude(),d1.getLongitude(),d2.getLatitude(),d2.getLongitude(),'M');
 //        populateTable(d2.getName(),distances);
 //    }
-     public void populateDistance(Position p1) {
+     public void populateDistance(LatLong p1) {
         double lat1= p1.getLatitude();
         double lon1=p1.getLongitude();
         double lat2=42.347929;
@@ -169,7 +169,7 @@ JPanel userProcessContainer;
 
     private void btnLoc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoc1ActionPerformed
         // TODO add your handling code here:
-        Position p1= new Position();
+        LatLong p1= new LatLong();
         p1.setLatitude(42.347929);
         p1.setLongitude(-71.065111);
         p1.setName("p1");
@@ -178,7 +178,7 @@ JPanel userProcessContainer;
 
     private void btnLoc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoc2ActionPerformed
         // TODO add your handling code here:
-        Position p1= new Position();
+        LatLong p1= new LatLong();
         p1.setLatitude(42.345501);
         p1.setLongitude(-71.070273);
         p1.setName("p2");
@@ -187,7 +187,7 @@ JPanel userProcessContainer;
 
     private void btnLoc6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoc6ActionPerformed
         // TODO add your handling code here:
-        Position p1= new Position();
+        LatLong p1= new LatLong();
         p1.setLatitude(42.356987);
         p1.setLongitude(-71.057412);
         p1.setName("p6");
@@ -196,7 +196,7 @@ JPanel userProcessContainer;
 
     private void btnLoc3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoc3ActionPerformed
         // TODO add your handling code here:
-        Position p1= new Position();
+        LatLong p1= new LatLong();
         p1.setLatitude(42.341012);
         p1.setLongitude(-71.084596);
         p1.setName("p3");
@@ -205,7 +205,7 @@ JPanel userProcessContainer;
 
     private void btnLoc5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoc5ActionPerformed
         // TODO add your handling code here:
-        Position p1= new Position();
+        LatLong p1= new LatLong();
         p1.setLatitude(43.347929);
         p1.setLongitude(-70.065111);
         p1.setName("p5");
@@ -214,7 +214,7 @@ JPanel userProcessContainer;
 
     private void btnLoc4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoc4ActionPerformed
         // TODO add your handling code here:
-        Position p1= new Position();
+        LatLong p1= new LatLong();
         p1.setLatitude(42.347929);
         p1.setLongitude(-71.065111);
         p1.setName("p4");

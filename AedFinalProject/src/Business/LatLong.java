@@ -7,7 +7,7 @@
 package Business;
 
 
-public class Position {
+public class LatLong {
     private double longitude;
     private double latitude;
     private String name;
