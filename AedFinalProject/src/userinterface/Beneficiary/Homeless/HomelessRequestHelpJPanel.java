@@ -53,6 +53,16 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         this.organization= organization;
         this.state=network;
         this.country=cNetwork;
+               carBtn.setVisible(false);
+        busBtn.setVisible(false);
+        vanBtn.setVisible(false);
+        noOfVehText.setVisible(false);
+        noVehLabel.setVisible(false);
+        typeLabel.setVisible(false);
+               addressText.setVisible(false);
+        timeField.setVisible(false);
+        timelabel.setVisible(false);
+        addLabel.setVisible(false);
         populateComboBox();
     }
 
@@ -88,6 +98,12 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         carBtn = new javax.swing.JRadioButton();
         eventNameTextfield = new javax.swing.JTextField();
         vanBtn = new javax.swing.JRadioButton();
+        timelabel = new javax.swing.JLabel();
+        timeField = new javax.swing.JTextField();
+        addLabel = new javax.swing.JLabel();
+        addressText = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
@@ -151,6 +167,14 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
 
         vanBtn.setText("Mini Van");
 
+        timelabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        timelabel.setForeground(new java.awt.Color(71, 79, 112));
+        timelabel.setText("Pickup Time");
+
+        addLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        addLabel.setForeground(new java.awt.Color(71, 79, 112));
+        addLabel.setText("Pickup Address");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,20 +188,6 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                         .addComponent(reqBtn)
                         .addGap(31, 31, 31)
                         .addComponent(notReqBtn))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(typeLabel)
-                            .addComponent(noVehLabel))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(noOfVehText, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(carBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(vanBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(busBtn))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -196,12 +206,38 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                                 .addComponent(dateField)
                                 .addComponent(reqComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(eventNameTextfield))))
-                    .addComponent(btnBack, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(287, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(typeLabel)
+                                    .addComponent(noVehLabel))
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(noOfVehText, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(carBtn)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(vanBtn)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(busBtn))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(timelabel)
+                                    .addComponent(addLabel))
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(addressText)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+                .addGap(279, 279, 279))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(78, 78, 78))
+                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,14 +281,20 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                             .addComponent(typeLabel))
                         .addGap(18, 18, 18)
                         .addComponent(noOfVehText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(65, 65, 65))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(timelabel)
+                    .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addLabel)
+                    .addComponent(addressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(83, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnBack)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -265,6 +307,10 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         noOfVehText.setVisible(true);
         noVehLabel.setVisible(true);
         typeLabel.setVisible(true);
+        timeField.setVisible(true);
+        addressText.setVisible(true);
+         timelabel.setVisible(true);
+        addLabel.setVisible(true);
     }//GEN-LAST:event_reqBtnActionPerformed
 
     private void notReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notReqBtnActionPerformed
@@ -275,6 +321,10 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         noOfVehText.setVisible(false);
         noVehLabel.setVisible(false);
         typeLabel.setVisible(false);
+        timeField.setVisible(false);
+        addressText.setVisible(false);
+         timelabel.setVisible(false);
+        addLabel.setVisible(false);
     }//GEN-LAST:event_notReqBtnActionPerformed
 
 public void populateComboBox()
@@ -313,7 +363,10 @@ public void populateComboBox()
             requests.setStatus("Requested");
             if(reqBtn.isSelected())
             {
+                SimpleDateFormat times = new SimpleDateFormat("hh:mm");
                 int no = Integer.parseInt(noOfVehText.getText());
+                 Date time= dates.parse(timeField.getText());
+                 String address= addressText.getText();
                 requests.setLogisticRequest(false);
                 if(carBtn.isSelected()){
                     requests.setTypeOfVehicle("Car");
@@ -326,6 +379,8 @@ public void populateComboBox()
                     requests.setTypeOfVehicle("Bus");
                 }
                 requests.setNoOfVehicle(no);
+                requests.setPickupTime(time);
+                requests.setAddress(address);
 
             }
             if(!requests.isLogisticRequest()){
@@ -429,6 +484,8 @@ public void populateComboBox()
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addLabel;
+    private javax.swing.JTextField addressText;
     private javax.swing.JButton btnBack;
     private javax.swing.JRadioButton busBtn;
     private javax.swing.JRadioButton carBtn;
@@ -450,6 +507,8 @@ public void populateComboBox()
     private javax.swing.JRadioButton notReqBtn;
     private javax.swing.JRadioButton reqBtn;
     private javax.swing.JComboBox reqComboBox;
+    private javax.swing.JTextField timeField;
+    private javax.swing.JLabel timelabel;
     private javax.swing.JLabel typeLabel;
     private javax.swing.JRadioButton vanBtn;
     // End of variables declaration//GEN-END:variables

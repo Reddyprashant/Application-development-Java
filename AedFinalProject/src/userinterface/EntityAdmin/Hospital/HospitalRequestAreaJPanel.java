@@ -257,7 +257,7 @@ public void populateUpdatedTable()
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
-            BeneficiaryWorkRequest orgRequest = null;
+            //BeneficiaryWorkRequest orgRequest = null;
             //SignUpRequestEnterprise e = null;
             UserAccount acc=null;
             if(organization.getEventDirectory()== null){
