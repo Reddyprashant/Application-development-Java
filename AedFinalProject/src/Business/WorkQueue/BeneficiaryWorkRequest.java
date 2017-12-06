@@ -28,7 +28,8 @@ public class BeneficiaryWorkRequest extends WorkRequest{
     private String typeOfVehicle;
     private int noOfVehicle;
     private boolean logisticRequest;
-    
+    private Date pickupTime;
+    private String address;
     public BeneficiaryWorkRequest(){
         add = false;
         eventDirectory=new EventDirectory();
@@ -65,6 +66,22 @@ public class BeneficiaryWorkRequest extends WorkRequest{
 
     public void setSenderOrganization(Organization senderOrganization) {
         this.senderOrganization = senderOrganization;
+    }
+
+    public Date getPickupTime() {
+        return pickupTime;
+    }
+
+    public void setPickupTime(Date pickupTime) {
+        this.pickupTime = pickupTime;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
    
