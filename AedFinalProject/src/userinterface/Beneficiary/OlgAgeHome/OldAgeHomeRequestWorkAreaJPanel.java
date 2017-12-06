@@ -196,6 +196,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         jLabel5.setText("Volunteers Available");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 150, 30));
 
+        requestTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
