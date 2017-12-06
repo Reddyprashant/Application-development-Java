@@ -4,21 +4,13 @@
  */
 package userinterface.EcoSystemAdminWorkArea;
 
-import userinterface.CountryAdminWorkAreas.*;
 import Business.EcoSystem;
 import Business.Employee.Employee;
-import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
-import Business.Network.StateNetwork;
-import Business.Role.BeneficiaryAdminRole;
 import Business.Role.CountryAdminRole;
-import Business.Role.EntityAdminRole;
-import Business.Role.GovtAdminRole;
-import Business.Role.LogisticAdminRole;
 
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -191,17 +183,21 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        if(!nameJTextField.getText().equals("")){
+        
        // Enterprise system = (Enterprise) enterpriseJComboBox.getSelectedItem();
 
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
         String email= txtEmail.getText();
-        Employee employee = system.getEmployeeDirectory().createEmployee(name,email);
-        if (EcoSystem.checkIfUsernameIsUnique(username)) {
-            UserAccount account = null;
-            account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new CountryAdminRole());
+        if(!nameJTextField.getText().equals("")){
+            if(!password.isEmpty()){
+                if(!username.isEmpty()){
+                    if(!email.isEmpty()){
+                        Employee employee = system.getEmployeeDirectory().createEmployee(name,email);
+                        if (EcoSystem.checkIfUsernameIsUnique(username)) {
+                            UserAccount account = null;
+                            account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new CountryAdminRole());
 //            if (system.getEnterpriseType() == Enterprise.EnterpriseType.Beneficiary) {
 //                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new BeneficiaryAdminRole());
 //            } else if (system.getEnterpriseType() == Enterprise.EnterpriseType.Entity) {
@@ -212,13 +208,27 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
 //                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new LogisticAdminRole());
 //            }
 
-            populateTable();
+                            populateTable(); 
+                    }
+                    else {
+                         JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+                    
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Enter value for Email", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Enter value username", "Warning", JOptionPane.WARNING_MESSAGE);
+            }    
         }
-        else {
-            JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+        else{
+            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }
- }else{
-             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+    }
+    else{
+         JOptionPane.showMessageDialog(null, "Enter value name", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_submitJButtonActionPerformed
