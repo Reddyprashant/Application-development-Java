@@ -28,6 +28,7 @@ public class BeneficiaryWorkRequest extends WorkRequest{
     private String typeOfVehicle;
     private int noOfVehicle;
     private boolean logisticRequest;
+    
     public BeneficiaryWorkRequest(){
         add = false;
         eventDirectory=new EventDirectory();

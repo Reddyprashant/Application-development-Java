@@ -6,16 +6,10 @@
 package userinterface.SignUp;
 
 import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -32,8 +26,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-    private BufferedImage file;
-    private JFileChooser openFile;
+    
     public SignUpJPanelState(JPanel userProcessContainer, EcoSystem business) {
         initComponents();
         this.system = business;
@@ -100,7 +93,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
     private void btnCreateStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStateActionPerformed
         // TODO add your handling code here:
         try{
-            if(!txtName.getText().isEmpty()  ){
+            if(!txtName.getText().isEmpty()){
                 
                 CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem(); 
                 SignUpRequestState stateRequest= new SignUpRequestState();
@@ -117,10 +110,9 @@ public class SignUpJPanelState extends javax.swing.JPanel {
                 
             }
             else{
-                JOptionPane.showMessageDialog(null, "Please enter all values");
+                JOptionPane.showMessageDialog(null, "Please enter State name");
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCreateStateActionPerformed

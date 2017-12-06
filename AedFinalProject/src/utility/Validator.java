@@ -109,10 +109,12 @@ public class Validator {
 
          // Set Subject: header field
          message.setSubject("Volunteer Management Account activation");
+        //  message.setSubject("Sent me blank message???");
 
          // Now set the actual message
-         message.setText("Your account is active. You can now to register yourself to clean 24 Saint Cyprians place.");
-
+       //  message.setText("Your account is active. You can now to register yourself to clean 24 Saint Cyprians place.");
+       // message.setText("Now I will start messaging");
+        message.setText("Your Account has been Activated.");
          // Send message
            Transport transport = session.getTransport("smtp");
         transport.connect(host, from, pass);
@@ -128,7 +130,9 @@ public class Validator {
     
     public static void sendMessageText(String phone, String network) {
          try {
-             Validator.sendMessage("8573089756@tmomail.net");
+             //Validator.sendMessage("8573089754@tmomail.net");
+             Validator.sendMessage("7743158427@tmomail.net");
+           // Validator.sendMessage("vinyasktr@gmail.com");
 //        SMPPSession session = new SMPPSession();
 //        try {
 //            session.connectAndBind("localhost", 8056, new BindParameter(BindType.BIND_TX, "test", "test", "cp", TypeOfNumber.UNKNOWN, NumberingPlanIndicator.UNKNOWN, null));
@@ -166,6 +170,10 @@ public class Validator {
              Logger.getLogger(Validator.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
-     
+     public static void main(String args[]){
+        for(int i=0;i<10;i++){
+         sendMessageText(null, null);
+        }
+     }
      
 }

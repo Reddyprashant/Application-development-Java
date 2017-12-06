@@ -82,22 +82,9 @@ public class SignUpWelcome extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        
+ try{       
     SignUpType type = (SignUpType)comboBoxSignUpType.getSelectedItem();
     CardLayout layout = (CardLayout) container.getLayout();
-//        if(type.equals(SignUpRequest.SignUpType.Beneficiary.getValue())){
-//         container.add("workArea", new SignUpJPanelBeneficiary(container, system, type));
-//        }
-//        else if(type.equals(SignUpRequest.SignUpType.State.getValue())){
-//          container.add("workArea", new SignUpJPanelState(container, system));           
-//        }
-//        else if(type.equals(SignUpRequest.SignUpType.Country.getValue())){
-//         container.add("workArea", new SignUpJPanelCountry(container, system));            
-//        }
-//         else if(type.equals(SignUpRequest.SignUpType.Enterprise.getValue())){
-//          container.add("workArea", new SignUpJPanelEnterprise(container, system));           
-//        }
-
          if(type == (SignUpRequest.SignUpType.State)){
           container.add("workArea", new SignUpJPanelState(container, system));           
         }
@@ -110,7 +97,10 @@ public class SignUpWelcome extends javax.swing.JPanel {
          else {
          container.add("workArea", new SignUpJPanel(container, system, type));
         }
-      layout.next(container);  
+      layout.next(container); 
+ }catch(Exception e){
+     
+ }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
 
