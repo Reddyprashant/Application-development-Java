@@ -5,6 +5,25 @@
  */
 package userinterface.googleApi;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.LatLong;
+import Business.Network.CountryNetwork;
+import Business.Network.StateNetwork;
+import Business.UserAccount.UserAccount;
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
+import utility.googleMap.GoogleMapsSample;
+
 /**
  *
  * @author pooji
@@ -14,8 +33,45 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
     /**
      * Creates new form HomelessFoundJPanel
      */
-    public HomelessFoundJPanel() {
+    JPanel userProcessContainer;
+    UserAccount account;
+    Enterprise enterprise;
+    StateNetwork state;
+    CountryNetwork country;
+    EcoSystem system;
+    final Browser browser;
+     BrowserView view;
+      LatLong latLong;
+    public HomelessFoundJPanel(JPanel userProcessContainer,UserAccount account,Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.account=account;
+        this.enterprise=enterprise;
+        this.state=state;
+        this.country=country;
+        this.system=system;
+       // GoogleMapsSample g= new GoogleMapsSample();
+         latLong= new LatLong();
+             browser = new Browser();
+             view = new BrowserView(browser);
+            browser.loadURL("https://www.google.com/maps");
+//          JPanel frame = new JPanel();
+        
+           // frame.add(toolBar, BorderLayout.SOUTH);
+          //  frame.setSize(900, 500);
+            //frame.setLocationRelativeTo(null);
+            //frame.setVisible(true);
+//            JButton setMarkerButton = new JButton("Set Marker");
+//          setMarkerButton.addActionListener(new ActionListener() {
+//              public void actionPerformed(ActionEvent e) {
+//              
+//              }
+//                  });
+//           frame.add(setMarkerButton);
+            this.mapContainer.add(view,"a");
+//            this.jPanel1.add(frame,"b");
+            this.mapContainer.setVisible(true);
+      //  g.returnLatLong(JPanel userProcessContainer,UserAccount account,Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system);
     }
 
     /**
@@ -27,65 +83,67 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jSplitPane2 = new javax.swing.JSplitPane();
         mapContainer = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        btnLocation = new javax.swing.JButton();
 
-        jSplitPane1.setDividerLocation(550);
-        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane2.setDividerLocation(800);
+        jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jButton1.setText("Get Location");
+        mapContainer.setLayout(new java.awt.CardLayout());
+        jSplitPane2.setTopComponent(mapContainer);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(388, 388, 388)
-                .addComponent(jButton1)
-                .addContainerGap(407, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSplitPane1.setBottomComponent(jPanel1);
+        btnLocation.setText("Set Location");
+        btnLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLocationActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
 
-        javax.swing.GroupLayout mapContainerLayout = new javax.swing.GroupLayout(mapContainer);
-        mapContainer.setLayout(mapContainerLayout);
-        mapContainerLayout.setHorizontalGroup(
-            mapContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 898, Short.MAX_VALUE)
-        );
-        mapContainerLayout.setVerticalGroup(
-            mapContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jSplitPane1.setLeftComponent(mapContainer);
+        jSplitPane2.setRightComponent(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
+        // TODO add your handling code here:
+         if(browser.getURL()!= null){
+            
+                    System.out.println(browser.getURL());
+                    String[] a= browser.getURL().split("!3d",0);
+                    String[] b= a[1].split("!4d");
+                    System.out.println("Lat"+b[0]+"  "+"Lon"+b[1]);
+                    double lat= Double.parseDouble(b[0]);
+                    double lon= Double.parseDouble(b[1]);
+                    latLong.setLatitude(lat);
+                    latLong.setLongitude(lon);
+                    }
+         System.out.println("Lat"+latLong.getLatitude()+latLong.getLongitude());
+         
+         RequestShelterJPanel manageOrganizationJPanel = new RequestShelterJPanel(userProcessContainer,account,enterprise,state,country,system, latLong);
+        userProcessContainer.add("RequestShelterJPanel", manageOrganizationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnLocationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLocation;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JPanel mapContainer;
     // End of variables declaration//GEN-END:variables
 }
