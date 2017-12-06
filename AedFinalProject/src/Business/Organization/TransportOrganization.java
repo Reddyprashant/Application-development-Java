@@ -7,6 +7,7 @@
 package Business.Organization;
 
 import Business.Role.Role;
+import Business.Role.TransportationAdmin;
 import java.util.HashSet;
 
 
@@ -27,7 +28,9 @@ public class TransportOrganization extends Organization{
     
     @Override
     public HashSet<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        roles= new HashSet<>();
+        roles.add(new TransportationAdmin()); 
+        return roles;
     }
 
 }
