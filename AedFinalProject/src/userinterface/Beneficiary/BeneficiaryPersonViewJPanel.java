@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Beneficiary.Homeless;
+package userinterface.Beneficiary;
 
 import Business.Organization.HomelessOrganization;
 import Business.Person.Person;
@@ -21,7 +21,7 @@ import javax.swing.JPanel;
  *
  * @author vinya
  */
-public class HomelessPersonViewJPanel extends javax.swing.JPanel {
+public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form HomelessPersonViewJPanel
@@ -30,7 +30,7 @@ public class HomelessPersonViewJPanel extends javax.swing.JPanel {
     private HomelessOrganization organization;
     private Person p;
     private ImageIcon photo;
-    public HomelessPersonViewJPanel(JPanel userProcessContainer, Person p) {
+    public BeneficiaryPersonViewJPanel(JPanel userProcessContainer, Person p) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.p=p;
@@ -358,7 +358,7 @@ public class HomelessPersonViewJPanel extends javax.swing.JPanel {
             String reasonDesc = txtFieldReasonDescription.getText();
             String education = txtFieldEducationBackground.getText();
             String ethnicity = txtFieldEthnicity.getText();
-        if(name.isEmpty() || txtFieldAge.getText().isEmpty()||sex.isEmpty()||reason.isEmpty()||education.isEmpty()||ethnicity.isEmpty()){
+        if(name.isEmpty() || txtFieldAge.getText().isEmpty()||sex.isEmpty()||reason.isEmpty()){
             
             JOptionPane.showMessageDialog(null, "Please provide all the details","Warning",JOptionPane.WARNING_MESSAGE);
             return;

@@ -4,6 +4,7 @@
  */
 package userinterface.Beneficiary.Homeless;
 
+import userinterface.Beneficiary.BeneficiaryPersonViewJPanel;
 import Business.EcoSystem;
 //import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
@@ -16,7 +17,6 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.File;
-import java.text.SimpleDateFormat;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -63,7 +63,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
      reqComboBox.removeAllItems();
      reqComboBox.addItem("White American");
      reqComboBox.addItem("African American");
-     reqComboBox.addItem("Asian American");
+     reqComboBox.addItem("Asian");
      reqComboBox.addItem("Native American");
      reqComboBox.addItem("Native Hawaiians");
      reqComboBox.addItem("Middle Eastern");
@@ -141,11 +141,12 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         rdBtnMale = new javax.swing.JRadioButton();
         rdBtnFemale = new javax.swing.JRadioButton();
         rdBtnOthers = new javax.swing.JRadioButton();
-        reqComboBox = new javax.swing.JComboBox<>();
+        reqComboBox = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         btnUpload = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         btnViewDetails = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -189,7 +190,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                 btnCreatePersonActionPerformed(evt);
             }
         });
-        add(btnCreatePerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 660, -1, -1));
+        add(btnCreatePerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, -1, -1));
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -199,8 +200,8 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
-        jLabel2.setText("Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 40, -1));
+        jLabel2.setText("*Name:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 50, -1));
 
         nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -209,19 +210,19 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 126, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel4.setText("Person Details");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 170, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 220, 30));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel5.setText("Create Person");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 170, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 220, 30));
         add(ageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 130, -1));
 
-        jLabel1.setText("Age:");
+        jLabel1.setText("*Age:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 50, -1));
 
-        jLabel6.setText("Reason For Joining");
+        jLabel6.setText("*Reason For Joining");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, -1, -1));
 
         btnGrpReasons.add(ARadioButton);
@@ -262,11 +263,12 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
         TextArea.setColumns(20);
         TextArea.setRows(5);
+        TextArea.setEnabled(false);
         jScrollPane2.setViewportView(TextArea);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, -1, 52));
 
-        jLabel3.setText("Sex:");
+        jLabel3.setText("*Sex:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 40, -1));
 
         jLabel7.setText("Ethnicity:");
@@ -299,7 +301,6 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         rdBtnOthers.setText("Others");
         add(rdBtnOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, -1, -1));
 
-        reqComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 110, -1));
 
         jLabel9.setText("Description: ");
@@ -313,7 +314,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         });
         add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, -1, -1));
 
-        jLabel10.setText("Photo:");
+        jLabel10.setText("*Photo:");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, -1, -1));
 
         btnViewDetails.setText("View Details");
@@ -323,13 +324,16 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
             }
         });
         add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, -1, -1));
+
+        jLabel11.setText("* Mandatory Fields");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 660, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
-         if(!nameJTextField.getText().equals("")){
+         if(!(nameJTextField.getText().isEmpty()|| ageTextField.getText().isEmpty() && (rdBtnMale.isSelected()|| rdBtnFemale.isSelected()||rdBtnOthers.isSelected()))){
              try
              {
-             SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+             //SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
         //ClinicOrganization organization = (ClinicOrganization) organizationEmpJComboBox.getSelectedItem();
        String name = nameJTextField.getText();
        int age = Integer.parseInt(ageTextField.getText());
@@ -337,15 +341,15 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
        
        String sex = null;
        if(rdBtnMale.isSelected()){
-           sex = "M";
+           sex = "Male";
        }
        
        else if(rdBtnFemale.isSelected()){
-           sex = "F";
+           sex = "Female";
        }
        
        else if(rdBtnFemale.isSelected()){
-           sex = "O";
+           sex = "Others";
        }       
        String educationBG = null;
        if(rdBtnCollegeGrad.isSelected()){
@@ -386,14 +390,13 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         
         
         populateTable(organization);
-        
-        }
+          }
              catch(NumberFormatException p)
         {
             JOptionPane.showMessageDialog(null, "Please enter Valid Age");
         }
          }else{
-             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+             JOptionPane.showMessageDialog(null, "Please enter values for all the fields", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
         
@@ -467,7 +470,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         
         else {
         Person p = (Person) organizationJTable.getValueAt(selectedrow, 1);    
-        HomelessPersonViewJPanel muajp = new HomelessPersonViewJPanel( userProcessContainer,p);
+        BeneficiaryPersonViewJPanel muajp = new BeneficiaryPersonViewJPanel( userProcessContainer,p);
         userProcessContainer.add("HomelessPersonViewJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -493,6 +496,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnViewDetails;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -511,6 +515,6 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rdBtnMale;
     private javax.swing.JRadioButton rdBtnOthers;
     private javax.swing.JRadioButton rdBtnUneducated;
-    private javax.swing.JComboBox<String> reqComboBox;
+    private javax.swing.JComboBox reqComboBox;
     // End of variables declaration//GEN-END:variables
 }
