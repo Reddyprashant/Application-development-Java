@@ -53,15 +53,18 @@ public class SignUpJPanelState extends javax.swing.JPanel {
         comboCountry = new javax.swing.JComboBox();
         btnCreateState = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel1.setText("Register");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 160, 30));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel1.setText("Register For State");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 300, 40));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("State:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, -1, -1));
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,21 +76,24 @@ public class SignUpJPanelState extends javax.swing.JPanel {
                 txtNameKeyPressed(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 170, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 170, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Country:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 80, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 80, -1));
 
-        add(comboCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 170, -1));
+        add(comboCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 170, -1));
 
+        btnCreateState.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        btnCreateState.setForeground(new java.awt.Color(71, 79, 112));
         btnCreateState.setText("Register");
         btnCreateState.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateStateActionPerformed(evt);
             }
         });
-        add(btnCreateState, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 90, -1));
+        add(btnCreateState, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 140, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStateActionPerformed

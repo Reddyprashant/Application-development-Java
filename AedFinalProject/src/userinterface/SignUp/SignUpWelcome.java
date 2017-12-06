@@ -53,31 +53,44 @@ public class SignUpWelcome extends javax.swing.JPanel {
         comboBoxSignUpType = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         btnSubmit = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("Welcome");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 37, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel1.setText("Welcome To One Word One Army");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Please Select an Option from Below");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 94, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, -1, -1));
 
-        add(comboBoxSignUpType, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 151, 146, 33));
+        add(comboBoxSignUpType, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 146, 33));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel3.setText("Sign Up Type");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 151, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel3.setText("Register for Respective Organization");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, -1, -1));
 
-        btnSubmit.setText("Next");
+        btnSubmit.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(71, 79, 112));
+        btnSubmit.setText("Register");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 227, 73, 42));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 73, 42));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/Volunteer.jpg"))); // NOI18N
+        jLabel4.setMaximumSize(new java.awt.Dimension(709, 309));
+        jLabel4.setMinimumSize(new java.awt.Dimension(709, 309));
+        jLabel4.setPreferredSize(new java.awt.Dimension(709, 309));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 19, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
@@ -110,5 +123,6 @@ public class SignUpWelcome extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,7 @@ import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -171,12 +172,22 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-
+    
         Type type = (Type) organizationJComboBox.getSelectedItem();
         String name = orgNameTextField.getText();
         String city= txtcity.getText();
-        directory.createOrganization(type, name, city,txtAddress.getText());
-        populateTable();
+        if(!(name.isEmpty())){
+            if(!(city.isEmpty())){    
+               directory.createOrganization(type, name, city,txtAddress.getText());
+               populateTable();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Enter value for city", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }   
+        else{
+             JOptionPane.showMessageDialog(null, "Enter Organization Name", "Warning", JOptionPane.WARNING_MESSAGE);   
+        }    
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

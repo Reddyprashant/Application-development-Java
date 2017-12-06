@@ -92,7 +92,6 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         userJTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        passwordJTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         employeeJComboBox = new javax.swing.JComboBox();
         backjButton1 = new javax.swing.JButton();
@@ -100,6 +99,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         organizationJComboBox = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         roleJComboBox = new javax.swing.JComboBox();
+        pwdFiledPassword = new javax.swing.JPasswordField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -148,7 +148,6 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Password");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 393, -1, -1));
-        add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 390, 146, -1));
 
         jLabel3.setText("Employee");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 280, -1, -1));
@@ -181,26 +180,40 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
 
         roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 321, 146, -1));
+
+        pwdFiledPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwdFiledPasswordActionPerformed(evt);
+            }
+        });
+        add(pwdFiledPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
+        //Creating User Account for Entity
+        
         String userName = nameJTextField.getText();
-        String password = passwordJTextField.getText();
-        if(!((userName.equals("") || (password.equals(""))))){
-        if(EcoSystem.checkIfUsernameIsUnique(userName)){
-        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-        Role role = (Role) roleJComboBox.getSelectedItem();
+        String password = String.valueOf(pwdFiledPassword.getPassword());
+        if(!(userName.equals("") )){                                                               // checking whether the username is empty
+            if(!(password.equals(""))){                                                            // checking whether the password is empty
+               if(EcoSystem.checkIfUsernameIsUnique(userName)){                                    // checking whether the username is Unique
+               Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+               Employee employee = (Employee) employeeJComboBox.getSelectedItem();
+               Role role = (Role) roleJComboBox.getSelectedItem();
         
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+               organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
         
-        popData();
+               popData();
         }
-        else{
-           JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE); 
-        }
+               else{
+                    JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE); 
+                }
+            }
+            else {
+                 JOptionPane.showMessageDialog(null, "Enter value for password", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
         }else{
-             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+             JOptionPane.showMessageDialog(null, "Enter value for username", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
@@ -219,6 +232,10 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 
+    private void pwdFiledPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdFiledPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwdFiledPasswordActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backjButton1;
     private javax.swing.JButton createUserJButton;
@@ -231,7 +248,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox organizationJComboBox;
-    private javax.swing.JTextField passwordJTextField;
+    private javax.swing.JPasswordField pwdFiledPassword;
     private javax.swing.JComboBox roleJComboBox;
     private javax.swing.JTable userJTable;
     // End of variables declaration//GEN-END:variables
