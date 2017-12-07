@@ -13,20 +13,15 @@ import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.SignUp.SignUpRequest;
-import Business.SignUp.SignUpRequestEnterprise;
 import Business.SignUp.SignUpRequestOrganization;
-import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import userinterface.Beneficiary.Orphanage.OrphanageRequestWorkAreaJPanel;
 import userinterface.googleApi.OrganizationLocationJPanel;
 import utility.Validator;
 
@@ -100,8 +95,6 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        txtAddress = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         txtLoc = new javax.swing.JTextField();
         btnLocation = new javax.swing.JButton();
@@ -144,7 +137,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 780, 140, 50));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 750, 140, 50));
 
         txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -197,7 +190,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 txtCityKeyPressed(evt);
             }
         });
-        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 620, 170, -1));
+        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 590, 170, -1));
 
         comboCountry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,7 +214,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(71, 79, 112));
         jLabel10.setText("City :");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 620, 50, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 590, 50, -1));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(71, 79, 112));
@@ -259,12 +252,12 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 txtImageKeyPressed(evt);
             }
         });
-        add(txtImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 660, 170, -1));
+        add(txtImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 630, 170, -1));
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(71, 79, 112));
         jLabel14.setText("Documents :");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 660, 100, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 630, 100, -1));
 
         btnFile.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnFile.setForeground(new java.awt.Color(71, 79, 112));
@@ -274,7 +267,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 btnFileActionPerformed(evt);
             }
         });
-        add(btnFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 660, -1, -1));
+        add(btnFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 630, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(71, 79, 112));
@@ -289,34 +282,17 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel16.setText("Organization Details:");
         add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, -1, 30));
 
-        txtAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddressActionPerformed(evt);
-            }
-        });
-        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtAddressKeyPressed(evt);
-            }
-        });
-        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 580, 170, -1));
-
-        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel17.setText("Address:");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, 80, -1));
-
         jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
         jLabel18.setText("Location :");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 720, 100, -1));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 690, 100, -1));
 
         txtLoc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtLocKeyPressed(evt);
             }
         });
-        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 720, 170, -1));
+        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 690, 170, -1));
 
         btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnLocation.setForeground(new java.awt.Color(71, 79, 112));
@@ -326,7 +302,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 btnLocationActionPerformed(evt);
             }
         });
-        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 720, -1, -1));
+        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 690, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -337,6 +313,8 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
         // TODO add your handling code here:
         Validator.onlyString(evt, txtName);
+      
+
     }//GEN-LAST:event_txtNameKeyPressed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -402,6 +380,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyPressed
         // TODO add your handling code here:
         Validator.onlyString(evt, txtUserName);
+
     }//GEN-LAST:event_txtUserNameKeyPressed
 
     private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
@@ -492,14 +471,6 @@ public class SignUpJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtUserNameFocusLost
 
-    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressActionPerformed
-
-    private void txtAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressKeyPressed
-
     private void txtLocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLocKeyPressed
@@ -529,7 +500,6 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -537,7 +507,6 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtImage;

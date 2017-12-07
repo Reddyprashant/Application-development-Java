@@ -7,10 +7,10 @@ package userinterface.SignUp;
 
 import Business.EcoSystem;
 import Business.Network.CountryNetwork;
+import Business.Network.StateNetwork;
 import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
-import java.awt.image.BufferedImage;
-import javax.swing.JFileChooser;
+import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import utility.Validator;
@@ -26,12 +26,12 @@ public class SignUpJPanelState extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-    
+
     public SignUpJPanelState(JPanel userProcessContainer, EcoSystem business) {
         initComponents();
         this.system = business;
-        this.userProcessContainer=userProcessContainer;
-        
+        this.userProcessContainer = userProcessContainer;
+
         for (CountryNetwork countryNetwork : system.getNetworkList()) {
             comboCountry.addItem(countryNetwork);
         }
@@ -98,24 +98,45 @@ public class SignUpJPanelState extends javax.swing.JPanel {
 
     private void btnCreateStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStateActionPerformed
         // TODO add your handling code here:
-        try{
-            if(!txtName.getText().isEmpty()){
-                
-                CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem(); 
-                SignUpRequestState stateRequest= new SignUpRequestState();
+        try {
+
+            for (CountryNetwork country : system.getNetworkList()) {
+                for (StateNetwork state : country.getStateList()) {
+                    if (state.getName().equals(txtName.getText())) {
+                        JOptionPane.showMessageDialog(null, "State Already exists Please enter a new State");
+                        return;
+                    }
+                }
+            }
+
+            for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
+                for (WorkRequest workReq : userAccount.getWorkQueue().getWorkRequestList()) {
+                    if (workReq instanceof SignUpRequestState) {
+                        if (((SignUpRequestState) workReq).getName().equals(txtName.getText())) {
+                            JOptionPane.showMessageDialog(null, "Request Already raised for the state");
+                            return;
+                        }
+                    }
+                }
+            }
+
+            if (!txtName.getText().isEmpty()) {
+
+                CountryNetwork country = (CountryNetwork) comboCountry.getSelectedItem();
+                SignUpRequestState stateRequest = new SignUpRequestState();
                 stateRequest.setName(txtName.getText());
                 stateRequest.setCountry(country);
                 stateRequest.setStatus("Requested");
                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
-                    if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
+                    if (country.getName().equalsIgnoreCase(userAccount.getUsername())) {
                         userAccount.getWorkQueue().getWorkRequestList().add(stateRequest);
                     }
                 }
-                
+
                 JOptionPane.showMessageDialog(null, "State Created successfully");
-                
-            }
-            else{
+                txtName.setText("");
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Please enter State name");
             }
         } catch (Exception ex) {

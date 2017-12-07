@@ -6,7 +6,9 @@
 package userinterface.SignUp;
 
 import Business.EcoSystem;
+import Business.Network.CountryNetwork;
 import Business.SignUp.SignUpRequestCountry;
+import Business.WorkQueue.WorkRequest;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -31,10 +33,12 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
     private EcoSystem system;
     private BufferedImage file;
     private JFileChooser openFile;
+
     public SignUpJPanelCountry(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.system = system;
-        this.userProcessContainer=userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
+        txtUserName.setEnabled(false);
     }
 
     /**
@@ -56,7 +60,6 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
-        txtPhone = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(71, 79, 112));
@@ -72,14 +75,9 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         jLabel3.setText("Name :");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNameKeyPressed(evt);
+        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameFocusLost(evt);
             }
         });
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 170, -1));
@@ -98,109 +96,100 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
             }
         });
         add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 160, 40));
-
-        txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUserNameFocusLost(evt);
-            }
-        });
-        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUserNameKeyPressed(evt);
-            }
-        });
         add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("Email Id :");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
-
-        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEmailFocusLost(evt);
-            }
-        });
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEmailKeyPressed(evt);
-            }
-        });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 170, -1));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Password:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
+
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusLost(evt);
+            }
+        });
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 170, -1));
-        add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtNameActionPerformed
-
-    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, txtName);
-    }//GEN-LAST:event_txtNameKeyPressed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        try{
-            if(!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty()  && !txtPassword.getText().isEmpty()){
-                if(txtUserName.getText().equalsIgnoreCase(txtName.getText())){
-                    
-                SignUpRequestCountry countryRequest= new SignUpRequestCountry();
-                countryRequest.setUserName(txtUserName.getText());
-                countryRequest.setName(txtName.getText());
-                countryRequest.setPassword(txtPassword.getText());
-                countryRequest.setEmail(txtEmail.getText());
-                countryRequest.setPhone(txtPhone.getText());
-                countryRequest.setStatus("Requested");
-             system.getWorkQueue().getWorkRequestList().add(countryRequest);
-
-                JOptionPane.showMessageDialog(null, "Updated successfully");
-            }
-                else{
-                     JOptionPane.showMessageDialog(null, "Username and Country name should be same");
+        try {
+            for (WorkRequest workReq : system.getWorkQueue().getWorkRequestList()) {
+                if (workReq instanceof SignUpRequestCountry) {
+                    if (((SignUpRequestCountry) workReq).getName().equals(txtName.getText())) {
+                        JOptionPane.showMessageDialog(null, "Request Already raised for this country");
+                        return;
+                    }
                 }
             }
-            else{
+
+            for (CountryNetwork cN : system.getNetworkList()) {
+                if (txtName.getText().equals(cN.getName())) {
+                    JOptionPane.showMessageDialog(null, "Country Already exists please enter a new country");
+                    return;
+                }
+            }
+
+            String password = String.valueOf(txtPassword.getPassword());
+            if (!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty() && !password.isEmpty()) {
+                if (txtUserName.getText().equalsIgnoreCase(txtName.getText())) {
+                    if (!Validator.validateEmail(txtEmail.getText())) {
+                        JOptionPane.showMessageDialog(null, "Enter correct Email Address ");
+                        txtEmail.setText("");
+                    } else {
+
+                        SignUpRequestCountry countryRequest = new SignUpRequestCountry();
+                        countryRequest.setUserName(txtUserName.getText());
+                        countryRequest.setName(txtName.getText());
+                        countryRequest.setPassword(password);
+                        countryRequest.setEmail(txtEmail.getText());
+                        countryRequest.setStatus("Requested");
+                        system.getWorkQueue().getWorkRequestList().add(countryRequest);
+
+                        JOptionPane.showMessageDialog(null, "Request raised Successfully");
+                        txtEmail.setText("");
+                        txtPassword.setText("");
+                        txtName.setText("");
+                        txtUserName.setText("");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Username and Country name should be same");
+                }
+            } else {
                 JOptionPane.showMessageDialog(null, "Please enter all values");
             }
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Enter integer for Salary", "Warning", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
-            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_btnCreateActionPerformed
 
-    private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyPressed
+    private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
         // TODO add your handling code here:
-        Validator.onlyString(evt, txtUserName);
-    }//GEN-LAST:event_txtUserNameKeyPressed
+        txtUserName.setText(txtName.getText());
+    }//GEN-LAST:event_txtNameFocusLost
 
-    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+    private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailKeyPressed
-
-    private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
-        // TODO add your handling code here:
-        if(!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
-             JOptionPane.showMessageDialog(null, "Enter unique username");
+        String password = String.valueOf(txtPassword.getPassword());
+        if (!Validator.validatePassword(password)) {
+            JOptionPane.showMessageDialog(null, "Password should Contain \n"
+                    + "       # At least one digit\n"
+                    + "       # At least one lower case letter\n"
+                    + "       # At least one upper case letter\n"
+                    + "       # At least one special character\n"
+                    + "       # no whitespace allowed in the entire string\n"
+                    + "       # at least eight characters");
+            txtPassword.setText("");
         }
-    }//GEN-LAST:event_txtUserNameFocusLost
-
-    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-        // TODO add your handling code here:
-        if(!Validator.validateEmail(txtEmail.getText())){
-            JOptionPane.showMessageDialog(null, "Enter correct Email Address ");
-        }
-    }//GEN-LAST:event_txtEmailFocusLost
+    }//GEN-LAST:event_txtPasswordFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -213,7 +202,6 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
