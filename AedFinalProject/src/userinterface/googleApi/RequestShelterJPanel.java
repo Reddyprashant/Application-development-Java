@@ -6,11 +6,13 @@
 package userinterface.googleApi;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.LatLong;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.HomelessOrganization;
+import Business.Organization.IndividualOrganization;
 import Business.Organization.OldAgeOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrphanageOrganization;
@@ -18,13 +20,16 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ShelterWorkRequest;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.File;
 import javax.imageio.ImageIO;
+import javax.mail.SendFailedException;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import utility.Validator;
 
 /**
  *
@@ -76,6 +81,7 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         reqBtn = new javax.swing.JButton();
         btnUpload = new javax.swing.JButton();
         lblPic = new javax.swing.JLabel();
+        btnHome = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -125,6 +131,14 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         });
         add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, -1, -1));
         add(lblPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 210, 210));
+
+        btnHome.setText("Home");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLatKeyPressed
@@ -146,10 +160,45 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
             
             for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
-                    if(organization instanceof HomelessOrganization || organization instanceof OrphanageOrganization || organization instanceof OldAgeOrganization ){
+                    if(organization instanceof HomelessOrganization || organization instanceof OrphanageOrganization || organization instanceof OldAgeOrganization || organization instanceof IndividualOrganization ){
+                        
                         organization.getWorkQueue().getWorkRequestList().add(request);
+                        if(organization.populateDistance(latLong) < 5){
+                            System.out.println("Distance 5"+organization.getName()+" : "+organization.populateDistance(latLong));
+                                for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+                                     try{
+                                    Validator.sendMessage(employee.getEmailId());
+                                }catch(SendFailedException s){
+                                
+                            }
+                                
+                            }
+                            
+                        }
+                        else if(organization.populateDistance(latLong) < 10){
+                            System.out.println("Distance 10 "+organization.getName()+" : "+organization.populateDistance(latLong));
+                                for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+                                     try{
+                                    Validator.sendMessage(employee.getEmailId());
+                                }catch(SendFailedException s){
+                                
+                            }
+                        
+                        }
                     }
+                        else{
+                               System.out.println("Distance "+organization.getName()+" : "+organization.populateDistance(latLong));
+                                for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+                                     try{
+                                    Validator.sendMessage(employee.getEmailId());
+                                }catch(SendFailedException s){
+                                
+                            }
+                        
+                        } 
+                            }
                 }
+            }
             }
             
             
@@ -187,8 +236,17 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnUploadActionPerformed
 
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+       JPanel j= account.getRole().createWorkArea(userProcessContainer, account, enterprise, enterprise, state, country, system);
+         userProcessContainer.add("workarea1", j);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnHomeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnUpload;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel2;

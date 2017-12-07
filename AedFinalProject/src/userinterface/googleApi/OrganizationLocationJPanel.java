@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
@@ -120,6 +121,7 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
 
     private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
         // TODO add your handling code here:
+        try{
          if(browser.getURL()!= null){
             
                     System.out.println(browser.getURL());
@@ -151,13 +153,17 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
         GovernmentManageOrganizationJPanel eduRequestPanel =(GovernmentManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
         eduRequestPanel.populateLatLong(latLong);
           }
-          else if(userProcessContainer.getComponent(componentArray.length -1) instanceof GovernmentManageOrganizationJPanel){
+          else if(userProcessContainer.getComponent(componentArray.length -1) instanceof LogisticsManageOrganizationJPanel){
         LogisticsManageOrganizationJPanel eduRequestPanel =(LogisticsManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
         eduRequestPanel.populateLatLong(latLong);
           }
           
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Set Location first");
+        }
+        
     }//GEN-LAST:event_btnLocationActionPerformed
 
 
