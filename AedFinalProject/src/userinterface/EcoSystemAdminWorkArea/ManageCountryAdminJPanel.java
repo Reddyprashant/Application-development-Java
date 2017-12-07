@@ -242,7 +242,8 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
 //                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new GovtAdminRole());
 //            }else if (system.getEnterpriseType() == Enterprise.EnterpriseType.Logistic) {
 //                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new LogisticAdminRole());
-//            }
+//            }          
+JOptionPane.showMessageDialog(null, "Useraccount created", "Warning", JOptionPane.WARNING_MESSAGE);
 
                             populateTable(); 
                             txtEmail.setText("");

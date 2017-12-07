@@ -257,7 +257,11 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Logistic) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new LogisticAdminRole());
             }
-
+            JOptionPane.showMessageDialog(null, "Useraccount created successfully", "Warning", JOptionPane.WARNING_MESSAGE);
+            usernameJTextField.setText("");
+            passwordJPasswordField.setText("");
+            nameJTextField.setText("");
+            txtEmail.setText("");
             populateTable();
         }
         else {

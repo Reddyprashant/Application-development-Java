@@ -144,7 +144,8 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             if(cNetwork.getStateList().contains(name)){
         StateNetwork network = cNetwork.createAndAddNetwork();
         network.setName(name);
-
+JOptionPane.showMessageDialog(null, "State created successfully");
+nameJTextField.setText("");
         populateNetworkTable();
             }else{
                 JOptionPane.showMessageDialog(null, "State is already present");
