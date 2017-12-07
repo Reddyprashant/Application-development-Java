@@ -13,10 +13,10 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-
 
 /**
  *
@@ -28,24 +28,25 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem system;
     UserAccount account;
     CountryNetwork cNetwork;
+
     /**
      * Creates new form AdminWorkAreaJPanel
      */
-    public CountryAdminWorkAreaJPanel(JPanel userProcessContainer,UserAccount account, CountryNetwork cNetwork, EcoSystem system) {
+    public CountryAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, CountryNetwork cNetwork, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        this.account= account;
-        this.cNetwork=cNetwork;
-       // this.cNetwork=new CountryNetwork();
+        this.account = account;
+        this.cNetwork = cNetwork;
+        // this.cNetwork=new CountryNetwork();
         populateTree();
     }
 
     public void populateTree() {
-        
+
         DefaultTreeModel model = (DefaultTreeModel) JTree.getModel();
-        
-       // ArrayList<CountryNetwork> cnetworkList = system.getNetworkList();
+
+        // ArrayList<CountryNetwork> cnetworkList = system.getNetworkList();
         ArrayList<StateNetwork> networkList = cNetwork.getStateList();
         ArrayList<Enterprise> enterpriseList;
         ArrayList<Organization> organizationList;
@@ -61,8 +62,8 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         DefaultMutableTreeNode networkNode;
         DefaultMutableTreeNode enterpriseNode;
         DefaultMutableTreeNode organizationNode;
-       // for (int h = 0; h < cnetworkList.size(); h++) {
-          
+        // for (int h = 0; h < cnetworkList.size(); h++) {
+
         for (int i = 0; i < networkList.size(); i++) {
             network = networkList.get(i);
             networkNode = new DefaultMutableTreeNode(network.getName());
@@ -83,7 +84,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
                 }
             }
         }
-    //}
+        //}
 
         model.reload();
     }
@@ -183,23 +184,39 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageEnterpriseJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEnterpriseJButtonActionPerformed
 
-        ManageEnterpriseJPanel manageEnterpriseJPanel = new ManageEnterpriseJPanel(userProcessContainer, cNetwork, system);
-        userProcessContainer.add("manageEnterpriseJPanel", manageEnterpriseJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        if (!cNetwork.getStateList().isEmpty()) {
+
+            ManageEnterpriseJPanel manageEnterpriseJPanel = new ManageEnterpriseJPanel(userProcessContainer, cNetwork, system);
+            userProcessContainer.add("manageEnterpriseJPanel", manageEnterpriseJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } else {
+            JOptionPane.showMessageDialog(null, "Add State into the network");
+        }
+
     }//GEN-LAST:event_manageEnterpriseJButtonActionPerformed
 
     private void manageAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAdminJButtonActionPerformed
         // TODO add your handling code here:
-        ManageEnterpriseAdminJPanel manageEnterpriseAdminJPanel = new ManageEnterpriseAdminJPanel(userProcessContainer, cNetwork, system);
-        userProcessContainer.add("manageEnterpriseAdminJPanel", manageEnterpriseAdminJPanel);
+        if (!cNetwork.getStateList().isEmpty()) {
+            for (StateNetwork cState : cNetwork.getStateList()) {
+                if (!cState.getEnterpriseDirectory().getEnterpriseList().isEmpty()) {
+                    ManageEnterpriseAdminJPanel manageEnterpriseAdminJPanel = new ManageEnterpriseAdminJPanel(userProcessContainer, cNetwork, system);
+                    userProcessContainer.add("manageEnterpriseAdminJPanel", manageEnterpriseAdminJPanel);
 
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+                    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                    layout.next(userProcessContainer);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Add Enterprise into the network");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Add State into the network");
+        }
     }//GEN-LAST:event_manageAdminJButtonActionPerformed
 
     private void manageNetworkJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageNetworkJButtonActionPerformed
-        ManageNetworkJPanel manageNetworkJPanel = new ManageNetworkJPanel(userProcessContainer, cNetwork,system);
+        ManageNetworkJPanel manageNetworkJPanel = new ManageNetworkJPanel(userProcessContainer, cNetwork, system);
         userProcessContainer.add("manageNetworkJPanel", manageNetworkJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -215,7 +232,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnDiseaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiseaseActionPerformed
         // TODO add your handling code here:
-        CountryAdminRequestAreaJPanel manageNetworkJPanel = new CountryAdminRequestAreaJPanel(userProcessContainer,account,cNetwork, system);
+        CountryAdminRequestAreaJPanel manageNetworkJPanel = new CountryAdminRequestAreaJPanel(userProcessContainer, account, cNetwork, system);
         userProcessContainer.add("AdminRequestAreaJPanel", manageNetworkJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

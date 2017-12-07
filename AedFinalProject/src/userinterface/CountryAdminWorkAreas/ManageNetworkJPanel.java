@@ -70,10 +70,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Name"
@@ -127,8 +124,9 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 352, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("State Network Panel");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 150, 20));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 250, 20));
 
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +146,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         populateNetworkTable();
          }else{
-             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+             JOptionPane.showMessageDialog(null, "Enter value for Name", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_submitJButtonActionPerformed
@@ -165,11 +163,13 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow= networkJTable.getSelectedRow();
-        if(selectedRow<0){
-            JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else{
+        int selectedRow = networkJTable.getSelectedRow();
+        if(selectedRow >=0)
+        {
+            
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null,"Would you like to delete the details","Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION){
 
             StateNetwork p=(StateNetwork) networkJTable.getValueAt(selectedRow, 0);
 
@@ -182,6 +182,10 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
             populateNetworkTable();
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select a Row from table ","Warning",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

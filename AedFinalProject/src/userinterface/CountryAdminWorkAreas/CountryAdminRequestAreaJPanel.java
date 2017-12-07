@@ -107,6 +107,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         reqBtn = new javax.swing.JButton();
         btnComplete = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -161,15 +162,26 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 140, -1));
+
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRow = requestTable.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-
+        if(selectedRow >=0)
+        {
+            
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null,"Would you like to delete the details","Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION){
+   
             WorkRequest p = (WorkRequest) requestTable.getValueAt(selectedRow, 3);
 
             // s.getWorkQueue().getWorkRequestList().remove(p);
@@ -178,6 +190,10 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
           //  business.getWorkQueue().getWorkRequestList().remove(p);
             JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
             populateWorkQueueTable();
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select a Row from table ","Warning",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -271,8 +287,18 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCompleteActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnComplete;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;

@@ -181,9 +181,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAdminJButtonActionPerformed
         // TODO add your handling code here:
+        
         ManageCountryAdminJPanel manageEnterpriseAdminJPanel = new ManageCountryAdminJPanel(userProcessContainer, system);
         userProcessContainer.add("ManageCountryAdminJPanel", manageEnterpriseAdminJPanel);
-
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageAdminJButtonActionPerformed

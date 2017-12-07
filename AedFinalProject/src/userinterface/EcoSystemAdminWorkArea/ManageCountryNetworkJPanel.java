@@ -96,44 +96,49 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
             networkJTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 63, 404, 91));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 404, 91));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Country Name");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
 
+        submitJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 253, -1, -1));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, -1));
 
         nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nameJTextFieldKeyPressed(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 254, 93, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 93, -1));
 
+        backJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Country Network Panel");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 150, 20));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 260, -1));
 
+        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, -1, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed

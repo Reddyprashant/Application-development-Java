@@ -42,6 +42,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         this.cNetwork=cNetwork;
         populateTable();
         populateNetworkComboBox();
+        
     }
 
     private void populateTable() {
@@ -64,19 +65,28 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void populateNetworkComboBox() {
         networkJComboBox.removeAllItems();
-
         for (StateNetwork network : cNetwork.getStateList()) {
             networkJComboBox.addItem(network);
-        }
+        }   
+
     }
 
     private void populateEnterpriseComboBox(StateNetwork network) {
         enterpriseJComboBox.removeAllItems();
-
-        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-            enterpriseJComboBox.addItem(enterprise);
+        if(!network.getEnterpriseDirectory().getEnterpriseList().isEmpty()){
+           for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                enterpriseJComboBox.addItem(enterprise);
+            }
         }
-
+        else{
+             txtEmail.setEnabled(false);
+             usernameJTextField.setEnabled(false);
+             passwordJPasswordField.setEnabled(false);
+             nameJTextField.setEnabled(false);
+             submitJButton.setEnabled(false);
+             btnDelete.setEnabled(false);
+             networkJComboBox.addItem("Please Add Enterprise");
+        }
     }
 
     /**
@@ -105,15 +115,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Enterprise Name", "Network", "Username"
@@ -134,7 +142,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel1.setText("Network");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 201, -1, -1));
 
-        networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 networkJComboBoxActionPerformed(evt);
@@ -149,7 +156,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel3.setText("Enterprise");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 254, -1, -1));
 
-        enterpriseJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 251, 136, -1));
 
         submitJButton.setText("Submit");
@@ -193,20 +199,34 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel6.setText("Email Id:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, -1, -1));
 
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEmailKeyPressed(evt);
             }
         });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 136, -1));
+
+        jLabel7.setBackground(new java.awt.Color(0, 171, 56));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel7.setText("Manage Enterprise Work Area");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
 
-        StateNetwork network = (StateNetwork) networkJComboBox.getSelectedItem();
-        if (network != null) {
-            populateEnterpriseComboBox(network);
-        }
+        //StateNetwork network = (StateNetwork) networkJComboBox.getSelectedItem();
+//        if ((networkJComboBox.getSelectedItem() != null)) {
+//            populateEnterpriseComboBox((networkJComboBox.getSelectedItem().toString()));
+//        }
+//        else{
+//            JOptionPane.showMessageDialog(null, "Add network ");
+//        }
 
 
     }//GEN-LAST:event_networkJComboBoxActionPerformed
@@ -256,9 +276,12 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRow = enterpriseJTable.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
+        if(selectedRow >=0)
+        {
+            
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null,"Would you like to delete the details","Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION){
 
             UserAccount p = (UserAccount) enterpriseJTable.getValueAt(selectedRow, 2);
 
@@ -276,7 +299,11 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
             populateTable();
+            }
         }
+        else{
+           JOptionPane.showMessageDialog(null, "Please select a Row from table ","Warning",JOptionPane.WARNING_MESSAGE);
+        }   
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void nameJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameJTextFieldKeyPressed
@@ -287,6 +314,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        if(!Validator.validateEmail(txtEmail.getText())){
+            JOptionPane.showMessageDialog(null, "Enter a valid Email Id");
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
@@ -299,6 +333,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox networkJComboBox;

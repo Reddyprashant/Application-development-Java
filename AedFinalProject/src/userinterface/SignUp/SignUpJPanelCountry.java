@@ -116,6 +116,11 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         jLabel6.setText("Email Id :");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
 
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEmailKeyPressed(evt);
@@ -189,6 +194,13 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
              JOptionPane.showMessageDialog(null, "Enter unique username");
         }
     }//GEN-LAST:event_txtUserNameFocusLost
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        if(!Validator.validateEmail(txtEmail.getText())){
+            JOptionPane.showMessageDialog(null, "Enter correct Email Address ");
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
