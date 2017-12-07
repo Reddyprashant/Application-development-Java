@@ -178,6 +178,12 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Name");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 374, -1, -1));
+
+        passwordJPasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordJPasswordFieldFocusLost(evt);
+            }
+        });
         add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 331, 134, -1));
 
         backJButton.setText("<< Back");
@@ -308,7 +314,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void nameJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameJTextFieldKeyPressed
         // TODO add your handling code here:
-        Validator.onlyString(evt, nameJTextField);
+       // Validator.onlyString(evt, nameJTextField);
     }//GEN-LAST:event_nameJTextFieldKeyPressed
 
     private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
@@ -319,8 +325,24 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(!Validator.validateEmail(txtEmail.getText())){
             JOptionPane.showMessageDialog(null, "Enter a valid Email Id");
+            txtEmail.setText("");
         }
     }//GEN-LAST:event_txtEmailFocusLost
+
+    private void passwordJPasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordJPasswordFieldFocusLost
+        // TODO add your handling code here:
+                String password = String.valueOf(passwordJPasswordField.getPassword());
+        if(!Validator.validatePassword(password)){
+            JOptionPane.showMessageDialog(null, "Password should Contain \n"+
+"       # At least one digit\n" +
+"       # At least one lower case letter\n" +
+"       # At least one upper case letter\n" +
+"       # At least one special character\n" +
+"       # no whitespace allowed in the entire string\n" +
+"       # at least eight characters");
+            passwordJPasswordField.setText("");
+        }
+    }//GEN-LAST:event_passwordJPasswordFieldFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

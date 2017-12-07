@@ -141,11 +141,15 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         String name = nameJTextField.getText();
         if(!name.equals("")){
+            if(cNetwork.getStateList().contains(name)){
         StateNetwork network = cNetwork.createAndAddNetwork();
         network.setName(name);
 
         populateNetworkTable();
-         }else{
+            }else{
+                JOptionPane.showMessageDialog(null, "State is already present");
+            }
+        }else{
              JOptionPane.showMessageDialog(null, "Enter value for Name", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 

@@ -330,13 +330,16 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
 "       # At least one special character\n" +
 "       # no whitespace allowed in the entire string\n" +
 "       # at least eight characters");
+            passwordJPasswordField.setText("");
         }
+        
     }//GEN-LAST:event_passwordJPasswordFieldFocusLost
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
         // TODO add your handling code here:
             if(!Validator.validateEmail(txtEmail.getText())){
             JOptionPane.showMessageDialog(null, "Enter a valid Email Id");
+            txtEmail.setText("");
         }
         
     }//GEN-LAST:event_txtEmailFocusLost
