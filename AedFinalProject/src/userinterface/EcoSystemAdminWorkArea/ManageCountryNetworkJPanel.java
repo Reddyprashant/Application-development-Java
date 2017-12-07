@@ -153,7 +153,8 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
             }
         CountryNetwork network = system.createAndAddNetwork();
         network.setName(name);
-
+JOptionPane.showMessageDialog(null, "Country created successfully", "Warning", JOptionPane.WARNING_MESSAGE);
+nameJTextField.setText("");
         populateNetworkTable();
          }else{
              JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);

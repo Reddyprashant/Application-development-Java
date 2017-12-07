@@ -200,7 +200,9 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
         Role role = (Role) roleJComboBox.getSelectedItem();
         
         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-        
+        JOptionPane.showMessageDialog(null, "Account created succesfull", "Warning", JOptionPane.WARNING_MESSAGE); 
+        nameJTextField.setText("");
+        passwordJTextField.setText("");
         popData();
         }
         else{

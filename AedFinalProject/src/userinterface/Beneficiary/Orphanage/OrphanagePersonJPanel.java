@@ -31,33 +31,34 @@ import utility.Validator;
  * @author raunak
  */
 public class OrphanagePersonJPanel extends javax.swing.JPanel {
-
+    
     private JPanel userProcessContainer;
-    private UserAccount account; 
-    private OrphanageOrganization organization; 
-    private Enterprise enterprise; 
+    private UserAccount account;    
+    private OrphanageOrganization organization;    
+    private Enterprise enterprise;    
     private EcoSystem business;
     private StateNetwork state;
     private CountryNetwork country;
     private ImageIcon photo;
+
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public OrphanagePersonJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public OrphanagePersonJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
-         this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.account=account;
-        this.business=business;
-        this.organization= organization;
+        this.account = account;
+        this.business = business;
+        this.organization = organization;
         populateTable(organization);
-          this.state=network;
-        this.country=cNetwork;
+        this.state = network;
+        this.country = cNetwork;
         TextArea.enable(false);
-      //  populateOrganizationComboBox();
-       // populateOrganizationEmpComboBox();
+        //  populateOrganizationComboBox();
+        // populateOrganizationEmpComboBox();
     }
-    
+
 //    public void populateOrganizationComboBox(){
 //        organizationJComboBox.removeAllItems();
 //        
@@ -65,7 +66,6 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 //            organizationJComboBox.addItem(role);
 //        }
 //    }
-    
 //    public void populateOrganizationEmpComboBox(){
 //        organizationEmpJComboBox.removeAllItems();
 //        
@@ -73,26 +73,26 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 //            organizationEmpJComboBox.addItem(role);
 //        }
 //    }
-
-    private void populateTable(OrphanageOrganization organization){
+    private void populateTable(OrphanageOrganization organization) {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
         
         model.setRowCount(0);
         
-        for (Person person : organization.getPersonList().getPersonList()){
+        for (Person person : organization.getPersonList().getPersonList()) {
             
             Object[] row = new Object[7];
             row[0] = person.getPersonId();
             row[1] = person.getName();
-            row[2]=person.getAge();
-            row[3]=person.getSex();
-            row[4]=person.getEthnicity();
-            row[5]=person.getDateOfJoining();
-            row[6]=person.getEducationBackground();
+            row[2] = person.getAge();
+            row[3] = person.getSex();
+            row[4] = person.getEthnicity();
+            row[5] = person.getDateOfJoining();
+            row[6] = person.getEducationBackground();
             
             model.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,6 +104,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
         btnGrpReasons = new javax.swing.ButtonGroup();
         btnGrpEducationBackGround = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         organizationJTable = new javax.swing.JTable();
         btnCreatePerson = new javax.swing.JButton();
@@ -136,6 +137,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         btnViewDetails = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        picText = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -252,7 +254,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         jLabel7.setText("Ethnicity:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 70, -1));
 
-        jLabel8.setText("Education Background:");
+        jLabel8.setText("*Education Background:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
 
         rdBtnHighschoolGrad.setText("Highschool Graduate");
@@ -264,12 +266,15 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         rdBtnUneducated.setText("Uneducated");
         add(rdBtnUneducated, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 380, -1, -1));
 
+        buttonGroup1.add(rdBtnMale);
         rdBtnMale.setText("Male");
         add(rdBtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
 
+        buttonGroup1.add(rdBtnFemale);
         rdBtnFemale.setText("Female");
         add(rdBtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, -1));
 
+        buttonGroup1.add(rdBtnOthers);
         rdBtnOthers.setText("Others");
         add(rdBtnOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, -1, -1));
 
@@ -284,7 +289,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
                 btnUploadActionPerformed(evt);
             }
         });
-        add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, -1, -1));
+        add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, -1, -1));
 
         jLabel10.setText("*Photo:");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, -1, -1));
@@ -299,80 +304,94 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
         jLabel11.setText("* Mandatory Fields");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 660, -1, -1));
+        add(picText, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 90, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
-        if(!(nameJTextField.getText().isEmpty()|| ageTextField.getText().isEmpty() && (rdBtnMale.isSelected()|| rdBtnFemale.isSelected()||rdBtnOthers.isSelected()))){
-            try
-            {
-                //SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-                //ClinicOrganization organization = (ClinicOrganization) organizationEmpJComboBox.getSelectedItem();
-                String name = nameJTextField.getText();
-                int age = Integer.parseInt(ageTextField.getText());
-                String ethnicity= (String)reqComboBox.getSelectedItem();
-
-                String sex = null;
-                if(rdBtnMale.isSelected()){
-                    sex = "Mle";
+        if (!(nameJTextField.getText().isEmpty())) {
+            if (!(ageTextField.getText().isEmpty())) {
+                if (((rdBtnMale.isSelected() || rdBtnFemale.isSelected() || rdBtnOthers.isSelected()))) {
+                    
+                    if (rdBtnCollegeGrad.isSelected() || rdBtnHighschoolGrad.isSelected() || rdBtnUneducated.isSelected()) {
+                        
+                        if (ARadioButton.isSelected() || BRadioButton2.isSelected() || CRadioButton3.isSelected() || ORadioButton4.isSelected()) {
+                            
+                            if (!(picText.getText().isEmpty())) {
+                                try {
+                                    //SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+                                    //ClinicOrganization organization = (ClinicOrganization) organizationEmpJComboBox.getSelectedItem();
+                                    String name = nameJTextField.getText();
+                                    int age = Integer.parseInt(ageTextField.getText());
+                                    String ethnicity = (String) reqComboBox.getSelectedItem();
+                                    
+                                    String sex = null;
+                                    if (rdBtnMale.isSelected()) {
+                                        sex = "Mle";
+                                    } else if (rdBtnFemale.isSelected()) {
+                                        sex = "Female";
+                                    } else if (rdBtnFemale.isSelected()) {
+                                        sex = "Others";
+                                    }
+                                    String educationBG = null;
+                                    if (rdBtnCollegeGrad.isSelected()) {
+                                        educationBG = "College Graduate";
+                                    } else if (rdBtnHighschoolGrad.isSelected()) {
+                                        educationBG = "HighSchool Graduate";
+                                    } else if (rdBtnUneducated.isSelected()) {
+                                        educationBG = "Uneducated";
+                                    }
+                                    
+                                    String reason = null;
+                                    if (ARadioButton.isSelected()) {
+                                        reason = "Individual and relational factors";
+                                    } else if (BRadioButton2.isSelected()) {
+                                        reason = "Economic Issues";
+                                    } else if (CRadioButton3.isSelected()) {
+                                        reason = "Systems failures";
+                                    } else if (ORadioButton4.isSelected()) {
+                                        reason = "Others";
+                                    }
+                                    
+                                    String reasonDescription = TextArea.getText();
+                                    organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                    JOptionPane.showMessageDialog(null, "Person Created");
+                                    nameJTextField.setText("");
+                                    ageTextField.setText("");
+                                    buttonGroup1.clearSelection();
+                                    btnGrpEducationBackGround.clearSelection();
+                                    btnGrpReasons.clearSelection();
+                                    TextArea.setText("");
+                                    picText.setText("");
+                                    populateTable(organization);
+                                    
+                                } catch (NumberFormatException p) {
+                                    JOptionPane.showMessageDialog(null, "Please enter Valid Age");
+                                }
+                                
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Please upload the picture", "Warning", JOptionPane.WARNING_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Please Select the either of the options for Reason", "Warning", JOptionPane.WARNING_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please Select education background option", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please Select male or female option", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
-
-                else if(rdBtnFemale.isSelected()){
-                    sex = "Female";
-                }
-
-                else if(rdBtnFemale.isSelected()){
-                    sex = "Others";
-                }
-                String educationBG = null;
-                if(rdBtnCollegeGrad.isSelected()){
-                    educationBG = "College Graduate";
-                }
-
-                else if(rdBtnHighschoolGrad.isSelected()){
-                    educationBG = "HighSchool Graduate";
-                }
-
-                else if(rdBtnUneducated.isSelected()){
-                    educationBG = "Uneducated";
-                }
-
-                String reason= null;
-                if(ARadioButton.isSelected())
-                {
-                    reason="Individual and relational factors";
-                }
-
-                else if(BRadioButton2.isSelected())
-                {
-                    reason="Economic Issues";
-                }
-                else if(CRadioButton3.isSelected())
-                {
-                    reason="Systems failures";
-                }
-
-                else if(ORadioButton4.isSelected())
-                {
-                    reason="Others";
-                }
-
-                String reasonDescription = TextArea.getText();
-                organization.getPersonList().createperson(name, age, reason,ethnicity,sex,educationBG,reasonDescription,photo);
-
-                populateTable(organization);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter the age", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-            catch(NumberFormatException p)
-            {
-                JOptionPane.showMessageDialog(null, "Please enter Valid Age");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Please enter values for all the fields", "Warning", JOptionPane.WARNING_MESSAGE);
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter the name", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_btnCreatePersonActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -412,15 +431,15 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
             try {
                 Image pic = ImageIO.read(f1);
                 pic = pic.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
+                picText.setText(chooser.getSelectedFile().getPath());
                 photo = new ImageIcon(pic);
-
+                
             } catch (Exception e) {
-
+                
             }
-        }
-        else {
-
-            JOptionPane.showMessageDialog(null, "Please select a picture","Warning",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            JOptionPane.showMessageDialog(null, "Please select a picture", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_btnUploadActionPerformed
@@ -429,19 +448,16 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         int selectedrow = organizationJTable.getSelectedRow();
-
-        if(selectedrow <0)
-        {
-            JOptionPane.showMessageDialog(null, "Please select a Row from table first to view details","Warning",JOptionPane.WARNING_MESSAGE);
-        }
-
-        else {
+        
+        if (selectedrow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a Row from table first to view details", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
             Person p = (Person) organizationJTable.getValueAt(selectedrow, 1);
-            BeneficiaryPersonViewJPanel muajp = new BeneficiaryPersonViewJPanel( userProcessContainer,p);
+            BeneficiaryPersonViewJPanel muajp = new BeneficiaryPersonViewJPanel(userProcessContainer, p);
             userProcessContainer.add("HomelessPersonViewJPanel", muajp);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
-
+            
         }
 
     }//GEN-LAST:event_btnViewDetailsActionPerformed
@@ -459,6 +475,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup btnGrpReasons;
     private javax.swing.JButton btnUpload;
     private javax.swing.JButton btnViewDetails;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -474,6 +491,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JTable organizationJTable;
+    private javax.swing.JTextField picText;
     private javax.swing.JRadioButton rdBtnCollegeGrad;
     private javax.swing.JRadioButton rdBtnFemale;
     private javax.swing.JRadioButton rdBtnHighschoolGrad;
