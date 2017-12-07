@@ -18,6 +18,7 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
+import userinterface.Beneficiary.ShelterRequestAreaJPanel;
 
 /**
  *
@@ -58,6 +59,7 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageEmployeeJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
+        btnShelter = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,6 +98,14 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel.setText("Enterprise :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 120, 30));
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 130, 20));
+
+        btnShelter.setText("Shelter Request");
+        btnShelter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShelterActionPerformed(evt);
+            }
+        });
+        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 170, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -116,9 +126,18 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
         
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
+
+    private void btnShelterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShelterActionPerformed
+        // TODO add your handling code here:
+        ShelterRequestAreaJPanel muajp = new ShelterRequestAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
+        userProcessContainer.add("ShelterRequestAreaJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnShelterActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnShelter;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton manageEmployeeJButton;

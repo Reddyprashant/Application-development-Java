@@ -15,6 +15,7 @@ import Business.UserAccount.UserAccount;
 
 import javax.swing.JPanel;
 import userinterface.Beneficiary.OlgAgeHome.OldAgeHomeAdminWorkAreaJPanel;
+import userinterface.EntityAdmin.Individuals.IndividualAdminWorkAreaJPanel;
 import userinterface.EntityAdmin.Individuals.IndividualRequestAreaJPanel;
 
 
@@ -26,7 +27,7 @@ public class IndividualAdmin extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
-        return new IndividualRequestAreaJPanel(userProcessContainer,account,(IndividualOrganization)organization,enterprise,network,cNetwork,business);
+        return new IndividualAdminWorkAreaJPanel(userProcessContainer,account,(IndividualOrganization)organization,enterprise,network,cNetwork,business);
     }
     
     @Override

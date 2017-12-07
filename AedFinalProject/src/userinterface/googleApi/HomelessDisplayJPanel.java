@@ -10,16 +10,29 @@ import Business.Enterprise.Enterprise;
 import Business.LatLong;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ShelterWorkRequest;
 import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.JSValue;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import userinterface.Beneficiary.BeneficiaryManageOrganizationJPanel;
+import userinterface.EntityAdmin.EntityManageOrganizationJPanel;
+import userinterface.Government.GovernmentManageOrganizationJPanel;
+import userinterface.Logistics.LogisticsManageOrganizationJPanel;
+import userinterface.SignUp.SignUpJPanel;
 
 /**
  *
@@ -40,8 +53,9 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
      BrowserView view;
       LatLong latLong;
       ShelterWorkRequest request;
+      Organization organization;
       boolean temp;
-    public HomelessDisplayJPanel(JPanel userProcessContainer,UserAccount account,Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system, ShelterWorkRequest request) {
+    public HomelessDisplayJPanel(JPanel userProcessContainer,UserAccount account,Organization organization, Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system, ShelterWorkRequest request) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
@@ -50,24 +64,59 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
         this.country=country;
         this.system=system;
         this.request=request;
+        this.organization= organization;
         temp=true;
+        System.out.println("userinterface.g()"+request.getLatLong().getLatitude());
         lblImage.setIcon(request.getImage());
+        if(this.request.getImage()== null){
+            System.out.println("no image available");
+        }
+        System.out.println("qwe"+request.getImage());
        // GoogleMapsSample g= new GoogleMapsSample();
-         latLong= new LatLong();
+         latLong= request.getLatLong();
              browser = new Browser();
              view = new BrowserView(browser);
-            browser.loadURL("https://www.google.com/maps");
-             this.mapContainer.add(view,"a");
-             this.mapContainer.setVisible(true);
+        //    browser.loadURL("https://www.google.com/maps");
+            
 
-                   browser.executeJavaScript("var myLatlng = new google.maps.LatLng(48.4431727,23.0488126);\n" +
-               "var marker = new google.maps.Marker({\n" +
-               "    position: myLatlng,\n" +
-               "    map: map,\n" +
-               "    title: 'Hello World!'\n" +
-               "});");
-           
-    
+                 browser.loadHTML("<html>\n" +
+"<head>\n" +
+"    <meta name=\"viewport\" content=\"initial-scale=1.0, user-scalable=no\"/>\n" +
+"    <style type=\"text/css\">\n" +
+"        html { height: 100% }\n" +
+"        body { height: 100%; margin: 0; padding: 0 }\n" +
+"        #map-canvas { height: 100% }\n" +
+"    </style>\n" +
+"    <script type=\"text/javascript\"\n" +
+"            src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyB7J1zsErb9_7jxNu5KU5kIENFObAQEbl0&sensor=false\">\n" +
+"    </script>\n" +
+"    <script type=\"text/javascript\">\n" +
+"      var map;\n" +
+"      function initialize() {\n" +
+"        var mapOptions = {\n" +
+"          center: new google.maps.LatLng("+latLong.getLatitude()+","+latLong.getLongitude()+"),\n" +
+"          zoom: 15\n" +
+"        };\n" +
+"        map = new google.maps.Map(document.getElementById(\"map-canvas\"),\n" +
+"            mapOptions);\n" +
+                    "var myLatlng = new google.maps.LatLng("+latLong.getLatitude()+","+latLong.getLongitude()+");\n" +
+"               var marker = new google.maps.Marker({\n" +
+"                   position: myLatlng,\n" +
+"                   map: map,\n" +
+"                   title: 'Hello'\n" +
+"               });"+
+"      }\n" +
+"      google.maps.event.addDomListener(window, 'load', initialize);\n" +
+"\n" +
+"    </script>\n" +
+"</head>\n" +
+"<body>\n" +
+"<div id=\"map-canvas\"></div>\n" +
+"</body>\n" +
+"</html>");
+      
+                  this.mapContainer.add(view,"a");
+             this.mapContainer.setVisible(true);
     }
 
     /**
@@ -86,7 +135,7 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
         lblImage = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
 
         jSplitPane2.setDividerLocation(600);
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -104,8 +153,8 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, -1, -1));
 
-        lblImage.setText("   ");
-        jPanel1.add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 290, 270));
+        lblImage.setText("qw");
+        jPanel1.add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 320, 280));
 
         jButton1.setText("Valid");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -123,8 +172,13 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
 
-        jButton3.setText("Show Person");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, -1, -1));
+        btnHome.setText("Home");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, -1, 30));
 
         jSplitPane2.setRightComponent(jPanel1);
 
@@ -142,7 +196,7 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
-         userProcessContainer.remove(this);
+          userProcessContainer.remove(this);         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
@@ -161,12 +215,20 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+        JPanel j= account.getRole().createWorkArea(userProcessContainer, account,organization, enterprise, state, country, system);
+        userProcessContainer.add("workarea1", j);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnHomeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JLabel lblImage;

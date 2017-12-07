@@ -11,6 +11,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.BGVOrganization;
+import Business.Organization.IndividualOrganization;
 import Business.Organization.Organization;
 import Business.Role.DisasterAdmin;
 import Business.Role.HomelessAdmin;
@@ -68,11 +69,13 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
             System.out.println("q"+work);
             if (work instanceof ShelterWorkRequest) {
                ShelterWorkRequest  s= (ShelterWorkRequest) work;
-                Object[] row = new Object[4];
+                Object[] row = new Object[6];
                 row[0] = s.getRequestDate();
                 row[1] = s.getSender();
                  row[2] = s.getReceiver();
                  row[3]= s;
+                 row[4]= s.getPersonPresent();
+                 row[5]= s.getPersonAbsent();
                  
                 model.addRow(row);
             }
@@ -129,11 +132,11 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Requested Date", "Sender", "Receiver", "Status"
+                "Requested Date", "Sender", "Receiver", "Status", "Verified", "Invalid"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -162,7 +165,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
           
             ShelterWorkRequest p = (ShelterWorkRequest) tblReq.getValueAt(selectedRow, 3);
           
-            if(p.getStatus().equals("Requested")){
+            if(p.getStatus().equals("Requested") && !(organization instanceof IndividualOrganization)){
               //  System.out.println("admin name"+ account.getUsername());
                 p.setStatus("Pending");
                 p.setReceiver(account);
@@ -189,7 +192,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
             UserAccount acc=null;
 
             if (p.getReceiver() != null) {
-                if (p.getStatus().equals("Pending") && p.getReceiver()==account) {
+                if (p.getStatus().equals("Pending") && p.getReceiver()==account && !(organization instanceof IndividualOrganization)) {
                     if (p instanceof ShelterWorkRequest) {
                         
                     p.setStatus("Complete");
@@ -213,7 +216,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             ShelterWorkRequest p = (ShelterWorkRequest) tblReq.getValueAt(selectedRow, 3);
-         HomelessDisplayJPanel muajp = new HomelessDisplayJPanel(userProcessContainer, account, enterprise, state, country, system, p);
+         HomelessDisplayJPanel muajp = new HomelessDisplayJPanel(userProcessContainer, account,organization, enterprise, state, country, system, p);
         userProcessContainer.add("HomelessDisplayJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

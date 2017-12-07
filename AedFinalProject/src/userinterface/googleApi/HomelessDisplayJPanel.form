@@ -69,11 +69,11 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblImage">
               <Properties>
-                <Property name="text" type="java.lang.String" value="   "/>
+                <Property name="text" type="java.lang.String" value="qw"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="80" y="10" width="290" height="270"/>
+                  <AbsoluteConstraints x="80" y="10" width="320" height="280"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -103,13 +103,16 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="btnHome">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Show Person"/>
+                <Property name="text" type="java.lang.String" value="Home"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHomeActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="590" y="100" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="670" y="120" width="-1" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>

@@ -47,8 +47,9 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
     CountryNetwork country;
     EcoSystem system; 
       LatLong latLong;
+      Organization organization;
       ImageIcon image;
-    public RequestShelterJPanel(JPanel userProcessContainer,UserAccount account,Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system, LatLong latLng) {
+    public RequestShelterJPanel(JPanel userProcessContainer,UserAccount account,Organization org, Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system, LatLong latLng) {
         initComponents();
          this.userProcessContainer=userProcessContainer;
         this.account=account;
@@ -57,6 +58,7 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         this.country=country;
         this.system=system;
         this.latLong=latLng;
+        this.organization=organization;
         txtLat.setText(String.valueOf(latLong.getLatitude()));
         txtLong.setText(String.valueOf(latLong.getLongitude()));
         
@@ -157,7 +159,6 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
             request.setStatus("Requested");
             request.setSender(account);
             request.setLatLong(latLong);
-            
             for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
                     if(organization instanceof HomelessOrganization || organization instanceof OrphanageOrganization || organization instanceof OldAgeOrganization || organization instanceof IndividualOrganization ){
@@ -238,7 +239,7 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
-       JPanel j= account.getRole().createWorkArea(userProcessContainer, account, enterprise, enterprise, state, country, system);
+       JPanel j= account.getRole().createWorkArea(userProcessContainer, account,organization, enterprise, state, country, system);
          userProcessContainer.add("workarea1", j);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

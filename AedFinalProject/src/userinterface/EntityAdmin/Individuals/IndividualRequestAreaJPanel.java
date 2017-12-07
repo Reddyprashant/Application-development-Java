@@ -43,6 +43,7 @@ import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.Beneficiary.ShelterRequestAreaJPanel;
 import utility.Validator;
 
 /**
@@ -135,7 +136,6 @@ public void populateUpdatedTable()
         jScrollPane2 = new javax.swing.JScrollPane();
         UpdatedJTable = new javax.swing.JTable();
         btnComplete = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -189,9 +189,6 @@ public void populateUpdatedTable()
             }
         });
         add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, -1, -1));
-
-        jButton3.setText("Send Request to BGV");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 553, -1, -1));
 
         jLabel1.setText("Request Recieved");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 43, -1, -1));
@@ -276,7 +273,6 @@ public void populateUpdatedTable()
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable UpdatedJTable;
     private javax.swing.JButton btnComplete;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

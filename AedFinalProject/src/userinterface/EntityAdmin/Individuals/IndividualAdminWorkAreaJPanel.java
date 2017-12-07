@@ -4,7 +4,7 @@
  * Created on October 10, 2008, 8:50 AM
  */
 
-package userinterface.EntityAdmin.NGO;
+package userinterface.EntityAdmin.Individuals;
 
 import userinterface.EntityAdmin.Hospital.*;
 import userinterface.EntityAdmin.MNCAdmin.*;
@@ -12,8 +12,8 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-//import Business.Organization.HospitalOrganization;
-import Business.Organization.NGOOrganization;
+import Business.Organization.HospitalOrganization;
+import Business.Organization.IndividualOrganization;
 //import Business.Organization.MNCOrganization;
 //import Business.Organization.MNCOrganization;
 import Business.Organization.Organization;
@@ -21,23 +21,24 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import userinterface.Beneficiary.ShelterRequestAreaJPanel;
+import userinterface.googleApi.HomelessFoundJPanel;
 
 /**
  *
  * @author  raunak
  */
-public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     UserAccount account; 
-    NGOOrganization organization; 
+    IndividualOrganization organization; 
     Enterprise enterprise; 
     EcoSystem business;
        
     StateNetwork state;
     CountryNetwork country;
     /** Creates new form AdminWorkAreaJPanel */
-    public NGOAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, NGOOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public IndividualAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, IndividualOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -58,34 +59,17 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        userJButton = new javax.swing.JButton();
-        manageEmployeeJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnHomeless = new javax.swing.JButton();
         btnShelter = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("NGO Work Area -Adminstrative Role");
+        jLabel1.setText("Individual Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
-
-        userJButton.setText("Manage User Account");
-        userJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userJButtonActionPerformed(evt);
-            }
-        });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 170, -1));
-
-        manageEmployeeJButton.setText("Manage Employee");
-        manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageEmployeeJButtonActionPerformed(evt);
-            }
-        });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 170, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Enterprise :");
@@ -98,7 +82,15 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 170, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 170, -1));
+
+        btnHomeless.setText("Homeless Found");
+        btnHomeless.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomelessActionPerformed(evt);
+            }
+        });
+        add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 140, 30));
 
         btnShelter.setText("Shelter Request");
         btnShelter.addActionListener(new java.awt.event.ActionListener() {
@@ -106,33 +98,24 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnShelterActionPerformed(evt);
             }
         });
-        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 170, 30));
+        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
-        // TODO add your handling code here:
-//        ClinicManageUserAccountJPanel muajp = new ClinicManageUserAccountJPanel( userProcessContainer,  account,  organization,  enterprise,  business);
-//        userProcessContainer.add("ClinicManageUserAccountJPanel", muajp);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-    }//GEN-LAST:event_userJButtonActionPerformed
-
-    private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-
-        NGOManageEmployeeJPanel manageEmployeeJPanel = new NGOManageEmployeeJPanel(userProcessContainer,  enterprise.getOrganizationDirectory());
-        userProcessContainer.add("NGOManageEmployeeJPanel", manageEmployeeJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-        
-    }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       NGORequestAreaJPanel RequestAreaJPanel = new NGORequestAreaJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
-        userProcessContainer.add("NGORequestAreaJPanel", RequestAreaJPanel);
+       IndividualRequestAreaJPanel RequestAreaJPanel = new IndividualRequestAreaJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        userProcessContainer.add("IndividualRequestAreaJPanel", RequestAreaJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnHomelessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomelessActionPerformed
+        // TODO add your handling code here:
+        HomelessFoundJPanel manageOrganizationJPanel = new HomelessFoundJPanel(userProcessContainer,account,organization,enterprise,state,country,business);
+        userProcessContainer.add("HomelessFoundJPanel", manageOrganizationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnHomelessActionPerformed
 
     private void btnShelterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShelterActionPerformed
         // TODO add your handling code here:
@@ -144,12 +127,11 @@ public class NGOAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHomeless;
     private javax.swing.JButton btnShelter;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton manageEmployeeJButton;
-    private javax.swing.JButton userJButton;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
     

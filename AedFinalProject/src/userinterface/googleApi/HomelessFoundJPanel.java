@@ -10,6 +10,7 @@ import Business.Enterprise.Enterprise;
 import Business.LatLong;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
@@ -43,7 +44,8 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
     final Browser browser;
      BrowserView view;
       LatLong latLong;
-    public HomelessFoundJPanel(JPanel userProcessContainer,UserAccount account,Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system) {
+      Organization organization;
+    public HomelessFoundJPanel(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
@@ -51,6 +53,7 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
         this.state=state;
         this.country=country;
         this.system=system;
+        this.organization=organization;
        // GoogleMapsSample g= new GoogleMapsSample();
          latLong= new LatLong();
              browser = new Browser();
@@ -135,7 +138,7 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
                     }
          System.out.println("Lat"+latLong.getLatitude()+latLong.getLongitude());
          
-         RequestShelterJPanel manageOrganizationJPanel = new RequestShelterJPanel(userProcessContainer,account,enterprise,state,country,system, latLong);
+         RequestShelterJPanel manageOrganizationJPanel = new RequestShelterJPanel(userProcessContainer,account,organization,enterprise,state,country,system, latLong);
         userProcessContainer.add("RequestShelterJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
