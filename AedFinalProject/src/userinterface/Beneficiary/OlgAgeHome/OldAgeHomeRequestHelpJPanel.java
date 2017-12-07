@@ -67,6 +67,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         timeField.setVisible(false);
         timelabel.setVisible(false);
         addLabel.setVisible(false);
+        jDateChooser1.setMinSelectableDate(new Date());
         populateComboBox();
        
 //        for (StateNetwork stateNetwork : country.getStateList()) {
@@ -268,6 +269,12 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         addLabel.setText("Pickup Address");
         add(addLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 540, -1, -1));
         add(addressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 536, 170, -1));
+
+        jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDateChooser1MouseClicked(evt);
+            }
+        });
         add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 203, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 public void populateComboBox()
@@ -293,7 +300,10 @@ public void populateComboBox()
         Organization.RequestType request = (Organization.RequestType) reqComboBox.getSelectedItem();
         int noVolunteer= Integer.parseInt(noVolTextField.getText());
         //Date date= dates.parse(dateField.getText());
+ 
+
         Date d= jDateChooser1.getDate();
+           
         String eventName = eventNameTextfield.getText();
         String eventDetails= detailTextArea.getText();
         
@@ -404,8 +414,8 @@ public void populateComboBox()
        }
        organization.getWorkQueue().getWorkRequestList().add(requests);
        JOptionPane.showMessageDialog(null, "Help request complete");
-
-        }
+           }
+        
         catch(NumberFormatException p){
             JOptionPane.showMessageDialog(null, "Enter integer value");
         }
@@ -476,6 +486,12 @@ public void populateComboBox()
         // TODO add your handling code here:
          Validator.onlyInteger(evt, noOfVehText);
     }//GEN-LAST:event_noOfVehTextKeyPressed
+
+    private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
+        // TODO add your handling code here:
+ 
+                
+    }//GEN-LAST:event_jDateChooser1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

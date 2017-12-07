@@ -22,6 +22,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -130,6 +131,8 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
         for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
            if(work instanceof BeneficiaryWorkRequest)
            {
+               if(((BeneficiaryWorkRequest) work).getEventDate().equals(new Date())||((BeneficiaryWorkRequest) work).getEventDate().after(new Date()))
+               {
             Object[] row = new Object[6];
             row[0] = ((BeneficiaryWorkRequest) work).getRequestType();
             row[1] = ((BeneficiaryWorkRequest) work).getEventName();
@@ -139,7 +142,7 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
             row[5]=((BeneficiaryWorkRequest) work).isLogisticRequest();
             model.addRow(row);
            }
-           
+           }
         }
     }
      public void populateAvailable(int rows){

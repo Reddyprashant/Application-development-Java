@@ -62,6 +62,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         timeField.setVisible(false);
         timelabel.setVisible(false);
         addLabel.setVisible(false);
+        jDateChooser1.setMinSelectableDate(new Date());
         populateComboBox();
     }
 public void populateComboBox()
@@ -276,6 +277,7 @@ public void populateComboBox()
             SimpleDateFormat times = new SimpleDateFormat("hh:mm");
             Organization.RequestType request = (Organization.RequestType) reqComboBox.getSelectedItem();
             int noVolunteer= Integer.parseInt(noVolTextField.getText());
+           
             Date date= jDateChooser1.getDate();
             String eventName = eventNameTextfield.getText();
             String eventDetails= detailTextArea.getText();
@@ -385,6 +387,7 @@ public void populateComboBox()
             organization.getWorkQueue().getWorkRequestList().add(requests);
           
             JOptionPane.showMessageDialog(null, "Help request complete");
+                
         
         }
         catch(NumberFormatException p){
