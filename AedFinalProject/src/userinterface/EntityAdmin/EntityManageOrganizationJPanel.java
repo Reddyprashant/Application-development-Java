@@ -198,6 +198,11 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
             if(!(city.isEmpty())){
                 if(latLong!=null){
                directory.createOrganization(type, name, city,latLong);
+               JOptionPane.showMessageDialog(null, "Organization created successfully");
+        orgNameTextField.setText("");
+        //txtAddress.setText("");
+        txtcity.setText("");
+        txtLoc.setText("");
                populateTable();
             }
             

@@ -202,7 +202,9 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
                Role role = (Role) roleJComboBox.getSelectedItem();
         
                organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-        
+        JOptionPane.showMessageDialog(null, "Account created succesfull", "Warning", JOptionPane.WARNING_MESSAGE); 
+        nameJTextField.setText("");
+        pwdFiledPassword.setText("");
                popData();
         }
                else{

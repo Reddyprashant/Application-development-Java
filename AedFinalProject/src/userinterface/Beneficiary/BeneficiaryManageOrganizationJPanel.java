@@ -11,6 +11,7 @@ import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.googleApi.OrganizationLocationJPanel;
@@ -214,6 +215,11 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         String name = orgNameTextField.getText();
         String city= txtcity.getText();
         directory.createOrganization(type, name,city,latLong);
+        JOptionPane.showMessageDialog(null, "Organization created successfully");
+        orgNameTextField.setText("");
+        txtAddress.setText("");
+        txtcity.setText("");
+        txtLoc.setText("");
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 

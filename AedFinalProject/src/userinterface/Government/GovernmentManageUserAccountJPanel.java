@@ -192,7 +192,9 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();
         Role role = (Role) roleJComboBox.getSelectedItem();
-        
+        JOptionPane.showMessageDialog(null, "Account created succesfull", "Warning", JOptionPane.WARNING_MESSAGE); 
+        nameJTextField.setText("");
+        passwordJTextField.setText("");
         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
         
         popData();
