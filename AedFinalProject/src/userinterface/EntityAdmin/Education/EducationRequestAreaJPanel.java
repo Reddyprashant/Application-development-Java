@@ -262,6 +262,7 @@ public void populateUpdatedTable()
             BeneficiaryWorkRequest orgRequest = null;
             //SignUpRequestEnterprise e = null;
             UserAccount acc=null;
+             if (p.getStatus().equals("Complete")) {
             if(organization.getEventDirectory()== null){
                 organization.setEventDirectory(new EventDirectory());
                 System.out.println("event dir null");
@@ -307,7 +308,11 @@ public void populateUpdatedTable()
 
                     populateWorkQueueTable();
         }
-           
+         else {
+                    JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
+                }
+
+        }    
             
 
 

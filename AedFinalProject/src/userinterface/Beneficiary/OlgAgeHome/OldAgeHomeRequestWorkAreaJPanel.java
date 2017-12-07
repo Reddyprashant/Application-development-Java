@@ -266,7 +266,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
             account.getWorkQueue().getWorkRequestList().remove(p);
             business.getWorkQueue().getWorkRequestList().remove(p);
             JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
-            //populateWorkQueueTable();
+            populateWorkQueueTable();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

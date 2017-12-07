@@ -186,6 +186,9 @@ public class MNCManageEmployeeJPanel extends javax.swing.JPanel {
         String email= txtEmail.getText();
         organization.getEmployeeDirectory().createEmployee(name,email);
          populateTable(organization);
+         JOptionPane.showMessageDialog(null, "Employee Created Successfully");
+            nameJTextField.setText("");
+            txtEmail.setText("");
          }else{
              JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }
