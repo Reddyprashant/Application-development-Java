@@ -64,6 +64,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         timeField.setVisible(false);
         timelabel.setVisible(false);
         addLabel.setVisible(false);
+        jDateChooser1.setMinSelectableDate(new Date());
         populateComboBox();
     }
 
