@@ -206,6 +206,8 @@ if(organization.getEventDirectory().getEventDirectory() == null){
             workRequest.getEventDirectory().getEventDirectory().add(event);
        if(workRequest.getNumberOfVolunteersRequest()==0 && workRequest.isLogisticRequest()==true){
             workRequest.setStatus("Complete");
+            JOptionPane.showMessageDialog(null, "Details updated Successfully");
+            availVolTextField.setText("");
         }
             
         }

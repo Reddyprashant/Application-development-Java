@@ -170,12 +170,6 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
         jLabel18.setText("Location :");
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 100, -1));
-
-        txtLoc.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtLocKeyPressed(evt);
-            }
-        });
         add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 170, -1));
 
         btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -198,6 +192,11 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
             if(!(city.isEmpty())){
                 if(latLong!=null){
                directory.createOrganization(type, name, city,latLong);
+               JOptionPane.showMessageDialog(null, "Organization created successfully");
+        orgNameTextField.setText("");
+        //txtAddress.setText("");
+        txtcity.setText("");
+        txtLoc.setText("");
                populateTable();
             }
             
@@ -228,10 +227,6 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
     private void txtcityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcityActionPerformed
-
-    private void txtLocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLocKeyPressed
 
     private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
         // TODO add your handling code here

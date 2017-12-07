@@ -12,6 +12,7 @@ import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.googleApi.OrganizationLocationJPanel;
@@ -182,12 +183,6 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
         jLabel18.setText("Location :");
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 100, -1));
-
-        txtLoc.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtLocKeyPressed(evt);
-            }
-        });
         add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 170, -1));
 
         btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -206,8 +201,28 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         Type type = (Type) organizationJComboBox.getSelectedItem();
         String name = orgNameTextField.getText();
         String city= txtcity.getText();
+        if(!(name.isEmpty())){
+            if(!(city.isEmpty())){
+                if(latLong!=null){
         directory.createOrganization(type, name,city,latLong);
+        JOptionPane.showMessageDialog(null, "Organization created successfully");
+        orgNameTextField.setText("");
+        txtAddress.setText("");
+        txtcity.setText("");
+        txtLoc.setText("");
         populateTable();
+    }
+    else{
+                JOptionPane.showMessageDialog(null, "Select the Location", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Enter value for city", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }   
+        else{
+             JOptionPane.showMessageDialog(null, "Enter Organization Name", "Warning", JOptionPane.WARNING_MESSAGE);   
+        }   
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -228,10 +243,6 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
-
-    private void txtLocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLocKeyPressed
 
     private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
         // TODO add your handling code here

@@ -150,12 +150,6 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Password");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 334, -1, -1));
-
-        nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                nameJTextFieldKeyPressed(evt);
-            }
-        });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 371, 136, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -200,11 +194,6 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
                 txtEmailFocusLost(evt);
             }
         });
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEmailKeyPressed(evt);
-            }
-        });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 136, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -242,7 +231,8 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
 //                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new GovtAdminRole());
 //            }else if (system.getEnterpriseType() == Enterprise.EnterpriseType.Logistic) {
 //                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new LogisticAdminRole());
-//            }
+//            }          
+JOptionPane.showMessageDialog(null, "Useraccount created", "Warning", JOptionPane.WARNING_MESSAGE);
 
                             populateTable(); 
                             txtEmail.setText("");
@@ -309,15 +299,6 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
             populateTable();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void nameJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameJTextFieldKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, nameJTextField);
-    }//GEN-LAST:event_nameJTextFieldKeyPressed
-
-    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailKeyPressed
 
     private void passwordJPasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordJPasswordFieldFocusLost
         // TODO add your handling code here:

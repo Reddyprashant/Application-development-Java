@@ -110,12 +110,6 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
             }
         });
         add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, -1));
-
-        nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                nameJTextFieldKeyPressed(evt);
-            }
-        });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 93, -1));
 
         backJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -153,7 +147,8 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
             }
         CountryNetwork network = system.createAndAddNetwork();
         network.setName(name);
-
+JOptionPane.showMessageDialog(null, "Country created successfully", "Warning", JOptionPane.WARNING_MESSAGE);
+nameJTextField.setText("");
         populateNetworkTable();
          }else{
              JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -193,11 +188,6 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
             populateNetworkTable();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void nameJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameJTextFieldKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, nameJTextField);
-    }//GEN-LAST:event_nameJTextFieldKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

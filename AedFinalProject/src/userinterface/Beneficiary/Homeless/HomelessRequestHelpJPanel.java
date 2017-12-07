@@ -34,33 +34,35 @@ import utility.Validator;
  */
 public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
 //private  BeneficiaryWorkRequest request;
+
     JPanel userProcessContainer;
-    UserAccount account; 
-    HomelessOrganization organization; 
-    Enterprise enterprise; 
+    UserAccount account;
+    HomelessOrganization organization;
+    Enterprise enterprise;
     EcoSystem business;
-     StateNetwork state;
+    StateNetwork state;
     CountryNetwork country;
+
     /**
      * Creates new form RequestHelpJPanel
      */
-    public HomelessRequestHelpJPanel(JPanel userProcessContainer, UserAccount account, HomelessOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+    public HomelessRequestHelpJPanel(JPanel userProcessContainer, UserAccount account, HomelessOrganization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         //this.request=request;
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.account=account;
-        this.business=business;
-        this.organization= organization;
-        this.state=network;
-        this.country=cNetwork;
-               carBtn.setVisible(false);
+        this.account = account;
+        this.business = business;
+        this.organization = organization;
+        this.state = network;
+        this.country = cNetwork;
+        carBtn.setVisible(false);
         busBtn.setVisible(false);
         vanBtn.setVisible(false);
         noOfVehText.setVisible(false);
         noVehLabel.setVisible(false);
         typeLabel.setVisible(false);
-               addressText.setVisible(false);
+        addressText.setVisible(false);
         timeField.setVisible(false);
         timelabel.setVisible(false);
         addLabel.setVisible(false);
@@ -237,7 +239,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         typeLabel.setVisible(true);
         timeField.setVisible(true);
         addressText.setVisible(true);
-         timelabel.setVisible(true);
+        timelabel.setVisible(true);
         addLabel.setVisible(true);
     }//GEN-LAST:event_reqBtnActionPerformed
 
@@ -251,162 +253,163 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         typeLabel.setVisible(false);
         timeField.setVisible(false);
         addressText.setVisible(false);
-         timelabel.setVisible(false);
+        timelabel.setVisible(false);
         addLabel.setVisible(false);
     }//GEN-LAST:event_notReqBtnActionPerformed
 
-public void populateComboBox()
-{
-     reqComboBox.removeAllItems();
-     reqComboBox.addItem(Organization.RequestType.Education);
-     reqComboBox.addItem(Organization.RequestType.Hospital);
-     reqComboBox.addItem(Organization.RequestType.MNC);
-     reqComboBox.addItem(Organization.RequestType.NGO);
-     reqComboBox.addItem(Organization.RequestType.ANY);
-}
-    
+    public void populateComboBox() {
+        reqComboBox.removeAllItems();
+        reqComboBox.addItem(Organization.RequestType.Education);
+        reqComboBox.addItem(Organization.RequestType.Hospital);
+        reqComboBox.addItem(Organization.RequestType.MNC);
+        reqComboBox.addItem(Organization.RequestType.NGO);
+        reqComboBox.addItem(Organization.RequestType.ANY);
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-                      if(reqComboBox.getSelectedItem().equals(null)||jDateChooser1.getDate().equals(null)||eventNameTextfield.getText().isEmpty()||detailTextArea.getText().isEmpty()||reqBtn.isSelected()||notReqBtn.isSelected())
-{ 
-        try
-        {
-            //SimpleDateFormat dates = new SimpleDateFormat("MM/dd/yyyy");
+        if (!(eventNameTextfield.getText().isEmpty())) {
+            if (!(noVolTextField.getText().isEmpty())) {
+                if (!(jDateChooser1.getDate().toString().isEmpty())) {
+                    if (!(detailTextArea.getText().isEmpty())) {
+                        if (reqBtn.isSelected() || notReqBtn.isSelected()) {
+                            try {
+                                //SimpleDateFormat dates = new SimpleDateFormat("MM/dd/yyyy");
 //SimpleDateFormat times = new SimpleDateFormat("hh:mm");
-            Organization.RequestType request = (Organization.RequestType) reqComboBox.getSelectedItem();
-            int noVolunteer= Integer.parseInt(noVolTextField.getText());
-            Date date= jDateChooser1.getDate();
-            String eventName = eventNameTextfield.getText();
-            String eventDetails= detailTextArea.getText();
+                                Organization.RequestType request = (Organization.RequestType) reqComboBox.getSelectedItem();
+                                int noVolunteer = Integer.parseInt(noVolTextField.getText());
+                                Date date = jDateChooser1.getDate();
+                                String eventName = eventNameTextfield.getText();
+                                String eventDetails = detailTextArea.getText();
 
-            BeneficiaryWorkRequest requests= new BeneficiaryWorkRequest();
-            requests.setEventDate(date);
-            requests.setSenderOrganization(organization);
-            System.out.println("userss"+organization.getName());
-            //if(Organization.RequestType.Education.getValue()==request.getValue())
-            requests.setRequestType(request);
-            requests.setEventName(eventName);
-            requests.setEventDetails(eventDetails);
-            requests.setNumberOfVolunteersRequest(noVolunteer);
+                                BeneficiaryWorkRequest requests = new BeneficiaryWorkRequest();
+                                requests.setEventDate(date);
+                                requests.setSenderOrganization(organization);
+                                System.out.println("userss" + organization.getName());
+                                //if(Organization.RequestType.Education.getValue()==request.getValue())
+                                requests.setRequestType(request);
+                                requests.setEventName(eventName);
+                                requests.setEventDetails(eventDetails);
+                                requests.setNumberOfVolunteersRequest(noVolunteer);
 
-            requests.setSender(account);
-            requests.setStatus("Requested");
-            if(reqBtn.isSelected())
-            {
-                SimpleDateFormat times = new SimpleDateFormat("hh:mm");
-                int no = Integer.parseInt(noOfVehText.getText());
-                 Date time= times.parse(timeField.getText());
-                 String address= addressText.getText();
-                requests.setLogisticRequest(false);
-                if(carBtn.isSelected()){
-                    requests.setTypeOfVehicle("Car");
+                                requests.setSender(account);
+                                requests.setStatus("Requested");
+                                if (reqBtn.isSelected()) {
+                                    SimpleDateFormat times = new SimpleDateFormat("hh:mm");
+                                    int no = Integer.parseInt(noOfVehText.getText());
+                                    Date time = times.parse(timeField.getText());
+                                    String address = addressText.getText();
+                                    requests.setLogisticRequest(false);
+                                    if (carBtn.isSelected()) {
+                                        requests.setTypeOfVehicle("Car");
 
-                }
-                else if(vanBtn.isSelected()){
-                    requests.setTypeOfVehicle("Van");
-                }
-                else if(busBtn.isSelected()){
-                    requests.setTypeOfVehicle("Bus");
-                }
-                requests.setNoOfVehicle(no);
-                requests.setPickupTime(time);
-                requests.setAddress(address);
+                                    } else if (vanBtn.isSelected()) {
+                                        requests.setTypeOfVehicle("Van");
+                                    } else if (busBtn.isSelected()) {
+                                        requests.setTypeOfVehicle("Bus");
+                                    }
+                                    requests.setNoOfVehicle(no);
+                                    requests.setPickupTime(time);
+                                    requests.setAddress(address);
 
-            }
-            if(!requests.isLogisticRequest()){
-                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                    for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
-                        if(organization1 instanceof TransportOrganization)
-                        {
-                            System.out.println("sending to transport");
-                            organization1.getWorkQueue().getWorkRequestList().add(requests);
-                        }
-                    }
-                }
-            }
-            System.out.println("type is"+request);
-            if(request==Organization.RequestType.ANY)
-            {
-                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                    if(enter instanceof EntityEnterprise){
-                        enter.getWorkQueue().getWorkRequestList().add(requests);
-                    }
-                }
-            }
-            else if(request==Organization.RequestType.Education)
-            {
-                //enterprise.getOrganizationDirectory().getOrganizationList().
-                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                    for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
-                        if(organization1 instanceof EducationOrganization)
-                        {
-                            organization1.getWorkQueue().getWorkRequestList().add(requests);
-                        }
-                    }
-                }
-            }
-            else if(request==Organization.RequestType.Hospital)
-            {
-                //enterprise.getOrganizationDirectory().getOrganizationList().
-                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                    for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
-                        if(organization1 instanceof HospitalOrganization)
-                        {
-                            organization1.getWorkQueue().getWorkRequestList().add(requests);
-                        }
-                    }
-                }
-            }
-            else if(request==Organization.RequestType.MNC)
-            {
-                //enterprise.getOrganizationDirectory().getOrganizationList().
-                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                    for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
-                        if(organization1 instanceof MNCOrganization)
-                        {
-                            System.out.println("userinterface MNC" );
-                            organization1.getWorkQueue().getWorkRequestList().add(requests);
-                        }
-                    }
-                }
-            }
-            else if(request==Organization.RequestType.NGO)
-            {
-                //enterprise.getOrganizationDirectory().getOrganizationList().
-                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                    for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
-                        if(organization1 instanceof NGOOrganization)
-                        {
+                                }
+                                if (!requests.isLogisticRequest()) {
+                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                        for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+                                            if (organization1 instanceof TransportOrganization) {
+                                                System.out.println("sending to transport");
+                                                organization1.getWorkQueue().getWorkRequestList().add(requests);
+                                            }
+                                        }
+                                    }
+                                }
+                                System.out.println("type is" + request);
+                                if (request == Organization.RequestType.ANY) {
+                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                        if (enter instanceof EntityEnterprise) {
+                                            enter.getWorkQueue().getWorkRequestList().add(requests);
+                                        }
+                                    }
+                                } else if (request == Organization.RequestType.Education) {
+                                    //enterprise.getOrganizationDirectory().getOrganizationList().
+                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                        for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+                                            if (organization1 instanceof EducationOrganization) {
+                                                organization1.getWorkQueue().getWorkRequestList().add(requests);
+                                            }
+                                        }
+                                    }
+                                } else if (request == Organization.RequestType.Hospital) {
+                                    //enterprise.getOrganizationDirectory().getOrganizationList().
+                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                        for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+                                            if (organization1 instanceof HospitalOrganization) {
+                                                organization1.getWorkQueue().getWorkRequestList().add(requests);
+                                            }
+                                        }
+                                    }
+                                } else if (request == Organization.RequestType.MNC) {
+                                    //enterprise.getOrganizationDirectory().getOrganizationList().
+                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                        for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+                                            if (organization1 instanceof MNCOrganization) {
+                                                System.out.println("userinterface MNC");
+                                                organization1.getWorkQueue().getWorkRequestList().add(requests);
+                                            }
+                                        }
+                                    }
+                                } else if (request == Organization.RequestType.NGO) {
+                                    //enterprise.getOrganizationDirectory().getOrganizationList().
+                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                        for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+                                            if (organization1 instanceof NGOOrganization) {
 
-                            organization1.getWorkQueue().getWorkRequestList().add(requests);
-                        }
-                    }
-                }
-            }
-            organization.getWorkQueue().getWorkRequestList().add(requests);
-            JOptionPane.showMessageDialog(null, "Help request complete");
-
-        }
-        catch(NumberFormatException p){
-            JOptionPane.showMessageDialog(null, "Enter integer value");
-        }
-        catch(ParseException p)
-        {
-            JOptionPane.showMessageDialog(null, "Please enter time in hh:mm format");
-        }
+                                                organization1.getWorkQueue().getWorkRequestList().add(requests);
+                                            }
+                                        }
+                                    }
+                                }
+                                organization.getWorkQueue().getWorkRequestList().add(requests);
+                                JOptionPane.showMessageDialog(null, "Help request complete");
+                                eventNameTextfield.setText("");
+                                noVolTextField.setText("");
+                                detailTextArea.setText("");
+                                jDateChooser1.setDate(null);
+                                noOfVehText.setText("");
+                                addressText.setText("");
+                                timeField.setText(null);
+buttonGroup1.clearSelection();
+buttonGroup2.clearSelection();
+                            } catch (NumberFormatException p) {
+                                JOptionPane.showMessageDialog(null, "Enter integer value");
+                            } catch (ParseException p) {
+                                JOptionPane.showMessageDialog(null, "Please enter time in hh:mm format");
+                            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-            else
-{
-    JOptionPane.showMessageDialog(null, "Fields cannot be left empty");
-}
-}
+ else {
+                            JOptionPane.showMessageDialog(null, "Please Selecteither of the two button");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please enter event details");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please select the date");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "please enter number of volunteers");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter event name");
+        }
+    }
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
 
-        Component[] componentArray=userProcessContainer.getComponents();
-        HomelessRequestWorkAreaJPanel homelessRequestPanel =(HomelessRequestWorkAreaJPanel)userProcessContainer.getComponent(componentArray.length -1);
+        Component[] componentArray = userProcessContainer.getComponents();
+        HomelessRequestWorkAreaJPanel homelessRequestPanel = (HomelessRequestWorkAreaJPanel) userProcessContainer.getComponent(componentArray.length - 1);
         // oldAgeRequestPanel.populateUpdatedTable();
 
         homelessRequestPanel.populateWorkQueueTable();
@@ -425,7 +428,7 @@ public void populateComboBox()
 
     private void noOfVehTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noOfVehTextKeyPressed
         // TODO add your handling code here:
-         Validator.onlyInteger(evt, noOfVehText);
+        Validator.onlyInteger(evt, noOfVehText);
     }//GEN-LAST:event_noOfVehTextKeyPressed
 
 

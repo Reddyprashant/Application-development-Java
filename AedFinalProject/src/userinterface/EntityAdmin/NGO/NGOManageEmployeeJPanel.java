@@ -154,12 +154,6 @@ public class NGOManageEmployeeJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 229, -1, -1));
-
-        nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                nameJTextFieldKeyPressed(evt);
-            }
-        });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 226, 126, -1));
 
         organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -170,12 +164,6 @@ public class NGOManageEmployeeJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Email Id:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
-
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEmailKeyPressed(evt);
-            }
-        });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 136, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -186,6 +174,9 @@ public class NGOManageEmployeeJPanel extends javax.swing.JPanel {
         String email= txtEmail.getText();
         organization.getEmployeeDirectory().createEmployee(name,email);
          populateTable(organization);
+         JOptionPane.showMessageDialog(null, "Employee Created Successfully");
+            nameJTextField.setText("");
+            txtEmail.setText("");
          }else{
              JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -205,15 +196,6 @@ public class NGOManageEmployeeJPanel extends javax.swing.JPanel {
             populateTable(organization);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
-
-    private void nameJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameJTextFieldKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, nameJTextField);
-    }//GEN-LAST:event_nameJTextFieldKeyPressed
-
-    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
