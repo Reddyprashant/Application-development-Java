@@ -141,7 +141,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         String name = nameJTextField.getText();
         if(!name.equals("")){
-            if(cNetwork.getStateList().contains(name)){
+            if(!cNetwork.getStateList().contains(name)){
         StateNetwork network = cNetwork.createAndAddNetwork();
         network.setName(name);
 

@@ -226,13 +226,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
 
-        //StateNetwork network = (StateNetwork) networkJComboBox.getSelectedItem();
-//        if ((networkJComboBox.getSelectedItem() != null)) {
-//            populateEnterpriseComboBox((networkJComboBox.getSelectedItem().toString()));
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(null, "Add network ");
-//        }
+        StateNetwork network = (StateNetwork) networkJComboBox.getSelectedItem();
+        if ((networkJComboBox.getSelectedItem() != null)) {
+            populateEnterpriseComboBox(network);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Add network ");
+        }
 
 
     }//GEN-LAST:event_networkJComboBoxActionPerformed

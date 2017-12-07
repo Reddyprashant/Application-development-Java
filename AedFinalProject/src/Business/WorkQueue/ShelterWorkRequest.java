@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 public class ShelterWorkRequest extends WorkRequest{
     private ImageIcon image;
     private LatLong latLong;
+    private int personPresent;
+    private int personAbsent;
     
     public ShelterWorkRequest(){
        image= new ImageIcon();
@@ -35,6 +37,22 @@ public class ShelterWorkRequest extends WorkRequest{
 
     public void setLatLong(LatLong latLong) {
         this.latLong = latLong;
+    }
+
+    public int getPersonPresent() {
+        return personPresent;
+    }
+
+    public void setPersonPresent(int personPresent) {
+        this.personPresent = personPresent;
+    }
+
+    public int getPersonAbsent() {
+        return personAbsent;
+    }
+
+    public void setPersonAbsent(int personAbsent) {
+        this.personAbsent = personAbsent;
     }
     
    
