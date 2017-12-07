@@ -35,7 +35,10 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
         populateTable();
         populateCombo();
     }
-    
+     public void populateLatLong(LatLong latLong){
+        this.latLong=latLong;
+       txtLoc.setText(latLong.getLatitude()+","+latLong.getLongitude());
+    }
     private void populateCombo(){
         organizationJComboBox.removeAllItems();
       //  for (Type type : Organization.Type.values()){

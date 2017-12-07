@@ -25,6 +25,9 @@ import javax.swing.WindowConstants;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import userinterface.Beneficiary.BeneficiaryManageOrganizationJPanel;
 import userinterface.EntityAdmin.Education.EducationRequestAreaJPanel;
+import userinterface.EntityAdmin.EntityManageOrganizationJPanel;
+import userinterface.Government.GovernmentManageOrganizationJPanel;
+import userinterface.Logistics.LogisticsManageOrganizationJPanel;
 import userinterface.SignUp.SignUpJPanel;
 import utility.googleMap.GoogleMapsSample;
 
@@ -140,6 +143,19 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
         BeneficiaryManageOrganizationJPanel eduRequestPanel =(BeneficiaryManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
         eduRequestPanel.populateLatLong(latLong);
           }
+          else if(userProcessContainer.getComponent(componentArray.length -1) instanceof EntityManageOrganizationJPanel){
+        EntityManageOrganizationJPanel eduRequestPanel =(EntityManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
+        eduRequestPanel.populateLatLong(latLong);
+          }
+          else if(userProcessContainer.getComponent(componentArray.length -1) instanceof GovernmentManageOrganizationJPanel){
+        GovernmentManageOrganizationJPanel eduRequestPanel =(GovernmentManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
+        eduRequestPanel.populateLatLong(latLong);
+          }
+          else if(userProcessContainer.getComponent(componentArray.length -1) instanceof GovernmentManageOrganizationJPanel){
+        LogisticsManageOrganizationJPanel eduRequestPanel =(LogisticsManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
+        eduRequestPanel.populateLatLong(latLong);
+          }
+          
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnLocationActionPerformed
