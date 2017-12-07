@@ -7,6 +7,7 @@ package userinterface.SignUp;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.LatLong;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.Organization;
@@ -15,6 +16,7 @@ import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestEnterprise;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -24,7 +26,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.Beneficiary.Orphanage.OrphanageRequestWorkAreaJPanel;
+import userinterface.googleApi.OrganizationLocationJPanel;
 import utility.Validator;
+
 
 /**
  *
@@ -40,6 +45,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private BufferedImage file;
     private JFileChooser openFile= new JFileChooser();
     private String type;
+    LatLong latLong;
     public SignUpJPanel(JPanel userProcessContainer, EcoSystem business, SignUpRequest.SignUpType type) {
         initComponents();
         this.system = business;
@@ -53,7 +59,11 @@ public class SignUpJPanel extends javax.swing.JPanel {
             comboCountry.addItem(countryNetwork);
         }
     }
-
+    
+    public void populateLatLong(LatLong latLong){
+        this.latLong=latLong;
+       txtLoc.setText(latLong.getLatitude()+","+latLong.getLongitude());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,6 +102,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        txtLoc = new javax.swing.JTextField();
+        btnLocation = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -121,7 +134,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("User Name :");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
         btnCreate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnCreate.setForeground(new java.awt.Color(71, 79, 112));
@@ -131,7 +144,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 740, 140, 50));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 780, 140, 50));
 
         txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -292,6 +305,28 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel17.setForeground(new java.awt.Color(71, 79, 112));
         jLabel17.setText("Address:");
         add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, 80, -1));
+
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel18.setText("Location :");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 720, 100, -1));
+
+        txtLoc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLocKeyPressed(evt);
+            }
+        });
+        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 720, 170, -1));
+
+        btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnLocation.setForeground(new java.awt.Color(71, 79, 112));
+        btnLocation.setText("Set Location");
+        btnLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLocationActionPerformed(evt);
+            }
+        });
+        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 720, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -307,7 +342,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         try{
-            if(!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty() && !txtCity.getText().isEmpty() && !txtPassword.getText().isEmpty() ){
+            if(!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty() && !txtCity.getText().isEmpty() && !txtPassword.getText().isEmpty() && !txtLoc.getText().isEmpty()){
                 CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem();
                   StateNetwork state= (StateNetwork) comboState.getSelectedItem();
                   Enterprise e= (Enterprise) comboEnterprise.getSelectedItem();
@@ -326,7 +361,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 orgRequest.setOrgName(txtOrgName.getText());
                 orgRequest.setEnterprise(e);
                 orgRequest.setImage(file);
-                
+                orgRequest.setLatLong(latLong);
              //   orgRequest.setEnterprise((Enterprise.EnterpriseType)comboEnterprise.getSelectedItem());
 //                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
 //                    if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
@@ -465,10 +500,23 @@ public class SignUpJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressKeyPressed
 
+    private void txtLocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLocKeyPressed
+
+    private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
+        // TODO add your handling code here
+        OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
+        userProcessContainer.add("OrganizationLocationJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnLocationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnFile;
+    private javax.swing.JButton btnLocation;
     private javax.swing.JComboBox comboCountry;
     private javax.swing.JComboBox comboEnterprise;
     private javax.swing.JComboBox comboOrganization;
@@ -482,6 +530,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -492,6 +541,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtImage;
+    private javax.swing.JTextField txtLoc;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtOrgName;
     private javax.swing.JPasswordField txtPassword;

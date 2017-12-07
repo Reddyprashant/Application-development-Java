@@ -29,7 +29,6 @@ public abstract class Role {
         OldAgeAdmin("OldAgeAdmin"),
         OrphanageAdmin("OrphanageAdmin"),
         HomelessAdmin("HomelessAdmin"),
-        CommonPeopleAdmin("CommonPeopleAdmin"),
         DisasterAdmin("DisasterAdmin"),
         HospitalAdmin("HospitalAdmin"),
         EducationAdmin("EducationAdmin"),

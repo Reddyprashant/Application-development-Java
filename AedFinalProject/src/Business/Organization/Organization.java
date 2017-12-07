@@ -8,6 +8,7 @@ package Business.Organization;
 
 import Business.Employee.EmployeeDirectory;
 import Business.Event.EventDirectory;
+import Business.LatLong;
 import Business.Person.PersonDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
@@ -26,9 +27,10 @@ private String name;
     private PersonDirectory personList;
     private String city;
     private EventDirectory eventDirectory;
-    private String address;
+    
+    private LatLong latLong;
     public enum Type{
-        OldAge("Oldage Home Organization"),Orphanage("Orphanage Organization"),Homeless("Homeless Shelter Organization"), CommonPeople("Common People Organization"), Disaster("Disaster Recovery Organization"),Hospital("Hospital Organization"),Education("Education Organization"),NGO("NGO Organization"),MNC("MNC Organization"),Individuals("Individuals Organization"),Transportation("Transportation Organization"),Rental("Rental Organization"),BGV("BGV Organization");
+        OldAge("Oldage Home Organization"),Orphanage("Orphanage Organization"),Homeless("Homeless Shelter Organization"), Disaster("Disaster Recovery Organization"),Hospital("Hospital Organization"),Education("Education Organization"),NGO("NGO Organization"),MNC("MNC Organization"),Individuals("Individuals Organization"),Transportation("Transportation Organization"),Rental("Rental Organization"),BGV("BGV Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -50,7 +52,7 @@ private String name;
         }
     } 
 
-   public Organization(String name, String city, String address) {
+   public Organization(String name, String city, LatLong address) {
         this.name = name;
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
@@ -60,7 +62,8 @@ private String name;
         personList= new PersonDirectory();
         eventDirectory= new EventDirectory();
         this.city=city;
-        this.address=address;
+      //  this.address=address;
+        latLong=address;
         ++counter;
     }
 
@@ -100,6 +103,14 @@ private String name;
 
     public WorkQueue getWorkQueue() {
         return workQueue;
+    }
+
+    public LatLong getLatLong() {
+        return latLong;
+    }
+
+    public void setLatLong(LatLong latLong) {
+        this.latLong = latLong;
     }
 
     public void setName(String name) {

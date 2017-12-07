@@ -18,6 +18,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.googleApi.HomelessFoundJPanel;
 
 /**
  *
@@ -59,6 +60,7 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnHomeless = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -102,6 +104,14 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 150, -1));
+
+        btnHomeless.setText("Homeless Found");
+        btnHomeless.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomelessActionPerformed(evt);
+            }
+        });
+        add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -139,9 +149,18 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnHomelessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomelessActionPerformed
+        // TODO add your handling code here:
+        HomelessFoundJPanel manageOrganizationJPanel = new HomelessFoundJPanel(userProcessContainer,account,enterprise,state,country,system);
+        userProcessContainer.add("HomelessFoundJPanel", manageOrganizationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnHomelessActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHomeless;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

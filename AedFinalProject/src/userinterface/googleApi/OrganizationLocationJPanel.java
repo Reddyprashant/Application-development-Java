@@ -15,6 +15,7 @@ import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -22,34 +23,30 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
+import userinterface.Beneficiary.BeneficiaryManageOrganizationJPanel;
+import userinterface.EntityAdmin.Education.EducationRequestAreaJPanel;
+import userinterface.SignUp.SignUpJPanel;
 import utility.googleMap.GoogleMapsSample;
 
 /**
  *
  * @author pooji
  */
-public class HomelessFoundJPanel extends javax.swing.JPanel {
+public class OrganizationLocationJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form HomelessFoundJPanel
      */
     JPanel userProcessContainer;
-    UserAccount account;
-    Enterprise enterprise;
-    StateNetwork state;
-    CountryNetwork country;
-    EcoSystem system;
+
+
     final Browser browser;
      BrowserView view;
       LatLong latLong;
-    public HomelessFoundJPanel(JPanel userProcessContainer,UserAccount account,Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system) {
+    public OrganizationLocationJPanel(JPanel userProcessContainer) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.enterprise=enterprise;
-        this.state=state;
-        this.country=country;
-        this.system=system;
+
        // GoogleMapsSample g= new GoogleMapsSample();
          latLong= new LatLong();
              browser = new Browser();
@@ -133,10 +130,18 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
                     }
          System.out.println("Lat"+latLong.getLatitude()+latLong.getLongitude());
          
-         RequestShelterJPanel manageOrganizationJPanel = new RequestShelterJPanel(userProcessContainer,account,enterprise,state,country,system, latLong);
-        userProcessContainer.add("RequestShelterJPanel", manageOrganizationJPanel);
+         userProcessContainer.remove(this);
+          Component[] componentArray=userProcessContainer.getComponents();
+          if(userProcessContainer.getComponent(componentArray.length -1) instanceof SignUpJPanel){
+        SignUpJPanel eduRequestPanel =(SignUpJPanel)userProcessContainer.getComponent(componentArray.length -1);
+        eduRequestPanel.populateLatLong(latLong);
+          }
+          else if(userProcessContainer.getComponent(componentArray.length -1) instanceof BeneficiaryManageOrganizationJPanel){
+        BeneficiaryManageOrganizationJPanel eduRequestPanel =(BeneficiaryManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
+        eduRequestPanel.populateLatLong(latLong);
+          }
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnLocationActionPerformed
 
 

@@ -5,7 +5,6 @@
  */
 package userinterface.Government;
 
-import userinterface.EntityAdmin.*;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
@@ -13,13 +12,7 @@ import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.BGVOrganization;
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
 import Business.Role.BGVAdmin;
-import Business.Role.CommonPeopleAdmin;
-import Business.Role.DisasterAdmin;
-import Business.Role.HomelessAdmin;
-import Business.Role.OldAgeAdmin;
-import Business.Role.OrphanageAdmin;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
@@ -224,7 +217,7 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
                         CountryNetwork country = orgRequest.getCountry();
                         StateNetwork state= orgRequest.getState();
                         
-                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity(), orgRequest.getAddress());
+                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity(), orgRequest.getLatLong());
                         
                         if(orgRequest.getOrgType()== Organization.Type.BGV){
                             acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new BGVAdmin());

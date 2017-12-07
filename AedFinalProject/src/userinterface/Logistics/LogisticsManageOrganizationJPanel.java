@@ -5,6 +5,7 @@
 package userinterface.Logistics;
 
 //import userinterface.AdministrativeRole.*;
+import Business.LatLong;
 import userinterface.Government.*;
 import userinterface.EntityAdmin.*;
 import Business.Organization.Organization;
@@ -22,7 +23,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
 
     private OrganizationDirectory directory;
     private JPanel userProcessContainer;
-    
+    LatLong latLong;
     /**
      * Creates new form ManageOrganizationJPanel
      */
@@ -176,7 +177,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         Type type = (Type) organizationJComboBox.getSelectedItem();
         String name = orgNameTextField.getText();
         String city= txtcity.getText();
-        directory.createOrganization(type, name,city,txtAddress.getText());
+        directory.createOrganization(type, name,city,latLong);
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 
