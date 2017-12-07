@@ -16,6 +16,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import java.io.IOException;
 import java.util.Date;
@@ -44,7 +46,58 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class Validator {
+
+
+    
+
    
+
+   
+
+    /**
+     * Validate hex with regular expression
+     *
+     * @param hex
+     *            hex for validation
+     * @return true valid hex, false invalid hex
+     */
+    public static boolean validateEmail(String hex) {
+         Pattern pattern;
+     Matcher matcher;
+          String EMAIL_PATTERN =
+        "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+         pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(hex);
+        return matcher.matches();    
+    }
+    /**Password check
+       ^                 # start-of-string
+       (?=.*[0-9])       # a digit must occur at least once
+       (?=.*[a-z])       # a lower case letter must occur at least once
+       (?=.*[A-Z])       # an upper case letter must occur at least once
+       (?=.*[@#$%^&+=])  # a special character must occur at least once
+       (?=\S+$)          # no whitespace allowed in the entire string
+       .{8,}             # anything, at least eight places though
+       $                 # end-of-string
+     * @param pwd
+     * @return 
+     */ 
+    public static boolean validatePassword(String pwd) {
+     Pattern pattern;
+     Matcher matcher;
+     String PASSWORD_PATTERN =
+        "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+         pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(pwd);
+        return matcher.matches();    
+    }
+
+    
+    
+    
+    
+    
      public static void onlyString(KeyEvent evt, JTextField field) {
           char c = evt.getKeyChar();
         if (!((c >= 'A') && (c <= 'Z') || (c >= 'a') && (c <= 'z') || (c==evt.VK_SPACE) || (c==evt.VK_CAPS_LOCK) || (c==evt.VK_SHIFT)||

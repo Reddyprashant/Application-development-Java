@@ -57,12 +57,26 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
             }
         }
     }
-
+    
+// Method to populate Nework ComboBox
+    
     private void populateNetworkComboBox() {
         networkJComboBox.removeAllItems();
-
-        for (CountryNetwork network : system.getNetworkList()) {
-            networkJComboBox.addItem(network);
+        if(system.getNetworkList().size()!=0){                     //Checking whether system contains any network
+           for (CountryNetwork network : system.getNetworkList()) {
+                networkJComboBox.addItem(network);
+            }
+           
+           
+        }
+        else{
+             txtEmail.setEnabled(false);
+             usernameJTextField.setEnabled(false);
+             passwordJPasswordField.setEnabled(false);
+             nameJTextField.setEnabled(false);
+             submitJButton.setEnabled(false);
+             btnDelete.setEnabled(false);
+             networkJComboBox.addItem("Please Add Networks");
         }
     }
 
@@ -98,10 +112,7 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
 
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Network", "Username"
@@ -111,10 +122,10 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 58, 523, 95));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Manage Country Admin");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
 
-        networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 networkJComboBoxActionPerformed(evt);
@@ -122,10 +133,12 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
         });
         add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 198, 136, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Username");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 294, -1, -1));
         add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 291, 136, -1));
 
+        submitJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +147,7 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
         });
         add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Password");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 334, -1, -1));
 
@@ -144,10 +158,18 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
         });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 371, 136, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Name");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 374, -1, -1));
+
+        passwordJPasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordJPasswordFieldFocusLost(evt);
+            }
+        });
         add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 331, 134, -1));
 
+        backJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +178,7 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
 
+        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,12 +187,19 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Network");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 201, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Email Id:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, -1, -1));
 
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEmailKeyPressed(evt);
@@ -179,12 +209,17 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
-
+        usernameJTextField.setText(networkJComboBox.getSelectedItem().toString());
+        usernameJTextField.setEnabled(false);
+        
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
         
        // Enterprise system = (Enterprise) enterpriseJComboBox.getSelectedItem();
+
+      //Creating new Country Admin Role
+        
 
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
@@ -198,6 +233,7 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
                         if (EcoSystem.checkIfUsernameIsUnique(username)) {
                             UserAccount account = null;
                             account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new CountryAdminRole());
+                            
 //            if (system.getEnterpriseType() == Enterprise.EnterpriseType.Beneficiary) {
 //                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new BeneficiaryAdminRole());
 //            } else if (system.getEnterpriseType() == Enterprise.EnterpriseType.Entity) {
@@ -209,6 +245,11 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
 //            }
 
                             populateTable(); 
+                            txtEmail.setText("");
+                            usernameJTextField.setText("");
+                            passwordJPasswordField.setText("");
+                            nameJTextField.setText("");
+                            
                     }
                     else {
                          JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -277,6 +318,31 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
     private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void passwordJPasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordJPasswordFieldFocusLost
+        // TODO add your handling code here:
+        String password = String.valueOf(passwordJPasswordField.getPassword());
+        if(!Validator.validatePassword(password)){
+            JOptionPane.showMessageDialog(null, "Password should Contain \n"+
+"       # At least one digit\n" +
+"       # At least one lower case letter\n" +
+"       # At least one upper case letter\n" +
+"       # At least one special character\n" +
+"       # no whitespace allowed in the entire string\n" +
+"       # at least eight characters");
+            passwordJPasswordField.setText("");
+        }
+        
+    }//GEN-LAST:event_passwordJPasswordFieldFocusLost
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+            if(!Validator.validateEmail(txtEmail.getText())){
+            JOptionPane.showMessageDialog(null, "Enter a valid Email Id");
+            txtEmail.setText("");
+        }
+        
+    }//GEN-LAST:event_txtEmailFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

@@ -24,6 +24,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private CountryNetwork cNetwork;
+
     /**
      * Creates new form ManageEnterpriseJPanel
      */
@@ -31,11 +32,12 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        this.cNetwork=cNetwork;
+        this.cNetwork = cNetwork;
         populateTable();
         populateComboBox();
     }
 
+    //Code for populating the table enterpriseJTable
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
 
@@ -98,10 +100,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Enterprise Name", "Network", "Type"
@@ -122,7 +121,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jLabel1.setText("Network");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
 
-        networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 136, -1));
 
         jLabel2.setText("Name");
@@ -138,7 +136,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         jLabel3.setText("Enterprise Type");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
 
-        enterpriseTypeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 136, -1));
 
         submitJButton.setText("Submit");
@@ -165,67 +162,70 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Manage Enterprise Panel");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
-        if(!nameJTextField.getText().equals("")){
-        StateNetwork network = (StateNetwork) networkJComboBox.getSelectedItem();
-        Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) enterpriseTypeJComboBox.getSelectedItem();
+        if (!nameJTextField.getText().equals("")) {
+            StateNetwork network = (StateNetwork) networkJComboBox.getSelectedItem();
+            Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) enterpriseTypeJComboBox.getSelectedItem();
 
-        if (network == null || type == null) {
-            JOptionPane.showMessageDialog(null, "Invalid Input!");
-            return;
-        }
+            if (network == null || type == null) {
+                JOptionPane.showMessageDialog(null, "Invalid Input!");
+                return;
+            }
 
-        String name = nameJTextField.getText();
-        
-        Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
+            String name = nameJTextField.getText();
 
-        populateTable();
-         }else{
-             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+            Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
+
+            populateTable();
+        } else {
+            JOptionPane.showMessageDialog(null, "Enter a name for Enterprise", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         userProcessContainer.remove(this);
-         Component[] componentArray = userProcessContainer.getComponents();
+        Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         CountryAdminWorkAreaJPanel sysAdminwjp = (CountryAdminWorkAreaJPanel) component;
         sysAdminwjp.populateTree();
-
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow= enterpriseJTable.getSelectedRow();
-        if(selectedRow<0){
-            JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else{
+        int selectedRow = enterpriseJTable.getSelectedRow();
+        if (selectedRow >= 0) {
 
-            Enterprise p=(Enterprise) enterpriseJTable.getValueAt(selectedRow, 0);
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Would you like to delete the details", "Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION) {
 
-            for (StateNetwork network : cNetwork.getStateList()) {
-                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                   
-                        if(p==enterprise){
-                           network.getEnterpriseDirectory().getEnterpriseList().remove(p);
+                Enterprise p = (Enterprise) enterpriseJTable.getValueAt(selectedRow, 0);
+
+                for (StateNetwork network : cNetwork.getStateList()) {
+                    for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+
+                        if (p == enterprise) {
+                            network.getEnterpriseDirectory().getEnterpriseList().remove(p);
                             break;
                         }
 
-                    
+                    }
                 }
-            }
 
-            JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
-            populateTable();
+                JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+                populateTable();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Row from table ", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

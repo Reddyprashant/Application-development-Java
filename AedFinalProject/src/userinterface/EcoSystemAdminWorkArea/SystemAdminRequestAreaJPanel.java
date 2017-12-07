@@ -6,26 +6,18 @@
 package userinterface.EcoSystemAdminWorkArea;
 
 
-import userinterface.CountryAdminWorkAreas.*;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
-import Business.Network.StateNetwork;
-import Business.Organization.Organization;
 import Business.Role.CountryAdminRole;
-import Business.Role.Role;
 import Business.SignUp.SignUpRequestCountry;
-import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.util.HashMap;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import java.util.*;
 import javax.mail.SendFailedException;
 import utility.Validator;
 /**
@@ -57,7 +49,8 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
     }
 
   
-
+// Code for populating WorkQueue Table requestTable
+    
     public void populateWorkQueueTable() {
         DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
 
@@ -129,6 +122,7 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 850, 330));
 
+        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +131,7 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, -1, -1));
 
+        reqBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         reqBtn.setText("Assign To Me");
         reqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +140,7 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
         });
         add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 120, -1));
 
+        btnComplete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnComplete.setText("Complete");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +149,7 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
         });
         add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 140, -1));
 
+        backJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +161,9 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        
+        // Deleting Request from system Work Queue  
+        
         int selectedRow = requestTable.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -220,7 +220,14 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
             
             if (p.getReceiver() != null) {
                 if (p.getStatus().equals("Pending")) {
-                    
+                    try{
+                    Validator.sendMessage(p.getEmail());
+                    }
+                    catch(SendFailedException s){
+                        JOptionPane.showMessageDialog(null, "Wrong email Id given in this request.");
+                         p.setStatus("Cancelled");
+                         return;
+                    }
                     CountryNetwork net = system.createAndAddNetwork();
                     net.setName(p.getName());
                     Employee e= new Employee();
@@ -231,13 +238,6 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     
                     populateWorkQueueTable();
-                    try{
-                    Validator.sendMessage(p.getEmail());
-                    }
-                    catch(SendFailedException s){
-                        JOptionPane.showMessageDialog(null, "Wrong email Id given in this request.");
-                         p.setStatus("Ignored");
-                    }
                      populateWorkQueueTable();
                 } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
