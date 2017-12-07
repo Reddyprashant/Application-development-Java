@@ -190,12 +190,6 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
         jLabel18.setText("Location :");
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 100, -1));
-
-        txtLoc.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtLocKeyPressed(evt);
-            }
-        });
         add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 170, -1));
 
         btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -245,10 +239,6 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
-
-    private void txtLocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLocKeyPressed
 
     private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
         // TODO add your handling code here

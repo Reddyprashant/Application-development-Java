@@ -113,11 +113,6 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
                 txtNameActionPerformed(evt);
             }
         });
-        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNameKeyPressed(evt);
-            }
-        });
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 170, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -129,11 +124,6 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         txtUserName.setEnabled(false);
-        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUserNameKeyPressed(evt);
-            }
-        });
         add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -141,19 +131,9 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         txtEmail.setEnabled(false);
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEmailKeyPressed(evt);
-            }
-        });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 170, -1));
 
         txtEnterprise.setEnabled(false);
-        txtEnterprise.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEnterpriseKeyPressed(evt);
-            }
-        });
         add(txtEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 170, -1));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -173,11 +153,6 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 100, -1));
 
         txtOrgName.setEnabled(false);
-        txtOrgName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtOrgNameKeyPressed(evt);
-            }
-        });
         add(txtOrgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 170, -1));
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -192,19 +167,9 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 220, 210));
 
         txtState.setEnabled(false);
-        txtState.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtStateKeyPressed(evt);
-            }
-        });
         add(txtState, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 170, -1));
 
         txtOrg.setEnabled(false);
-        txtOrg.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtOrgKeyPressed(evt);
-            }
-        });
         add(txtOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 170, -1));
 
         txtCountry.setEnabled(false);
@@ -216,11 +181,6 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         add(txtCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 170, -1));
 
         txtCity.setEnabled(false);
-        txtCity.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCityKeyPressed(evt);
-            }
-        });
         add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -228,44 +188,9 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
-    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, txtName);
-    }//GEN-LAST:event_txtNameKeyPressed
-
-    private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, txtUserName);
-    }//GEN-LAST:event_txtUserNameKeyPressed
-
-    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailKeyPressed
-
-    private void txtEnterpriseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnterpriseKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyInteger(evt, txtEnterprise);
-    }//GEN-LAST:event_txtEnterpriseKeyPressed
-
-    private void txtOrgNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOrgNameKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrgNameKeyPressed
-
-    private void txtStateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStateKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStateKeyPressed
-
-    private void txtOrgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOrgKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrgKeyPressed
-
     private void txtCountryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCountryKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCountryKeyPressed
-
-    private void txtCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCityKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCityKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

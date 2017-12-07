@@ -186,12 +186,6 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("*Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 50, -1));
-
-        nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                nameJTextFieldKeyPressed(evt);
-            }
-        });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 126, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
@@ -396,11 +390,6 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void nameJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameJTextFieldKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, nameJTextField);
-    }//GEN-LAST:event_nameJTextFieldKeyPressed
 
     private void ARadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARadioButtonActionPerformed
         // TODO add your handling code here:
