@@ -5,6 +5,7 @@
 package userinterface.EntityAdmin;
 
 //import userinterface.AdministrativeRole.*;
+import Business.LatLong;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
@@ -12,6 +13,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.googleApi.OrganizationLocationJPanel;
 
 /**
  *
@@ -21,7 +23,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
 
     private OrganizationDirectory directory;
     private JPanel userProcessContainer;
-    
+    private LatLong latLong;
     /**
      * Creates new form ManageOrganizationJPanel
      */
@@ -33,7 +35,10 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         populateTable();
         populateCombo();
     }
-    
+    public void populateLatLong(LatLong latLong){
+        this.latLong=latLong;
+       txtLoc.setText(latLong.getLatitude()+","+latLong.getLongitude());
+    }
     private void populateCombo(){
         organizationJComboBox.removeAllItems();
       //  for (Type type : Organization.Type.values()){
@@ -81,8 +86,9 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         orgNameTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtcity = new javax.swing.JTextField();
-        txtAddress = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        txtLoc = new javax.swing.JTextField();
+        btnLocation = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -124,7 +130,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 310, -1, -1));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, -1, -1));
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 225, 81, -1));
@@ -160,15 +166,27 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         });
         add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 80, -1));
 
-        txtAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddressActionPerformed(evt);
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel18.setText("Location :");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 100, -1));
+
+        txtLoc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLocKeyPressed(evt);
             }
         });
-        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 80, -1));
+        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 170, -1));
 
-        jLabel4.setText("Organization Address");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+        btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnLocation.setForeground(new java.awt.Color(71, 79, 112));
+        btnLocation.setText("Set Location");
+        btnLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLocationActionPerformed(evt);
+            }
+        });
+        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -178,7 +196,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         String city= txtcity.getText();
         if(!(name.isEmpty())){
             if(!(city.isEmpty())){    
-               directory.createOrganization(type, name, city,txtAddress.getText());
+               directory.createOrganization(type, name, city,latLong);
                populateTable();
             }
             else{
@@ -205,22 +223,31 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcityActionPerformed
 
-    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+    private void txtLocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressActionPerformed
+    }//GEN-LAST:event_txtLocKeyPressed
+
+    private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
+        // TODO add your handling code here
+        OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
+        userProcessContainer.add("OrganizationLocationJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnLocationActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnLocation;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField orgNameTextField;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;
-    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtLoc;
     private javax.swing.JTextField txtcity;
     // End of variables declaration//GEN-END:variables
 }

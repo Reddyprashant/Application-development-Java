@@ -3,6 +3,7 @@ package Business.SignUp;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
+import Business.LatLong;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.Organization;
@@ -28,7 +29,7 @@ public class SignUpRequestOrganization extends SignUpRequest{
     private String city;
     private String orgName;
     private String address;
-    
+    private LatLong latLong;
     public SignUpRequestOrganization(){
         super();
     }
@@ -87,6 +88,14 @@ public class SignUpRequestOrganization extends SignUpRequest{
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public LatLong getLatLong() {
+        return latLong;
+    }
+
+    public void setLatLong(LatLong latLong) {
+        this.latLong = latLong;
     }
  
     

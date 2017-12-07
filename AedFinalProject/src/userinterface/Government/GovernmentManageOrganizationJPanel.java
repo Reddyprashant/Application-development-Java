@@ -5,6 +5,7 @@
 package userinterface.Government;
 
 //import userinterface.AdministrativeRole.*;
+import Business.LatLong;
 import userinterface.EntityAdmin.*;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
@@ -12,6 +13,7 @@ import Business.Organization.OrganizationDirectory;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.googleApi.OrganizationLocationJPanel;
 
 /**
  *
@@ -21,7 +23,7 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
 
     private OrganizationDirectory directory;
     private JPanel userProcessContainer;
-    
+    LatLong latLong;
     /**
      * Creates new form ManageOrganizationJPanel
      */
@@ -82,6 +84,9 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
         txtcity = new javax.swing.JTextField();
         txtAddress = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        txtLoc = new javax.swing.JTextField();
+        btnLocation = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -168,6 +173,28 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Organization Address");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel18.setText("Location :");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 100, -1));
+
+        txtLoc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLocKeyPressed(evt);
+            }
+        });
+        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 170, -1));
+
+        btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnLocation.setForeground(new java.awt.Color(71, 79, 112));
+        btnLocation.setText("Set Location");
+        btnLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLocationActionPerformed(evt);
+            }
+        });
+        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -175,7 +202,7 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
         Type type = (Type) organizationJComboBox.getSelectedItem();
         String name = orgNameTextField.getText();
         String city= txtcity.getText();
-        directory.createOrganization(type, name,city,txtAddress.getText());
+        directory.createOrganization(type, name,city,latLong);
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 
@@ -198,10 +225,24 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
 
+    private void txtLocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLocKeyPressed
+
+    private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
+        // TODO add your handling code here
+        OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
+        userProcessContainer.add("OrganizationLocationJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnLocationActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnLocation;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -210,6 +251,7 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;
     private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtLoc;
     private javax.swing.JTextField txtcity;
     // End of variables declaration//GEN-END:variables
 }

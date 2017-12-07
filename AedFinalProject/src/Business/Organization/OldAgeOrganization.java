@@ -6,6 +6,7 @@
 
 package Business.Organization;
 
+import Business.LatLong;
 import Business.Role.HomelessAdmin;
 import Business.Role.OldAgeAdmin;
 import Business.Role.Role;
@@ -14,7 +15,7 @@ import java.util.HashSet;
 
 public class OldAgeOrganization extends Organization{
     private String name;
-    public OldAgeOrganization(String name, String city,String address) {
+    public OldAgeOrganization(String name, String city,LatLong address) {
         super(name,city, address);
         this.name=name;
     }

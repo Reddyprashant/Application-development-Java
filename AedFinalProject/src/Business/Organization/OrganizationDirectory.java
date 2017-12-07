@@ -5,6 +5,7 @@
 package Business.Organization;
 
 import Business.Enterprise.LogisticEnterprise;
+import Business.LatLong;
 import Business.Organization.Organization.Type;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class OrganizationDirectory {
         return organizationList;
     }
     
-    public Organization createOrganization(Type type, String name, String city, String address){
+    public Organization createOrganization(Type type, String name, String city, LatLong address){
         Organization organization = null;
         if (type.getValue().equals(Type.OldAge.getValue())){
             organization = new OldAgeOrganization(name,city,address);
