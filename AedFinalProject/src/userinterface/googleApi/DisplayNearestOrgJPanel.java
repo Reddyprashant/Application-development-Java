@@ -55,7 +55,7 @@ public class DisplayNearestOrgJPanel extends javax.swing.JPanel {
     final Browser browser;
      BrowserView view;
       LatLong latLong;
-      ShelterWorkRequest request;
+ //     ShelterWorkRequest request;
       Organization organization;
       boolean temp;
     public DisplayNearestOrgJPanel(JPanel userProcessContainer,UserAccount account,Organization organization, Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system, LatLong latLong ) {
@@ -66,17 +66,13 @@ public class DisplayNearestOrgJPanel extends javax.swing.JPanel {
         this.state=state;
         this.country=country;
         this.system=system;
-        this.request=request;
+   //     this.request=request;
         this.organization= organization;
         temp=true;
-        System.out.println("userinterface.g()"+request.getLatLong().getLatitude());
+//        System.out.println("userinterface.g()"+request.getLatLong().getLatitude());
         //lblImage.setIcon(request.getImage());
-        if(this.request.getImage()== null){
-            System.out.println("no image available");
-        }
-        System.out.println("qwe"+request.getImage());
-       // GoogleMapsSample g= new GoogleMapsSample();
-         latLong= request.getLatLong();
+   this.latLong=latLong;
+  
              browser = new Browser();
              view = new BrowserView(browser);
         //    browser.loadURL("https://www.google.com/maps");
@@ -98,7 +94,7 @@ public class DisplayNearestOrgJPanel extends javax.swing.JPanel {
 "      function initialize() {\n" +
 "        var mapOptions = {\n" +
 "          center: new google.maps.LatLng("+latLong.getLatitude()+","+latLong.getLongitude()+"),\n" +
-"          zoom: 15\n" +
+"          zoom: 14\n" +
 "        };\n" +
 "        map = new google.maps.Map(document.getElementById(\"map-canvas\"),\n" +
 "            mapOptions);\n" +

@@ -55,10 +55,18 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         this.state = network;
         this.country = cNetwork;
         TextArea.enable(false);
-        //  populateOrganizationComboBox();
+          populateComboBox();
         // populateOrganizationEmpComboBox();
     }
-
+public void populateComboBox() {
+        reqComboBox.removeAllItems();
+        reqComboBox.addItem("White American");
+        reqComboBox.addItem("African");
+        reqComboBox.addItem("Asian");
+        reqComboBox.addItem("Native Hawaiians");
+        reqComboBox.addItem("Middle Eastern");
+        reqComboBox.addItem("Others");
+    }
 //    public void populateOrganizationComboBox(){
 //        organizationJComboBox.removeAllItems();
 //        

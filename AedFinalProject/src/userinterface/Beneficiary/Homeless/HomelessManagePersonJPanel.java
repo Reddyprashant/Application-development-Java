@@ -6,11 +6,9 @@ package userinterface.Beneficiary.Homeless;
 
 import userinterface.Beneficiary.BeneficiaryPersonViewJPanel;
 import Business.EcoSystem;
-//import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-//import Business.Organization.ClinicOrganization;
 import Business.Organization.HomelessOrganization;
 import Business.Person.Person;
 import Business.UserAccount.UserAccount;
@@ -62,9 +60,8 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
     public void populateComboBox() {
         reqComboBox.removeAllItems();
         reqComboBox.addItem("White American");
-        reqComboBox.addItem("African American");
+        reqComboBox.addItem("African");
         reqComboBox.addItem("Asian");
-        reqComboBox.addItem("Native American");
         reqComboBox.addItem("Native Hawaiians");
         reqComboBox.addItem("Middle Eastern");
         reqComboBox.addItem("Others");
@@ -378,7 +375,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
                                     String reasonDescription = TextArea.getText();
                                     organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
- JOptionPane.showMessageDialog(null, "Person Created");
+                                    JOptionPane.showMessageDialog(null, "Person Created");
                                     nameJTextField.setText("");
                                     ageTextField.setText("");
                                     btnGrpSex.clearSelection();
