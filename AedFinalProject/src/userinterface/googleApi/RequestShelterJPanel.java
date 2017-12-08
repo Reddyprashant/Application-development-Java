@@ -16,6 +16,7 @@ import Business.Organization.IndividualOrganization;
 import Business.Organization.OldAgeOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrphanageOrganization;
+import Business.SignUp.SignUpRequest;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ShelterWorkRequest;
 import com.teamdev.jxbrowser.chromium.Browser;
@@ -23,12 +24,14 @@ import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.File;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.mail.SendFailedException;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import utility.Validator;
 
 /**
@@ -49,6 +52,8 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
       LatLong latLong;
       Organization organization;
       ImageIcon image;
+      private ArrayList<Organization> orglist5;
+      private ArrayList<Organization> orglist10;
     public RequestShelterJPanel(JPanel userProcessContainer,UserAccount account,Organization org, Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system, LatLong latLng) {
         initComponents();
          this.userProcessContainer=userProcessContainer;
@@ -58,7 +63,9 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         this.country=country;
         this.system=system;
         this.latLong=latLng;
-        this.organization=organization;
+        this.organization=org;
+        orglist5=new ArrayList<>();
+        orglist10= new ArrayList<>();
         txtLat.setText(String.valueOf(latLong.getLatitude()));
         txtLong.setText(String.valueOf(latLong.getLongitude()));
         
@@ -84,6 +91,10 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         btnUpload = new javax.swing.JButton();
         lblPic = new javax.swing.JLabel();
         btnHome = new javax.swing.JButton();
+        helpBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        disTable = new javax.swing.JTable();
+        mapBtn = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -141,6 +152,42 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
             }
         });
         add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+
+        helpBtn.setText("Willing to help!!!!");
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+        add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
+
+        disTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Oragnization Name", "Distance"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(disTable);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 300, 160));
+
+        mapBtn.setText("View Map");
+        mapBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mapBtnActionPerformed(evt);
+            }
+        });
+        add(mapBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLatKeyPressed
@@ -151,7 +198,22 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
     private void txtLongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLongKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLongKeyPressed
-
+public void populateTable( ArrayList<Organization> org)
+{
+    DefaultTableModel model = (DefaultTableModel) disTable.getModel();
+        
+        model.setRowCount(0);
+        for (Organization organization1 : org) {
+        
+    
+         Object[] row = new Object[3];
+            row[0] = organization1;
+            row[1] = organization1.populateDistance(latLong);
+           
+            
+            model.addRow(row);
+        }
+}
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
         if(image != null){
             ShelterWorkRequest request= new ShelterWorkRequest();
@@ -245,15 +307,75 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnHomeActionPerformed
 
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
+        // TODO add your handling code here:
+        
+        for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
+                
+                  if (organization instanceof HomelessOrganization|| organization instanceof OrphanageOrganization ||organization instanceof OldAgeOrganization || organization instanceof IndividualOrganization) {
+                    
+                      if(organization.populateDistance(latLong )<5)
+                      {
+                          orglist5.add(organization);
+                        // populateTable(organization);
+                      }
+                      else if (organization.populateDistance(latLong )<10)
+                      {
+                          orglist10.add(organization);
+                      }
+                }
+  
+                
+            }
+            
+        }
+        if(orglist5.size()>0)
+        {
+        populateTable(orglist5);
+        }
+        else if(orglist10.size()>0)
+        {
+            populateTable(orglist10);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No organization found Within 10 Miles. Please request for help", "Warning", JOptionPane.WARNING_MESSAGE);
+            
+        }
+            
+    }//GEN-LAST:event_helpBtnActionPerformed
+
+    private void mapBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = disTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to view map", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            Organization p = (Organization) disTable.getValueAt(selectedRow, 0);
+           //String latLong = String.valueOf(organization.getLatLong());
+            DisplayNearestOrgJPanel displayNearestOrgJPanel = new DisplayNearestOrgJPanel(userProcessContainer,account,organization,enterprise,state,country,system, p.getLatLong());
+        userProcessContainer.add("DisplayNearestOrgJPanel", displayNearestOrgJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+            
+        }
+    }//GEN-LAST:event_mapBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnUpload;
+    private javax.swing.JTable disTable;
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JButton helpBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPic;
+    private javax.swing.JButton mapBtn;
     private javax.swing.JButton reqBtn;
     private javax.swing.JTextField txtImage;
     private javax.swing.JTextField txtLat;
