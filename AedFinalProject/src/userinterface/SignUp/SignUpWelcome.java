@@ -87,9 +87,6 @@ public class SignUpWelcome extends javax.swing.JPanel {
         add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 73, 42));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/Volunteer.jpg"))); // NOI18N
-        jLabel4.setMaximumSize(new java.awt.Dimension(709, 309));
-        jLabel4.setMinimumSize(new java.awt.Dimension(709, 309));
-        jLabel4.setPreferredSize(new java.awt.Dimension(709, 309));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 19, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

@@ -75,7 +75,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(71, 79, 112));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         loginJButton.setBackground(new java.awt.Color(0, 0, 0));
@@ -143,7 +143,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        container.setBackground(new java.awt.Color(153, 153, 153));
+        container.setBackground(new java.awt.Color(255, 255, 255));
         container.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(container);
 

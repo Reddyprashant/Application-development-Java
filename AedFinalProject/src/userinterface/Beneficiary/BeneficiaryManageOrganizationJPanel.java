@@ -92,8 +92,11 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         txtLoc = new javax.swing.JTextField();
         btnLocation = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        organizationJTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        organizationJTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -126,13 +129,15 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 60, 480, 92));
 
+        addJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        addJButton.setForeground(new java.awt.Color(71, 79, 112));
         addJButton.setText("Add Organization");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, -1, -1));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, -1, -1));
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -140,19 +145,25 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 225, 81, -1));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 81, 30));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("beni o");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
 
+        backJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(71, 79, 112));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 310, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Organization Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, -1));
 
@@ -161,11 +172,15 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
                 orgNameTextFieldActionPerformed(evt);
             }
         });
-        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 80, -1));
+        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 80, 30));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Organization Type ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 228, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Organization City");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
 
@@ -174,15 +189,17 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
                 txtcityActionPerformed(evt);
             }
         });
-        add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 80, -1));
+        add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 80, 30));
 
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAddressActionPerformed(evt);
             }
         });
-        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 80, -1));
+        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 80, 30));
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Organization Address");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
 
@@ -190,7 +207,7 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
         jLabel18.setText("Location :");
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 100, -1));
-        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 170, -1));
+        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, 170, -1));
 
         btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnLocation.setForeground(new java.awt.Color(71, 79, 112));
@@ -200,7 +217,7 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
                 btnLocationActionPerformed(evt);
             }
         });
-        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, -1, -1));
+        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed

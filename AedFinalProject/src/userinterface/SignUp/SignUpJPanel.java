@@ -14,6 +14,7 @@ import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestOrganization;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -24,7 +25,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.googleApi.OrganizationLocationJPanel;
 import utility.Validator;
-
 
 /**
  *
@@ -38,27 +38,29 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private BufferedImage file;
-    private JFileChooser openFile= new JFileChooser();
+    private JFileChooser openFile = new JFileChooser();
     private String type;
-    LatLong latLong;
+    private LatLong latLong;
+
     public SignUpJPanel(JPanel userProcessContainer, EcoSystem business, SignUpRequest.SignUpType type) {
         initComponents();
         this.system = business;
-        this.userProcessContainer=userProcessContainer;
-        this.type=type.getValue();
+        this.userProcessContainer = userProcessContainer;
+        this.type = type.getValue();
         populateCombo();
     }
-    
-    public void populateCombo(){
+
+    public void populateCombo() {
         for (CountryNetwork countryNetwork : system.getNetworkList()) {
             comboCountry.addItem(countryNetwork);
         }
     }
-    
-    public void populateLatLong(LatLong latLong){
-        this.latLong=latLong;
-       txtLoc.setText(latLong.getLatitude()+","+latLong.getLongitude());
+
+    public void populateLatLong(LatLong latLong) {
+        this.latLong = latLong;
+        txtLoc.setText(latLong.getLatitude() + "," + latLong.getLongitude());
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,6 +100,12 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         txtLoc = new javax.swing.JTextField();
         btnLocation = new javax.swing.JButton();
+        lblEmail = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        lblAcceptedUserName = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblOrganization = new javax.swing.JLabel();
+        lblCity = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,14 +115,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel1.setText("Registration Form");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 310, 40));
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNameKeyPressed(evt);
+        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameFocusLost(evt);
             }
         });
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 170, -1));
@@ -144,16 +147,6 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 txtUserNameFocusLost(evt);
             }
         });
-        txtUserName.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
-            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
-                txtUserNameMouseWheelMoved(evt);
-            }
-        });
-        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUserNameKeyPressed(evt);
-            }
-        });
         add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -161,9 +154,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel6.setText("Email Id :");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
 
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEmailKeyPressed(evt);
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
             }
         });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 170, -1));
@@ -173,21 +166,16 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel7.setText("Password:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
 
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusLost(evt);
             }
         });
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 170, -1));
 
-        txtCity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCityActionPerformed(evt);
-            }
-        });
-        txtCity.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCityKeyPressed(evt);
+        txtCity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCityFocusLost(evt);
             }
         });
         add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 590, 170, -1));
@@ -235,9 +223,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
         add(comboOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 170, -1));
 
-        txtOrgName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtOrgNameKeyPressed(evt);
+        txtOrgName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtOrgNameFocusLost(evt);
             }
         });
         add(txtOrgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 540, 170, -1));
@@ -246,12 +234,6 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel13.setForeground(new java.awt.Color(71, 79, 112));
         jLabel13.setText("Organization Name :");
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 540, 170, -1));
-
-        txtImage.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtImageKeyPressed(evt);
-            }
-        });
         add(txtImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 630, 170, -1));
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -286,12 +268,6 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
         jLabel18.setText("Location :");
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 690, 100, -1));
-
-        txtLoc.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtLocKeyPressed(evt);
-            }
-        });
         add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 690, 170, -1));
 
         btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -303,72 +279,129 @@ public class SignUpJPanel extends javax.swing.JPanel {
             }
         });
         add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 690, -1, -1));
+
+        lblEmail.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, -1));
+
+        lblUserName.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, -1, -1));
+
+        lblAcceptedUserName.setForeground(new java.awt.Color(0, 204, 0));
+        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, -1, -1));
+
+        lblName.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
+
+        lblOrganization.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 540, -1, -1));
+
+        lblCity.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 590, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtNameActionPerformed
-
-    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, txtName);
-      
-
-    }//GEN-LAST:event_txtNameKeyPressed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        try{
-            if(!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty() && !txtCity.getText().isEmpty() && !txtPassword.getText().isEmpty() && !txtLoc.getText().isEmpty()){
-                CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem();
-                  StateNetwork state= (StateNetwork) comboState.getSelectedItem();
-                  Enterprise e= (Enterprise) comboEnterprise.getSelectedItem();
-                  Organization.Type type= (Type) comboOrganization.getSelectedItem();
-                 
-                SignUpRequestOrganization orgRequest= new SignUpRequestOrganization();
-                orgRequest.setName(txtName.getText());
-                orgRequest.setUserName(txtUserName.getText());
-                orgRequest.setPassword(txtPassword.getText());
-                orgRequest.setEmail(txtEmail.getText());
-                orgRequest.setCountry(country);
-                orgRequest.setState(state);
-                orgRequest.setCity(txtCity.getText());
-                orgRequest.setOrgType(type);
-                orgRequest.setStatus("Requested");
-                orgRequest.setOrgName(txtOrgName.getText());
-                orgRequest.setEnterprise(e);
-                orgRequest.setImage(file);
-                orgRequest.setLatLong(latLong);
-             //   orgRequest.setEnterprise((Enterprise.EnterpriseType)comboEnterprise.getSelectedItem());
+        try {
+            CountryNetwork country = (CountryNetwork) comboCountry.getSelectedItem();
+            StateNetwork state = (StateNetwork) comboState.getSelectedItem();
+            Enterprise e = (Enterprise) comboEnterprise.getSelectedItem();
+            Organization.Type type = (Type) comboOrganization.getSelectedItem();
+            String password = String.valueOf(txtPassword.getPassword());
+
+            for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
+                    for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (enterprise == e) {
+                            for (Organization org : e.getOrganizationDirectory().getOrganizationList()) {
+                                if (org.getName().equals(txtOrgName.getText()) && org.getLatLong().getLatitude()== latLong.getLatitude() && org.getLatLong().getLongitude()==latLong.getLongitude()) {
+                                    JOptionPane.showMessageDialog(null, "Organization is already present please add new organization");
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
+                    for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (enterprise == e) {
+                            for (WorkRequest workReq : e.getWorkQueue().getWorkRequestList()) {
+                                if (workReq instanceof SignUpRequestOrganization) {
+                                    System.out.println("iifififif"+ latLong.getLatitude()+latLong.getLongitude());
+                                    if (((SignUpRequestOrganization) workReq).getOrgName().equals(txtOrgName.getText()) && ((SignUpRequestOrganization) workReq).getLatLong().getLatitude() == latLong.getLatitude() && ((SignUpRequestOrganization) workReq).getLatLong().getLongitude()== latLong.getLongitude()){
+                                        JOptionPane.showMessageDialog(null, "Request is already raised for this organization");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!txtUserName.getText().isEmpty()) {
+                if (!txtName.getText().isEmpty()) {
+                    if (!txtCity.getText().isEmpty()) {
+                        if (!password.isEmpty()) {
+                            if (!txtLoc.getText().isEmpty()) {
+
+                                SignUpRequestOrganization orgRequest = new SignUpRequestOrganization();
+                                orgRequest.setName(txtName.getText());
+                                orgRequest.setUserName(txtUserName.getText());
+                                orgRequest.setPassword(password);
+                                orgRequest.setEmail(txtEmail.getText());
+                                orgRequest.setCountry(country);
+                                orgRequest.setState(state);
+                                orgRequest.setCity(txtCity.getText());
+                                orgRequest.setOrgType(type);
+                                orgRequest.setStatus("Requested");
+                                orgRequest.setOrgName(txtOrgName.getText());
+                                orgRequest.setEnterprise(e);
+                                orgRequest.setImage(file);
+                                orgRequest.setLatLong(latLong);
+                                //   orgRequest.setEnterprise((Enterprise.EnterpriseType)comboEnterprise.getSelectedItem());
 //                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
 //                    if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
 //                        userAccount.getWorkQueue().getWorkRequestList().add(orgRequest);
 //                    }
 //                }
-                   if(orgRequest.getImage() == (null)){
-             JOptionPane.showMessageDialog(null, "Please load the Authorised Organization Document");
-             return;
-        }
-                 for (CountryNetwork countryNetwork : system.getNetworkList()) {
-                     for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
-                         for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
-                             // System.out.println("enterall"+e.getEnterpriseType()+stateNetwork.getName()+countryNetwork.getName());
-                             if(enterprise == e){
-                              //   System.out.println("enter"+e.getEnterpriseType()+" "+enterprise);
-                                 e.getWorkQueue().getWorkRequestList().add(orgRequest);
-                             }
-                         }
-                     }
-                }
-             
+                                if (orgRequest.getImage() == (null)) {
+                                    JOptionPane.showMessageDialog(null, "Please load the Authorised Organization Document");
+                                    return;
+                                }
+                                for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                                    for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
+                                        for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+                                            // System.out.println("enterall"+e.getEnterpriseType()+stateNetwork.getName()+countryNetwork.getName());
+                                            if (enterprise == e) {
+                                                //   System.out.println("enter"+e.getEnterpriseType()+" "+enterprise);
+                                                e.getWorkQueue().getWorkRequestList().add(orgRequest);
+                                            }
+                                        }
+                                    }
+                                }
 
-                JOptionPane.showMessageDialog(null, "Registration succesfull. Your account will be available in 24 hrs");
+                                JOptionPane.showMessageDialog(null, "Registration successful. Your account will be available in 24 hrs");
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Please Choose your location");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Please enter value for password");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please enter value for City");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter the Name of the Organization");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter Value for User Name");
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Please enter all values");
-            }
-        }catch(NumberFormatException e){
+
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Enter integer for Salary", "Warning", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -377,55 +410,31 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnCreateActionPerformed
 
-    private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, txtUserName);
-
-    }//GEN-LAST:event_txtUserNameKeyPressed
-
-    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailKeyPressed
-
-    private void txtCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCityKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, txtCity);
-    }//GEN-LAST:event_txtCityKeyPressed
-
-    private void txtOrgNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOrgNameKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrgNameKeyPressed
-
-    private void txtImageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImageKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtImageKeyPressed
-
     private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
         // TODO add your handling code here:
         openFile.setCurrentDirectory(new File("c:\\temp"));
-       int value=openFile.showOpenDialog(btnFile);
-       if(value==JFileChooser.APPROVE_OPTION){
-            try{
-                file=ImageIO.read(openFile.getSelectedFile());
+        int value = openFile.showOpenDialog(btnFile);
+        if (value == JFileChooser.APPROVE_OPTION) {
+            try {
+                file = ImageIO.read(openFile.getSelectedFile());
                 //person.setImage(file);
 //                 Image smallImage = person.getImage().getScaledInstance(250, 250,Image.SCALE_SMOOTH);
 //       ImageIcon imgIcon=new ImageIcon(smallImage);
 //       imageLabel.setIcon(imgIcon);
                 txtImage.setText(openFile.getSelectedFile().getPath());
                 JOptionPane.showMessageDialog(null, "Image Loaded Successfully");
-            }catch(IOException ioe){
+            } catch (IOException ioe) {
                 JOptionPane.showMessageDialog(null, "Image load unsuccessfull");
             }
-       }
-       else{
-           JOptionPane.showMessageDialog(null, "No file");
-       }
+        } else {
+            JOptionPane.showMessageDialog(null, "No file");
+        }
     }//GEN-LAST:event_btnFileActionPerformed
 
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
         // TODO add your handling code here:
-         comboState.removeAllItems();
-        CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem();
+        comboState.removeAllItems();
+        CountryNetwork country = (CountryNetwork) comboCountry.getSelectedItem();
         for (StateNetwork stateNetwork : country.getStateList()) {
             comboState.addItem(stateNetwork);
         }
@@ -434,7 +443,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private void comboStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboStateActionPerformed
         // TODO add your handling code here:
         comboEnterprise.removeAllItems();
-        StateNetwork stateNetwork= (StateNetwork) comboState.getSelectedItem();
+        StateNetwork stateNetwork = (StateNetwork) comboState.getSelectedItem();
         for (Enterprise e : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
             comboEnterprise.addItem(e);
         }
@@ -443,37 +452,31 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private void comboEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEnterpriseActionPerformed
         // TODO add your handling code here:
         comboOrganization.removeAllItems();
-         Enterprise e= (Enterprise) comboEnterprise.getSelectedItem();
-         if(e!= null){
-        for (Organization.Type org : e.getOrganizations()) {
-            comboOrganization.addItem(org);
+        Enterprise e = (Enterprise) comboEnterprise.getSelectedItem();
+        if (e != null) {
+            for (Organization.Type org : e.getOrganizations()) {
+                comboOrganization.addItem(org);
+            }
         }
-         }
     }//GEN-LAST:event_comboEnterpriseActionPerformed
-
-    private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCityActionPerformed
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
-    private void txtUserNameMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_txtUserNameMouseWheelMoved
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_txtUserNameMouseWheelMoved
 
     private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
         // TODO add your handling code here:
-        if(!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
-             JOptionPane.showMessageDialog(null, "Enter unique username");
+        String userName = txtUserName.getText();
+        if (!txtUserName.getText().isEmpty()) {
+            if (!Validator.validateUserName(txtUserName.getText())) {
+                lblUserName.setText("*Only AlphaNumeric Characters and Spaces are allowed");
+                txtUserName.setText("");
+            } else if (!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())) {
+                lblUserName.setText("*" + userName + " " + "is already taken please enter new username");
+                txtUserName.setText("");
+            } else {
+
+                lblUserName.setText("");
+                lblAcceptedUserName.setText(userName + " " + "is available");
+            }
         }
     }//GEN-LAST:event_txtUserNameFocusLost
-
-    private void txtLocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLocKeyPressed
 
     private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
         // TODO add your handling code here
@@ -482,6 +485,74 @@ public class SignUpJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnLocationActionPerformed
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        if (!txtEmail.getText().isEmpty()) {
+            if (!Validator.validateEmail(txtEmail.getText())) {
+                lblEmail.setText("*Enter a Valid Email");
+                txtEmail.setText("");
+            } else {
+                lblEmail.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
+
+    private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
+        // TODO add your handling code here:
+
+        String password = String.valueOf(txtPassword.getPassword());
+        if (!password.isEmpty()) {
+            if (!Validator.validatePassword(password)) {
+                JOptionPane.showMessageDialog(null, "Password should Contain \n"
+                        + "       # At least one digit\n"
+                        + "       # At least one lower case letter\n"
+                        + "       # At least one upper case letter\n"
+                        + "       # At least one special character\n"
+                        + "       # no whitespace allowed in the entire string\n"
+                        + "       # at least eight characters");
+                txtPassword.setText("");
+            }
+        }
+
+    }//GEN-LAST:event_txtPasswordFocusLost
+
+    private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
+        // TODO add your handling code here:
+        if (!txtName.getText().isEmpty()) {
+            if (!Validator.validateName(txtName.getText())) {
+                lblName.setText("*Only Alphabets and Spaces are allowed");
+                txtName.setText("");
+            } else {
+                lblName.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtNameFocusLost
+
+    private void txtOrgNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtOrgNameFocusLost
+        // TODO add your handling code here:
+        if (!txtOrgName.getText().isEmpty()) {
+            if (!Validator.validateName(txtOrgName.getText())) {
+                lblOrganization.setText("*Only Alphabets and Spaces are allowed");
+                txtOrgName.setText("");
+            } else {
+                lblOrganization.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtOrgNameFocusLost
+
+    private void txtCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCityFocusLost
+        // TODO add your handling code here:
+        if (!txtCity.getText().isEmpty()) {
+            if (!Validator.validateName(txtCity.getText())) {
+                lblCity.setText("*Only Alphabets and Spaces are allowed");
+                txtCity.setText("");
+            } else {
+                lblCity.setText("");
+            }
+        }
+
+    }//GEN-LAST:event_txtCityFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -507,6 +578,12 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblAcceptedUserName;
+    private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblOrganization;
+    private javax.swing.JLabel lblUserName;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtImage;

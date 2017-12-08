@@ -41,8 +41,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtName">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameKeyPressed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNameFocusLost"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -104,8 +103,6 @@
     <Component class="javax.swing.JTextField" name="txtUserName">
       <Events>
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUserNameFocusLost"/>
-        <EventHandler event="mouseWheelMoved" listener="java.awt.event.MouseWheelListener" parameters="java.awt.event.MouseWheelEvent" handler="txtUserNameMouseWheelMoved"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUserNameKeyPressed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -131,7 +128,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
       <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailKeyPressed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtEmailFocusLost"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -157,7 +154,7 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtPassword">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPasswordFocusLost"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -167,8 +164,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCity">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCityActionPerformed"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCityKeyPressed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCityFocusLost"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -311,7 +307,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtOrgName">
       <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtOrgNameKeyPressed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtOrgNameFocusLost"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -336,9 +332,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtImage">
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtImageKeyPressed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="330" y="630" width="170" height="-1"/>
@@ -439,9 +432,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLoc">
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLocKeyPressed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="330" y="690" width="170" height="-1"/>
@@ -464,6 +454,78 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="550" y="690" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmail">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="510" y="280" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblUserName">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="510" y="200" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAcceptedUserName">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="cc" red="0" type="rgb"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="510" y="200" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblName">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="510" y="160" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblOrganization">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="510" y="540" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCity">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="510" y="590" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

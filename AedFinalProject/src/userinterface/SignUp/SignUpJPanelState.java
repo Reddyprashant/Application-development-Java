@@ -52,6 +52,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         comboCountry = new javax.swing.JComboBox();
         btnCreateState = new javax.swing.JButton();
+        lblName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,14 +67,9 @@ public class SignUpJPanelState extends javax.swing.JPanel {
         jLabel3.setText("State:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, -1, -1));
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNameKeyPressed(evt);
+        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameFocusLost(evt);
             }
         });
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 170, -1));
@@ -94,6 +90,9 @@ public class SignUpJPanelState extends javax.swing.JPanel {
             }
         });
         add(btnCreateState, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 140, 40));
+
+        lblName.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStateActionPerformed
@@ -144,14 +143,15 @@ public class SignUpJPanelState extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCreateStateActionPerformed
 
-    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
+    private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
         // TODO add your handling code here:
-        Validator.onlyString(evt, txtName);
-    }//GEN-LAST:event_txtNameKeyPressed
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+        if (!txtName.getText().isEmpty()) {
+            if (!Validator.validateName(txtName.getText())) {
+                lblName.setText("*Only Alphabets and Spaces are allowed");
+                txtName.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtNameFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -160,6 +160,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblName;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

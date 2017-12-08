@@ -9,6 +9,11 @@
     <Component class="javax.swing.ButtonGroup" name="btnGrpSex">
     </Component>
   </NonVisualComponents>
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -19,7 +24,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-53,0,0,4,14"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,-124,0,0,4,-80"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -40,6 +45,17 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="organizationJTable">
           <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder thickness="5"/>
+              </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="70" green="4f" red="47" type="rgb"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="0">
                 <Column editable="false" title="ID" type="java.lang.String"/>
@@ -87,6 +103,12 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnCreatePerson">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Create Person"/>
       </Properties>
       <Events>
@@ -100,6 +122,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
       </Properties>
       <Events>
@@ -107,12 +135,18 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="30" width="-1" height="-1"/>
+          <AbsoluteConstraints x="30" y="650" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="*Name:"/>
       </Properties>
       <Constraints>
@@ -122,6 +156,14 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="nameJTextField">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="430" y="240" width="126" height="-1"/>
@@ -131,7 +173,10 @@
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="36" style="0"/>
+          <Font name="Lucida Grande" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Person Details"/>
       </Properties>
@@ -144,7 +189,10 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="36" style="0"/>
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Create Person"/>
       </Properties>
@@ -155,6 +203,14 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="ageTextField">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ageTextFieldKeyPressed"/>
       </Events>
@@ -166,6 +222,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="*Age:"/>
       </Properties>
       <Constraints>
@@ -176,6 +238,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="*Reason For Joining"/>
       </Properties>
       <Constraints>
@@ -188,6 +256,12 @@
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="btnGrpReasons"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Individual and relational factors"/>
       </Properties>
@@ -205,6 +279,12 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="btnGrpReasons"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Economic Issues"/>
       </Properties>
       <Events>
@@ -212,7 +292,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="650" y="420" width="-1" height="-1"/>
+          <AbsoluteConstraints x="740" y="420" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -221,6 +301,12 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="btnGrpReasons"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="System failures"/>
       </Properties>
       <Events>
@@ -228,7 +314,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="800" y="420" width="-1" height="-1"/>
+          <AbsoluteConstraints x="910" y="420" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -237,6 +323,12 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="btnGrpReasons"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Others"/>
       </Properties>
       <Events>
@@ -244,7 +336,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="940" y="420" width="-1" height="-1"/>
+          <AbsoluteConstraints x="1080" y="420" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -263,6 +355,12 @@
         <Component class="javax.swing.JTextArea" name="TextArea">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="70" green="4f" red="47" type="rgb"/>
+            </Property>
             <Property name="rows" type="int" value="5"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -271,6 +369,12 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="*Sex:"/>
       </Properties>
       <Constraints>
@@ -281,6 +385,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Ethnicity:"/>
       </Properties>
       <Constraints>
@@ -291,7 +401,13 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Education Background:"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="*Education Background:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -303,6 +419,12 @@
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="btnGrpEducationBackGround"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Highschool Graduate"/>
       </Properties>
@@ -317,11 +439,17 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="btnGrpEducationBackGround"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="College Graduate"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="580" y="380" width="-1" height="-1"/>
+          <AbsoluteConstraints x="670" y="380" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -330,11 +458,17 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="btnGrpEducationBackGround"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Uneducated"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="730" y="380" width="-1" height="-1"/>
+          <AbsoluteConstraints x="880" y="380" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -342,6 +476,12 @@
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="btnGrpSex"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Male"/>
       </Properties>
@@ -356,6 +496,12 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="btnGrpSex"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Female"/>
       </Properties>
       <Constraints>
@@ -369,6 +515,12 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="btnGrpSex"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Others"/>
       </Properties>
       <Constraints>
@@ -379,6 +531,12 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="reqComboBox">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
@@ -388,12 +546,18 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="440" y="340" width="110" height="-1"/>
+          <AbsoluteConstraints x="430" y="340" width="110" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Description: "/>
       </Properties>
       <Constraints>
@@ -404,6 +568,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUpload">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Upload "/>
       </Properties>
       <Events>
@@ -411,12 +581,18 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="520" y="530" width="-1" height="-1"/>
+          <AbsoluteConstraints x="590" y="530" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="*Photo:"/>
       </Properties>
       <Constraints>
@@ -427,6 +603,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnViewDetails">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="View Details"/>
       </Properties>
       <Events>
@@ -440,6 +622,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="70" green="4f" red="47" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="* Mandatory Fields"/>
       </Properties>
       <Constraints>
@@ -451,7 +639,7 @@
     <Component class="javax.swing.JTextField" name="picText">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="410" y="530" width="110" height="-1"/>
+          <AbsoluteConstraints x="440" y="530" width="110" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

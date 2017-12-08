@@ -92,15 +92,17 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
 
         btnAssign = new javax.swing.JButton();
         btnServe = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
         btnView = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnAssign.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnAssign.setForeground(new java.awt.Color(71, 79, 112));
         btnAssign.setText("Assign to me");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +111,8 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
         });
         add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, -1));
 
+        btnServe.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnServe.setForeground(new java.awt.Color(71, 79, 112));
         btnServe.setText("Complete");
         btnServe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,16 +121,19 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
         });
         add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, -1, -1));
 
-        jButton3.setText("Send Request to BGV");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 553, -1, -1));
-
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Recieved");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Shelter Request Area Panel");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
 
+        tblReq.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tblReq.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        tblReq.setForeground(new java.awt.Color(71, 79, 112));
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -147,6 +154,8 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 690, 182));
 
+        btnView.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnView.setForeground(new java.awt.Color(71, 79, 112));
         btnView.setText("View Details");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,7 +237,6 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnServe;
     private javax.swing.JButton btnView;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;

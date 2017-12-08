@@ -101,39 +101,64 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
         txtFieldJoiningDate = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Person Details");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 23, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Name:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 98, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Sex:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 131, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Age:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 170, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Ethnicity:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 209, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("Education Background:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 252, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Reason:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 291, -1, -1));
 
+        txtFieldName.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        txtFieldName.setForeground(new java.awt.Color(71, 79, 112));
         txtFieldName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldNameActionPerformed(evt);
             }
         });
+        add(txtFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 93, 127, -1));
 
+        txtFieldSex.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        txtFieldSex.setForeground(new java.awt.Color(71, 79, 112));
         txtFieldSex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldSexActionPerformed(evt);
             }
         });
+        add(txtFieldSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 126, 127, -1));
 
+        txtFieldAge.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        txtFieldAge.setForeground(new java.awt.Color(71, 79, 112));
         txtFieldAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldAgeActionPerformed(evt);
@@ -144,171 +169,100 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
                 txtFieldAgeKeyPressed(evt);
             }
         });
+        add(txtFieldAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 165, 127, -1));
 
+        txtFieldEthnicity.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        txtFieldEthnicity.setForeground(new java.awt.Color(71, 79, 112));
         txtFieldEthnicity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldEthnicityActionPerformed(evt);
             }
         });
+        add(txtFieldEthnicity, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 204, 127, -1));
 
+        txtFieldEducationBackground.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        txtFieldEducationBackground.setForeground(new java.awt.Color(71, 79, 112));
         txtFieldEducationBackground.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldEducationBackgroundActionPerformed(evt);
             }
         });
+        add(txtFieldEducationBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 247, 127, -1));
 
+        txtFieldReason.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        txtFieldReason.setForeground(new java.awt.Color(71, 79, 112));
         txtFieldReason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldReasonActionPerformed(evt);
             }
         });
+        add(txtFieldReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 286, 127, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(71, 79, 112));
         jLabel8.setText("Reason Descripton:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 324, -1, -1));
 
+        txtFieldReasonDescription.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        txtFieldReasonDescription.setForeground(new java.awt.Color(71, 79, 112));
         txtFieldReasonDescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldReasonDescriptionActionPerformed(evt);
             }
         });
+        add(txtFieldReasonDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 319, 127, -1));
 
+        lblPhoto.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 68, 190, 206));
+
+        btnSave.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(71, 79, 112));
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
             }
         });
+        add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 432, -1, -1));
 
+        btnUpdate.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(71, 79, 112));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 432, -1, -1));
 
+        btnUpload.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnUpload.setForeground(new java.awt.Color(71, 79, 112));
         btnUpload.setText("Upload Photo");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUploadActionPerformed(evt);
             }
         });
+        add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(637, 329, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(71, 79, 112));
         jLabel10.setText("Date Joined:");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 375, -1, -1));
 
+        txtFieldJoiningDate.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        txtFieldJoiningDate.setForeground(new java.awt.Color(71, 79, 112));
+        add(txtFieldJoiningDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 370, 127, -1));
+
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(71, 79, 112));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSave)
-                        .addGap(128, 128, 128)
-                        .addComponent(btnUpdate))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(128, 128, 128)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldSex, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldEducationBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldReason, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel8))
-                        .addGap(128, 128, 128)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFieldReasonDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                            .addComponent(txtFieldJoiningDate))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnUpload)
-                        .addGap(71, 71, 71))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(304, 304, 304)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(btnBack)))
-                .addContainerGap(394, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtFieldSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtFieldEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtFieldEducationBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblPhoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtFieldReason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtFieldReasonDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btnUpload)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtFieldJoiningDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(btnUpdate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(btnBack)
-                .addGap(71, 71, 71))
-        );
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 496, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldNameActionPerformed
