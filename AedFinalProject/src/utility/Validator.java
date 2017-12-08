@@ -47,145 +47,150 @@ import java.util.logging.Logger;
  */
 public class Validator {
 
+    //Validating Name with regular Expression.
+    public static boolean validateName(String name) {
+        Pattern pattern;
+        Matcher matcher;
+        String NAME_PATTERN = "^[A-Za-z\\s]+$";
+        pattern = Pattern.compile(NAME_PATTERN);
+        matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
 
-    
-
-   
-
-   
+    public static boolean validateUserName(String name) {
+        Pattern pattern;
+        Matcher matcher;
+        String NAME_PATTERN = "^[A-Za-z0-9\\s]+$";
+        pattern = Pattern.compile(NAME_PATTERN);
+        matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
 
     /**
      * Validate hex with regular expression
      *
-     * @param hex
-     *            hex for validation
+     * @param hex hex for validation
      * @return true valid hex, false invalid hex
      */
     public static boolean validateEmail(String hex) {
-         Pattern pattern;
-     Matcher matcher;
-          String EMAIL_PATTERN =
-        "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-         pattern = Pattern.compile(EMAIL_PATTERN);
+        Pattern pattern;
+        Matcher matcher;
+        String EMAIL_PATTERN
+                = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
         matcher = pattern.matcher(hex);
-        return matcher.matches();    
+        return matcher.matches();
     }
-    /**Password check
-       ^                 # start-of-string
-       (?=.*[0-9])       # a digit must occur at least once
-       (?=.*[a-z])       # a lower case letter must occur at least once
-       (?=.*[A-Z])       # an upper case letter must occur at least once
-       (?=.*[@#$%^&+=])  # a special character must occur at least once
-       (?=\S+$)          # no whitespace allowed in the entire string
-       .{8,}             # anything, at least eight places though
-       $                 # end-of-string
+
+    /**
+     * Password check ^ # start-of-string (?=.*[0-9]) # a digit must occur at
+     * least once (?=.*[a-z]) # a lower case letter must occur at least once
+     * (?=.*[A-Z]) # an upper case letter must occur at least once
+     * (?=.*[@#$%^&+=]) # a special character must occur at least once (?=\S+$)
+     * # no whitespace allowed in the entire string .{8,} # anything, at least
+     * eight places though $ # end-of-string
+     *
      * @param pwd
-     * @return 
-     */ 
+     * @return
+     */
     public static boolean validatePassword(String pwd) {
-     Pattern pattern;
-     Matcher matcher;
-     String PASSWORD_PATTERN =
-        "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-         pattern = Pattern.compile(PASSWORD_PATTERN);
+        Pattern pattern;
+        Matcher matcher;
+        String PASSWORD_PATTERN
+                = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(pwd);
-        return matcher.matches();    
+        return matcher.matches();
     }
 
-    
-    
-    
-    
-    
-     public static void onlyString(KeyEvent evt, JTextField field) {
-          char c = evt.getKeyChar();
-        if (!((c >= 'A') && (c <= 'Z') || (c >= 'a') && (c <= 'z') || (c==evt.VK_SPACE) || (c==evt.VK_CAPS_LOCK) || (c==evt.VK_SHIFT)||
-            (c == evt.VK_BACK_SPACE) ||
-            (c == evt.VK_DELETE))) {
+    public static void onlyString(KeyEvent evt, JTextField field) {
+        char c = evt.getKeyChar();
+        if (!((c >= 'A') && (c <= 'Z') || (c >= 'a') && (c <= 'z') || (c == evt.VK_SPACE) || (c == evt.VK_CAPS_LOCK) || (c == evt.VK_SHIFT)
+                || (c == evt.VK_BACK_SPACE)
+                || (c == evt.VK_DELETE))) {
 
-        JOptionPane.showMessageDialog(null, "Enter Alphabets only");
-       field.setText("");
+            JOptionPane.showMessageDialog(null, "Enter Alphabets only");
+            field.setText("");
         }
-     }
-     
-     public static void onlyInteger(KeyEvent evt, JTextField field) {
-          char c = evt.getKeyChar();
-        if (!((c >= '0') && (c <= '9')||
-            (c == evt.VK_BACK_SPACE) ||
-            (c == evt.VK_DELETE))) {
+    }
 
-        JOptionPane.showMessageDialog(null, "Enter Integers only");
-       field.setText("");
+    public static void onlyInteger(KeyEvent evt, JTextField field) {
+        char c = evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9')
+                || (c == evt.VK_BACK_SPACE)
+                || (c == evt.VK_DELETE))) {
+
+            JOptionPane.showMessageDialog(null, "Enter Integers only");
+            field.setText("");
         }
-     }
-     
-     public static void sendMessage(String emailId) throws SendFailedException{
-           // Recipient's email ID needs to be mentioned.
-      String to = emailId;
+    }
 
-      // Sender's email ID needs to be mentioned
-     // String from = "poojithshtt";
-     // String pass = "passwordcodename";
-      String from = "poojithsshetty";
-      String pass = "Fall@2017";
-      // Assuming you are sending email from localhost
-     // String host = "192.168.0.16";
+    public static void sendMessage(String emailId) throws SendFailedException {
+        // Recipient's email ID needs to be mentioned.
+        String to = emailId;
 
-      // Get system properties
-      Properties properties = System.getProperties();
-       String host = "smtp.gmail.com";
+        // Sender's email ID needs to be mentioned
+        // String from = "poojithshtt";
+        // String pass = "passwordcodename";
+        String from = "poojithsshetty";
+        String pass = "Fall@2017";
+        // Assuming you are sending email from localhost
+        // String host = "192.168.0.16";
 
-    properties.put("mail.smtp.starttls.enable", "true");
+        // Get system properties
+        Properties properties = System.getProperties();
+        String host = "smtp.gmail.com";
 
-    properties.put("mail.smtp.ssl.trust", host);
-    properties.put("mail.smtp.user", from);
-   // properties.put("mail.smtp.password", pass);
-    properties.put("mail.smtp.port", "587");
-    properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
 
-      // Setup mail server
-     // properties.setProperty("mail.smtp.host", host);
-    //  properties.put("mail.smtp.starttls.enable", "true");
-      // Get the default Session object.
-      Session session = Session.getDefaultInstance(properties);
+        properties.put("mail.smtp.ssl.trust", host);
+        properties.put("mail.smtp.user", from);
+        // properties.put("mail.smtp.password", pass);
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
 
-      try {
-         // Create a default MimeMessage object.
-         MimeMessage message = new MimeMessage(session);
+        // Setup mail server
+        // properties.setProperty("mail.smtp.host", host);
+        //  properties.put("mail.smtp.starttls.enable", "true");
+        // Get the default Session object.
+        Session session = Session.getDefaultInstance(properties);
 
-         // Set From: header field of the header.
-         message.setFrom(new InternetAddress(from));
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
 
-         // Set To: header field of the header.
-         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
 
-         // Set Subject: header field
-         message.setSubject("Volunteer Management Account activation");
-        //  message.setSubject("Sent me blank message???");
+            // Set To: header field of the header.
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-         // Now set the actual message
-       //  message.setText("Your account is active. You can now to register yourself to clean 24 Saint Cyprians place.");
-       // message.setText("Now I will start messaging");
-        message.setText("Your Account has been Activated.");
-         // Send message
-           Transport transport = session.getTransport("smtp");
-        transport.connect(host, from, pass);
-        transport.sendMessage(message, message.getAllRecipients());
-        transport.close();
-         System.out.println("Sent message successfully....");
-      } catch (MessagingException mex) {
-         mex.printStackTrace();
-      }
-     }
-     
+            // Set Subject: header field
+            message.setSubject("Volunteer Management Account activation");
+            //  message.setSubject("Sent me blank message???");
+
+            // Now set the actual message
+            //  message.setText("Your account is active. You can now to register yourself to clean 24 Saint Cyprians place.");
+            // message.setText("Now I will start messaging");
+            message.setText("Your Account has been Activated.");
+            // Send message
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, from, pass);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
+    }
+
 //    private static TimeFormatter timeFormatter = new AbsoluteTimeFormatter();;
-    
     public static void sendMessageText(String phone, String network) {
-         try {
-             //Validator.sendMessage("8573089754@tmomail.net");
-             Validator.sendMessage("7743158427@tmomail.net");
-           // Validator.sendMessage("vinyasktr@gmail.com");
+        try {
+            //Validator.sendMessage("8573089754@tmomail.net");
+            Validator.sendMessage("7743158427@tmomail.net");
+            // Validator.sendMessage("vinyasktr@gmail.com");
 //        SMPPSession session = new SMPPSession();
 //        try {
 //            session.connectAndBind("localhost", 8056, new BindParameter(BindType.BIND_TX, "test", "test", "cp", TypeOfNumber.UNKNOWN, NumberingPlanIndicator.UNKNOWN, null));
@@ -219,14 +224,15 @@ public class Validator {
 //        }
 //        
 //        session.unbindAndClose();
-         } catch (SendFailedException ex) {
-             Logger.getLogger(Validator.class.getName()).log(Level.SEVERE, null, ex);
-         }
-    }
-     public static void main(String args[]){
-        for(int i=0;i<10;i++){
-         sendMessageText(null, null);
+        } catch (SendFailedException ex) {
+            Logger.getLogger(Validator.class.getName()).log(Level.SEVERE, null, ex);
         }
-     }
-     
+    }
+
+    public static void main(String args[]) {
+        for (int i = 0; i < 10; i++) {
+            sendMessageText(null, null);
+        }
+    }
+
 }

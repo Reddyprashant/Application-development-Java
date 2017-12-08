@@ -9,12 +9,7 @@ import Business.EcoSystem;
 import Business.Network.CountryNetwork;
 import Business.SignUp.SignUpRequestCountry;
 import Business.WorkQueue.WorkRequest;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -60,6 +55,8 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        lblName = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(71, 79, 112));
@@ -102,6 +99,12 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("Email Id :");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
+
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 170, -1));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -115,6 +118,12 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
             }
         });
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 170, -1));
+
+        lblName.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, -1, -1));
+
+        lblEmail.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -137,33 +146,37 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
             }
 
             String password = String.valueOf(txtPassword.getPassword());
-            if (!txtUserName.getText().isEmpty() && !txtName.getText().isEmpty() && !password.isEmpty()) {
-                if (txtUserName.getText().equalsIgnoreCase(txtName.getText())) {
-                    if (!Validator.validateEmail(txtEmail.getText())) {
-                        JOptionPane.showMessageDialog(null, "Enter correct Email Address ");
-                        txtEmail.setText("");
+            if (!txtUserName.getText().isEmpty()) {
+                if (!txtName.getText().isEmpty()) {
+                    if (!password.isEmpty()) {
+                        if (txtUserName.getText().equalsIgnoreCase(txtName.getText())) {
+
+                                SignUpRequestCountry countryRequest = new SignUpRequestCountry();
+                                countryRequest.setUserName(txtUserName.getText());
+                                countryRequest.setName(txtName.getText());
+                                countryRequest.setPassword(password);
+                                countryRequest.setEmail(txtEmail.getText());
+                                countryRequest.setStatus("Requested");
+                                system.getWorkQueue().getWorkRequestList().add(countryRequest);
+
+                                JOptionPane.showMessageDialog(null, "Request raised Successfully");
+                                txtEmail.setText("");
+                                txtPassword.setText("");
+                                txtName.setText("");
+                                txtUserName.setText("");
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Username and Country name should be same");
+                        }
                     } else {
-
-                        SignUpRequestCountry countryRequest = new SignUpRequestCountry();
-                        countryRequest.setUserName(txtUserName.getText());
-                        countryRequest.setName(txtName.getText());
-                        countryRequest.setPassword(password);
-                        countryRequest.setEmail(txtEmail.getText());
-                        countryRequest.setStatus("Requested");
-                        system.getWorkQueue().getWorkRequestList().add(countryRequest);
-
-                        JOptionPane.showMessageDialog(null, "Request raised Successfully");
-                        txtEmail.setText("");
-                        txtPassword.setText("");
-                        txtName.setText("");
-                        txtUserName.setText("");
+                        JOptionPane.showMessageDialog(null, "Please enter value for password ");
                     }
-
                 } else {
-                    JOptionPane.showMessageDialog(null, "Username and Country name should be same");
+                    JOptionPane.showMessageDialog(null, "Name cannot be empty");
                 }
+
             } else {
-                JOptionPane.showMessageDialog(null, "Please enter all values");
+                JOptionPane.showMessageDialog(null, "Please enter User Name");
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -173,23 +186,45 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
 
     private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
         // TODO add your handling code here:
-        txtUserName.setText(txtName.getText());
+        if (!txtUserName.getText().isEmpty()) {
+            if (!Validator.validateName(txtName.getText())) {
+                lblName.setText("*Only Alphabets and Spaces are allowed");
+                txtName.setText("");
+            } else {
+                lblName.setText("");
+                txtUserName.setText(txtName.getText());
+            }
+        }
     }//GEN-LAST:event_txtNameFocusLost
 
     private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
         // TODO add your handling code here:
         String password = String.valueOf(txtPassword.getPassword());
-        if (!Validator.validatePassword(password)) {
-            JOptionPane.showMessageDialog(null, "Password should Contain \n"
-                    + "       # At least one digit\n"
-                    + "       # At least one lower case letter\n"
-                    + "       # At least one upper case letter\n"
-                    + "       # At least one special character\n"
-                    + "       # no whitespace allowed in the entire string\n"
-                    + "       # at least eight characters");
-            txtPassword.setText("");
+        if (!password.isEmpty()) {
+            if (!Validator.validatePassword(password)) {
+                JOptionPane.showMessageDialog(null, "Password should Contain \n"
+                        + "       # At least one digit\n"
+                        + "       # At least one lower case letter\n"
+                        + "       # At least one upper case letter\n"
+                        + "       # At least one special character\n"
+                        + "       # no whitespace allowed in the entire string\n"
+                        + "       # at least eight characters");
+                txtPassword.setText("");
+            }
         }
     }//GEN-LAST:event_txtPasswordFocusLost
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        if (!txtEmail.getText().isEmpty()) {
+            if (!Validator.validateEmail(txtEmail.getText())) {
+                lblEmail.setText("*Enter a Valid Email");
+                txtEmail.setText("");
+            } else {
+                lblEmail.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -199,6 +234,8 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblName;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;

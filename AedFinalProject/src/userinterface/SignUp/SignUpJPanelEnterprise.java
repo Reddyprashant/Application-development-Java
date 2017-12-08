@@ -7,17 +7,16 @@ package userinterface.SignUp;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.Enterprise.EnterpriseType;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.SignUp.SignUpRequestEnterprise;
-import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
-import java.awt.Image;
+import Business.WorkQueue.WorkRequest;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -36,15 +35,17 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private EcoSystem system;
     private BufferedImage file;
     private JFileChooser openFile;
+    
     public SignUpJPanelEnterprise(JPanel userProcessContainer, EcoSystem business) {
         initComponents();
         this.system = business;
-        this.userProcessContainer=userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
+        openFile = new JFileChooser();
         populateComboBox();
-      
+        
     }
     
-    public void populateComboBox(){
+    public void populateComboBox() {
         for (CountryNetwork countryNetwork : system.getNetworkList()) {
             comboCountry.addItem(countryNetwork);
         }
@@ -53,8 +54,8 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         comboEnterprise.addItem(Enterprise.EnterpriseType.Government);
         comboEnterprise.addItem(Enterprise.EnterpriseType.Logistic);
         
-        
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,6 +84,10 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         comboState = new javax.swing.JComboBox();
+        lblEmail = new javax.swing.JLabel();
+        lblName1 = new javax.swing.JLabel();
+        lblUserName1 = new javax.swing.JLabel();
+        lblAcceptedUserName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 255, 255));
@@ -113,11 +118,6 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
                 txtUserNameFocusLost(evt);
             }
         });
-        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUserNameKeyPressed(evt);
-            }
-        });
         add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -125,9 +125,9 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         jLabel6.setText("Email Id :");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, -1, -1));
 
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEmailKeyPressed(evt);
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
             }
         });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 170, -1));
@@ -136,6 +136,12 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Password:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
+
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusLost(evt);
+            }
+        });
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 170, -1));
 
         comboCountry.addActionListener(new java.awt.event.ActionListener() {
@@ -189,24 +195,27 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         jLabel8.setText("Name :");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
 
-        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNameKeyPressed(evt);
+        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameFocusLost(evt);
             }
         });
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 170, -1));
 
         add(comboState, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 170, -1));
+
+        lblEmail.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, -1));
+
+        lblName1.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, -1, -1));
+
+        lblUserName1.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblUserName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, -1, -1));
+
+        lblAcceptedUserName.setForeground(new java.awt.Color(0, 204, 51));
+        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyString(evt, txtUserName);
-    }//GEN-LAST:event_txtUserNameKeyPressed
-
-    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailKeyPressed
 
     private void txtImageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImageKeyPressed
         // TODO add your handling code here:
@@ -215,89 +224,177 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
         // TODO add your handling code here:
         openFile.setCurrentDirectory(new File("c:\\temp"));
-       int value=openFile.showOpenDialog(btnFile);
-       if(value==JFileChooser.APPROVE_OPTION){
-            try{
-                file=ImageIO.read(openFile.getSelectedFile());
+        int value = openFile.showOpenDialog(btnFile);
+        if (value == JFileChooser.APPROVE_OPTION) {
+            try {
+                file = ImageIO.read(openFile.getSelectedFile());
                 //person.setImage(file);
 //                 Image smallImage = person.getImage().getScaledInstance(250, 250,Image.SCALE_SMOOTH);
 //       ImageIcon imgIcon=new ImageIcon(smallImage);
 //       imageLabel.setIcon(imgIcon);
                 txtImage.setText(openFile.getSelectedFile().getPath());
                 JOptionPane.showMessageDialog(null, "Image Loaded Successfully");
-            }catch(IOException ioe){
+            } catch (IOException ioe) {
                 JOptionPane.showMessageDialog(null, "Image load unsuccessfull");
             }
-       }
-       else{
-           JOptionPane.showMessageDialog(null, "No file");
-       }
+        } else {
+            JOptionPane.showMessageDialog(null, "No file");
+        }
     }//GEN-LAST:event_btnFileActionPerformed
 
     private void btnCreateStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStateActionPerformed
         // TODO add your handling code here:
-        try{
-            if(!txtUserName.getText().isEmpty()  && !txtPassword.getText().isEmpty() ){
-                if(EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
-                      JOptionPane.showMessageDialog(null, "Please enter unique username");
-                      return;
-                  }
-                  CountryNetwork country= (CountryNetwork) comboCountry.getSelectedItem();
-                  StateNetwork state= (StateNetwork) comboState.getSelectedItem();
-                SignUpRequestEnterprise enterpriseRequest= new SignUpRequestEnterprise();
-                enterpriseRequest.setName(txtName.getText());
-                enterpriseRequest.setUserName(txtUserName.getText());
-                enterpriseRequest.setPassword(txtPassword.getText());
-                enterpriseRequest.setEmail(txtEmail.getText());
-                enterpriseRequest.setCountry(country);
-                enterpriseRequest.setState(state);
-                enterpriseRequest.setStatus("Requested");
-                enterpriseRequest.setEnterprise((Enterprise.EnterpriseType)comboEnterprise.getSelectedItem());
-                 enterpriseRequest.setImage(file);
-              
-                
-               
-                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
-                    if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
-                        userAccount.getWorkQueue().getWorkRequestList().add(enterpriseRequest);
+        try {
+            for (CountryNetwork country : system.getNetworkList()) {
+                for (StateNetwork state : country.getStateList()) {
+                    for (Enterprise enterprise : state.getEnterpriseDirectory().getEnterpriseList()) {
+                        if ((EnterpriseType) comboEnterprise.getSelectedItem() == enterprise.getEnterpriseType()) {
+                            JOptionPane.showMessageDialog(null, "Enterprise Already Present");
+                            return;
+                        }
                     }
                 }
-                
-                
-               //business.getWorkQueue().getWorkRequestList().add(stateRequest);
-                
-                JOptionPane.showMessageDialog(null, "Updated successfully");
-                
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Please enter all values");
+            
+            for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
+                for (WorkRequest workReq : userAccount.getWorkQueue().getWorkRequestList()) {
+                    if (workReq instanceof SignUpRequestEnterprise) {
+                        if (((SignUpRequestEnterprise) workReq).getEnterprise() == (EnterpriseType) comboEnterprise.getSelectedItem()) {
+                            JOptionPane.showMessageDialog(null, "Request Already Raised for the Enterprise");
+                            return;
+                        }
+                    }
+                }
             }
-        }catch(NumberFormatException e){
+            
+            String password = String.valueOf(txtPassword.getPassword());
+            if (!txtUserName.getText().isEmpty()) {
+                if (!password.isEmpty()) {
+                    if (!txtName.getText().isEmpty()) {
+                        if (!txtEmail.getText().isEmpty()) {
+                            if (!txtImage.getText().isEmpty()) {
+                                CountryNetwork country = (CountryNetwork) comboCountry.getSelectedItem();
+                                StateNetwork state = (StateNetwork) comboState.getSelectedItem();
+                                SignUpRequestEnterprise enterpriseRequest = new SignUpRequestEnterprise();
+                                enterpriseRequest.setName(txtName.getText());
+                                enterpriseRequest.setUserName(txtUserName.getText());
+                                enterpriseRequest.setPassword(password);
+                                enterpriseRequest.setEmail(txtEmail.getText());
+                                enterpriseRequest.setCountry(country);
+                                enterpriseRequest.setState(state);
+                                enterpriseRequest.setStatus("Requested");
+                                enterpriseRequest.setEnterprise((Enterprise.EnterpriseType) comboEnterprise.getSelectedItem());
+                                enterpriseRequest.setImage(file);
+                                
+                                for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
+                                    if (country.getName().equalsIgnoreCase(userAccount.getUsername())) {
+                                        userAccount.getWorkQueue().getWorkRequestList().add(enterpriseRequest);
+                                    }
+                                }
+
+                                //business.getWorkQueue().getWorkRequestList().add(stateRequest);
+                                JOptionPane.showMessageDialog(null, "Request raised successfully");
+                                txtName.setText("");
+                                txtImage.setText("");
+                                txtEmail.setText("");
+                                txtPassword.setText("");
+                                txtUserName.setText("");
+                                lblAcceptedUserName.setText("");
+                                
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Please Upload an Image");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Please enter Email");
+                        }
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please enter Name");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter value for password");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter User Name");
+            }
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Enter integer for Salary", "Warning", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
+            
             JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCreateStateActionPerformed
 
-    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameKeyPressed
-
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
         // TODO add your handling code here:
         //comboCountry.removeAllItems();
-        CountryNetwork c= (CountryNetwork) comboCountry.getSelectedItem();
+        CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
         for (StateNetwork state : c.getStateList()) {
             comboState.addItem(state);
         }
     }//GEN-LAST:event_comboCountryActionPerformed
 
+    private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
+        // TODO add your handling code here:
+        if (!txtName.getText().isEmpty()) {
+            if (!Validator.validateName(txtName.getText())) {
+                lblName1.setText("*Only Alphabets and Spaces are allowed");
+                txtName.setText("");
+            } else {
+                lblName1.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtNameFocusLost
+
     private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
         // TODO add your handling code here:
-        if(!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())){
-             JOptionPane.showMessageDialog(null, "Enter unique username");
+        String userName = txtUserName.getText();
+        if (!txtUserName.getText().isEmpty()) {
+            if (!Validator.validateUserName(txtUserName.getText())) {
+                lblUserName1.setText("*Only AlphaNumeric Characters and Spaces are allowed");
+                txtUserName.setText("");
+            } else if (!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())) {
+                lblUserName1.setText("*" + userName + " " + "is already taken please enter new username");
+                txtUserName.setText("");
+            } else {
+                
+                lblUserName1.setText("");
+                lblAcceptedUserName.setText(userName + " " + "is available");
+            }
         }
+
     }//GEN-LAST:event_txtUserNameFocusLost
+
+    private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
+        // TODO add your handling code here:
+
+        String password = String.valueOf(txtPassword.getPassword());
+        if (!password.isEmpty()) {
+            if (!Validator.validatePassword(password)) {
+                JOptionPane.showMessageDialog(null, "Password should Contain \n"
+                        + "       # At least one digit\n"
+                        + "       # At least one lower case letter\n"
+                        + "       # At least one upper case letter\n"
+                        + "       # At least one special character\n"
+                        + "       # no whitespace allowed in the entire string\n"
+                        + "       # at least eight characters");
+                txtPassword.setText("");
+            }
+        }
+
+    }//GEN-LAST:event_txtPasswordFocusLost
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        if (!txtEmail.getText().isEmpty()) {
+            if (!Validator.validateEmail(txtEmail.getText())) {
+                lblEmail.setText("*Enter a Valid Email");
+                txtEmail.setText("");
+            } else {
+                lblEmail.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -315,6 +412,10 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblAcceptedUserName;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblName1;
+    private javax.swing.JLabel lblUserName1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtImage;
     private javax.swing.JTextField txtName;
