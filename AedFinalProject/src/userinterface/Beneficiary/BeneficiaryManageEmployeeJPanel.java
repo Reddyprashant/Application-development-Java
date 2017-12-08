@@ -96,10 +96,7 @@ public class BeneficiaryManageEmployeeJPanel extends javax.swing.JPanel {
         organizationJTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "Name"

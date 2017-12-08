@@ -148,8 +148,14 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         picText = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setForeground(new java.awt.Color(71, 79, 112));
+
+        organizationJTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        organizationJTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        organizationJTable.setForeground(new java.awt.Color(71, 79, 112));
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -175,139 +181,201 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(organizationJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 850, 92));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 850, 92));
 
+        btnCreatePerson.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnCreatePerson.setForeground(new java.awt.Color(71, 79, 112));
         btnCreatePerson.setText("Create Person");
         btnCreatePerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreatePersonActionPerformed(evt);
             }
         });
-        add(btnCreatePerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, -1, -1));
+        add(btnCreatePerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 180, 50));
 
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(71, 79, 112));
         btnBack.setText("<< Back");
+        btnBack.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 720, 120, 30));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("*Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 50, -1));
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 126, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 50, -1));
+
+        nameJTextField.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        nameJTextField.setForeground(new java.awt.Color(71, 79, 112));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 126, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Person Details");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 220, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 220, 30));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Create Person");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 220, 30));
-        add(ageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 130, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 220, 30));
 
+        ageTextField.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        ageTextField.setForeground(new java.awt.Color(71, 79, 112));
+        add(ageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 130, -1));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("*Age:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 50, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 50, -1));
 
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("*Reason For Joining");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, -1, -1));
 
+        ARadioButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        ARadioButton.setForeground(new java.awt.Color(71, 79, 112));
         ARadioButton.setText("Individual and relational factors");
         ARadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ARadioButtonActionPerformed(evt);
             }
         });
-        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
+        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, -1, -1));
 
+        BRadioButton2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        BRadioButton2.setForeground(new java.awt.Color(71, 79, 112));
         BRadioButton2.setText("Economic Issues");
         BRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BRadioButton2ActionPerformed(evt);
             }
         });
-        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, -1, -1));
+        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 520, -1, -1));
 
+        CRadioButton3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        CRadioButton3.setForeground(new java.awt.Color(71, 79, 112));
         CRadioButton3.setText("System failures");
         CRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CRadioButton3ActionPerformed(evt);
             }
         });
-        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, -1, -1));
+        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 520, -1, -1));
 
+        ORadioButton4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        ORadioButton4.setForeground(new java.awt.Color(71, 79, 112));
         ORadioButton4.setText("Others");
         ORadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ORadioButton4ActionPerformed(evt);
             }
         });
-        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 420, -1, -1));
+        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 520, -1, -1));
+
+        jScrollPane2.setForeground(new java.awt.Color(71, 79, 112));
 
         TextArea.setColumns(20);
+        TextArea.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         TextArea.setRows(5);
         TextArea.setEnabled(false);
         jScrollPane2.setViewportView(TextArea);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, -1, 52));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 560, -1, 52));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("*Sex:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 40, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 40, -1));
 
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Ethnicity:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 70, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 70, -1));
 
-        jLabel8.setText("Education Background:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel8.setText("*Education Background:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, -1, -1));
 
+        rdBtnHighschoolGrad.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnHighschoolGrad.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnHighschoolGrad.setText("Highschool Graduate");
-        add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, -1, -1));
+        add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, -1, -1));
 
+        rdBtnCollegeGrad.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnCollegeGrad.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnCollegeGrad.setText("College Graduate");
-        add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, -1, -1));
+        add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, -1, -1));
 
+        rdBtnUneducated.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnUneducated.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnUneducated.setText("Uneducated");
-        add(rdBtnUneducated, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 380, -1, -1));
+        add(rdBtnUneducated, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 480, -1, -1));
 
         buttonGroup1.add(rdBtnMale);
+        rdBtnMale.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnMale.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnMale.setText("Male");
-        add(rdBtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
+        add(rdBtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, -1, -1));
 
         buttonGroup1.add(rdBtnFemale);
+        rdBtnFemale.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnFemale.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnFemale.setText("Female");
-        add(rdBtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, -1));
+        add(rdBtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, -1, -1));
 
         buttonGroup1.add(rdBtnOthers);
+        rdBtnOthers.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnOthers.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnOthers.setText("Others");
-        add(rdBtnOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, -1, -1));
+        add(rdBtnOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, -1, -1));
 
-        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 110, -1));
+        reqComboBox.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        reqComboBox.setForeground(new java.awt.Color(71, 79, 112));
+        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 110, -1));
 
+        jLabel9.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(71, 79, 112));
         jLabel9.setText("Description: ");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, -1, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 570, -1, -1));
 
+        btnUpload.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnUpload.setForeground(new java.awt.Color(71, 79, 112));
         btnUpload.setText("Upload ");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUploadActionPerformed(evt);
             }
         });
-        add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, -1, -1));
+        add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 620, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(71, 79, 112));
         jLabel10.setText("*Photo:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 630, -1, -1));
 
+        btnViewDetails.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnViewDetails.setForeground(new java.awt.Color(71, 79, 112));
         btnViewDetails.setText("View Details");
         btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewDetailsActionPerformed(evt);
             }
         });
-        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, -1, -1));
+        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, -1, 40));
 
+        jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(71, 79, 112));
         jLabel11.setText("* Mandatory Fields");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 660, -1, -1));
-        add(picText, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 90, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 760, -1, -1));
+
+        picText.setForeground(new java.awt.Color(71, 79, 112));
+        add(picText, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 620, 90, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed

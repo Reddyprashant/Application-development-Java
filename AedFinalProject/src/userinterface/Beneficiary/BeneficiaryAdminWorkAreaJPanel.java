@@ -68,26 +68,29 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
         userJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         userJButton.setForeground(new java.awt.Color(71, 79, 112));
         userJButton.setText("Manage User");
+        userJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         userJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 150, 70));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 200, 70));
 
         manageEmployeeJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         manageEmployeeJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageEmployeeJButton.setText("Manage Employee");
+        manageEmployeeJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 150, 70));
+        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 200, 70));
 
         manageOrganizationJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         manageOrganizationJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageOrganizationJButton.setText("Manage Organization");
+        manageOrganizationJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageOrganizationJButtonActionPerformed(evt);
@@ -99,12 +102,13 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(71, 79, 112));
         jButton1.setText("Manage Request");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 140, 70));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 200, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
