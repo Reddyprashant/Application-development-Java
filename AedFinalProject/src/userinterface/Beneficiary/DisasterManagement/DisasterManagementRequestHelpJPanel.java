@@ -106,13 +106,18 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         addLabel = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
         enterpriseLabel.setText("EnterPrise :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 20, 120, 30));
 
+        carBtn.setBackground(null);
         buttonGroup1.add(carBtn);
+        carBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        carBtn.setForeground(new java.awt.Color(71, 79, 112));
         carBtn.setText("Car");
         carBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +126,10 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         });
         add(carBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 373, -1, -1));
 
+        reqBtn.setBackground(null);
         buttonGroup2.add(reqBtn);
+        reqBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        reqBtn.setForeground(new java.awt.Color(71, 79, 112));
         reqBtn.setText("Required");
         reqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,16 +137,29 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
             }
         });
         add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 314, -1, -1));
+
+        eventNameTextfield.setBackground(null);
+        eventNameTextfield.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        eventNameTextfield.setForeground(new java.awt.Color(71, 79, 112));
         add(eventNameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 109, 126, -1));
 
+        vanBtn.setBackground(null);
         buttonGroup1.add(vanBtn);
+        vanBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        vanBtn.setForeground(new java.awt.Color(71, 79, 112));
         vanBtn.setText("Mini Van");
         add(vanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 373, -1, -1));
 
+        jLabel7.setBackground(null);
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Event Details");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 234, -1, -1));
 
+        notReqBtn.setBackground(null);
         buttonGroup2.add(notReqBtn);
+        notReqBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        notReqBtn.setForeground(new java.awt.Color(71, 79, 112));
         notReqBtn.setText("Not Required");
         notReqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,9 +168,15 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         });
         add(notReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 314, -1, -1));
 
+        jLabel1.setBackground(null);
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Type:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 83, -1, -1));
 
+        jButton1.setBackground(null);
+        jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(71, 79, 112));
         jButton1.setText("Request Help");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,10 +185,16 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 560, -1, -1));
 
+        busBtn.setBackground(null);
         buttonGroup1.add(busBtn);
+        busBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        busBtn.setForeground(new java.awt.Color(71, 79, 112));
         busBtn.setText("Bus");
         add(busBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 373, -1, -1));
 
+        noOfVehText.setBackground(null);
+        noOfVehText.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        noOfVehText.setForeground(new java.awt.Color(71, 79, 112));
         noOfVehText.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 noOfVehTextKeyPressed(evt);
@@ -169,12 +202,18 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         });
         add(noOfVehText, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 414, 53, -1));
 
+        detailTextArea.setBackground(null);
         detailTextArea.setColumns(20);
+        detailTextArea.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        detailTextArea.setForeground(new java.awt.Color(71, 79, 112));
         detailTextArea.setRows(5);
         jScrollPane1.setViewportView(detailTextArea);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 225, 232, -1));
 
+        btnBack.setBackground(null);
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(71, 79, 112));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,14 +222,26 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 560, -1, -1));
 
+        noVehLabel.setBackground(null);
+        noVehLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        noVehLabel.setForeground(new java.awt.Color(71, 79, 112));
         noVehLabel.setText("Number Of Vehicles");
         add(noVehLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 424, -1, -1));
 
+        jLabel2.setBackground(null);
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Number of Volunteers Required");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 146, -1, -1));
 
+        reqComboBox.setBackground(null);
+        reqComboBox.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        reqComboBox.setForeground(new java.awt.Color(71, 79, 112));
         add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 79, 126, -1));
 
+        noVolTextField.setBackground(null);
+        noVolTextField.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        noVolTextField.setForeground(new java.awt.Color(71, 79, 112));
         noVolTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 noVolTextFieldKeyPressed(evt);
@@ -198,15 +249,27 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         });
         add(noVolTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 141, 126, -1));
 
+        typeLabel.setBackground(null);
+        typeLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        typeLabel.setForeground(new java.awt.Color(71, 79, 112));
         typeLabel.setText("Type of vehicle");
         add(typeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 377, -1, -1));
 
+        jLabel4.setBackground(null);
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Logistics");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 318, -1, -1));
 
+        jLabel5.setBackground(null);
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Event Name");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 114, -1, -1));
 
+        jLabel3.setBackground(null);
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Event Date ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 185, -1, -1));
 
@@ -214,13 +277,24 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         timelabel.setForeground(new java.awt.Color(71, 79, 112));
         timelabel.setText("Pickup Time");
         add(timelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 457, -1, -1));
+
+        timeField.setBackground(null);
+        timeField.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        timeField.setForeground(new java.awt.Color(71, 79, 112));
         add(timeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 453, 82, -1));
+
+        addressText.setBackground(null);
+        addressText.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        addressText.setForeground(new java.awt.Color(71, 79, 112));
         add(addressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 497, 171, -1));
 
         addLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         addLabel.setForeground(new java.awt.Color(71, 79, 112));
         addLabel.setText("Pickup Address");
         add(addLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 501, -1, -1));
+
+        jDateChooser1.setBackground(null);
+        jDateChooser1.setForeground(new java.awt.Color(71, 79, 112));
         add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 181, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
