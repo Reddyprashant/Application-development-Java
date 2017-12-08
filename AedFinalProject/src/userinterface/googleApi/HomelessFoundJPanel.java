@@ -128,7 +128,10 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
          if(browser.getURL()!= null){
             
                     System.out.println(browser.getURL());
+                    
                     String[] a= browser.getURL().split("!3d",0);
+                  if(a[1]!=null)
+                  {
                     String[] b= a[1].split("!4d");
                     System.out.println("Lat"+b[0]+"  "+"Lon"+b[1]);
                     double lat= Double.parseDouble(b[0]);
@@ -136,6 +139,11 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
                     latLong.setLatitude(lat);
                     latLong.setLongitude(lon);
                     }
+                  else 
+                  {
+                      JOptionPane.showMessageDialog(null, "Set the Location");
+                  }
+         }
          System.out.println("Lat"+latLong.getLatitude()+latLong.getLongitude());
          
          RequestShelterJPanel manageOrganizationJPanel = new RequestShelterJPanel(userProcessContainer,account,organization,enterprise,state,country,system, latLong);
@@ -143,7 +151,7 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
          }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Set Location first");
+            JOptionPane.showMessageDialog(null, "Set the Location first");
         }
     }//GEN-LAST:event_btnLocationActionPerformed
 
