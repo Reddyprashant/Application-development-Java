@@ -57,12 +57,13 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageOrganizationJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnAnalytics = new javax.swing.JButton();
+        btnRequest = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Entity Work Area -Adminstrative Role");
+        jLabel1.setText("Government Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
         userJButton.setText("Manage User");
@@ -94,13 +95,21 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 120, 30));
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 130, 20));
 
-        jButton1.setText("Manage Request");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAnalytics.setText("Analytics");
+        btnAnalytics.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAnalyticsActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 150, -1));
+        add(btnAnalytics, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 150, -1));
+
+        btnRequest.setText("Manage Request");
+        btnRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestActionPerformed(evt);
+            }
+        });
+        add(btnRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 150, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -130,19 +139,24 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAnalyticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalyticsActionPerformed
         // TODO add your handling code here:
-         GovernmentRequestAreaJPanel manageRequestJPanel = new GovernmentRequestAreaJPanel(userProcessContainer, account, enterprise,state,country,system);
-        userProcessContainer.add("GovernmentRequestAreaJPanel", manageRequestJPanel);
+         GovAnalyticsJPanel manageRequestJPanel = new GovAnalyticsJPanel(userProcessContainer, account, enterprise,state,country,system);
+        userProcessContainer.add("GovAnalyticsJPanel", manageRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAnalyticsActionPerformed
+
+    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRequestActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnalytics;
+    private javax.swing.JButton btnRequest;
     private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JButton manageOrganizationJButton;
