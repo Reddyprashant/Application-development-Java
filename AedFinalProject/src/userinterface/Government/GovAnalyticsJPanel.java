@@ -22,6 +22,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.BorderLayout;
 import javax.mail.SendFailedException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -76,7 +77,7 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
      }
        System.out.println("Total number of people: "+pDirectory.getPersonList().size());
     }
- public void populateBarGraph(DefaultCategoryDataset dataset){
+ public void populateBarGraph(DefaultCategoryDataset dataset, JPanel panel){
     
         
         JFreeChart barChart = ChartFactory.createBarChart(
@@ -88,10 +89,46 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
          true, true, true);
          
       ChartPanel chartPanel = new ChartPanel( barChart );        
-      panelGraph.removeAll();
-      panelGraph.add(chartPanel, BorderLayout.CENTER);
-      panelGraph.validate();
+      panel.removeAll();
+      panel.add(chartPanel, BorderLayout.CENTER);
+      panel.validate();
  }
+ public void populateComboBoxEthnicity(JComboBox reqComboBox) {
+        reqComboBox.removeAllItems();
+        reqComboBox.addItem("White American");
+        reqComboBox.addItem("African");
+        reqComboBox.addItem("Asian");
+        reqComboBox.addItem("Native Hawaiians");
+        reqComboBox.addItem("Middle Eastern");
+        reqComboBox.addItem("Others");
+    }
+ 
+ public void populateComboBoxEducation(JComboBox reqComboBox) {
+        reqComboBox.removeAllItems();
+        reqComboBox.addItem("College Graduate");
+        reqComboBox.addItem("HighSchool Graduate");
+        reqComboBox.addItem("Uneducated");
+    }
+ 
+  public void populateComboBoxReasons(JComboBox reqComboBox) {
+        reqComboBox.removeAllItems();
+        reqComboBox.addItem("Individual and relational factors");
+        reqComboBox.addItem("Economic Issues");
+        reqComboBox.addItem("Systems failures");
+        reqComboBox.addItem("Others");
+    }
+   public void populateComboBoxAge(JComboBox reqComboBox) {
+        reqComboBox.removeAllItems();
+        reqComboBox.addItem("Age<18");
+        reqComboBox.addItem("18<Age<60");
+        reqComboBox.addItem("Age>60");
+    }
+   public void populateComboBoxGender(JComboBox reqComboBox) {
+        reqComboBox.removeAllItems();
+        reqComboBox.addItem("Male");
+        reqComboBox.addItem("Female");
+        reqComboBox.addItem("Others");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,6 +147,12 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         btnGender = new javax.swing.JRadioButton();
         btnEthnicity = new javax.swing.JRadioButton();
         btnEdu = new javax.swing.JRadioButton();
+        panelEthnicity = new javax.swing.JPanel();
+        panelReason = new javax.swing.JPanel();
+        panelAge = new javax.swing.JPanel();
+        combo1 = new javax.swing.JComboBox();
+        combo2 = new javax.swing.JComboBox();
+        combo3 = new javax.swing.JComboBox();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -119,12 +162,14 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
                 btnBarActionPerformed(evt);
             }
         });
-        add(btnBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, -1, -1));
+        add(btnBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 410, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("People Analysis");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 190, -1));
-        add(panelGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 780, 400));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 190, -1));
+
+        panelGraph.setBackground(new java.awt.Color(153, 153, 153));
+        add(panelGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 670, 420));
 
         buttonGroup1.add(btnAge);
         btnAge.setText("Age");
@@ -170,6 +215,36 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
             }
         });
         add(btnEdu, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
+
+        panelEthnicity.setBackground(new java.awt.Color(153, 153, 153));
+        add(panelEthnicity, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 100, 590, 410));
+
+        panelReason.setBackground(new java.awt.Color(153, 153, 153));
+        add(panelReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 660, 420));
+
+        panelAge.setBackground(new java.awt.Color(153, 153, 153));
+        add(panelAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 560, 600, 410));
+
+        combo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo1ActionPerformed(evt);
+            }
+        });
+        add(combo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 60, 110, -1));
+
+        combo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo2ActionPerformed(evt);
+            }
+        });
+        add(combo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, 90, -1));
+
+        combo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo3ActionPerformed(evt);
+            }
+        });
+        add(combo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 520, 120, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarActionPerformed
@@ -217,7 +292,7 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
          dataset.setValue(me,"","Middle Eastern");
          dataset.setValue(ot,"","Others");
          
-            populateBarGraph(dataset);
+            populateBarGraph(dataset,panelGraph);
              
                
         }
@@ -226,6 +301,9 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
     private void btnEduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEduActionPerformed
         // TODO add your handling code here:
          if(btnEdu.isSelected()){
+             populateComboBoxEthnicity(combo1);
+             populateComboBoxReasons(combo2);
+             populateComboBoxAge(combo3);
             int cg=0;
             int hg=0;
             int ue=0;
@@ -244,9 +322,9 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         dataset.setValue(cg,"","College Graduate");
         dataset.setValue(hg,"","HighSchool Graduate");
          dataset.setValue(ue,"","Uneducated");
-            populateBarGraph(dataset);
-             
-               
+            populateBarGraph(dataset,panelGraph);
+           
+    
         }
     }//GEN-LAST:event_btnEduActionPerformed
 
@@ -271,7 +349,7 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         dataset.setValue(cg,"","Male");
         dataset.setValue(hg,"","Female");
          dataset.setValue(ue,"","Others");
-            populateBarGraph(dataset);
+            populateBarGraph(dataset,panelGraph);
              
                
         }
@@ -303,7 +381,7 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         dataset.setValue(hg,"","Economic Issues");
          dataset.setValue(ue,"","Systems failures");
           dataset.setValue(ue,"","Others");
-            populateBarGraph(dataset);
+            populateBarGraph(dataset,panelGraph);
              
                
         }
@@ -331,11 +409,115 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         dataset.setValue(ue,"","18< Age < 60");
         dataset.setValue(hg,"","Age>60");
          
-        populateBarGraph(dataset);
-             
-               
+        populateBarGraph(dataset,panelGraph);  
         }
     }//GEN-LAST:event_btnAgeActionPerformed
+
+    private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
+        // TODO add your handling code here:
+        if(btnEdu.isSelected()){
+            int cg=0;
+            int hg=0;
+            int ue=0;
+         String ethnic= (String) combo1.getSelectedItem();
+            for (Person person : pDirectory.getPersonList()) {
+                if(person.getEducationBackground().equals("College Graduate") && person.getEthnicity().equals(ethnic) ){
+                    cg++;
+                }
+                else if(person.getEducationBackground().equals("HighSchool Graduate") && person.getEthnicity().equals(ethnic)){
+                    hg++;
+                }
+                 else if(person.getEducationBackground().equals("Uneducated") && person.getEthnicity().equals(ethnic)){
+                    ue++;
+                }
+            }  
+                 DefaultCategoryDataset dataset1= new DefaultCategoryDataset();
+        dataset1.setValue(cg,"","College Graduate");
+        dataset1.setValue(hg,"","HighSchool Graduate");
+         dataset1.setValue(ue,"","Uneducated");
+            populateBarGraph(dataset1,panelEthnicity);  
+        }
+    }//GEN-LAST:event_combo1ActionPerformed
+
+    private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
+        // TODO add your handling code here:
+        if(btnEdu.isSelected()){
+           int  cg=0;
+           int hg=0;
+           int ue=0;
+     String reason= (String) combo2.getSelectedItem();
+            for (Person person : pDirectory.getPersonList()) {
+                if(person.getEducationBackground().equals("College Graduate") && person.getReason().equals(reason) ){
+                    cg++;
+                }
+                else if(person.getEducationBackground().equals("HighSchool Graduate") && person.getReason().equals(reason)){
+                    hg++;
+                }
+                 else if(person.getEducationBackground().equals("Uneducated") && person.getReason().equals(reason)){
+                    ue++;
+                }
+            }  
+                 DefaultCategoryDataset dataset2= new DefaultCategoryDataset();
+        dataset2.setValue(cg,"","College Graduate");
+        dataset2.setValue(hg,"","HighSchool Graduate");
+         dataset2.setValue(ue,"","Uneducated");
+            populateBarGraph(dataset2,panelReason);
+        }
+    }//GEN-LAST:event_combo2ActionPerformed
+
+    private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
+        // TODO add your handling code here:
+         if(btnEdu.isSelected()){
+           int    cg=0;
+          int  hg=0;
+          int  ue=0;
+     String age= (String) combo3.getSelectedItem();
+     
+            for (Person person : pDirectory.getPersonList()) {
+                System.out.println("age"+age);
+                if(age!= null){
+                if(age.equals("Age<18")){
+                if(person.getEducationBackground().equals("College Graduate") && person.getAge() < 18  ){
+                    cg++;
+                }
+                else if(person.getEducationBackground().equals("HighSchool Graduate") && person.getAge() <18){
+                    hg++;
+                }
+                 else if(person.getEducationBackground().equals("Uneducated") && person.getAge()< 18){
+                    ue++;
+                }
+                }
+                else if(age.equals("Age>60")){
+                if(person.getEducationBackground().equals("College Graduate") && person.getAge() > 60  ){
+                    cg++;
+                }
+                else if(person.getEducationBackground().equals("HighSchool Graduate") && person.getAge() > 60){
+                    hg++;
+                }
+                 else if(person.getEducationBackground().equals("Uneducated") && person.getAge() > 60){
+                    ue++;
+                }
+                }
+                else{
+                     if(person.getEducationBackground().equals("College Graduate") && person.getAge() < 60 && person.getAge() >=18 ){
+                    cg++;
+                }
+                else if(person.getEducationBackground().equals("HighSchool Graduate") && person.getAge() < 60 && person.getAge() >=18){
+                    hg++;
+                }
+                 else if(person.getEducationBackground().equals("Uneducated") && person.getAge() < 60 && person.getAge() >=18){
+                    ue++;
+                }
+                }
+                }
+            }  
+                 DefaultCategoryDataset dataset3= new DefaultCategoryDataset();
+        dataset3.setValue(cg,"","College Graduate");
+        dataset3.setValue(hg,"","HighSchool Graduate");
+         dataset3.setValue(ue,"","Uneducated");
+            populateBarGraph(dataset3,panelAge);
+    }
+    }//GEN-LAST:event_combo3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -346,7 +528,13 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton btnGender;
     private javax.swing.JRadioButton btnReason;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox combo1;
+    private javax.swing.JComboBox combo2;
+    private javax.swing.JComboBox combo3;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel panelAge;
+    private javax.swing.JPanel panelEthnicity;
     private javax.swing.JPanel panelGraph;
+    private javax.swing.JPanel panelReason;
     // End of variables declaration//GEN-END:variables
 }
