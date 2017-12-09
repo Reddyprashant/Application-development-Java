@@ -154,9 +154,16 @@ public void populateUpdatedTable()
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        backJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setForeground(new java.awt.Color(71, 79, 112));
+
+        tblReq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblReq.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        tblReq.setForeground(new java.awt.Color(71, 79, 112));
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -175,8 +182,13 @@ public void populateUpdatedTable()
         });
         jScrollPane1.setViewportView(tblReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 77, 690, 182));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 690, 182));
 
+        jScrollPane2.setForeground(new java.awt.Color(71, 79, 112));
+
+        UpdatedJTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        UpdatedJTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        UpdatedJTable.setForeground(new java.awt.Color(71, 79, 112));
         UpdatedJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -195,34 +207,53 @@ public void populateUpdatedTable()
         });
         jScrollPane2.setViewportView(UpdatedJTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 337, 660, 198));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 660, 198));
 
+        btnAssign.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnAssign.setForeground(new java.awt.Color(71, 79, 112));
         btnAssign.setText("View Details");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, 150, 40));
 
+        btnComplete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnComplete.setForeground(new java.awt.Color(71, 79, 112));
         btnComplete.setText("Serve");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCompleteActionPerformed(evt);
             }
         });
-        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, -1, -1));
+        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 390, 90, 40));
 
+        jButton3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(71, 79, 112));
         jButton3.setText("Send Request to BGV");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 553, -1, -1));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 750, -1, 40));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Recieved");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 43, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 308, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Education Admin Request Area Panel");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 530, -1));
+
+        backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(71, 79, 112));
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 839, 110, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -319,9 +350,17 @@ public void populateUpdatedTable()
         
     }//GEN-LAST:event_btnCompleteActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable UpdatedJTable;
+    private javax.swing.JButton backJButton;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnComplete;
     private javax.swing.JButton jButton3;

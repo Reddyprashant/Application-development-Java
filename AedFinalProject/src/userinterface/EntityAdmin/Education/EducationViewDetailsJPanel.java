@@ -83,7 +83,6 @@ private EducationRequestAreaJPanel eduRequestPanel;
         dateField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         UpdateBtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         reqVolText = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -94,91 +93,118 @@ private EducationRequestAreaJPanel eduRequestPanel;
         jButton1 = new javax.swing.JButton();
         reqComboBox = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
         enterpriseLabel.setText("Organization:");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 120, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 190, 30));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Type:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 106, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
 
         eventNameTextfield.setEditable(false);
+        eventNameTextfield.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        eventNameTextfield.setForeground(new java.awt.Color(71, 79, 112));
         eventNameTextfield.setEnabled(false);
-        add(eventNameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 132, 232, -1));
+        add(eventNameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 232, -1));
 
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Event Name");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 137, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Available Volunteers");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 182, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
 
+        availVolTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        availVolTextField.setForeground(new java.awt.Color(71, 79, 112));
         availVolTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 availVolTextFieldActionPerformed(evt);
             }
         });
-        add(availVolTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 177, 232, -1));
+        add(availVolTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 232, -1));
 
         dateField.setEditable(false);
+        dateField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        dateField.setForeground(new java.awt.Color(71, 79, 112));
         dateField.setEnabled(false);
         dateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dateFieldActionPerformed(evt);
             }
         });
-        add(dateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 248, 232, -1));
+        add(dateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 232, -1));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Event Date ");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 253, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
 
+        UpdateBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        UpdateBtn.setForeground(new java.awt.Color(71, 79, 112));
         UpdateBtn.setText("Update");
         UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateBtnActionPerformed(evt);
             }
         });
-        add(UpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, -1, -1));
+        add(UpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 140, 50));
 
-        jButton2.setText("<<Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 547, -1, -1));
-
+        jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("Required Volunteers");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 220, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
 
         reqVolText.setEditable(false);
+        reqVolText.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        reqVolText.setForeground(new java.awt.Color(71, 79, 112));
         reqVolText.setEnabled(false);
-        add(reqVolText, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 210, 232, -1));
+        add(reqVolText, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 232, -1));
 
+        jLabel7.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Event Details");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 280, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, -1, -1));
+
+        jScrollPane1.setForeground(new java.awt.Color(71, 79, 112));
 
         detailTextArea.setEditable(false);
         detailTextArea.setColumns(20);
+        detailTextArea.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        detailTextArea.setForeground(new java.awt.Color(71, 79, 112));
         detailTextArea.setRows(5);
         detailTextArea.setEnabled(false);
         jScrollPane1.setViewportView(detailTextArea);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 280, 232, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 232, -1));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
-        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 130, 30));
 
+        nameLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(71, 79, 112));
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 130, 30));
+
+        jButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(71, 79, 112));
         jButton1.setText("<Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 830, 120, 40));
 
         reqComboBox.setEditable(false);
+        reqComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        reqComboBox.setForeground(new java.awt.Color(71, 79, 112));
         reqComboBox.setEnabled(false);
-        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 232, -1));
+        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, 232, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
@@ -222,11 +248,6 @@ if(organization.getEventDirectory().getEventDirectory() == null){
         // TODO add your handling code here:
     }//GEN-LAST:event_dateFieldActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-               
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void availVolTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availVolTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_availVolTextFieldActionPerformed
@@ -254,7 +275,6 @@ if(organization.getEventDirectory().getEventDirectory() == null){
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JTextField eventNameTextfield;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

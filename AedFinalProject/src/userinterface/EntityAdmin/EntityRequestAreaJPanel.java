@@ -103,8 +103,13 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setForeground(new java.awt.Color(71, 79, 112));
+
+        tblReq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblReq.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -123,30 +128,37 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 77, 690, 182));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 690, 182));
 
+        btnAssign.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnAssign.setForeground(new java.awt.Color(71, 79, 112));
         btnAssign.setText("Assign to me");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 150, 40));
 
+        btnComplete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnComplete.setForeground(new java.awt.Color(71, 79, 112));
         btnComplete.setText("Serve");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCompleteActionPerformed(evt);
             }
         });
-        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, -1, -1));
+        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 120, 40));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Recieved");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 43, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Entity Admin Request Area Panel");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 450, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
