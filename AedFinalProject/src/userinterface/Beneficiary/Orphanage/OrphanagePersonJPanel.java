@@ -404,7 +404,7 @@ public void populateComboBox() {
                                         sex = "Mle";
                                     } else if (rdBtnFemale.isSelected()) {
                                         sex = "Female";
-                                    } else if (rdBtnFemale.isSelected()) {
+                                    } else if (rdBtnOthers.isSelected()) {
                                         sex = "Others";
                                     }
                                     String educationBG = null;
