@@ -204,7 +204,8 @@ public class DisplayNearestOrgJPanel extends javax.swing.JPanel {
             try {
                 Validator.sendMessage(employee.getEmailId());
             } catch (SendFailedException ex) {
-                Logger.getLogger(DisplayNearestOrgJPanel.class.getName()).log(Level.SEVERE, null, ex);
+               // Logger.getLogger(DisplayNearestOrgJPanel.class.getName()).log(Level.SEVERE, null, ex);
+               return;
             }
         }
         }
