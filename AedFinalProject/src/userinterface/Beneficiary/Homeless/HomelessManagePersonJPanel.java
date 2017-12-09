@@ -411,7 +411,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                                         sex = "Male";
                                     } else if (rdBtnFemale.isSelected()) {
                                         sex = "Female";
-                                    } else if (rdBtnFemale.isSelected()) {
+                                    } else if (rdBtnOthers.isSelected()) {
                                         sex = "Others";
                                     }
                                     String educationBG = null;
