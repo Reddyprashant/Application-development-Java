@@ -124,20 +124,28 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
         reqBtn = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Orphanage Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 570, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Volunteers Requested");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 170, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 230, 30));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Volunteers Available");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 150, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 240, 30));
 
+        jScrollPane3.setForeground(new java.awt.Color(71, 79, 112));
+
+        requestTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        requestTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -161,8 +169,12 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(requestTable);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 720, 90));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 720, 90));
 
+        jScrollPane4.setForeground(new java.awt.Color(71, 79, 112));
+
+        availableTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        availableTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         availableTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -181,32 +193,38 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(availableTable);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 700, 90));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 610, 700, 90));
 
+        btnDelete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(71, 79, 112));
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, -1, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 480, -1, 40));
 
-        reqBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        reqBtn.setText("Request For Help");
+        reqBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        reqBtn.setForeground(new java.awt.Color(255, 8, 2));
+        reqBtn.setText("Request For Help!!!   >>>>>");
+        reqBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         reqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reqBtnActionPerformed(evt);
             }
         });
-        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 180, 40));
+        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 340, 50));
 
-        btnBack.setText("Back");
+        btnBack.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(71, 79, 112));
+        btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 830, 110, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
