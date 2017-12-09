@@ -46,14 +46,29 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     }
     
     public void populateComboBox() {
-        for (CountryNetwork countryNetwork : system.getNetworkList()) {
-            comboCountry.addItem(countryNetwork);
+        comboCountry.removeAllItems();
+        if (!system.getNetworkList().isEmpty()) {
+            for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                comboCountry.addItem(countryNetwork);
+            }
+            comboEnterprise.addItem(Enterprise.EnterpriseType.Beneficiary);
+            comboEnterprise.addItem(Enterprise.EnterpriseType.Entity);
+            comboEnterprise.addItem(Enterprise.EnterpriseType.Government);
+            comboEnterprise.addItem(Enterprise.EnterpriseType.Logistic);
+        } else {
+            comboEnterprise.setEnabled(false);
+            comboCountry.setEnabled(false);
+            comboState.setEnabled(false);
+            txtName.setEnabled(false);
+            txtUserName.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtImage.setEnabled(false);
+            txtPassword.setEnabled(false);
+            btnFile.setEnabled(false);
+            btnCreateState.setEnabled(false);
+//            JOptionPane.showMessageDialog(null, "System is not available for the country, please contact the system administrator");
+            lblWarning.setText("*System is not available for the country, please contact the system administrator");
         }
-        comboEnterprise.addItem(Enterprise.EnterpriseType.Beneficiary);
-        comboEnterprise.addItem(Enterprise.EnterpriseType.Entity);
-        comboEnterprise.addItem(Enterprise.EnterpriseType.Government);
-        comboEnterprise.addItem(Enterprise.EnterpriseType.Logistic);
-        
     }
 
     /**
@@ -88,6 +103,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         lblName1 = new javax.swing.JLabel();
         lblUserName1 = new javax.swing.JLabel();
         lblAcceptedUserName = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 255, 255));
@@ -215,6 +231,9 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
 
         lblAcceptedUserName.setForeground(new java.awt.Color(0, 204, 51));
         add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
+
+        lblWarning.setForeground(new java.awt.Color(255, 51, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtImageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImageKeyPressed
@@ -259,7 +278,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
             for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
                 for (WorkRequest workReq : userAccount.getWorkQueue().getWorkRequestList()) {
                     if (workReq instanceof SignUpRequestEnterprise) {
-                        if (((SignUpRequestEnterprise) workReq).getEnterprise() == (EnterpriseType) comboEnterprise.getSelectedItem()) {
+                        if (((SignUpRequestEnterprise) workReq).getEnterprise() == (EnterpriseType) comboEnterprise.getSelectedItem() && (workReq.getStatus().equalsIgnoreCase("pending") || workReq.getStatus().equalsIgnoreCase("Requested"))) {
                             JOptionPane.showMessageDialog(null, "Request Already Raised for the Enterprise");
                             return;
                         }
@@ -328,9 +347,34 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
         // TODO add your handling code here:
         //comboCountry.removeAllItems();
+        
         CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
-        for (StateNetwork state : c.getStateList()) {
-            comboState.addItem(state);
+        if (!c.getStateList().isEmpty()) {
+            lblWarning.setText("");
+            for (StateNetwork state : c.getStateList()) {
+                comboState.addItem(state);
+            }
+            comboEnterprise.setEnabled(true);
+            comboState.setEnabled(true);
+            txtName.setEnabled(true);
+            txtUserName.setEnabled(true);
+            txtEmail.setEnabled(true);
+            txtImage.setEnabled(true);
+            txtPassword.setEnabled(true);
+            btnFile.setEnabled(true);
+            btnCreateState.setEnabled(true);
+        } else {
+            comboState.removeAllItems();
+            comboEnterprise.setEnabled(false);
+            comboState.setEnabled(false);
+            txtName.setEnabled(false);
+            txtUserName.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtImage.setEnabled(false);
+            txtPassword.setEnabled(false);
+            btnFile.setEnabled(false);
+            btnCreateState.setEnabled(false);
+            lblWarning.setText("*System is not available for the state, please raise a request to create a state first");
         }
     }//GEN-LAST:event_comboCountryActionPerformed
 
@@ -351,7 +395,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         String userName = txtUserName.getText();
         if (!txtUserName.getText().isEmpty()) {
             if (!Validator.validateUserName(txtUserName.getText())) {
-                lblUserName1.setText("*Only AlphaNumeric Characters and Spaces are allowed");
+                lblUserName1.setText("*Only AlphaNumeric Characters and '_' and '.' are allowed");
                 txtUserName.setText("");
             } else if (!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())) {
                 lblUserName1.setText("*" + userName + " " + "is already taken please enter new username");
@@ -416,6 +460,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblName1;
     private javax.swing.JLabel lblUserName1;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtImage;
     private javax.swing.JTextField txtName;

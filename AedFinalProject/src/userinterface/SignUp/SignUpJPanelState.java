@@ -31,9 +31,15 @@ public class SignUpJPanelState extends javax.swing.JPanel {
         initComponents();
         this.system = business;
         this.userProcessContainer = userProcessContainer;
-
+        if(!system.getNetworkList().isEmpty()){
         for (CountryNetwork countryNetwork : system.getNetworkList()) {
             comboCountry.addItem(countryNetwork);
+        }
+      }
+        else{
+            txtName.setEnabled(false);
+            comboCountry.setEnabled(false);
+            lblWarning.setText("*Sorry for the inconvenience the system is not set up yet please contact System administrator for the issue");
         }
     }
 
@@ -53,6 +59,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
         comboCountry = new javax.swing.JComboBox();
         btnCreateState = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,6 +100,9 @@ public class SignUpJPanelState extends javax.swing.JPanel {
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, -1, -1));
+
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStateActionPerformed
@@ -161,6 +171,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

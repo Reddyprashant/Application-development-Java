@@ -91,7 +91,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
             
             Object[] row = new Object[7];
             row[0] = person.getPersonId();
-            row[1] = person.getName();
+            row[1] = person;
             row[2] = person.getAge();
             row[3] = person.getSex();
             row[4] = person.getEthnicity();
@@ -114,6 +114,8 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         btnGrpReasons = new javax.swing.ButtonGroup();
         btnGrpEducationBackGround = new javax.swing.ButtonGroup();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         organizationJTable = new javax.swing.JTable();
         btnCreatePerson = new javax.swing.JButton();
@@ -147,6 +149,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         btnViewDetails = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         picText = new javax.swing.JTextField();
+        btnDelete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -237,6 +240,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         jLabel6.setText("*Reason For Joining");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, -1, -1));
 
+        buttonGroup3.add(ARadioButton);
         ARadioButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         ARadioButton.setForeground(new java.awt.Color(71, 79, 112));
         ARadioButton.setText("Individual and relational factors");
@@ -247,6 +251,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         });
         add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, -1, -1));
 
+        buttonGroup3.add(BRadioButton2);
         BRadioButton2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         BRadioButton2.setForeground(new java.awt.Color(71, 79, 112));
         BRadioButton2.setText("Economic Issues");
@@ -257,6 +262,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         });
         add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 520, -1, -1));
 
+        buttonGroup3.add(CRadioButton3);
         CRadioButton3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         CRadioButton3.setForeground(new java.awt.Color(71, 79, 112));
         CRadioButton3.setText("System failures");
@@ -267,6 +273,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         });
         add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 520, -1, -1));
 
+        buttonGroup3.add(ORadioButton4);
         ORadioButton4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         ORadioButton4.setForeground(new java.awt.Color(71, 79, 112));
         ORadioButton4.setText("Others");
@@ -302,16 +309,19 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         jLabel8.setText("*Education Background:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, -1, -1));
 
+        buttonGroup2.add(rdBtnHighschoolGrad);
         rdBtnHighschoolGrad.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         rdBtnHighschoolGrad.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnHighschoolGrad.setText("Highschool Graduate");
         add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, -1, -1));
 
+        buttonGroup2.add(rdBtnCollegeGrad);
         rdBtnCollegeGrad.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         rdBtnCollegeGrad.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnCollegeGrad.setText("College Graduate");
         add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, -1, -1));
 
+        buttonGroup2.add(rdBtnUneducated);
         rdBtnUneducated.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         rdBtnUneducated.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnUneducated.setText("Uneducated");
@@ -376,6 +386,16 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
         picText.setForeground(new java.awt.Color(71, 79, 112));
         add(picText, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 620, 90, -1));
+
+        btnDelete.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(71, 79, 112));
+        btnDelete.setText("Delete request");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
@@ -400,7 +420,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
                                         sex = "Male";
                                     } else if (rdBtnFemale.isSelected()) {
                                         sex = "Female";
-                                    } else if (rdBtnFemale.isSelected()) {
+                                    } else if (rdBtnOthers.isSelected()) {
                                         sex = "Others";
                                     }
                                     String educationBG = null;
@@ -526,6 +546,36 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnViewDetailsActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = organizationJTable.getSelectedRow();
+        if(selectedRow >=0)
+        {
+
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null,"Would you like to delete the details","Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION){
+
+                Person p = (Person) organizationJTable.getValueAt(selectedRow, 1);
+
+                
+                        for (Person person : organization.getPersonList().getPersonList()) {
+                            if (p == person) {
+                               organization.getPersonList().getPersonList().remove(p);
+                                break;
+                            }
+
+                        }
+
+                JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+                populateTable(organization);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select a Row from table ","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ARadioButton;
     private javax.swing.JRadioButton BRadioButton2;
@@ -535,11 +585,14 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField ageTextField;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreatePerson;
+    private javax.swing.JButton btnDelete;
     private javax.swing.ButtonGroup btnGrpEducationBackGround;
     private javax.swing.ButtonGroup btnGrpReasons;
     private javax.swing.JButton btnUpload;
     private javax.swing.JButton btnViewDetails;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -60,7 +60,7 @@ public class Validator {
     public static boolean validateUserName(String name) {
         Pattern pattern;
         Matcher matcher;
-        String NAME_PATTERN = "^[A-Za-z0-9\\s]+$";
+        String NAME_PATTERN = "^[A-Za-z0-9_//.]+$";
         pattern = Pattern.compile(NAME_PATTERN);
         matcher = pattern.matcher(name);
         return matcher.matches();
@@ -98,7 +98,7 @@ public class Validator {
         Pattern pattern;
         Matcher matcher;
         String PASSWORD_PATTERN
-                = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+                = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$";
         pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(pwd);
         return matcher.matches();

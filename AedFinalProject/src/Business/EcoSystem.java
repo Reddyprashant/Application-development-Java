@@ -1,6 +1,5 @@
 package Business;
 
-
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
@@ -10,7 +9,12 @@ import Business.Role.EntityAdminRole;
 import Business.Role.GovtAdminRole;
 import Business.Role.Role;
 import Business.Role.CountryAdminRole;
+import Business.SignUp.SignUpRequestCountry;
+import Business.SignUp.SignUpRequestEnterprise;
+import Business.SignUp.SignUpRequestOrganization;
+import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -23,7 +27,6 @@ public class EcoSystem extends Organization {
     private static EcoSystem business;
     private ArrayList<CountryNetwork> networkList;
 
-
     public static EcoSystem getInstance() {
         if (business == null) {
             business = new EcoSystem();
@@ -32,7 +35,7 @@ public class EcoSystem extends Organization {
     }
 
     private EcoSystem() {
-        super(null,null,null);
+        super(null, null, null);
         networkList = new ArrayList<>();
 
     }
@@ -41,12 +44,9 @@ public class EcoSystem extends Organization {
         return networkList;
     }
 
-
-    
     public static void setInstance(EcoSystem system) {
-        business=system;
+        business = system;
     }
-
 
     public CountryNetwork createAndAddNetwork() {
         CountryNetwork network = new CountryNetwork();
@@ -65,27 +65,50 @@ public class EcoSystem extends Organization {
 
     public static boolean checkIfUsernameIsUnique(String username) {
 
-      //  if (!this.getUserAccountDirectory().checkIfUsernameIsUnique(username)) {
-             for (CountryNetwork cnetwork : business.getNetworkList()) {
-                 for (StateNetwork network : cnetwork.getStateList()) {
+        //  if (!this.getUserAccountDirectory().checkIfUsernameIsUnique(username)) {
+        for (WorkRequest wrkReq : business.getWorkQueue().getWorkRequestList()) {
+            if (wrkReq instanceof SignUpRequestEnterprise) {
+                if(((SignUpRequestEnterprise) wrkReq).getUserName().equals(username)){
+                return false;
+                }
+            } else if (wrkReq instanceof SignUpRequestCountry) {
+                if(((SignUpRequestCountry) wrkReq).getUserName().equals(username)){
+                return false;
+                }
+            } else if (wrkReq instanceof SignUpRequestState) {
+                if(((SignUpRequestState) wrkReq).getUserName().equals(username)){
+                return false;
+                }
+            }
+        }
+
+        for (CountryNetwork cnetwork : business.getNetworkList()) {
+            for (StateNetwork network : cnetwork.getStateList()) {
                 for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                     for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
-                        if(ua.getUsername().equals(username)){
+                        if (ua.getUsername().equals(username)) {
                             return false;
                         }
                     }
-                    
-                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-                                 if(ua.getUsername().equals(username)){
+                    for (WorkRequest workReq : enterprise.getWorkQueue().getWorkRequestList()) {
+                        if (workReq instanceof SignUpRequestOrganization) {
+                            if(((SignUpRequestOrganization) workReq).getUserName().equals(username)){
                             return false;
-                        }
-                    }
                             }
                         }
                     }
-    }
-             
+
+                    for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                        for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                            if (ua.getUsername().equals(username)) {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         return true;
     }
 }
