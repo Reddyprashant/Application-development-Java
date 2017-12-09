@@ -103,16 +103,23 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
         btnComplete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Work Area: Country Admin");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Request for State Creation");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 300, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 300, 30));
 
+        jScrollPane2.setForeground(new java.awt.Color(71, 79, 112));
+
+        requestTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        requestTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -131,39 +138,47 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(requestTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 850, 330));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 850, 330));
 
+        btnDelete.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(71, 79, 112));
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, -1, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 600, 150, 40));
 
+        reqBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        reqBtn.setForeground(new java.awt.Color(71, 79, 112));
         reqBtn.setText("Assign To Me");
         reqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reqBtnActionPerformed(evt);
             }
         });
-        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 120, -1));
+        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 600, 130, 40));
 
+        btnComplete.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnComplete.setForeground(new java.awt.Color(71, 79, 112));
         btnComplete.setText("Complete");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCompleteActionPerformed(evt);
             }
         });
-        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 140, -1));
+        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 600, 140, 40));
 
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(71, 79, 112));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 830, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed

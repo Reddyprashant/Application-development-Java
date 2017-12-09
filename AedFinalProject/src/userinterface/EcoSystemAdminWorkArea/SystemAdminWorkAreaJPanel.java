@@ -124,44 +124,57 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         manageNetworkJButton.setBackground(new java.awt.Color(71, 79, 112));
-        manageNetworkJButton.setForeground(new java.awt.Color(255, 255, 255));
+        manageNetworkJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        manageNetworkJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageNetworkJButton.setText("Manage Network");
+        manageNetworkJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         manageNetworkJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageNetworkJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(manageNetworkJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 102, 179, -1));
+        jPanel1.add(manageNetworkJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 200, 80));
 
         manageAdminJButton.setBackground(new java.awt.Color(0, 0, 0));
-        manageAdminJButton.setForeground(new java.awt.Color(255, 255, 255));
+        manageAdminJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        manageAdminJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageAdminJButton.setText("Manage Country Admin");
+        manageAdminJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         manageAdminJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageAdminJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 180, -1));
+        jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 250, 190, 80));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Selected Node:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 36, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, -1, -1));
 
+        selectedNodeJLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        selectedNodeJLabel.setForeground(new java.awt.Color(71, 79, 112));
         selectedNodeJLabel.setText("<view_selected_node>");
-        jPanel1.add(selectedNodeJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 36, -1, -1));
+        jPanel1.add(selectedNodeJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
 
+        btnRequestArea.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnRequestArea.setForeground(new java.awt.Color(71, 79, 112));
         btnRequestArea.setText("Manage Request Catalog");
+        btnRequestArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnRequestArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestAreaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRequestArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 180, -1));
+        jPanel1.add(btnRequestArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 200, 80));
 
         jSplitPane1.setRightComponent(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(71, 79, 112));
 
         JTree.setBackground(new java.awt.Color(204, 204, 204));
+        JTree.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        JTree.setForeground(new java.awt.Color(71, 79, 112));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("System");
         JTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         JTree.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
