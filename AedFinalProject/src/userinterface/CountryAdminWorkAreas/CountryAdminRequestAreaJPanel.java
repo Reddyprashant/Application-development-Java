@@ -5,7 +5,6 @@
  */
 package userinterface.CountryAdminWorkAreas;
 
-
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
@@ -21,6 +20,7 @@ import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -38,53 +38,44 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
     Enterprise enterprise;
     EcoSystem system;
     CountryNetwork cNetwork;
+
     /**
      * Creates new form AdminWorkAreaJPanel
      */
-    public CountryAdminRequestAreaJPanel(JPanel userProcessContainer,UserAccount account,CountryNetwork cNetwork, EcoSystem business) {
+    public CountryAdminRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        
+
         this.system = business;
-        this.account=account;
-        this.cNetwork=cNetwork;
-       // populateCombo();
-       // populateQuantity();
+        this.account = account;
+        this.cNetwork = cNetwork;
+        // populateCombo();
+        // populateQuantity();
         populateWorkQueueTable();
-       
 
     }
-
-  
 
     public void populateWorkQueueTable() {
         DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
 
         model.setRowCount(0);
-        SignUpRequest s=null;
+        SignUpRequest s = null;
         for (WorkRequest work : account.getWorkQueue().getWorkRequestList()) {
             if (work instanceof SignUpRequestState) {
-                 s= (SignUpRequestState) work;
+                s = (SignUpRequestState) work;
+            } else if (work instanceof SignUpRequestEnterprise) {
+                s = (SignUpRequestEnterprise) work;
             }
-            else if(work instanceof SignUpRequestEnterprise){
-                s= (SignUpRequestEnterprise) work;
-            }
-                Object[] row = new Object[4];
-                row[0] = s.getName();
-                row[1] = s.getReceiver();
-                 row[2] = s.getSender();
-                  row[3] = s; 
-                 
-                model.addRow(row);
-            
+            Object[] row = new Object[4];
+            row[0] = s.getName();
+            row[1] = s.getReceiver();
+            row[2] = s.getRequestDate();
+            row[3] = s;
+
+            model.addRow(row);
+
         }
     }
-
-   
-    
-
-   
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,7 +109,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "State Name", "Receiver", "Sender", "Status"
+                "State Name", "Receiver", "Request Date", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -169,25 +160,23 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRow = requestTable.getSelectedRow();
-        if(selectedRow >=0)
-        {
-            
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog(null,"Would you like to delete the details","Warning", dialogButton);
-            if (dialogResult == JOptionPane.YES_OPTION){
-   
-            WorkRequest p = (WorkRequest) requestTable.getValueAt(selectedRow, 3);
+        if (selectedRow >= 0) {
 
-            // s.getWorkQueue().getWorkRequestList().remove(p);
-            account.getWorkQueue().getWorkRequestList().remove(p);
-           // account.getWorkQueue().getWorkRequestList().remove(p);
-          //  business.getWorkQueue().getWorkRequestList().remove(p);
-            JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
-            populateWorkQueueTable();
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Would you like to delete the details", "Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+
+                WorkRequest p = (WorkRequest) requestTable.getValueAt(selectedRow, 3);
+
+                // s.getWorkQueue().getWorkRequestList().remove(p);
+                account.getWorkQueue().getWorkRequestList().remove(p);
+                // account.getWorkQueue().getWorkRequestList().remove(p);
+                //  business.getWorkQueue().getWorkRequestList().remove(p);
+                JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+                populateWorkQueueTable();
             }
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Please select a Row from table ","Warning",JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Row from table ", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -196,18 +185,17 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-          
+
             SignUpRequest p = (SignUpRequest) requestTable.getValueAt(selectedRow, 3);
-          
-            if(p.getStatus().equals("Requested")){
-              //  System.out.println("admin name"+ account.getUsername());
+
+            if (p.getStatus().equals("Requested")) {
+                //  System.out.println("admin name"+ account.getUsername());
                 p.setStatus("Pending");
                 p.setReceiver(account);
 
                 populateWorkQueueTable();
-               
-            }
-            else{
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Already assigned");
             }
 
@@ -229,47 +217,49 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             SignUpRequest p = (SignUpRequest) requestTable.getValueAt(selectedRow, 3);
-            SignUpRequestState s=null;
-              SignUpRequestEnterprise e=null;
-            
-            
-            
-            
+            SignUpRequestState s = null;
+            SignUpRequestEnterprise e = null;
+
             if (p.getReceiver() != null) {
                 if (p.getStatus().equals("Pending")) {
-                     if (p instanceof SignUpRequestState) {
-                 s= (SignUpRequestState) p;
-                StateNetwork net = cNetwork.createAndAddNetwork();
-                    net.setName(p.getName());
-             }
-            else if(p instanceof SignUpRequestEnterprise){
-                e= (SignUpRequestEnterprise) p;
-                //You can check for non duplicate of enterprise here.
-                Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
-                Employee emp= new Employee();
-                    emp.setName(p.getName());
-                    emp.setEmailId(p.getEmail());
-                    if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Beneficiary) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new BeneficiaryAdminRole());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Entity) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new EntityAdminRole());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Government) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new GovtAdminRole());
-            }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Logistic) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new LogisticAdminRole());
-            }
-                    
-                         try {      
-                             Validator.sendMessage(p.getEmail());
-                         } catch (SendFailedException ex) {
-                             JOptionPane.showMessageDialog(null, "User has a wrong email address");
-                         }
-            }
-                     
-                    
+                    if (p instanceof SignUpRequestState) {
+                        s = (SignUpRequestState) p;
+                        StateNetwork net = cNetwork.createAndAddNetwork();
+                        net.setName(p.getName());
+                    } else if (p instanceof SignUpRequestEnterprise) {
+                        e = (SignUpRequestEnterprise) p;
+                        try {
+                            Validator.sendMessage(p.getEmail());
+                        } catch (SendFailedException ex) {
+                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
+                            p.setStatus("Cancelled");
+                            p.setMessage("Not a Valid Email Address");
+                            p.setRequestDate(new Date());
+                            return;
+                        }
+                        //You can check for non duplicate of enterprise here.
+                        Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
+
+                        Employee emp = new Employee();
+                        emp.setName(p.getName());
+                        emp.setEmailId(p.getEmail());
+                        UserAccount user = null;
+                        if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Beneficiary) {
+                            user = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new BeneficiaryAdminRole());
+                        } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Entity) {
+                            user = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new EntityAdminRole());
+                        } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Government) {
+                            user = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new GovtAdminRole());
+                        } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Logistic) {
+                            user = enterprise.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new LogisticAdminRole());
+                        }
+
+                    }
+
                     p.setStatus("Complete");
+                    p.setRequestDate(new Date());
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
-                    
+
                     populateWorkQueueTable();
                 } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
@@ -283,11 +273,11 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        
+
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-        
+
     }//GEN-LAST:event_btnBackActionPerformed
 
 

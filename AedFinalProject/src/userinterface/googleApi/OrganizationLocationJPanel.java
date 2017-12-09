@@ -44,7 +44,7 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
 
 
-    final Browser browser;
+     Browser browser;
      BrowserView view;
       LatLong latLong;
     public OrganizationLocationJPanel(JPanel userProcessContainer) {

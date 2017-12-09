@@ -186,7 +186,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
 
     private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
         // TODO add your handling code here:
-        if (!txtUserName.getText().isEmpty()) {
+        if (!txtName.getText().isEmpty()) {
             if (!Validator.validateName(txtName.getText())) {
                 lblName.setText("*Only Alphabets and Spaces are allowed");
                 txtName.setText("");

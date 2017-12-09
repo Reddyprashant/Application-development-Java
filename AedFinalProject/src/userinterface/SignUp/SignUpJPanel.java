@@ -51,8 +51,29 @@ public class SignUpJPanel extends javax.swing.JPanel {
     }
 
     public void populateCombo() {
-        for (CountryNetwork countryNetwork : system.getNetworkList()) {
-            comboCountry.addItem(countryNetwork);
+        if (!system.getNetworkList().isEmpty()) {
+            lblWarning.setText("");
+            for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                comboCountry.addItem(countryNetwork);
+            }
+        } else {
+            comboEnterprise.setEnabled(false);
+            comboOrganization.setEnabled(false);
+            comboCountry.setEnabled(false);
+            comboState.setEnabled(false);
+            txtName.setEnabled(false);
+            txtUserName.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtImage.setEnabled(false);
+            txtPassword.setEnabled(false);
+            btnFile.setEnabled(false);
+            btnCreate.setEnabled(false);
+            btnLocation.setEnabled(false);
+            txtOrgName.setEnabled(false);
+            txtCity.setEnabled(false);
+            txtLoc.setEditable(false);
+//            JOptionPane.showMessageDialog(null, "System is not available for the country, please contact the system administrator");
+            lblWarning.setText("*System is not available for the country, please contact the system administrator");
         }
     }
 
@@ -106,6 +127,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         lblName = new javax.swing.JLabel();
         lblOrganization = new javax.swing.JLabel();
         lblCity = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -297,6 +319,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
         lblCity.setForeground(new java.awt.Color(255, 0, 0));
         add(lblCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 590, -1, -1));
+
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 830, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -313,7 +338,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                     for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
                         if (enterprise == e) {
                             for (Organization org : e.getOrganizationDirectory().getOrganizationList()) {
-                                if (org.getName().equals(txtOrgName.getText()) && org.getLatLong().getLatitude()== latLong.getLatitude() && org.getLatLong().getLongitude()==latLong.getLongitude()) {
+                                if (org.getName().equals(txtOrgName.getText()) && org.getLatLong().getLatitude() == latLong.getLatitude() && org.getLatLong().getLongitude() == latLong.getLongitude()) {
                                     JOptionPane.showMessageDialog(null, "Organization is already present please add new organization");
                                 }
                             }
@@ -329,8 +354,8 @@ public class SignUpJPanel extends javax.swing.JPanel {
                         if (enterprise == e) {
                             for (WorkRequest workReq : e.getWorkQueue().getWorkRequestList()) {
                                 if (workReq instanceof SignUpRequestOrganization) {
-                                    System.out.println("iifififif"+ latLong.getLatitude()+latLong.getLongitude());
-                                    if (((SignUpRequestOrganization) workReq).getOrgName().equals(txtOrgName.getText()) && ((SignUpRequestOrganization) workReq).getLatLong().getLatitude() == latLong.getLatitude() && ((SignUpRequestOrganization) workReq).getLatLong().getLongitude()== latLong.getLongitude()){
+                                    System.out.println("iifififif" + latLong.getLatitude() + latLong.getLongitude());
+                                    if (((SignUpRequestOrganization) workReq).getOrgName().equals(txtOrgName.getText()) && ((SignUpRequestOrganization) workReq).getLatLong().getLatitude() == latLong.getLatitude() && ((SignUpRequestOrganization) workReq).getLatLong().getLongitude() == latLong.getLongitude()) {
                                         JOptionPane.showMessageDialog(null, "Request is already raised for this organization");
                                         return;
                                     }
@@ -404,7 +429,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Enter integer for Salary", "Warning", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
@@ -434,9 +459,48 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
         // TODO add your handling code here:
         comboState.removeAllItems();
-        CountryNetwork country = (CountryNetwork) comboCountry.getSelectedItem();
-        for (StateNetwork stateNetwork : country.getStateList()) {
-            comboState.addItem(stateNetwork);
+
+        CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
+        if (c.getStateList().size() > 0) {
+            lblWarning.setText("");
+            for (StateNetwork state : c.getStateList()) {
+                comboState.addItem(state);
+            }
+            comboEnterprise.setEnabled(true);
+            comboOrganization.setEnabled(true);
+            comboState.setEnabled(true);
+            txtName.setEnabled(true);
+            txtUserName.setEnabled(true);
+            txtEmail.setEnabled(true);
+            txtImage.setEnabled(true);
+            txtPassword.setEnabled(true);
+            btnFile.setEnabled(true);
+            btnCreate.setEnabled(true);
+            btnLocation.setEnabled(true);
+            txtOrgName.setEnabled(true);
+            txtCity.setEnabled(true);
+            txtLoc.setEditable(true);
+            comboCountry.setEnabled(true);
+            lblWarning.setText("");
+
+        } else {
+            comboEnterprise.setEnabled(false);
+            comboOrganization.setEnabled(false);
+            comboState.setEnabled(false);
+            txtName.setEnabled(false);
+            txtUserName.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtImage.setEnabled(false);
+            txtPassword.setEnabled(false);
+            btnFile.setEnabled(false);
+            btnCreate.setEnabled(false);
+            btnLocation.setEnabled(false);
+            txtOrgName.setEnabled(false);
+            txtCity.setEnabled(false);
+            txtLoc.setEditable(false);
+//            JOptionPane.showMessageDialog(null, "System is not available for the country, please contact the system administrator");
+            lblWarning.setText("*System is not available for the State, please contact the system administrator");
+            return;
         }
     }//GEN-LAST:event_comboCountryActionPerformed
 
@@ -444,9 +508,51 @@ public class SignUpJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         comboEnterprise.removeAllItems();
         StateNetwork stateNetwork = (StateNetwork) comboState.getSelectedItem();
-        for (Enterprise e : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
-            comboEnterprise.addItem(e);
+        if (stateNetwork != null) {
+            if (stateNetwork.getEnterpriseDirectory() != null) {
+                if (stateNetwork.getEnterpriseDirectory().getEnterpriseList().size() > 0) {
+
+                    comboEnterprise.setEnabled(true);
+                    comboOrganization.setEnabled(true);
+                    comboState.setEnabled(true);
+                    txtName.setEnabled(true);
+                    txtUserName.setEnabled(true);
+                    txtEmail.setEnabled(true);
+                    txtImage.setEnabled(true);
+                    txtPassword.setEnabled(true);
+                    btnFile.setEnabled(true);
+                    btnCreate.setEnabled(true);
+                    btnLocation.setEnabled(true);
+                    txtOrgName.setEnabled(true);
+                    txtCity.setEnabled(true);
+                    txtLoc.setEditable(true);
+                    comboCountry.setEnabled(true);
+                    lblWarning.setText("");
+
+                    for (Enterprise e : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+                        comboEnterprise.addItem(e);
+                    }
+                } else {
+                    comboOrganization.setEnabled(false);
+                    comboEnterprise.setEnabled(false);
+                    txtName.setEnabled(false);
+                    txtUserName.setEnabled(false);
+                    txtEmail.setEnabled(false);
+                    txtImage.setEnabled(false);
+                    txtPassword.setEnabled(false);
+                    btnFile.setEnabled(false);
+                    btnCreate.setEnabled(false);
+                    btnLocation.setEnabled(false);
+                    txtOrgName.setEnabled(false);
+                    txtCity.setEnabled(false);
+                    txtLoc.setEnabled(false);
+                    lblWarning.setText("*NO Enterprise is Available for this State");
+                    return;
+                }
+            }
         }
+
+
     }//GEN-LAST:event_comboStateActionPerformed
 
     private void comboEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEnterpriseActionPerformed
@@ -454,9 +560,42 @@ public class SignUpJPanel extends javax.swing.JPanel {
         comboOrganization.removeAllItems();
         Enterprise e = (Enterprise) comboEnterprise.getSelectedItem();
         if (e != null) {
+            comboEnterprise.setEnabled(true);
+            comboOrganization.setEnabled(true);
+            comboState.setEnabled(true);
+            txtName.setEnabled(true);
+            txtUserName.setEnabled(true);
+            txtEmail.setEnabled(true);
+            txtImage.setEnabled(true);
+            txtPassword.setEnabled(true);
+            btnFile.setEnabled(true);
+            btnCreate.setEnabled(true);
+            btnLocation.setEnabled(true);
+            txtOrgName.setEnabled(true);
+            txtCity.setEnabled(true);
+            txtLoc.setEnabled(true);
+            comboCountry.setEnabled(true);
+            lblWarning.setText("");
             for (Organization.Type org : e.getOrganizations()) {
                 comboOrganization.addItem(org);
             }
+        } else {
+            comboOrganization.setEnabled(false);
+            comboEnterprise.setEnabled(false);
+            txtName.setEnabled(false);
+            txtUserName.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtImage.setEnabled(false);
+            txtPassword.setEnabled(false);
+            btnFile.setEnabled(false);
+            btnCreate.setEnabled(false);
+            btnLocation.setEnabled(false);
+            txtOrgName.setEnabled(false);
+            txtCity.setEnabled(false);
+            txtLoc.setEnabled(false);
+//            JOptionPane.showMessageDialog(null, "System is not available for the country, please contact the system administrator");
+            lblWarning.setText("*NO Organization is Available for this Enterprise");
+
         }
     }//GEN-LAST:event_comboEnterpriseActionPerformed
 
@@ -465,6 +604,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         String userName = txtUserName.getText();
         if (!txtUserName.getText().isEmpty()) {
             if (!Validator.validateUserName(txtUserName.getText())) {
+                lblAcceptedUserName.setText("");
                 lblUserName.setText("*Only AlphaNumeric Characters and Spaces are allowed");
                 txtUserName.setText("");
             } else if (!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())) {
@@ -533,7 +673,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (!txtOrgName.getText().isEmpty()) {
             if (!Validator.validateName(txtOrgName.getText())) {
-                lblOrganization.setText("*Only Alphabets and Spaces are allowed");
+                lblOrganization.setText("*Only Alphabets, '_' and '.' are allowed");
                 txtOrgName.setText("");
             } else {
                 lblOrganization.setText("");
@@ -584,6 +724,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblOrganization;
     private javax.swing.JLabel lblUserName;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtImage;
