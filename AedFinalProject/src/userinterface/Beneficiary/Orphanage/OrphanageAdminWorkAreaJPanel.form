@@ -35,7 +35,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="320" y="110" width="590" height="-1"/>
+          <AbsoluteConstraints x="270" y="110" width="590" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -59,7 +59,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="620" y="370" width="170" height="70"/>
+          <AbsoluteConstraints x="560" y="310" width="170" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -71,7 +71,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="70" green="4f" red="47" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Manage Employee"/>
+        <Property name="text" type="java.lang.String" value="Manage Person"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="2"/>
@@ -83,7 +83,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="370" y="370" width="170" height="70"/>
+          <AbsoluteConstraints x="310" y="310" width="170" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -95,11 +95,11 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="70" green="4f" red="47" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Enterprise :"/>
+        <Property name="text" type="java.lang.String" value="Organization :"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="380" y="240" width="160" height="30"/>
+          <AbsoluteConstraints x="320" y="180" width="160" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -114,7 +114,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="510" y="240" width="130" height="20"/>
+          <AbsoluteConstraints x="500" y="180" width="130" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -126,7 +126,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="4" green="5" red="f6" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Shelter Found!!!"/>
+        <Property name="text" type="java.lang.String" value="Homeless Found!!!"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="2"/>
@@ -138,7 +138,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="490" y="530" width="180" height="70"/>
+          <AbsoluteConstraints x="430" y="470" width="180" height="70"/>
         </Constraint>
       </Constraints>
     </Component>

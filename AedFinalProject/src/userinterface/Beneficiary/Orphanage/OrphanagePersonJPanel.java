@@ -31,11 +31,11 @@ import utility.Validator;
  * @author raunak
  */
 public class OrphanagePersonJPanel extends javax.swing.JPanel {
-    
+
     private JPanel userProcessContainer;
-    private UserAccount account;    
-    private OrphanageOrganization organization;    
-    private Enterprise enterprise;    
+    private UserAccount account;
+    private OrphanageOrganization organization;
+    private Enterprise enterprise;
     private EcoSystem business;
     private StateNetwork state;
     private CountryNetwork country;
@@ -55,10 +55,11 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         this.state = network;
         this.country = cNetwork;
         TextArea.enable(false);
-          populateComboBox();
+        populateComboBox();
         // populateOrganizationEmpComboBox();
     }
-public void populateComboBox() {
+
+    public void populateComboBox() {
         reqComboBox.removeAllItems();
         reqComboBox.addItem("White American");
         reqComboBox.addItem("African");
@@ -81,23 +82,44 @@ public void populateComboBox() {
 //            organizationEmpJComboBox.addItem(role);
 //        }
 //    }
+
     private void populateTable(OrphanageOrganization organization) {
-        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        
-        model.setRowCount(0);
-        
-        for (Person person : organization.getPersonList().getPersonList()) {
-            
-            Object[] row = new Object[7];
-            row[0] = person.getPersonId();
-            row[1] = person;
-            row[2] = person.getAge();
-            row[3] = person.getSex();
-            row[4] = person.getEthnicity();
-            row[5] = person.getDateOfJoining();
-            row[6] = person.getEducationBackground();
-            
-            model.addRow(row);
+        try {
+            lblName.setText("");
+            lblWarning.setText("");
+
+            DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+
+            model.setRowCount(0);
+            if (organization != null) {
+                if (organization.getPersonList() != null) {
+
+                    if (organization.getPersonList().getPersonList().size() > 0) {
+
+                        lblWarning.setText("");
+
+                        for (Person person : organization.getPersonList().getPersonList()) {
+
+                            Object[] row = new Object[5];
+                            row[0] = person.getPersonId();
+                            row[1] = person;
+                            row[2] = person.getAge();
+                            row[3] = person.getSex();
+                            row[4] = person.getDateOfJoining();
+
+                            model.addRow(row);
+                        }
+                    } else {
+                        lblWarning.setText("*NO Data for Person is Available");
+                    }
+                } else {
+                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+                }
+            } else {
+                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }
 
@@ -147,6 +169,9 @@ public void populateComboBox() {
         btnViewDetails = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         picText = new javax.swing.JTextField();
+        btnDelete = new javax.swing.JButton();
+        lblWarning = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -198,7 +223,7 @@ public void populateComboBox() {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 810, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 760, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
@@ -207,6 +232,11 @@ public void populateComboBox() {
 
         nameJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(71, 79, 112));
+        nameJTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nameJTextFieldFocusLost(evt);
+            }
+        });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 126, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
@@ -242,7 +272,7 @@ public void populateComboBox() {
                 ARadioButtonActionPerformed(evt);
             }
         });
-        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, 320, -1));
+        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
 
         btnGrpReasons.add(BRadioButton2);
         BRadioButton2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -253,7 +283,7 @@ public void populateComboBox() {
                 BRadioButton2ActionPerformed(evt);
             }
         });
-        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 550, 200, -1));
+        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 550, 160, -1));
 
         btnGrpReasons.add(CRadioButton3);
         CRadioButton3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -275,7 +305,7 @@ public void populateComboBox() {
                 ORadioButton4ActionPerformed(evt);
             }
         });
-        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 550, 90, -1));
+        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 550, 90, -1));
 
         jScrollPane2.setForeground(new java.awt.Color(71, 79, 112));
 
@@ -294,8 +324,8 @@ public void populateComboBox() {
 
         jLabel7.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel7.setText("Ethnicity:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 70, -1));
+        jLabel7.setText("*Ethnicity:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(71, 79, 112));
@@ -370,7 +400,7 @@ public void populateComboBox() {
                 btnViewDetailsActionPerformed(evt);
             }
         });
-        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, -1, -1));
+        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 130, 30));
 
         jLabel11.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(71, 79, 112));
@@ -380,93 +410,113 @@ public void populateComboBox() {
         picText.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         picText.setForeground(new java.awt.Color(71, 79, 112));
         add(picText, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 660, 90, -1));
+
+        btnDelete.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(71, 79, 112));
+        btnDelete.setText("Delete request");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 140, 30));
+
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 820, -1, -1));
+
+        lblName.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 370, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
-        if (!(nameJTextField.getText().isEmpty())) {
-            if (!(ageTextField.getText().isEmpty())) {
-                if (((rdBtnMale.isSelected() || rdBtnFemale.isSelected() || rdBtnOthers.isSelected()))) {
-                    
-                    if (rdBtnCollegeGrad.isSelected() || rdBtnHighschoolGrad.isSelected() || rdBtnUneducated.isSelected()) {
-                        
-                        if (ARadioButton.isSelected() || BRadioButton2.isSelected() || CRadioButton3.isSelected() || ORadioButton4.isSelected()) {
-                            
-                            if (!(picText.getText().isEmpty())) {
-                                try {
-                                    //SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-                                    //ClinicOrganization organization = (ClinicOrganization) organizationEmpJComboBox.getSelectedItem();
-                                    String name = nameJTextField.getText();
-                                    int age = Integer.parseInt(ageTextField.getText());
-                                    String ethnicity = (String) reqComboBox.getSelectedItem();
-                                    
-                                    String sex = null;
-                                    if (rdBtnMale.isSelected()) {
-                                        sex = "Mle";
-                                    } else if (rdBtnFemale.isSelected()) {
-                                        sex = "Female";
-                                    } else if (rdBtnOthers.isSelected()) {
-                                        sex = "Others";
+        try {
+            if (!(nameJTextField.getText().isEmpty())) {
+                if (!(ageTextField.getText().isEmpty())) {
+                    if (((rdBtnMale.isSelected() || rdBtnFemale.isSelected() || rdBtnOthers.isSelected()))) {
+
+                        if (rdBtnCollegeGrad.isSelected() || rdBtnHighschoolGrad.isSelected() || rdBtnUneducated.isSelected()) {
+
+                            if (ARadioButton.isSelected() || BRadioButton2.isSelected() || CRadioButton3.isSelected() || ORadioButton4.isSelected()) {
+
+                                if (!(picText.getText().isEmpty())) {
+                                    try {
+                                        //SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+                                        //ClinicOrganization organization = (ClinicOrganization) organizationEmpJComboBox.getSelectedItem();
+                                        String name = nameJTextField.getText();
+                                        int age = Integer.parseInt(ageTextField.getText());
+                                        String ethnicity = (String) reqComboBox.getSelectedItem();
+
+                                        String sex = null;
+                                        if (rdBtnMale.isSelected()) {
+                                            sex = "Mle";
+                                        } else if (rdBtnFemale.isSelected()) {
+                                            sex = "Female";
+                                        } else if (rdBtnOthers.isSelected()) {
+                                            sex = "Others";
+                                        }
+                                        String educationBG = null;
+                                        if (rdBtnCollegeGrad.isSelected()) {
+                                            educationBG = "College Graduate";
+                                        } else if (rdBtnHighschoolGrad.isSelected()) {
+                                            educationBG = "HighSchool Graduate";
+                                        } else if (rdBtnUneducated.isSelected()) {
+                                            educationBG = "Uneducated";
+                                        }
+
+                                        String reason = null;
+                                        if (ARadioButton.isSelected()) {
+                                            reason = "Individual and relational factors";
+                                        } else if (BRadioButton2.isSelected()) {
+                                            reason = "Economic Issues";
+                                        } else if (CRadioButton3.isSelected()) {
+                                            reason = "Systems failures";
+                                        } else if (ORadioButton4.isSelected()) {
+                                            reason = "Others";
+                                        }
+
+                                        String reasonDescription = TextArea.getText();
+                                        organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                        JOptionPane.showMessageDialog(null, "Person Created");
+                                        nameJTextField.setText("");
+                                        ageTextField.setText("");
+                                        buttonGroup1.clearSelection();
+                                        btnGrpEducationBackGround.clearSelection();
+                                        btnGrpReasons.clearSelection();
+                                        TextArea.setText("");
+                                        picText.setText("");
+                                        populateTable(organization);
+
+                                    } catch (NumberFormatException p) {
+                                        JOptionPane.showMessageDialog(null, "Please enter Valid Age");
                                     }
-                                    String educationBG = null;
-                                    if (rdBtnCollegeGrad.isSelected()) {
-                                        educationBG = "College Graduate";
-                                    } else if (rdBtnHighschoolGrad.isSelected()) {
-                                        educationBG = "HighSchool Graduate";
-                                    } else if (rdBtnUneducated.isSelected()) {
-                                        educationBG = "Uneducated";
-                                    }
-                                    
-                                    String reason = null;
-                                    if (ARadioButton.isSelected()) {
-                                        reason = "Individual and relational factors";
-                                    } else if (BRadioButton2.isSelected()) {
-                                        reason = "Economic Issues";
-                                    } else if (CRadioButton3.isSelected()) {
-                                        reason = "Systems failures";
-                                    } else if (ORadioButton4.isSelected()) {
-                                        reason = "Others";
-                                    }
-                                    
-                                    String reasonDescription = TextArea.getText();
-                                    organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
-                                    JOptionPane.showMessageDialog(null, "Person Created");
-                                    nameJTextField.setText("");
-                                    ageTextField.setText("");
-                                    buttonGroup1.clearSelection();
-                                    btnGrpEducationBackGround.clearSelection();
-                                    btnGrpReasons.clearSelection();
-                                    TextArea.setText("");
-                                    picText.setText("");
-                                    populateTable(organization);
-                                    
-                                } catch (NumberFormatException p) {
-                                    JOptionPane.showMessageDialog(null, "Please enter Valid Age");
+
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Please upload the picture", "Warning", JOptionPane.WARNING_MESSAGE);
                                 }
-                                
                             } else {
-                                JOptionPane.showMessageDialog(null, "Please upload the picture", "Warning", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Please Select the either of the options for Reason", "Warning", JOptionPane.WARNING_MESSAGE);
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "Please Select the either of the options for Reason", "Warning", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Please Select education background option", "Warning", JOptionPane.WARNING_MESSAGE);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Please Select education background option", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Please Select male or female option", "Warning", JOptionPane.WARNING_MESSAGE);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please Select male or female option", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please enter the age", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
+
             } else {
-                JOptionPane.showMessageDialog(null, "Please enter the age", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter the name", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "Please enter the name", "Warning", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
 
     }//GEN-LAST:event_btnCreatePersonActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        
+
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -494,31 +544,35 @@ public void populateComboBox() {
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File f1 = chooser.getSelectedFile();
-        if (f1 != null) {
-            try {
-                Image pic = ImageIO.read(f1);
-                pic = pic.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
-                picText.setText(chooser.getSelectedFile().getPath());
-                photo = new ImageIcon(pic);
-                
-            } catch (Exception e) {
-                
-            }
-        } else {
-            
-            JOptionPane.showMessageDialog(null, "Please select a picture", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
+        try {
+            lblWarning.setText("");
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(null);
+            File f1 = chooser.getSelectedFile();
+            if (f1 != null) {
+                try {
+                    Image pic = ImageIO.read(f1);
+                    pic = pic.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
+                    picText.setText(chooser.getSelectedFile().getPath());
+                    photo = new ImageIcon(pic);
 
+                } catch (Exception e) {
+
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Please select a picture", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+        }
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
         // TODO add your handling code here:
 
         int selectedrow = organizationJTable.getSelectedRow();
-        
+
         if (selectedrow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a Row from table first to view details", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -527,10 +581,49 @@ public void populateComboBox() {
             userProcessContainer.add("HomelessPersonViewJPanel", muajp);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
-            
+
         }
 
     }//GEN-LAST:event_btnViewDetailsActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = organizationJTable.getSelectedRow();
+        if (selectedRow >= 0) {
+
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Would you like to delete the details", "Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+
+                Person p = (Person) organizationJTable.getValueAt(selectedRow, 1);
+
+                for (Person person : organization.getPersonList().getPersonList()) {
+                    if (p == person) {
+                        organization.getPersonList().getPersonList().remove(p);
+                        break;
+                    }
+
+                }
+
+                JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+                populateTable(organization);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Row from table ", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void nameJTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameJTextFieldFocusLost
+        // TODO add your handling code here:
+        if (!nameJTextField.getText().isEmpty()) {
+            if (!Validator.validateName(nameJTextField.getText())) {
+                lblName.setText("*Only Alphabets and Spaces are allowed");
+                nameJTextField.setText("");
+            } else {
+                lblName.setText("");
+            }
+        }
+    }//GEN-LAST:event_nameJTextFieldFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ARadioButton;
@@ -541,6 +634,7 @@ public void populateComboBox() {
     private javax.swing.JTextField ageTextField;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreatePerson;
+    private javax.swing.JButton btnDelete;
     private javax.swing.ButtonGroup btnGrpEducationBackGround;
     private javax.swing.ButtonGroup btnGrpReasons;
     private javax.swing.JButton btnUpload;
@@ -560,6 +654,8 @@ public void populateComboBox() {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JTable organizationJTable;
     private javax.swing.JTextField picText;
