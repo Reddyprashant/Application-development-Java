@@ -91,94 +91,118 @@ private NGORequestAreaJPanel ngoRequestPanel;
         detailTextArea = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
-        backBtn = new javax.swing.JButton();
         reqComboBox = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
         enterpriseLabel.setText("Organization:");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 340, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 150, 30));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Type:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 106, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
 
         eventNameTextfield.setEditable(false);
+        eventNameTextfield.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        eventNameTextfield.setForeground(new java.awt.Color(71, 79, 112));
         eventNameTextfield.setEnabled(false);
-        add(eventNameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 132, 232, -1));
+        add(eventNameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 232, -1));
 
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Event Name");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 137, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 100, -1));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Available Volunteers");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 182, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
 
+        availVolTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        availVolTextField.setForeground(new java.awt.Color(71, 79, 112));
         availVolTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 availVolTextFieldActionPerformed(evt);
             }
         });
-        add(availVolTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 177, 232, -1));
+        add(availVolTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, 232, -1));
 
         dateField.setEditable(false);
+        dateField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        dateField.setForeground(new java.awt.Color(71, 79, 112));
         dateField.setEnabled(false);
         dateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dateFieldActionPerformed(evt);
             }
         });
-        add(dateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 248, 232, -1));
+        add(dateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 232, -1));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Event Date ");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 253, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
 
+        UpdateBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        UpdateBtn.setForeground(new java.awt.Color(71, 79, 112));
         UpdateBtn.setText("Update");
         UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateBtnActionPerformed(evt);
             }
         });
-        add(UpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, -1, -1));
+        add(UpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 140, 50));
 
+        jButton2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(71, 79, 112));
         jButton2.setText("<<Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 547, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 609, 100, 40));
 
+        jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("Required Volunteers");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 220, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
 
         reqVolText.setEditable(false);
+        reqVolText.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        reqVolText.setForeground(new java.awt.Color(71, 79, 112));
         reqVolText.setEnabled(false);
-        add(reqVolText, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 210, 232, -1));
+        add(reqVolText, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, 232, -1));
 
+        jLabel7.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Event Details");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 280, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, -1, -1));
 
         detailTextArea.setEditable(false);
         detailTextArea.setColumns(20);
+        detailTextArea.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        detailTextArea.setForeground(new java.awt.Color(71, 79, 112));
         detailTextArea.setRows(5);
         detailTextArea.setEnabled(false);
         jScrollPane1.setViewportView(detailTextArea);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 280, 232, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, 232, -1));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
-        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 130, 30));
 
-        backBtn.setText("<Back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
-            }
-        });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+        nameLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(71, 79, 112));
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 130, 30));
 
         reqComboBox.setEditable(false);
+        reqComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        reqComboBox.setForeground(new java.awt.Color(71, 79, 112));
         reqComboBox.setEnabled(false);
-        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 232, -1));
+        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, 232, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
@@ -224,32 +248,77 @@ if(organization.getEventDirectory().getEventDirectory() == null){
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-             
+                   userProcessContainer.remove(this);
         
+        Component[] componentArray=userProcessContainer.getComponents();
+        NGORequestAreaJPanel ngoRequestAreaJPanel =(NGORequestAreaJPanel)userProcessContainer.getComponent(componentArray.length -1);
+        ngoRequestAreaJPanel.populateUpdatedTable();
+        ngoRequestAreaJPanel.populateWorkQueueTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void availVolTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availVolTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_availVolTextFieldActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        
-        Component[] componentArray=userProcessContainer.getComponents();
-        NGORequestAreaJPanel ngoRequestPanel =(NGORequestAreaJPanel)userProcessContainer.getComponent(componentArray.length -1);
-        ngoRequestPanel.populateUpdatedTable();
-        ngoRequestPanel.populateWorkQueueTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-        
-    }//GEN-LAST:event_backBtnActionPerformed
+                      
+
+//    private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
+//        // TODO add your handling code here:
+//        try
+//        {
+//        SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+//        String name = eventNameTextfield.getText();
+//        int availableVolunteers= Integer.parseInt(availVolTextField.getText());
+//        int requiredVolunteers = Integer.parseInt(reqVolText.getText());
+//        Date eventDate = date.parse(dateField.getText());
+//if(organization.getEventDirectory().getEventDirectory() == null){
+//    organization.setEventDirectory(new EventDirectory());
+//}
+//        Event event=  organization.getEventDirectory().createEvent();
+//            event.setAvailVolunteers(availableVolunteers);
+//            event.setRequiredVolunteers(requiredVolunteers);
+//            
+//           event.setEventDate(eventDate);
+//            event.setEventName(name);
+//            event.setServingOrganization(organization);
+//            event.setSenderOrganization(workRequest.getSenderOrganization());
+//            
+//            workRequest.setNumberOfVolunteersRequest(requiredVolunteers-availableVolunteers);
+//            
+//       if(workRequest.getNumberOfVolunteersRequest()==0 && workRequest.isLogisticRequest()==true){
+//            workRequest.setStatus("Complete");
+//            JOptionPane.showMessageDialog(null, "Details updated Successfully");
+//            availVolTextField.setText("");
+//        }
+//            
+//        }
+//        catch(ParseException e)
+//            
+//        {
+//            JOptionPane.showMessageDialog(null, "Please enter date in MM/dd/yyyy format");
+//        }
+//    }                                         
+//
+//    private void dateFieldActionPerformed(java.awt.event.ActionEvent evt) {                                          
+//        // TODO add your handling code here:
+//    }                                         
+//
+//    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+//        // TODO add your handling code here:
+//             
+//        
+//    }                                        
+//
+//    private void availVolTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+//        // TODO add your handling code here:
+//    }                                                 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton UpdateBtn;
     private javax.swing.JTextField availVolTextField;
-    private javax.swing.JButton backBtn;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField dateField;
     private javax.swing.JTextArea detailTextArea;
