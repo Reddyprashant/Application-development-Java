@@ -7,19 +7,14 @@
 package userinterface.Logistics;
 
 //import userinterface.AdministrativeRole.*;
-import userinterface.Government.*;
-import userinterface.Beneficiary.*;
-import userinterface.EntityAdmin.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import userinterface.EntityAdmin.Education.EducationManageEmployeeJPanel;
-import userinterface.googleApi.HomelessFoundJPanel;
+import userinterface.Government.GovernmentManageEmployeeJPanel;
 
 /**
  *
@@ -116,8 +111,9 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-EducationManageEmployeeJPanel manageEmployeeJPanel = new EducationManageEmployeeJPanel(userProcessContainer,  enterprise.getOrganizationDirectory());
-        userProcessContainer.add("EducationManageEmployeeJPanel", manageEmployeeJPanel);
+GovernmentManageEmployeeJPanel manageEmployeeJPanel = new GovernmentManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("GovernmentManageEmployeeJPanel1", manageEmployeeJPanel);
+
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 //        LogisticsManageEmployeeJPanel manageEmployeeJPanel = new LogisticsManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());

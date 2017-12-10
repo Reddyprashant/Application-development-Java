@@ -20,6 +20,7 @@ import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -101,6 +102,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         tblReq = new javax.swing.JTable();
         lblWarning = new javax.swing.JLabel();
         btnAssignToMe = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -169,6 +171,16 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, -1, -1));
+
+        backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(71, 79, 112));
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 110, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -297,8 +309,16 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnServe;

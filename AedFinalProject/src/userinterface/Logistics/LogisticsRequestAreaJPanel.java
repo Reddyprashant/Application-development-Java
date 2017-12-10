@@ -18,6 +18,7 @@ import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -90,6 +91,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
         btnAssign1 = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -143,6 +145,16 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
+
+        backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(71, 79, 112));
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 110, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -257,8 +269,16 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAssign1ActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnAssign1;
     private javax.swing.JButton btnServe;

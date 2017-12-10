@@ -14,6 +14,7 @@ import Business.Network.StateNetwork;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.Government.GovernmentManageEmployeeJPanel;
 
 /**
  *
@@ -119,12 +120,16 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-
-        BeneficiaryManageEmployeeJPanel manageEmployeeJPanel = new BeneficiaryManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("BeneficiaryManageEmployeeJPanel", manageEmployeeJPanel);
+GovernmentManageEmployeeJPanel manageEmployeeJPanel = new GovernmentManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("GovernmentManageEmployeeJPanel2", manageEmployeeJPanel);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+//        BeneficiaryManageEmployeeJPanel manageEmployeeJPanel = new BeneficiaryManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+//        userProcessContainer.add("BeneficiaryManageEmployeeJPanel", manageEmployeeJPanel);
+//
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 

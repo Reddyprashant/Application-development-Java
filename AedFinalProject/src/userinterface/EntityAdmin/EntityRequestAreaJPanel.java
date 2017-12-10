@@ -28,6 +28,7 @@ import Business.SignUp.SignUpRequestOrganization;
 import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.SendFailedException;
@@ -102,6 +103,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         btnComplete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        backJButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -159,6 +161,16 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Entity Admin Request Area Panel");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 450, -1));
+
+        backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(71, 79, 112));
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 670, 110, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -251,8 +263,16 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCompleteActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnComplete;
     private javax.swing.JLabel jLabel1;
