@@ -5,6 +5,7 @@
  */
 package userinterface.SignUp;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Network.CountryNetwork;
 import Business.SignUp.SignUpRequestCountry;
@@ -28,7 +29,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
     private EcoSystem system;
     private BufferedImage file;
     private JFileChooser openFile;
-
+     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     public SignUpJPanelCountry(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.system = system;
@@ -176,6 +177,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                                 system.getWorkQueue().getWorkRequestList().add(countryRequest);
 
                                 JOptionPane.showMessageDialog(null, "Request raised Successfully");
+                                 dB4OUtil.storeSystem(system);
                                 txtEmail.setText("");
                                 txtPassword.setText("");
                                 txtName.setText("");

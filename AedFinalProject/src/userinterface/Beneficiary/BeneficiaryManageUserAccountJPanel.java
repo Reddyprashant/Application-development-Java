@@ -170,7 +170,6 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel1.setText("User Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
 
-        userJTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         userJTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         userJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -278,6 +277,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
             lblWarning.setText("");
             String userName = nameJTextField.getText();
             String password = String.valueOf(passwordJTextField.getPassword());
+            if(employeeJComboBox.getSelectedItem() != null){
             if (!((userName.equals("")))) {
                 if (!(password.equals(""))) {
                     if (EcoSystem.checkIfUsernameIsUnique(userName)) {
@@ -287,7 +287,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
                         Role role = (Role) roleJComboBox.getSelectedItem();
 
                         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-                        JOptionPane.showMessageDialog(null, "Account created succesfull", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Account created succesfull");
                         nameJTextField.setText("");
                         passwordJTextField.setText("");
                         popData();
@@ -300,7 +300,9 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Enter value for username", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-        } catch (Exception ex) {
+        }else {
+                JOptionPane.showMessageDialog(null, "No Employee available", "Warning", JOptionPane.WARNING_MESSAGE);
+            }} catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed

@@ -103,8 +103,6 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtcity = new javax.swing.JTextField();
-        txtAddress = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         txtLoc = new javax.swing.JTextField();
         btnLocation = new javax.swing.JButton();
@@ -158,13 +156,13 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, -1, -1));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 430, -1, -1));
 
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 81, 30));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 170, 30));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel1.setText("beni o");
+        jLabel1.setText("Benificiary Organization:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
 
         backJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -187,7 +185,7 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
                 orgNameTextFieldFocusLost(evt);
             }
         });
-        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 80, 30));
+        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 170, 30));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
@@ -204,19 +202,13 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
                 txtcityFocusLost(evt);
             }
         });
-        add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 80, 30));
-        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 80, 30));
-
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel5.setText("Organization Address");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+        add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 170, 30));
 
         jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
         jLabel18.setText("Location :");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 100, -1));
-        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, 170, -1));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 100, -1));
+        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 170, -1));
 
         btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnLocation.setForeground(new java.awt.Color(71, 79, 112));
@@ -226,7 +218,7 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
                 btnLocationActionPerformed(evt);
             }
         });
-        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, -1, -1));
+        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, -1, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 51));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
@@ -243,7 +235,7 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
         try {
-            if (directory != null) {
+            if (directory != null && !orgNameTextField.getText().isEmpty() && !txtcity.getText().isEmpty() && !txtLoc.getText().isEmpty()) {
                 lblWarning.setText("");
                 lblWarningTable.setText("");
                 Type type = (Type) organizationJComboBox.getSelectedItem();
@@ -252,14 +244,13 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
                 directory.createOrganization(type, name, city, latLong);
                 JOptionPane.showMessageDialog(null, "Organization created successfully");
                 orgNameTextField.setText("");
-                txtAddress.setText("");
                 txtcity.setText("");
                 txtLoc.setText("");
                 populateTable();
             }
             
                 else{
-                        lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+                        lblWarning.setText("Please enter all the values");
                         }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
@@ -315,7 +306,6 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCity1;
     private javax.swing.JLabel lblName;
@@ -324,7 +314,6 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField orgNameTextField;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;
-    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtLoc;
     private javax.swing.JTextField txtcity;
     // End of variables declaration//GEN-END:variables

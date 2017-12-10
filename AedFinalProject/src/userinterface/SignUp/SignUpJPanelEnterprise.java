@@ -5,6 +5,7 @@
  */
 package userinterface.SignUp;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
@@ -35,7 +36,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private EcoSystem system;
     private BufferedImage file;
     private JFileChooser openFile;
-    
+     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     public SignUpJPanelEnterprise(JPanel userProcessContainer, EcoSystem business) {
         initComponents();
         this.system = business;
@@ -319,6 +320,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
 
                                 //business.getWorkQueue().getWorkRequestList().add(stateRequest);
                                 JOptionPane.showMessageDialog(null, "Request raised successfully");
+                                 dB4OUtil.storeSystem(system);
                                 txtName.setText("");
                                 txtImage.setText("");
                                 txtEmail.setText("");

@@ -61,7 +61,7 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel1.setText("Entity Work Area -Adminstrative Role");
+        jLabel1.setText("Beneficiary Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, -1));
 
         userJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N

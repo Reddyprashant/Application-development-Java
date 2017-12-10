@@ -5,6 +5,7 @@
  */
 package userinterface.SignUp;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
@@ -26,7 +27,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-
+     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     public SignUpJPanelState(JPanel userProcessContainer, EcoSystem business) {
         initComponents();
         this.system = business;
@@ -143,6 +144,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
                 }
 
                 JOptionPane.showMessageDialog(null, "State Request created successfully");
+                 dB4OUtil.storeSystem(system);
                 txtName.setText("");
 
             } else {

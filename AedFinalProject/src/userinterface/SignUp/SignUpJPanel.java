@@ -5,6 +5,7 @@
  */
 package userinterface.SignUp;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.LatLong;
@@ -41,7 +42,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private JFileChooser openFile = new JFileChooser();
     private String type;
     private LatLong latLong;
-
+     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     public SignUpJPanel(JPanel userProcessContainer, EcoSystem business, SignUpRequest.SignUpType type) {
         initComponents();
         this.system = business;
@@ -411,14 +412,12 @@ public class SignUpJPanel extends javax.swing.JPanel {
                                 }
 
                                 JOptionPane.showMessageDialog(null, "Registration successful. Your account will be available in 24 hrs");
+                                 dB4OUtil.storeSystem(system);
  txtName.setText("");
             txtUserName.setText("");
             txtEmail.setText("");
             txtImage.setText("");
             txtPassword.setText("");
-            btnFile.setText("");
-            btnCreate.setText("");
-            btnLocation.setText("");
             txtOrgName.setText("");
             txtCity.setText("");
             txtLoc.setText("");
