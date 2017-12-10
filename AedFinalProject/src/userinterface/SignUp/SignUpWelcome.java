@@ -93,24 +93,25 @@ public class SignUpWelcome extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(900, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Welcome To One Word One Army");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Please Select an Option from Below");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 510, -1));
 
-        add(comboBoxSignUpType, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 210, 33));
+        comboBoxSignUpType.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        add(comboBoxSignUpType, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, 210, 33));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Register for Respective Organization");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 550, -1, -1));
 
-        btnSubmit.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnSubmit.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnSubmit.setForeground(new java.awt.Color(71, 79, 112));
         btnSubmit.setText("Register");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -118,10 +119,10 @@ public class SignUpWelcome extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 130, 42));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 640, 130, 42));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/Volunteer.jpg"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 19, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 710, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed

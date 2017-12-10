@@ -65,31 +65,35 @@ public class SignUpJPanelState extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Register For State");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 300, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 300, 40));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("State:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, -1, -1));
 
+        txtName.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        txtName.setForeground(new java.awt.Color(71, 79, 112));
         txtName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtNameFocusLost(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 170, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 170, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Country:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 80, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 90, -1));
 
-        add(comboCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 170, -1));
+        comboCountry.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        comboCountry.setForeground(new java.awt.Color(71, 79, 112));
+        add(comboCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 170, -1));
 
-        btnCreateState.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        btnCreateState.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         btnCreateState.setForeground(new java.awt.Color(71, 79, 112));
         btnCreateState.setText("Register");
         btnCreateState.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +101,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
                 btnCreateStateActionPerformed(evt);
             }
         });
-        add(btnCreateState, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 140, 40));
+        add(btnCreateState, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 140, 40));
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, -1, -1));

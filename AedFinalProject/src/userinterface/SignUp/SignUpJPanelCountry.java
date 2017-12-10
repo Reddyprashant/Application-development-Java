@@ -63,29 +63,31 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         setForeground(new java.awt.Color(71, 79, 112));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Register Country");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 210, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 240, 30));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Name :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 190, 60, -1));
 
+        txtName.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtName.setForeground(new java.awt.Color(71, 79, 112));
         txtName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtNameFocusLost(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 170, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, 170, -1));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("User Name :");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 230, 100, -1));
 
-        btnCreate.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnCreate.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnCreate.setForeground(new java.awt.Color(71, 79, 112));
         btnCreate.setText("Register");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -93,32 +95,39 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 160, 40));
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 170, -1));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 160, 40));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtUserName.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(71, 79, 112));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 170, -1));
+
+        jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("Email Id :");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 90, -1));
 
+        txtEmail.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(71, 79, 112));
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtEmailFocusLost(evt);
             }
         });
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 170, -1));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 170, -1));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Password:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 270, 80, -1));
 
+        txtPassword.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(71, 79, 112));
         txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPasswordFocusLost(evt);
             }
         });
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 170, -1));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 170, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, -1, -1));

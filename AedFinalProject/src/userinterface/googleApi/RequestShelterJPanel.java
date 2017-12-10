@@ -96,71 +96,96 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         disTable = new javax.swing.JTable();
         mapBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Latitude:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 169, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
 
+        txtLat.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtLat.setForeground(new java.awt.Color(71, 79, 112));
         txtLat.setEnabled(false);
         txtLat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtLatKeyPressed(evt);
             }
         });
-        add(txtLat, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 164, 126, -1));
+        add(txtLat, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 126, -1));
 
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Upload Picture:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 137, -1, -1));
-        add(txtImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 132, 126, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtImage.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtImage.setForeground(new java.awt.Color(71, 79, 112));
+        add(txtImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 126, -1));
+
+        enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
         enterpriseLabel.setText("Request Shelter :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 20, 200, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 320, 30));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Longitude:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
 
+        txtLong.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtLong.setForeground(new java.awt.Color(71, 79, 112));
         txtLong.setEnabled(false);
         txtLong.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtLongKeyPressed(evt);
             }
         });
-        add(txtLong, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 126, -1));
+        add(txtLong, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, 126, -1));
 
+        reqBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        reqBtn.setForeground(new java.awt.Color(71, 79, 112));
         reqBtn.setText("Request for Shelter");
         reqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reqBtnActionPerformed(evt);
             }
         });
-        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 170, -1));
+        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 299, 190, 40));
 
+        btnUpload.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnUpload.setForeground(new java.awt.Color(71, 79, 112));
         btnUpload.setText("Upload ");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUploadActionPerformed(evt);
             }
         });
-        add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, -1, -1));
-        add(lblPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 210, 210));
+        add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, -1, -1));
+        add(lblPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 240, 210, 210));
 
+        btnHome.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(71, 79, 112));
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHomeActionPerformed(evt);
             }
         });
-        add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+        add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 80, 40));
 
+        helpBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        helpBtn.setForeground(new java.awt.Color(71, 79, 112));
         helpBtn.setText("Willing to help!!!!");
         helpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helpBtnActionPerformed(evt);
             }
         });
-        add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
+        add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 180, 40));
 
+        disTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        disTable.setForeground(new java.awt.Color(71, 79, 112));
         disTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -179,15 +204,17 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(disTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 300, 160));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 500, 300, 160));
 
+        mapBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        mapBtn.setForeground(new java.awt.Color(71, 79, 112));
         mapBtn.setText("View Map");
         mapBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mapBtnActionPerformed(evt);
             }
         });
-        add(mapBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, -1, -1));
+        add(mapBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 569, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLatKeyPressed
