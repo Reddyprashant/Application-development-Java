@@ -23,17 +23,18 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private CountryNetwork cNetwork;
+
     /**
      *
      * Creates new form ManageNetworkJPanel
-     * 
+     *
      */
     public ManageNetworkJPanel(JPanel userProcessContainer, CountryNetwork cNetwork, EcoSystem system) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        this.cNetwork=cNetwork;
+        this.cNetwork = cNetwork;
         populateNetworkTable();
     }
 
@@ -151,57 +152,59 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
         String name = nameJTextField.getText();
-        if(!name.equals("")){
-            if(!cNetwork.getStateList().contains(name)){
-        StateNetwork network = cNetwork.createAndAddNetwork();
-        network.setName(name);
-JOptionPane.showMessageDialog(null, "State created successfully");
-nameJTextField.setText("");
-        populateNetworkTable();
-            }else{
+        if (!name.equals("")) {
+            if (!cNetwork.getStateList().contains(name)) {
+                StateNetwork network = cNetwork.createAndAddNetwork();
+                network.setName(name);
+                JOptionPane.showMessageDialog(null, "State created successfully");
+                nameJTextField.setText("");
+                populateNetworkTable();
+            } else {
                 JOptionPane.showMessageDialog(null, "State is already present");
             }
-        }else{
-             JOptionPane.showMessageDialog(null, "Enter value for Name", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Enter value for Name", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+       try{
         userProcessContainer.remove(this);
-         Component[] componentArray = userProcessContainer.getComponents();
+        Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         CountryAdminWorkAreaJPanel sysAdminwjp = (CountryAdminWorkAreaJPanel) component;
         sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Technical error. Please contact administrator");
+       }
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRow = networkJTable.getSelectedRow();
-        if(selectedRow >=0)
-        {
-            
+        if (selectedRow >= 0) {
+
             int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog(null,"Would you like to delete the details","Warning", dialogButton);
-            if (dialogResult == JOptionPane.YES_OPTION){
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Would you like to delete the details", "Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION) {
 
-            StateNetwork p=(StateNetwork) networkJTable.getValueAt(selectedRow, 0);
+                StateNetwork p = (StateNetwork) networkJTable.getValueAt(selectedRow, 0);
 
-            for (StateNetwork network : cNetwork.getStateList()) {
-                    if(p==network){
-                      cNetwork.getStateList().remove(p);
+                for (StateNetwork network : cNetwork.getStateList()) {
+                    if (p == network) {
+                        cNetwork.getStateList().remove(p);
                         break;
                     }
-            }
+                }
 
-            JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
-            populateNetworkTable();
-        }
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Please select a Row from table ","Warning",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+                populateNetworkTable();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Row from table ", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

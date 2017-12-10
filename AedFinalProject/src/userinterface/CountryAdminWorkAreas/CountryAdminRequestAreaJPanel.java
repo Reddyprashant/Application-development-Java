@@ -20,6 +20,7 @@ import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.Date;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
@@ -275,6 +276,10 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         userProcessContainer.remove(this);
+         Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CountryAdminWorkAreaJPanel sysAdminwjp = (CountryAdminWorkAreaJPanel) component;
+        sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 

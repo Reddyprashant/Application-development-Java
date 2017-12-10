@@ -11,9 +11,14 @@ import Business.Role.CountryAdminRole;
 
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.CountryAdminWorkAreas.CountryAdminWorkAreaJPanel;
 import utility.Validator;
 
 /**
@@ -244,8 +249,22 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
             if(!password.isEmpty()){
                 if(!username.isEmpty()){
                     if(!email.isEmpty()){
-                        Employee employee = system.getEmployeeDirectory().createEmployee(name,email);
+                         if(!Validator.validateEmail(txtEmail.getText())){
+            
+            txtEmail.setText("");
+            return;
+        }
+                        
                         if (EcoSystem.checkIfUsernameIsUnique(username)) {
+                            
+                             try {
+                                 Validator.sendMessage(email);
+                             } catch (SendFailedException ex) {
+                                  JOptionPane.showMessageDialog(null, "Wrong email id. Requested cannot be processed");
+                                 return;
+                             }
+                            
+                            Employee employee = system.getEmployeeDirectory().createEmployee(name,email);
                             UserAccount account = null;
                             account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new CountryAdminRole());
                             
@@ -281,7 +300,7 @@ JOptionPane.showMessageDialog(null, "Useraccount created", "Warning", JOptionPan
             }    
         }
         else{
-            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Enter password", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
     else{
@@ -292,10 +311,10 @@ JOptionPane.showMessageDialog(null, "Useraccount created", "Warning", JOptionPan
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         userProcessContainer.remove(this);
-      //  Component[] componentArray = userProcessContainer.getComponents();
-       // Component component = componentArray[componentArray.length - 1];
-        //CountryAdminWorkAreaJPanel sysAdminwjp = (CountryAdminWorkAreaJPanel) component;
-        //sysAdminwjp.populateTree();
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
@@ -347,6 +366,7 @@ JOptionPane.showMessageDialog(null, "Useraccount created", "Warning", JOptionPan
             if(!Validator.validateEmail(txtEmail.getText())){
             JOptionPane.showMessageDialog(null, "Enter a valid Email Id");
             txtEmail.setText("");
+            return;
         }
         
     }//GEN-LAST:event_txtEmailFocusLost

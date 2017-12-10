@@ -179,7 +179,8 @@ public class Validator {
             transport.close();
             System.out.println("Sent message successfully....");
         } catch (MessagingException mex) {
-            mex.printStackTrace();
+            //mex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Invalid email id");
         }
     }
 

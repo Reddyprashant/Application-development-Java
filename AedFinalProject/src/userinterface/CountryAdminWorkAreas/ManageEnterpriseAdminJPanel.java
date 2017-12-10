@@ -17,6 +17,9 @@ import Business.Role.LogisticAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -50,7 +53,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (StateNetwork network : cNetwork.getStateList()) {
+            if(network.getEnterpriseDirectory() != null){
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if(enterprise.getUserAccountDirectory()!= null){
                 for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
                     Object[] row = new Object[3];
                     row[0] = enterprise.getName();
@@ -59,6 +64,8 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
                     model.addRow(row);
                 }
+            }
+            }
             }
         }
     }
@@ -73,7 +80,8 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void populateEnterpriseComboBox(StateNetwork network) {
         enterpriseJComboBox.removeAllItems();
-        if(!network.getEnterpriseDirectory().getEnterpriseList().isEmpty()){
+        if(network.getEnterpriseDirectory()!= null){
+      //  if(!network.getEnterpriseDirectory().getEnterpriseList().isEmpty()){
            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 enterpriseJComboBox.addItem(enterprise);
             }
@@ -263,7 +271,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        if(!nameJTextField.getText().equals("")){
+        if(!nameJTextField.getText().equals("") && !usernameJTextField.getText().isEmpty() && !passwordJPasswordField.getText().isEmpty() && !txtEmail.getText().isEmpty()){
+            
+            
         Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
 
         String username = usernameJTextField.getText();
@@ -272,6 +282,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String email= txtEmail.getText();
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name,email);
         if (EcoSystem.checkIfUsernameIsUnique(username)) {
+            try {
+                Validator.sendMessage(txtEmail.getText());
+            } catch (SendFailedException ex) {
+               // Logger.getLogger(ManageEnterpriseAdminJPanel.class.getName()).log(Level.SEVERE, null, ex);
+               JOptionPane.showMessageDialog(null, "Wrong emailId entered. ");
+               return;
+            }
             UserAccount account = null;
             if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Beneficiary) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new BeneficiaryAdminRole());
@@ -293,7 +310,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
         }
  }else{
-             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+             JOptionPane.showMessageDialog(null, "Enter all the value", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_submitJButtonActionPerformed

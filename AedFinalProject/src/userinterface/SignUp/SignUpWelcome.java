@@ -103,7 +103,7 @@ public class SignUpWelcome extends javax.swing.JPanel {
         jLabel2.setText("Please Select an Option from Below");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, -1, -1));
 
-        add(comboBoxSignUpType, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 146, 33));
+        add(comboBoxSignUpType, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 210, 33));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
@@ -118,7 +118,7 @@ public class SignUpWelcome extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 73, 42));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 130, 42));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/Volunteer.jpg"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 19, -1, -1));

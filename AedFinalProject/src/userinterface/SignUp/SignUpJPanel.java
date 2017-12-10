@@ -368,10 +368,12 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
             if (!txtUserName.getText().isEmpty()) {
                 if (!txtName.getText().isEmpty()) {
+                     if (!txtEmail.getText().isEmpty()) {
+                          if (!txtOrgName.getText().isEmpty()) {
                     if (!txtCity.getText().isEmpty()) {
                         if (!password.isEmpty()) {
                             if (!txtLoc.getText().isEmpty()) {
-
+                                   if (!txtImage.getText().isEmpty()) {
                                 SignUpRequestOrganization orgRequest = new SignUpRequestOrganization();
                                 orgRequest.setName(txtName.getText());
                                 orgRequest.setUserName(txtUserName.getText());
@@ -409,8 +411,21 @@ public class SignUpJPanel extends javax.swing.JPanel {
                                 }
 
                                 JOptionPane.showMessageDialog(null, "Registration successful. Your account will be available in 24 hrs");
-
+ txtName.setText("");
+            txtUserName.setText("");
+            txtEmail.setText("");
+            txtImage.setText("");
+            txtPassword.setText("");
+            btnFile.setText("");
+            btnCreate.setText("");
+            btnLocation.setText("");
+            txtOrgName.setText("");
+            txtCity.setText("");
+            txtLoc.setText("");
                             } else {
+                                JOptionPane.showMessageDialog(null, "Please add the document");
+                            }
+                                   } else {
                                 JOptionPane.showMessageDialog(null, "Please Choose your location");
                             }
                         } else {
@@ -419,8 +434,14 @@ public class SignUpJPanel extends javax.swing.JPanel {
                     } else {
                         JOptionPane.showMessageDialog(null, "Please enter value for City");
                     }
+                    } else {
+                    JOptionPane.showMessageDialog(null, "Please enter the org name");
+                }
+                     } else {
+                    JOptionPane.showMessageDialog(null, "Please enter the email");
+                }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please enter the Name of the Organization");
+                    JOptionPane.showMessageDialog(null, "Please enter the Name");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Please enter Value for User Name");

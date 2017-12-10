@@ -213,20 +213,23 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAdminJButtonActionPerformed
         // TODO add your handling code here:
-        if (!cNetwork.getStateList().isEmpty()) {
-            for (StateNetwork cState : cNetwork.getStateList()) {
-                if (!cState.getEnterpriseDirectory().getEnterpriseList().isEmpty()) {
+        if(cNetwork.getStateList() != null){
+        if (cNetwork.getStateList().size() > 0) {
+           // for (StateNetwork cState : cNetwork.getStateList()) {
+              //  if (!cState.getEnterpriseDirectory().getEnterpriseList().isEmpty()) {
                     ManageEnterpriseAdminJPanel manageEnterpriseAdminJPanel = new ManageEnterpriseAdminJPanel(userProcessContainer, cNetwork, system);
                     userProcessContainer.add("manageEnterpriseAdminJPanel", manageEnterpriseAdminJPanel);
 
                     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
                     layout.next(userProcessContainer);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Add Enterprise into the network");
-                }
-            }
+                //    break;
+                //} else {
+                  //  JOptionPane.showMessageDialog(null, "Add Enterprise into the network");
+                //}
+           // }
         } else {
             JOptionPane.showMessageDialog(null, "Add State into the network");
+        }
         }
     }//GEN-LAST:event_manageAdminJButtonActionPerformed
 

@@ -86,13 +86,13 @@ public class EcoSystem extends Organization {
             for (StateNetwork network : cnetwork.getStateList()) {
                 for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                     for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
-                        if (ua.getUsername().equals(username)) {
+                        if (ua.getUsername().equalsIgnoreCase(username)) {
                             return false;
                         }
                     }
                     for (WorkRequest workReq : enterprise.getWorkQueue().getWorkRequestList()) {
                         if (workReq instanceof SignUpRequestOrganization) {
-                            if(((SignUpRequestOrganization) workReq).getUserName().equals(username)){
+                            if(((SignUpRequestOrganization) workReq).getUserName().equalsIgnoreCase(username)){
                             return false;
                             }
                         }
@@ -100,7 +100,7 @@ public class EcoSystem extends Organization {
 
                     for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
                         for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-                            if (ua.getUsername().equals(username)) {
+                            if (ua.getUsername().equalsIgnoreCase(username)) {
                                 return false;
                             }
                         }

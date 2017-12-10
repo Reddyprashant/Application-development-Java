@@ -23,7 +23,8 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem system;
-   // private CountryNetwork cNetwork;
+    // private CountryNetwork cNetwork;
+
     /**
      *
      * Creates new form ManageNetworkJPanel
@@ -33,7 +34,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
 
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-      //  this.cNetwork=cNetwork;
+        //  this.cNetwork=cNetwork;
         populateNetworkTable();
     }
 
@@ -149,20 +150,20 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
         String name = nameJTextField.getText();
-        if(!name.equals("")){
+        if (!name.equals("")) {
             for (CountryNetwork countryNetwork : system.getNetworkList()) {
-                if(name.equalsIgnoreCase(countryNetwork.getName())){
-                     JOptionPane.showMessageDialog(null, "Country already created");
-                     return;
+                if (name.equalsIgnoreCase(countryNetwork.getName())) {
+                    JOptionPane.showMessageDialog(null, "Country already created");
+                    return;
                 }
             }
-        CountryNetwork network = system.createAndAddNetwork();
-        network.setName(name);
-JOptionPane.showMessageDialog(null, "Country created successfully", "Warning", JOptionPane.WARNING_MESSAGE);
-nameJTextField.setText("");
-        populateNetworkTable();
-         }else{
-             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+            CountryNetwork network = system.createAndAddNetwork();
+            network.setName(name);
+            JOptionPane.showMessageDialog(null, "Country created successfully");
+            nameJTextField.setText("");
+            populateNetworkTable();
+        } else {
+            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         nameJTextField.setText("");
 
@@ -170,7 +171,7 @@ nameJTextField.setText("");
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         userProcessContainer.remove(this);
-         Component[] componentArray = userProcessContainer.getComponents();
+        Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
         sysAdminwjp.populateTree();
@@ -180,19 +181,18 @@ nameJTextField.setText("");
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow= networkJTable.getSelectedRow();
-        if(selectedRow<0){
+        int selectedRow = networkJTable.getSelectedRow();
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else{
+        } else {
 
-            CountryNetwork p=(CountryNetwork) networkJTable.getValueAt(selectedRow, 0);
+            CountryNetwork p = (CountryNetwork) networkJTable.getValueAt(selectedRow, 0);
 
             for (CountryNetwork network : system.getNetworkList()) {
-                    if(p.getName().equalsIgnoreCase(network.getName())){
-                     system.getNetworkList().remove(p);
-                        break;
-                    }
+                if (p.getName().equalsIgnoreCase(network.getName())) {
+                    system.getNetworkList().remove(p);
+                    break;
+                }
             }
 
             JOptionPane.showMessageDialog(null, "You have successfully deleted the account");

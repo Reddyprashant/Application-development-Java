@@ -204,6 +204,11 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         jLabel11.setText("Enterprise :");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 110, -1));
 
+        comboEnterprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboEnterpriseActionPerformed(evt);
+            }
+        });
         add(comboEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 170, -1));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -264,16 +269,17 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private void btnCreateStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStateActionPerformed
         // TODO add your handling code here:
         try {
-            for (CountryNetwork country : system.getNetworkList()) {
-                for (StateNetwork state : country.getStateList()) {
-                    for (Enterprise enterprise : state.getEnterpriseDirectory().getEnterpriseList()) {
+           // for (CountryNetwork country : system.getNetworkList()) {
+              //  for (StateNetwork state : country.getStateList()) {
+              StateNetwork states= (StateNetwork) comboState.getSelectedItem();
+                    for (Enterprise enterprise : states.getEnterpriseDirectory().getEnterpriseList()) {
                         if ((EnterpriseType) comboEnterprise.getSelectedItem() == enterprise.getEnterpriseType()) {
                             JOptionPane.showMessageDialog(null, "Enterprise Already Present");
                             return;
                         }
                     }
-                }
-            }
+               // }
+           // }
             
             for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
                 for (WorkRequest workReq : userAccount.getWorkQueue().getWorkRequestList()) {
@@ -346,7 +352,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
 
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
         // TODO add your handling code here:
-        //comboCountry.removeAllItems();
+        comboState.removeAllItems();
         
         CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
         if (!c.getStateList().isEmpty()) {
@@ -439,6 +445,10 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_txtEmailFocusLost
+
+    private void comboEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEnterpriseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboEnterpriseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

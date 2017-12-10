@@ -146,9 +146,25 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
             }
 
             String password = String.valueOf(txtPassword.getPassword());
-            if (!txtUserName.getText().isEmpty()) {
-                if (!txtName.getText().isEmpty()) {
+             if (!password.isEmpty()) {
+            if (!Validator.validatePassword(password)) {
+                txtPassword.setText("");
+                return;
+            }
+        }
+             if (!txtEmail.getText().isEmpty()) {
+            if (!Validator.validateEmail(txtEmail.getText())) {
+                lblEmail.setText("*Enter a Valid Email");
+                txtEmail.setText("");
+                return;
+            } else {
+                lblEmail.setText("");
+            }
+        }
+            if (!txtName.getText().isEmpty()) {
+                if (!txtUserName.getText().isEmpty()) {
                     if (!password.isEmpty()) {
+                        if(!txtEmail.getText().isEmpty()){
                         if (txtUserName.getText().equalsIgnoreCase(txtName.getText())) {
 
                                 SignUpRequestCountry countryRequest = new SignUpRequestCountry();
@@ -168,15 +184,18 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                         } else {
                             JOptionPane.showMessageDialog(null, "Username and Country name should be same");
                         }
+                        }else{
+                             JOptionPane.showMessageDialog(null, "Please enter value for emailId ");
+                        }
                     } else {
                         JOptionPane.showMessageDialog(null, "Please enter value for password ");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Name cannot be empty");
+                    JOptionPane.showMessageDialog(null, "UserName cannot be empty");
                 }
 
             } else {
-                JOptionPane.showMessageDialog(null, "Please enter User Name");
+                JOptionPane.showMessageDialog(null, "Please enter the Name");
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -210,6 +229,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                         + "       # no whitespace allowed in the entire string\n"
                         + "       # at least eight characters");
                 txtPassword.setText("");
+                return;
             }
         }
     }//GEN-LAST:event_txtPasswordFocusLost
