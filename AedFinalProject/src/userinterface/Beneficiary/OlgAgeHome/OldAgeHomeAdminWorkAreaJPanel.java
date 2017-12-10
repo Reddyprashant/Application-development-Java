@@ -16,8 +16,6 @@ import Business.Organization.OldAgeOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import javax.swing.JRootPane;
-import javax.swing.SwingUtilities;
 import userinterface.Beneficiary.ShelterRequestAreaJPanel;
 
 /**
@@ -83,7 +81,7 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         manageEmployeeJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         manageEmployeeJButton.setForeground(new java.awt.Color(71, 79, 112));
-        manageEmployeeJButton.setText("Manage Employee");
+        manageEmployeeJButton.setText("Manage Person");
         manageEmployeeJButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         manageEmployeeJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         manageEmployeeJButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -102,7 +100,7 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         valueLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         valueLabel.setForeground(new java.awt.Color(71, 79, 112));
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 130, 20));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 130, 20));
 
         btnShelter.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnShelter.setForeground(new java.awt.Color(255, 3, 8));

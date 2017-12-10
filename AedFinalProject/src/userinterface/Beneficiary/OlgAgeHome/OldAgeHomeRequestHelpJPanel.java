@@ -8,18 +8,15 @@ package userinterface.Beneficiary.OlgAgeHome;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.EntityEnterprise;
-import Business.Enterprise.LogisticEnterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.EducationOrganization;
-import Business.Organization.HomelessOrganization;
 import Business.Organization.HospitalOrganization;
 import Business.Organization.MNCOrganization;
 import Business.Organization.NGOOrganization;
 import Business.Organization.OldAgeOrganization;
 import Business.Organization.Organization;
 import Business.Organization.TransportOrganization;
-import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
 import java.awt.CardLayout;
@@ -29,7 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import userinterface.Beneficiary.Homeless.*;
 import utility.Validator;
 
 /**
@@ -38,13 +34,13 @@ import utility.Validator;
  */
 public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
-    UserAccount account;
-    OldAgeOrganization organization;
-    Enterprise enterprise;
-    EcoSystem business;
-    StateNetwork state;
-    CountryNetwork country;
+    private JPanel userProcessContainer;
+    private UserAccount account;
+    private OldAgeOrganization organization;
+    private Enterprise enterprise;
+    private EcoSystem business;
+    private StateNetwork state;
+    private CountryNetwork country;
 
     /**
      * Creates new form RequestHelpJPanel
@@ -69,6 +65,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         timelabel.setVisible(false);
         addLabel.setVisible(false);
         jDateChooser1.setMinSelectableDate(new Date());
+        lblOrganizationName.setText(organization.getName());
         populateComboBox();
 
 //        for (StateNetwork stateNetwork : country.getStateList()) {
@@ -120,37 +117,40 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         addLabel = new javax.swing.JLabel();
         addressText = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        lblOrganizationName = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseLabel.setBackground(new java.awt.Color(51, 51, 255));
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setForeground(new java.awt.Color(0, 154, 40));
-        enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 120, 30));
+        enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(51, 51, 51));
+        enterpriseLabel.setText("Organization:");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 190, 30));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Type:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Number of Volunteers Required");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
 
         noVolTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 noVolTextFieldKeyPressed(evt);
             }
         });
-        add(noVolTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, 126, -1));
+        add(noVolTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 126, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Event Date ");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
 
         helpBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         helpBtn.setForeground(new java.awt.Color(71, 79, 112));
@@ -160,7 +160,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
                 helpBtnActionPerformed(evt);
             }
         });
-        add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 690, 150, 40));
+        add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 650, 150, 40));
 
         jButton2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(71, 79, 112));
@@ -170,31 +170,37 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 790, 130, 40));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 670, 130, 40));
 
-        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, 126, -1));
+        add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 126, -1));
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Event Name");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
-        add(eventNameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, 126, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
+
+        eventNameTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                eventNameTextfieldFocusLost(evt);
+            }
+        });
+        add(eventNameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 160, 126, -1));
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Event Details");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
 
         detailTextArea.setColumns(20);
         detailTextArea.setRows(5);
         jScrollPane1.setViewportView(detailTextArea);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, 232, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 232, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Logistics");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, -1, -1));
 
         buttonGroup2.add(reqBtn);
         reqBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -205,7 +211,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
                 reqBtnActionPerformed(evt);
             }
         });
-        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, -1, -1));
+        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, -1, -1));
 
         buttonGroup2.add(notReqBtn);
         notReqBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -216,66 +222,65 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
                 notReqBtnActionPerformed(evt);
             }
         });
-        add(notReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 430, -1, -1));
+        add(notReqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, -1, -1));
 
         noOfVehText.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 noOfVehTextKeyPressed(evt);
             }
         });
-        add(noOfVehText, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 530, 53, -1));
+        add(noOfVehText, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 490, 53, -1));
 
         noVehLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         noVehLabel.setForeground(new java.awt.Color(71, 79, 112));
         noVehLabel.setText("Number Of Vehicles");
-        add(noVehLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, -1, -1));
+        add(noVehLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, -1, -1));
 
         typeLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         typeLabel.setForeground(new java.awt.Color(71, 79, 112));
         typeLabel.setText("Type of vehicle");
-        add(typeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, -1, -1));
+        add(typeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, -1, -1));
 
         buttonGroup1.add(carBtn);
         carBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         carBtn.setForeground(new java.awt.Color(71, 79, 112));
         carBtn.setText("Car");
-        carBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carBtnActionPerformed(evt);
-            }
-        });
-        add(carBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, -1, -1));
+        add(carBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, -1, -1));
 
         buttonGroup1.add(vanBtn);
         vanBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         vanBtn.setForeground(new java.awt.Color(71, 79, 112));
         vanBtn.setText("Mini Van");
-        add(vanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, -1, -1));
+        add(vanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, -1, -1));
 
         buttonGroup1.add(busBtn);
         busBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         busBtn.setForeground(new java.awt.Color(71, 79, 112));
         busBtn.setText("Bus");
-        add(busBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 420, -1, -1));
+        add(busBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 450, -1, -1));
 
         timelabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         timelabel.setForeground(new java.awt.Color(71, 79, 112));
         timelabel.setText("Pickup Time");
-        add(timelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 580, -1, -1));
-        add(timeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 580, 53, -1));
+        add(timelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 540, -1, -1));
+        add(timeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 53, -1));
 
         addLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         addLabel.setForeground(new java.awt.Color(71, 79, 112));
         addLabel.setText("Pickup Address");
-        add(addLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 630, -1, -1));
-        add(addressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 620, 170, -1));
+        add(addLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 590, -1, -1));
+        add(addressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 580, 170, -1));
+        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, -1, -1));
 
-        jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jDateChooser1MouseClicked(evt);
-            }
-        });
-        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, -1, -1));
+        lblOrganizationName.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        lblOrganizationName.setForeground(new java.awt.Color(51, 51, 51));
+        add(lblOrganizationName, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, -1, -1));
+
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 730, -1, -1));
+
+        lblName.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 160, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 public void populateComboBox() {
         reqComboBox.removeAllItems();
@@ -289,150 +294,188 @@ public void populateComboBox() {
 
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
         // TODO add your handling code here:
-//          if(reqComboBox.getSelectedItem().toString().isEmpty())
-//          {
-        if (!(eventNameTextfield.getText().isEmpty())) {
-            if (!(noVolTextField.getText().isEmpty())) {
-                if (!(jDateChooser1.getDate().toString().isEmpty())) {
-                    if (!(detailTextArea.getText().isEmpty())) {
-                        if (reqBtn.isSelected() || notReqBtn.isSelected()) {
-                            try {
+        try {
+            lblWarning.setText("");
+            lblName.setText("");
+            if (organization != null) {
+                if (!reqComboBox.getSelectedItem().equals(null)) {
+                    if (!(jDateChooser1.getDate() == null)) {
+                        if (!eventNameTextfield.getText().isEmpty()) {
+                            if (!detailTextArea.getText().isEmpty()) {
+                                if (reqBtn.isSelected() || (notReqBtn.isSelected())) {
+                                    if (!noVolTextField.getText().isEmpty()) {
 
-                                //SimpleDateFormat dates = new SimpleDateFormat("MM/dd/yyyy");
-                                Organization.RequestType request = (Organization.RequestType) reqComboBox.getSelectedItem();
-                                int noVolunteer = Integer.parseInt(noVolTextField.getText());
-                                //Date date= dates.parse(dateField.getText());
+                                        try {
 
-                                Date d = jDateChooser1.getDate();
+                                            Organization.RequestType request = (Organization.RequestType) reqComboBox.getSelectedItem();
+                                            int noVolunteer = Integer.parseInt(noVolTextField.getText());
+                                            Date date = jDateChooser1.getDate();
+                                            String eventName = eventNameTextfield.getText();
+                                            String eventDetails = detailTextArea.getText();
 
-                                String eventName = eventNameTextfield.getText();
-                                String eventDetails = detailTextArea.getText();
+                                            BeneficiaryWorkRequest requests = new BeneficiaryWorkRequest();
+                                            requests.setEventDate(date);
+                                            requests.setSenderOrganization(organization);
 
-                                BeneficiaryWorkRequest requests = new BeneficiaryWorkRequest();
-                                requests.setEventDate(d);
-                                requests.setSenderOrganization(organization);
-                                //System.out.println("userss"+organization.getName());
-                                //if(Organization.RequestType.Education.getValue()==request.getValue())
-                                requests.setRequestType(request);
-                                requests.setEventName(eventName);
-                                requests.setEventDetails(eventDetails);
-                                requests.setNumberOfVolunteersRequest(noVolunteer);
+                                            //if(Organization.RequestType.Education.getValue()==request.getValue())
+                                            requests.setRequestType(request);
+                                            requests.setEventName(eventName);
+                                            requests.setEventDetails(eventDetails);
+                                            requests.setNumberOfVolunteersRequest(noVolunteer);
 
-                                requests.setSender(account);
-                                requests.setStatus("Requested");
-                                if (reqBtn.isSelected()) {
-                                    SimpleDateFormat times = new SimpleDateFormat("hh:mm");
-                                    int no = Integer.parseInt(noOfVehText.getText());
-                                    Date time = times.parse(timeField.getText());
-                                    String address = addressText.getText();
-                                    requests.setLogisticRequest(false);
-                                    if (carBtn.isSelected()) {
-                                        requests.setTypeOfVehicle("Car");
+                                            requests.setSender(account);
+                                            requests.setStatus("Requested");
+                                            if (reqBtn.isSelected()) {
+                                                if (!noOfVehText.getText().isEmpty()) {
+                                                    if (!timeField.getText().isEmpty()) {
+                                                        if (!addressText.getText().isEmpty()) {
+                                                            if (carBtn.isSelected() || vanBtn.isSelected() || busBtn.isSelected()) {
+                                                                SimpleDateFormat times = new SimpleDateFormat("hh:mm");
+                                                                int no = Integer.parseInt(noOfVehText.getText());
+                                                                Date time = times.parse(timeField.getText());
+                                                                String address = addressText.getText();
+                                                                requests.setLogisticRequest(true);
+                                                                if (carBtn.isSelected()) {
+                                                                    requests.setTypeOfVehicle("Car");
 
-                                    } else if (vanBtn.isSelected()) {
-                                        requests.setTypeOfVehicle("Van");
-                                    } else if (busBtn.isSelected()) {
-                                        requests.setTypeOfVehicle("Bus");
+                                                                } else if (vanBtn.isSelected()) {
+                                                                    requests.setTypeOfVehicle("Van");
+                                                                } else if (busBtn.isSelected()) {
+                                                                    requests.setTypeOfVehicle("Bus");
+                                                                }
+                                                                requests.setNoOfVehicle(no);
+                                                                requests.setPickupTime(time);
+                                                                requests.setAddress(address);
+                                                            } else {
+                                                                JOptionPane.showMessageDialog(null, "Please Select the type of vehicle");
+                                                                return;
+                                                            }
+                                                        } else {
+                                                            JOptionPane.showMessageDialog(null, "Please Enter Integer Value for address");
+                                                            return;
+                                                        }
+                                                    } else {
+                                                        JOptionPane.showMessageDialog(null, "Please Enter Pick Up time");
+                                                        return;
+                                                    }
+
+                                                } else {
+                                                    JOptionPane.showMessageDialog(null, "Please Enter Integer Value for Number of Vehicles required");
+                                                    return;
+                                                }
+                                            }
+                                            if (!requests.isLogisticRequest()) {
+                                                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                                    for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+                                                        if (organization1 instanceof TransportOrganization) {
+                                                            System.out.println("sending to transport");
+                                                            organization1.getWorkQueue().getWorkRequestList().add(requests);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            System.out.println("type is" + request);
+                                            if (request == Organization.RequestType.ANY) {
+                                                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                                    if (enter instanceof EntityEnterprise) {
+                                                        enter.getWorkQueue().getWorkRequestList().add(requests);
+                                                    }
+                                                }
+                                            } else if (request == Organization.RequestType.Education) {
+                                                //enterprise.getOrganizationDirectory().getOrganizationList().
+                                                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                                    for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+                                                        if (organization1 instanceof EducationOrganization) {
+                                                            organization1.getWorkQueue().getWorkRequestList().add(requests);
+                                                        }
+                                                    }
+                                                }
+                                            } else if (request == Organization.RequestType.Hospital) {
+                                                //enterprise.getOrganizationDirectory().getOrganizationList().
+                                                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                                    for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+                                                        if (organization1 instanceof HospitalOrganization) {
+                                                            organization1.getWorkQueue().getWorkRequestList().add(requests);
+                                                        }
+                                                    }
+                                                }
+                                            } else if (request == Organization.RequestType.MNC) {
+                                                //enterprise.getOrganizationDirectory().getOrganizationList().
+                                                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                                    for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+                                                        if (organization1 instanceof MNCOrganization) {
+                                                            System.out.println("userinterface MNC");
+                                                            organization1.getWorkQueue().getWorkRequestList().add(requests);
+                                                        }
+                                                    }
+                                                }
+                                            } else if (request == Organization.RequestType.NGO) {
+                                                //enterprise.getOrganizationDirectory().getOrganizationList().
+                                                for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
+                                                    for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
+                                                        if (organization1 instanceof NGOOrganization) {
+
+                                                            organization1.getWorkQueue().getWorkRequestList().add(requests);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            organization.getWorkQueue().getWorkRequestList().add(requests);
+                                            JOptionPane.showMessageDialog(null, "Help request complete");
+                                            eventNameTextfield.setText("");
+                                            noVolTextField.setText("");
+                                            detailTextArea.setText("");
+                                            jDateChooser1.setOpaque(true);
+                                            buttonGroup1.clearSelection();
+                                            buttonGroup2.clearSelection();
+                                            noOfVehText.setText("");
+                                            timeField.setText("");
+                                            addressText.setText("");
+                                            carBtn.setVisible(false);
+                                            busBtn.setVisible(false);
+                                            vanBtn.setVisible(false);
+                                            noOfVehText.setVisible(false);
+                                            noVehLabel.setVisible(false);
+                                            typeLabel.setVisible(false);
+                                            timelabel.setVisible(false);
+                                            addLabel.setVisible(false);
+                                            timeField.setVisible(false);
+                                            addressText.setVisible(false);
+                                            jDateChooser1.setDate(null);
+
+                                        } catch (NumberFormatException p) {
+                                            JOptionPane.showMessageDialog(null, "Enter integer value ");
+                                        } catch (ParseException e) {
+                                            JOptionPane.showMessageDialog(null, "Please enter time in hh:mm format");
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Please Enter Integer Value for Number of Volunteers");
                                     }
-                                    requests.setNoOfVehicle(no);
-                                    requests.setPickupTime(time);
-                                    requests.setAddress(address);
+
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Please Select whether logistics is required or not");
                                 }
-                                if (!requests.isLogisticRequest()) {
-                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                                        for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
-                                            if (organization1 instanceof TransportOrganization) {
-                                                //System.out.println("sending to transport");
-                                                organization1.getWorkQueue().getWorkRequestList().add(requests);
-                                            }
-                                        }
-                                    }
-                                }
-                                System.out.println("type is" + request);
-                                if (request == Organization.RequestType.ANY) {
-                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                                        if (enter instanceof EntityEnterprise) {
-                                            enter.getWorkQueue().getWorkRequestList().add(requests);
-                                        }
-                                    }
-                                } else if (request == Organization.RequestType.Education) {
-                                    //enterprise.getOrganizationDirectory().getOrganizationList().
-                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                                        for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
-                                            if (organization1 instanceof EducationOrganization) {
-                                                organization1.getWorkQueue().getWorkRequestList().add(requests);
-                                            }
-                                        }
-                                    }
-                                } else if (request == Organization.RequestType.Hospital) {
-                                    //enterprise.getOrganizationDirectory().getOrganizationList().
-                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                                        for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
-                                            if (organization1 instanceof HospitalOrganization) {
-                                                organization1.getWorkQueue().getWorkRequestList().add(requests);
-                                            }
-                                        }
-                                    }
-                                } else if (request == Organization.RequestType.MNC) {
-                                    //enterprise.getOrganizationDirectory().getOrganizationList().
-                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                                        for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
-                                            if (organization1 instanceof MNCOrganization) {
-                                                System.out.println("userinterface MNC");
-                                                organization1.getWorkQueue().getWorkRequestList().add(requests);
-                                            }
-                                        }
-                                    }
-                                } else if (request == Organization.RequestType.NGO) {
-                                    //enterprise.getOrganizationDirectory().getOrganizationList().
-                                    for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
-                                        for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
-                                            if (organization1 instanceof NGOOrganization) {
-
-                                                organization1.getWorkQueue().getWorkRequestList().add(requests);
-                                            }
-                                        }
-                                    }
-                                }
-                                organization.getWorkQueue().getWorkRequestList().add(requests);
-                                JOptionPane.showMessageDialog(null, "Help request complete");
-                                eventNameTextfield.setText("");
-                                noVolTextField.setText("");
-                                detailTextArea.setText("");
-                                jDateChooser1.setDate(null);
-                                noOfVehText.setText("");
-                                addressText.setText("");
-                                timeField.setText(null);
-buttonGroup1.clearSelection();
-buttonGroup2.clearSelection();
-                            } catch (NumberFormatException p) {
-                                JOptionPane.showMessageDialog(null, "Enter integer value");
-                            } catch (ParseException p) {
-                                JOptionPane.showMessageDialog(null, "Please enter time in hh:mm format");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Please Enter Description for the request");
                             }
-    }//GEN-LAST:event_helpBtnActionPerformed
-      else {
-                            JOptionPane.showMessageDialog(null, "Please Selecteither of the two button");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Please mention the event name");
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Please enter event details");
+                        JOptionPane.showMessageDialog(null, "Please Select a Date");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please select the date");
+                    JOptionPane.showMessageDialog(null, "Please Select the request type from the combo box");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "please enter number of volunteers");
+                lblWarning.setText("*Disaster Organization is not Present. Please contact system administrator-- poojithsshetty@gmail.com");
             }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Please enter event name");
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact-- poojithsshetty@gmail.com");
         }
-        // }
-//          else
-//{
-//    JOptionPane.showMessageDialog(null, "Fields cannot be left empty");
-//}
-    }
+
+    }//GEN-LAST:event_helpBtnActionPerformed
+
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -447,10 +490,6 @@ buttonGroup2.clearSelection();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void carBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_carBtnActionPerformed
-
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
         // TODO add your handling code here:
 
@@ -460,10 +499,10 @@ buttonGroup2.clearSelection();
         noOfVehText.setVisible(true);
         noVehLabel.setVisible(true);
         typeLabel.setVisible(true);
-        addressText.setVisible(true);
-        timeField.setVisible(true);
         timelabel.setVisible(true);
         addLabel.setVisible(true);
+        timeField.setVisible(true);
+        addressText.setVisible(true);
     }//GEN-LAST:event_reqBtnActionPerformed
 
     private void notReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notReqBtnActionPerformed
@@ -474,10 +513,10 @@ buttonGroup2.clearSelection();
         noOfVehText.setVisible(false);
         noVehLabel.setVisible(false);
         typeLabel.setVisible(false);
-        addressText.setVisible(false);
-        timeField.setVisible(false);
         timelabel.setVisible(false);
         addLabel.setVisible(false);
+        timeField.setVisible(false);
+        addressText.setVisible(false);
     }//GEN-LAST:event_notReqBtnActionPerformed
 
     private void noVolTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noVolTextFieldKeyPressed
@@ -490,11 +529,17 @@ buttonGroup2.clearSelection();
         Validator.onlyInteger(evt, noOfVehText);
     }//GEN-LAST:event_noOfVehTextKeyPressed
 
-    private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
+    private void eventNameTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eventNameTextfieldFocusLost
         // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jDateChooser1MouseClicked
+        if (!eventNameTextfield.getText().isEmpty()) {
+            if (!Validator.validateName(eventNameTextfield.getText())) {
+                lblName.setText("*Only Alphabets and Spaces are allowed");
+                eventNameTextfield.setText("");
+            } else {
+                lblName.setText("");
+            }
+        }
+    }//GEN-LAST:event_eventNameTextfieldFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -517,6 +562,9 @@ buttonGroup2.clearSelection();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblOrganizationName;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField noOfVehText;
     private javax.swing.JLabel noVehLabel;
     private javax.swing.JTextField noVolTextField;

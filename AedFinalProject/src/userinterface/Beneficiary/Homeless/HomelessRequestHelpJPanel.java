@@ -67,6 +67,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         timelabel.setVisible(false);
         addLabel.setVisible(false);
         jDateChooser1.setMinSelectableDate(new Date());
+        lblValue.setText(organization.getName());
         populateComboBox();
     }
 
@@ -110,14 +111,15 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         lblWarning = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
+        lblValue = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
-        enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 180, 30));
+        enterpriseLabel.setText("Organization :");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 180, 30));
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
@@ -241,11 +243,6 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         carBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         carBtn.setForeground(new java.awt.Color(71, 79, 112));
         carBtn.setText("Car");
-        carBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carBtnActionPerformed(evt);
-            }
-        });
         add(carBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
 
         eventNameTextfield.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -287,6 +284,9 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 130, -1));
+
+        lblValue.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        add(lblValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
@@ -477,6 +477,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                                             addLabel.setVisible(false);
                                             timeField.setVisible(false);
                                             addressText.setVisible(false);
+                                            jDateChooser1.setDate(null);
 
                                         } catch (NumberFormatException p) {
                                             JOptionPane.showMessageDialog(null, "Enter integer value ");
@@ -524,10 +525,6 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void carBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_carBtnActionPerformed
-
     private void noVolTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noVolTextFieldKeyPressed
         // TODO add your handling code here:
         Validator.onlyInteger(evt, noVolTextField);
@@ -572,6 +569,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblValue;
     private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField noOfVehText;
     private javax.swing.JLabel noVehLabel;

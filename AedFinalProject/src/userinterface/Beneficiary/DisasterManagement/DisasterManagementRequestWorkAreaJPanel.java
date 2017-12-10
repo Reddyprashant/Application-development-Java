@@ -32,13 +32,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
-    UserAccount account;
-    DisasterOrganization organization;
-    Enterprise enterprise;
-    EcoSystem business;
-    StateNetwork state;
-    CountryNetwork country;
+    private JPanel userProcessContainer;
+    private UserAccount account;
+    private DisasterOrganization organization;
+    private Enterprise enterprise;
+    private EcoSystem business;
+    private StateNetwork state;
+    private CountryNetwork country;
 
     /**
      * Creates new form AdminWorkAreaJPanel
