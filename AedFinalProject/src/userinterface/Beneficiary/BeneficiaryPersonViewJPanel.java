@@ -60,6 +60,8 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
             txtFieldReason.setEnabled(false);
             txtFieldReasonDescription.setEnabled(false);
             txtFieldSex.setEnabled(false);
+            txtFieldJoiningDate.setEditable(false);
+            txtFieldJoiningDate.setEnabled(false);
 
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");

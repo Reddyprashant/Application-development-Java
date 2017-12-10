@@ -82,7 +82,7 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         manageEmployeeJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         manageEmployeeJButton.setForeground(new java.awt.Color(71, 79, 112));
-        manageEmployeeJButton.setText("Manage Employee");
+        manageEmployeeJButton.setText("Manage Person");
         manageEmployeeJButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +95,9 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
         enterpriseLabel.setText("Enterprise :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 120, 30));
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 130, 20));
+
+        valueLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 130, 20));
 
         btnShelter.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnShelter.setForeground(new java.awt.Color(245, 5, 8));

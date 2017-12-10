@@ -214,7 +214,6 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
         jScrollPane2 = new javax.swing.JScrollPane();
         requestTable = new javax.swing.JTable();
         btnDelete = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         lblWarning = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -307,16 +306,6 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, -1, -1));
 
-        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        btnBack.setForeground(new java.awt.Color(71, 79, 112));
-        btnBack.setText("back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
-
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -361,18 +350,9 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-
-    }//GEN-LAST:event_btnBackActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable availableTable;
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;

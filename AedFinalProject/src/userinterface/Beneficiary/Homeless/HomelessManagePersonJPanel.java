@@ -335,7 +335,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel7.setText("Ethnicity:");
+        jLabel7.setText("*Ethnicity:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 70, -1));
 
         jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N

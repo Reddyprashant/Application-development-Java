@@ -56,21 +56,37 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
 
             model.setRowCount(0);
-            lblWarning.setText("");
-            for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
+            if (organization != null) {
+                if (organization.getWorkQueue() != null) {
+                    if (organization.getWorkQueue().getWorkRequestList().size() > 0) {
 
-                if (work instanceof ShelterWorkRequest) {
-                    ShelterWorkRequest s = (ShelterWorkRequest) work;
-                    Object[] row = new Object[6];
-                    row[0] = s.getRequestDate();
-                    row[1] = s.getSender();
-                    row[2] = s.getReceiver();
-                    row[3] = s;
-                    row[4] = s.getPersonPresent();
-                    row[5] = s.getPersonAbsent();
+                        lblWarning.setText("");
+                        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
 
-                    model.addRow(row);
+                            if (work instanceof ShelterWorkRequest) {
+                                ShelterWorkRequest s = (ShelterWorkRequest) work;
+                                Object[] row = new Object[6];
+                                row[0] = s.getRequestDate();
+                                row[1] = s.getSender();
+                                row[2] = s.getReceiver();
+                                row[3] = s;
+                                row[4] = s.getPersonPresent();
+                                row[5] = s.getPersonAbsent();
+
+                                model.addRow(row);
+                            } else {
+                                lblWarning.setText("*NO Shelter Request Found");
+                            }
+                        }
+                    } else {
+                        lblWarning.setText("*NO Shelter Request Found");
+                    }
+                } else {
+                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
                 }
+            } else {
+                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
@@ -95,6 +111,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
         tblReq = new javax.swing.JTable();
         btnView = new javax.swing.JButton();
         lblWarning = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,7 +124,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, -1, -1));
 
         btnServe.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnServe.setForeground(new java.awt.Color(71, 79, 112));
@@ -117,7 +134,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
                 btnServeActionPerformed(evt);
             }
         });
-        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, -1, -1));
+        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
@@ -163,7 +180,15 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
         add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, -1, -1));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 540, 20));
+
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -186,11 +211,12 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Already assigned");
+                    
                 }
 
             }
         } catch (Exception ex) {
-            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
 
     }//GEN-LAST:event_btnAssignActionPerformed
@@ -226,7 +252,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
 
             }
         } catch (Exception ex) {
-            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact --poojithsShetty@gmail.com");
         }
     }//GEN-LAST:event_btnServeActionPerformed
 
@@ -246,13 +272,22 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
                 layout.next(userProcessContainer);
             }
         } catch (Exception ex) {
-            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact --poojithsShetty@gmail.com");
         }
     }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+                
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnServe;
     private javax.swing.JButton btnView;
     private javax.swing.JLabel jLabel1;

@@ -26,7 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import userinterface.Beneficiary.Homeless.HomelessRequestWorkAreaJPanel;
 import utility.Validator;
 
 /**
@@ -372,7 +371,7 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
                                                             int no = Integer.parseInt(noOfVehText.getText());
                                                             Date time = times.parse(timeField.getText());
                                                             String address = addressText.getText();
-                                                            requests.setLogisticRequest(false);
+                                                            requests.setLogisticRequest(true);
                                                             if (carBtn.isSelected()) {
                                                                 requests.setTypeOfVehicle("Car");
 
@@ -407,13 +406,13 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
                                                 for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
                                                     for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
                                                         if (organization1 instanceof TransportOrganization) {
-                                                            System.out.println("sending to transport");
+                                                            
                                                             organization1.getWorkQueue().getWorkRequestList().add(requests);
                                                         }
                                                     }
                                                 }
                                             }
-                                            System.out.println("type is" + request);
+                                            
                                             if (request == Organization.RequestType.ANY) {
                                                 for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
                                                     if (enter instanceof EntityEnterprise) {
@@ -518,10 +517,10 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
 
         Component[] componentArray = userProcessContainer.getComponents();
-        HomelessRequestWorkAreaJPanel homelessRequestPanel = (HomelessRequestWorkAreaJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+        DisasterManagementRequestWorkAreaJPanel disasterManagementRequestWorkAreaJPanel = (DisasterManagementRequestWorkAreaJPanel) userProcessContainer.getComponent(componentArray.length - 1);
         // oldAgeRequestPanel.populateUpdatedTable();
 
-        homelessRequestPanel.populateWorkQueueTable();
+        disasterManagementRequestWorkAreaJPanel.populateWorkQueueTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
