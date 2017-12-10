@@ -171,6 +171,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         lblName = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
         lblWarningTable = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -411,7 +412,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                 btnViewDetailsActionPerformed(evt);
             }
         });
-        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, -1, -1));
+        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(71, 79, 112));
@@ -427,6 +428,16 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
         lblWarningTable.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarningTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 170, -1, -1));
+
+        btnDelete.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(71, 79, 112));
+        btnDelete.setText("Delete request");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
@@ -607,6 +618,33 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_nameJTextFieldFocusLost
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = organizationJTable.getSelectedRow();
+        if (selectedRow >= 0) {
+
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Would you like to delete the details", "Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+
+                Person p = (Person) organizationJTable.getValueAt(selectedRow, 1);
+
+                for (Person person : organization.getPersonList().getPersonList()) {
+                    if (p == person) {
+                        organization.getPersonList().getPersonList().remove(p);
+                        break;
+                    }
+
+                }
+
+                JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+                populateTable(organization);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Row from table ", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ARadioButton;
     private javax.swing.JRadioButton BRadioButton2;
@@ -616,6 +654,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField ageTextField;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreatePerson;
+    private javax.swing.JButton btnDelete;
     private javax.swing.ButtonGroup btnGrpEducationBackGround;
     private javax.swing.ButtonGroup btnGrpReasons;
     private javax.swing.ButtonGroup btnGrpSex;
