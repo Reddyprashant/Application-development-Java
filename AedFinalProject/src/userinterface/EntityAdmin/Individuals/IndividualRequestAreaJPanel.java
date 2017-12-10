@@ -140,8 +140,12 @@ public void populateUpdatedTable()
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblReq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblReq.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        tblReq.setForeground(new java.awt.Color(71, 79, 112));
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -160,8 +164,10 @@ public void populateUpdatedTable()
         });
         jScrollPane1.setViewportView(tblReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 77, 690, 182));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 690, 182));
 
+        UpdatedJTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        UpdatedJTable.setForeground(new java.awt.Color(71, 79, 112));
         UpdatedJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -180,23 +186,28 @@ public void populateUpdatedTable()
         });
         jScrollPane2.setViewportView(UpdatedJTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 337, 660, 198));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 550, 660, 198));
 
+        btnComplete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnComplete.setForeground(new java.awt.Color(71, 79, 112));
         btnComplete.setText("Serve");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCompleteActionPerformed(evt);
             }
         });
-        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, -1, -1));
+        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, 130, 40));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Recieved");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 43, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 308, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Individual Request Area Panel");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 460, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed

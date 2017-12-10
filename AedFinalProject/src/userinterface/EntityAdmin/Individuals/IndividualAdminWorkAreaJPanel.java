@@ -65,40 +65,55 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnHomeless = new javax.swing.JButton();
         btnShelter = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Individual Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
         enterpriseLabel.setText("Enterprise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 120, 30));
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 130, 20));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 160, 30));
 
+        valueLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        valueLabel.setForeground(new java.awt.Color(71, 79, 112));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 160, 30));
+
+        jButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(71, 79, 112));
         jButton1.setText("Manage Request");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 170, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 410, 190, 80));
 
-        btnHomeless.setText("Homeless Found");
+        btnHomeless.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnHomeless.setForeground(new java.awt.Color(252, 8, 4));
+        btnHomeless.setText("Homeless Found?? ");
+        btnHomeless.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnHomeless.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHomelessActionPerformed(evt);
             }
         });
-        add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 140, 30));
+        add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 190, 80));
 
+        btnShelter.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnShelter.setForeground(new java.awt.Color(71, 79, 112));
         btnShelter.setText("Shelter Request");
+        btnShelter.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnShelter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShelterActionPerformed(evt);
             }
         });
-        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 170, -1));
+        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 570, 200, 80));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
