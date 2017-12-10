@@ -210,6 +210,7 @@ private MNCRequestAreaJPanel mncRequestPanel;
         int availableVolunteers= Integer.parseInt(availVolTextField.getText());
         int requiredVolunteers = Integer.parseInt(reqVolText.getText());
         Date eventDate = date.parse(dateField.getText());
+         if(availableVolunteers > requiredVolunteers){
 if(organization.getEventDirectory().getEventDirectory() == null){
     organization.setEventDirectory(new EventDirectory());
 }
@@ -229,7 +230,9 @@ if(organization.getEventDirectory().getEventDirectory() == null){
             JOptionPane.showMessageDialog(null, "Details updated Successfully");
             availVolTextField.setText("");
         }
-            
+         }else{
+              JOptionPane.showMessageDialog(null, "Available volunteers cannot be more than Required Volunteers");
+         }     
         }
         catch(ParseException e)
             

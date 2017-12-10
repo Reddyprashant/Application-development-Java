@@ -15,6 +15,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import utility.Validator;
 
 /**
  *
@@ -34,29 +35,31 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         this.container = container;
 
         popOrganizationComboBox();
-       // employeeJComboBox.removeAllItems();
+        // employeeJComboBox.removeAllItems();
         popData();
     }
 
     public void popOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
+        if (enterprise.getOrganizationDirectory() != null) {
+            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                organizationJComboBox.addItem(organization);
+            }
+        }
+    }
 
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            organizationJComboBox.addItem(organization);
-        }
-    }
-    
-    public void populateEmployeeComboBox(Organization organization){
+    public void populateEmployeeComboBox(Organization organization) {
         employeeJComboBox.removeAllItems();
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
-            employeeJComboBox.addItem(employee);
+        if (organization.getEmployeeDirectory() != null) {
+            for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+                employeeJComboBox.addItem(employee);
+            }
         }
     }
-    
-    private void populateRoleComboBox(Organization e){
+
+    private void populateRoleComboBox(Organization e) {
         roleJComboBox.removeAllItems();
-        for (Role role : e.getSupportedRole()){
+        for (Role role : e.getSupportedRole()) {
             roleJComboBox.addItem(role);
         }
     }
@@ -66,13 +69,14 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) userJTable.getModel();
 
         model.setRowCount(0);
-
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-                Object row[] = new Object[2];
-                row[0] = ua;
-                row[1] = ua.getRole();
-                ((DefaultTableModel) userJTable.getModel()).addRow(row);
+        if (enterprise.getOrganizationDirectory() != null) {
+            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                    Object row[] = new Object[2];
+                    row[0] = ua;
+                    row[1] = ua.getRole();
+                    ((DefaultTableModel) userJTable.getModel()).addRow(row);
+                }
             }
         }
     }
@@ -209,6 +213,11 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
 
         pwdFiledPassword.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         pwdFiledPassword.setForeground(new java.awt.Color(71, 79, 112));
+        pwdFiledPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pwdFiledPasswordFocusLost(evt);
+            }
+        });
         pwdFiledPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwdFiledPasswordActionPerformed(evt);
@@ -219,31 +228,35 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
         //Creating User Account for Entity
-        
+
         String userName = nameJTextField.getText();
         String password = String.valueOf(pwdFiledPassword.getPassword());
-        if(!(userName.equals("") )){                                                               // checking whether the username is empty
-            if(!(password.equals(""))){                                                            // checking whether the password is empty
-               if(EcoSystem.checkIfUsernameIsUnique(userName)){                                    // checking whether the username is Unique
-               Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-               Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-               Role role = (Role) roleJComboBox.getSelectedItem();
-        
-               organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-        JOptionPane.showMessageDialog(null, "Account created succesfull", "Warning", JOptionPane.WARNING_MESSAGE); 
-        nameJTextField.setText("");
-        pwdFiledPassword.setText("");
-               popData();
-        }
-               else{
-                    JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE); 
+        if (!(userName.equals(""))) {                                                               // checking whether the username is empty     
+                if (!password.isEmpty()) {
+            if (!Validator.validatePassword(password)) {
+            return;
+            }// checking whether the password is empty
+                if (EcoSystem.checkIfUsernameIsUnique(userName)) {                                    // checking whether the username is Unique
+                    Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+                    Employee employee = (Employee) employeeJComboBox.getSelectedItem();
+                    Role role = (Role) roleJComboBox.getSelectedItem();
+                    if (organization != null) {
+                        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+                        JOptionPane.showMessageDialog(null, "Account created succesfull");
+                        nameJTextField.setText("");
+                        pwdFiledPassword.setText("");
+                        popData();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Organization not available.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Enter value for password", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-            else {
-                 JOptionPane.showMessageDialog(null, "Enter value for password", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-        }else{
-             JOptionPane.showMessageDialog(null, "Enter value for username", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Enter value for username", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
@@ -256,7 +269,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateEmployeeComboBox(organization);
             populateRoleComboBox(organization);
         }
@@ -265,6 +278,23 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
     private void pwdFiledPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdFiledPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdFiledPasswordActionPerformed
+
+    private void pwdFiledPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwdFiledPasswordFocusLost
+        // TODO add your handling code here:
+         String password = String.valueOf(pwdFiledPassword.getPassword());
+        if (!password.isEmpty()) {
+            if (!Validator.validatePassword(password)) {
+                JOptionPane.showMessageDialog(null, "Password should Contain \n"
+                        + "       # At least one digit\n"
+                        + "       # At least one lower case letter\n"
+                        + "       # At least one upper case letter\n"
+                        + "       # At least one special character(!@#$%^&+=~|?)\n"
+                        + "       # no whitespace allowed in the entire string\n"
+                        + "       # at least eight characters");
+                pwdFiledPassword.setText("");
+            }
+        }
+    }//GEN-LAST:event_pwdFiledPasswordFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backjButton1;

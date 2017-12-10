@@ -44,7 +44,9 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class Validator {
-
+public static String ACCOUNT_ACTIVATION="Your Account has been Activated.";
+public static String HOMELESS_FOUND= "Homeless request has been raised.";
+public static String DISASTER_REQUEST="A Disaster Request has been raised.";
     //Validating Name with regular Expression.
     public static boolean validateName(String name) {
         Pattern pattern;
@@ -165,7 +167,7 @@ public class Validator {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
             // Set Subject: header field
-            message.setSubject("Volunteer Management Account activation");
+            message.setSubject("Volunteer Management");
             //  message.setSubject("Sent me blank message???");
 
             // Now set the actual message

@@ -136,7 +136,7 @@ public class MNCManageEmployeeJPanel extends javax.swing.JPanel {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 140, 50));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 180, 50));
 
         organizationJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(71, 79, 112));

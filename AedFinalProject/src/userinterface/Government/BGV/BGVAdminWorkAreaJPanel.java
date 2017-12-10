@@ -20,6 +20,8 @@ import Business.Organization.OrphanageOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.EntityAdmin.Education.EducationManageEmployeeJPanel;
+import userinterface.EntityAdmin.Education.EntityOrganizationManageEmployeeJPanel;
 
 /**
  *
@@ -98,12 +100,15 @@ public class BGVAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-
-        BGVManageEmployeeJPanel manageEmployeeJPanel;
-        manageEmployeeJPanel = new BGVManageEmployeeJPanel(userProcessContainer,  enterprise.getOrganizationDirectory());
-        userProcessContainer.add("BGVManageEmployeeJPanel", manageEmployeeJPanel);
+ EntityOrganizationManageEmployeeJPanel manageEmployeeJPanel = new EntityOrganizationManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
+        userProcessContainer.add("EntityOrganizationManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+//        BGVManageEmployeeJPanel manageEmployeeJPanel;
+//        manageEmployeeJPanel = new BGVManageEmployeeJPanel(userProcessContainer,  enterprise.getOrganizationDirectory());
+//        userProcessContainer.add("BGVManageEmployeeJPanel", manageEmployeeJPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
     

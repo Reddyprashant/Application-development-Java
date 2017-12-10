@@ -115,12 +115,12 @@ private EducationRequestAreaJPanel eduRequestPanel;
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Event Name");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Available Volunteers");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, 30));
 
         availVolTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         availVolTextField.setForeground(new java.awt.Color(71, 79, 112));
@@ -211,11 +211,13 @@ private EducationRequestAreaJPanel eduRequestPanel;
         // TODO add your handling code here:
         try
         {
+           
         SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
         String name = eventNameTextfield.getText();
         int availableVolunteers= Integer.parseInt(availVolTextField.getText());
         int requiredVolunteers = Integer.parseInt(reqVolText.getText());
         Date eventDate = date.parse(dateField.getText());
+         if(availableVolunteers > requiredVolunteers){
 if(organization.getEventDirectory().getEventDirectory() == null){
     organization.setEventDirectory(new EventDirectory());
 }
@@ -235,6 +237,9 @@ if(organization.getEventDirectory().getEventDirectory() == null){
             JOptionPane.showMessageDialog(null, "Details updated Successfully");
             availVolTextField.setText("");
         }
+         }else{
+              JOptionPane.showMessageDialog(null, "Available volunteers cannot be more than Required Volunteers");
+         }
             
         }
         catch(ParseException e)

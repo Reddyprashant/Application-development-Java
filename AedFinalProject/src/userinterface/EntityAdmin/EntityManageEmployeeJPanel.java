@@ -194,9 +194,20 @@ public class EntityManageEmployeeJPanel extends javax.swing.JPanel {
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
         String email= txtEmail.getText();
+         if (!Validator.validateEmail(txtEmail.getText())) {
+                JOptionPane.showMessageDialog(null, "Enter valid employee emailid ", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        if(organization != null){
         organization.getEmployeeDirectory().createEmployee(name,email);
-         populateTable(organization);
-         }else{
+        // populateTable(organization);
+        JOptionPane.showMessageDialog(null, "Employee created successfully ");
+         }
+             
+             else{
+            JOptionPane.showMessageDialog(null, "No organizations available to create employee", "Warning", JOptionPane.WARNING_MESSAGE);
+             }
+         }   else{
              JOptionPane.showMessageDialog(null, "Enter value for Email Id", "Warning", JOptionPane.WARNING_MESSAGE);
            }
         }

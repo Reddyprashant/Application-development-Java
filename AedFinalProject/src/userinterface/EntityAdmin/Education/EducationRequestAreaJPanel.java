@@ -155,6 +155,7 @@ public void populateUpdatedTable()
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -236,8 +237,8 @@ public void populateUpdatedTable()
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel1.setText("Request Recieved");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
+        jLabel1.setText("Event List");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, -1, -1));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 308, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
@@ -254,6 +255,11 @@ public void populateUpdatedTable()
             }
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 839, 110, 40));
+
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel4.setText("Request Received");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -367,6 +373,7 @@ public void populateUpdatedTable()
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblReq;

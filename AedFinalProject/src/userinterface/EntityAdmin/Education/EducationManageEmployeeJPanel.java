@@ -189,21 +189,36 @@ public class EducationManageEmployeeJPanel extends javax.swing.JPanel {
 
         txtEmail.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(71, 79, 112));
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 136, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
          if(!nameJTextField.getText().equals("")){
+             if (!txtEmail.getText().isEmpty()){
+            
+            if (!Validator.validateEmail(txtEmail.getText())) {
+                JOptionPane.showMessageDialog(null, "Enter valid employee emailid ", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
         String email= txtEmail.getText();
         organization.getEmployeeDirectory().createEmployee(name,email);
-         populateTable(organization);
+        // populateTable(organization);
          JOptionPane.showMessageDialog(null, "Employee Created Successfully");
             nameJTextField.setText("");
             txtEmail.setText("");
          }else{
-             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+             JOptionPane.showMessageDialog(null, "Enter employee emailid ", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+         }else{
+             JOptionPane.showMessageDialog(null, "Enter employee name", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_addJButtonActionPerformed
@@ -221,6 +236,14 @@ public class EducationManageEmployeeJPanel extends javax.swing.JPanel {
             populateTable(organization);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        if (!Validator.validateEmail(txtEmail.getText())) {
+                JOptionPane.showMessageDialog(null, "Enter valid employee emailid ", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+    }//GEN-LAST:event_txtEmailFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;

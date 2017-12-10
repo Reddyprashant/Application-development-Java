@@ -221,6 +221,7 @@ public void populateTable( ArrayList<Organization> org)
             request.setStatus("Requested");
             request.setSender(account);
             request.setLatLong(latLong);
+            if(state.getEnterpriseDirectory() != null){
             for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
                     if(organization instanceof HomelessOrganization || organization instanceof OrphanageOrganization || organization instanceof OldAgeOrganization || organization instanceof IndividualOrganization ){
@@ -265,12 +266,15 @@ public void populateTable( ArrayList<Organization> org)
             }
             
             
+            
             account.getWorkQueue().getWorkRequestList().add(request);
            JOptionPane.showMessageDialog(null, "Shelter Request Raised");
+            }
             
         }else{
-            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please upload the image", "Warning", JOptionPane.WARNING_MESSAGE);
         }
+        
 
     }//GEN-LAST:event_reqBtnActionPerformed
 
@@ -313,7 +317,7 @@ public void populateTable( ArrayList<Organization> org)
         for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
             for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
                 
-                  if (organization instanceof HomelessOrganization|| organization instanceof OrphanageOrganization ||organization instanceof OldAgeOrganization || organization instanceof IndividualOrganization) {
+                  if (organization instanceof HomelessOrganization|| organization instanceof OrphanageOrganization ||organization instanceof OldAgeOrganization) {
                     
                       if(organization.populateDistance(latLong )<5)
                       {
