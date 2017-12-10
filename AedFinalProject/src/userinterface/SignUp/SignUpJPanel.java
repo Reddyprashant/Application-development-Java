@@ -648,7 +648,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                         + "       # At least one digit\n"
                         + "       # At least one lower case letter\n"
                         + "       # At least one upper case letter\n"
-                        + "       # At least one special character\n"
+                        + "       # At least one special character(!@#$%^&+=~|?)\n"
                         + "       # no whitespace allowed in the entire string\n"
                         + "       # at least eight characters");
                 txtPassword.setText("");

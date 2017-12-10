@@ -31,17 +31,17 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
     private HomelessOrganization organization;
     private Person p;
     private ImageIcon photo;
+
     public BeneficiaryPersonViewJPanel(JPanel userProcessContainer, Person p) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.p=p;
+        this.userProcessContainer = userProcessContainer;
+        this.p = p;
         populateValues();
     }
 
-    
-    public void populateValues(){
-
-        
+    public void populateValues() {
+        try {
+            lblWarning.setText("");
             txtFieldName.setText(p.getName());
             txtFieldSex.setText(p.getSex());
             txtFieldAge.setText(Integer.toString(p.getAge()));
@@ -52,7 +52,7 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
             lblPhoto.setIcon(p.getPhtoto());
             SimpleDateFormat Dateformat = new SimpleDateFormat("MM:dd:yyyy");
             txtFieldJoiningDate.setText(Dateformat.format(p.getDateOfJoining()));
-            
+
             txtFieldAge.setEnabled(false);
             txtFieldName.setEnabled(false);
             txtFieldEducationBackground.setEnabled(false);
@@ -60,14 +60,11 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
             txtFieldReason.setEnabled(false);
             txtFieldReasonDescription.setEnabled(false);
             txtFieldSex.setEnabled(false);
-            
-     
+
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+        }
     }
-    
-    
-
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,6 +97,7 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         txtFieldJoiningDate = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
+        lblWarning = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -141,29 +139,14 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
 
         txtFieldName.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         txtFieldName.setForeground(new java.awt.Color(71, 79, 112));
-        txtFieldName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldNameActionPerformed(evt);
-            }
-        });
         add(txtFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 93, 127, -1));
 
         txtFieldSex.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         txtFieldSex.setForeground(new java.awt.Color(71, 79, 112));
-        txtFieldSex.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldSexActionPerformed(evt);
-            }
-        });
         add(txtFieldSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 126, 127, -1));
 
         txtFieldAge.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         txtFieldAge.setForeground(new java.awt.Color(71, 79, 112));
-        txtFieldAge.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldAgeActionPerformed(evt);
-            }
-        });
         txtFieldAge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtFieldAgeKeyPressed(evt);
@@ -173,29 +156,14 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
 
         txtFieldEthnicity.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         txtFieldEthnicity.setForeground(new java.awt.Color(71, 79, 112));
-        txtFieldEthnicity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldEthnicityActionPerformed(evt);
-            }
-        });
         add(txtFieldEthnicity, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 204, 127, -1));
 
         txtFieldEducationBackground.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         txtFieldEducationBackground.setForeground(new java.awt.Color(71, 79, 112));
-        txtFieldEducationBackground.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldEducationBackgroundActionPerformed(evt);
-            }
-        });
         add(txtFieldEducationBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 247, 127, -1));
 
         txtFieldReason.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         txtFieldReason.setForeground(new java.awt.Color(71, 79, 112));
-        txtFieldReason.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldReasonActionPerformed(evt);
-            }
-        });
         add(txtFieldReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 286, 127, -1));
 
         jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -205,11 +173,6 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
 
         txtFieldReasonDescription.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         txtFieldReasonDescription.setForeground(new java.awt.Color(71, 79, 112));
-        txtFieldReasonDescription.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldReasonDescriptionActionPerformed(evt);
-            }
-        });
         add(txtFieldReasonDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 319, 127, -1));
 
         lblPhoto.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -263,114 +226,110 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
             }
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 496, -1, -1));
+
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldNameActionPerformed
-
-    private void txtFieldSexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSexActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldSexActionPerformed
-
-    private void txtFieldAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldAgeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldAgeActionPerformed
-
-    private void txtFieldEthnicityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEthnicityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldEthnicityActionPerformed
-
-    private void txtFieldEducationBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEducationBackgroundActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldEducationBackgroundActionPerformed
-
-    private void txtFieldReasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldReasonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldReasonActionPerformed
-
-    private void txtFieldReasonDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldReasonDescriptionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldReasonDescriptionActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-                    
-            txtFieldAge.setEnabled(true);
-            txtFieldName.setEnabled(true);
-            txtFieldEducationBackground.setEnabled(true);
-            txtFieldEthnicity.setEnabled(true);
-            txtFieldReason.setEnabled(true);
-            txtFieldReasonDescription.setEnabled(true);
-            txtFieldSex.setEnabled(true);
-        
+
+        txtFieldAge.setEnabled(true);
+        txtFieldName.setEnabled(true);
+        txtFieldEducationBackground.setEnabled(true);
+        txtFieldEthnicity.setEnabled(true);
+        txtFieldReason.setEnabled(true);
+        txtFieldReasonDescription.setEnabled(true);
+        txtFieldSex.setEnabled(true);
+
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        
-        
-        try{
-            String name = txtFieldName.getText();
-            int age = Integer.parseInt(txtFieldAge.getText());
-            String sex = txtFieldSex.getText();
-            String reason = txtFieldReason.getText();
-            String reasonDesc = txtFieldReasonDescription.getText();
-            String education = txtFieldEducationBackground.getText();
-            String ethnicity = txtFieldEthnicity.getText();
-        if(name.isEmpty() || txtFieldAge.getText().isEmpty()||sex.isEmpty()||reason.isEmpty()){
-            
-            JOptionPane.showMessageDialog(null, "Please provide all the details","Warning",JOptionPane.WARNING_MESSAGE);
-            return;
+
+        try {
+            lblWarning.setText("");
+            if (p != null) {
+                String name = txtFieldName.getText();
+                int age = Integer.parseInt(txtFieldAge.getText());
+                String sex = txtFieldSex.getText();
+                String reason = txtFieldReason.getText();
+                String reasonDesc = txtFieldReasonDescription.getText();
+                String education = txtFieldEducationBackground.getText();
+                String ethnicity = txtFieldEthnicity.getText();
+                if (!name.isEmpty()) {
+                    if (!txtFieldAge.getText().isEmpty()) {
+                        if (!sex.isEmpty()) {
+                            if (!reason.isEmpty()) {
+                                lblWarning.setText("");
+                                p.setAge(age);
+                                p.setEducationBackground(education);
+                                p.setEthnicity(ethnicity);
+                                p.setName(name);
+                                p.setPhtoto(photo);
+                                p.setReason(reason);
+                                p.setReasonDescription(reasonDesc);
+                                p.setSex(sex);
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Please provide reason", "Warning", JOptionPane.WARNING_MESSAGE);
+                                return;
+
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Please provide gender", "Warning", JOptionPane.WARNING_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please Fill in your Age", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please Enter Name", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+
+            }
+        } catch (NumberFormatException ex) {
+
+            JOptionPane.showMessageDialog(null, "Please Enter number for Age", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        else{
-        
-            p.setAge(age);
-            p.setEducationBackground(education);
-            p.setEthnicity(ethnicity);
-            p.setName(name);
-            p.setPhtoto(photo);
-            p.setReason(reason);
-            p.setReasonDescription(reasonDesc);
-            p.setSex(sex);
-            
-        }   
-        }catch(NumberFormatException ex){
-            
-            JOptionPane.showMessageDialog(null, "Please Enter number for Age","Warning",JOptionPane.WARNING_MESSAGE);
-        }
-               
-          
-            txtFieldAge.setEnabled(false);
-            txtFieldName.setEnabled(false);
-            txtFieldEducationBackground.setEnabled(false);
-            txtFieldEthnicity.setEnabled(false);
-            txtFieldReason.setEnabled(false);
-            txtFieldReasonDescription.setEnabled(false);
-            txtFieldSex.setEnabled(false);
-            
+
+        txtFieldAge.setEnabled(false);
+        txtFieldName.setEnabled(false);
+        txtFieldEducationBackground.setEnabled(false);
+        txtFieldEthnicity.setEnabled(false);
+        txtFieldReason.setEnabled(false);
+        txtFieldReasonDescription.setEnabled(false);
+        txtFieldSex.setEnabled(false);
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File f1 = chooser.getSelectedFile();
-        if (f1 != null) {
-            try {
-                Image pic = ImageIO.read(f1);
-                pic = pic.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
-                photo = new ImageIcon(pic);
-                lblPhoto.setIcon(photo);
-                   } catch (Exception e) {
+        try {
+            lblWarning.setText("");
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(null);
+            File f1 = chooser.getSelectedFile();
+            if (f1 != null) {
+                try {
+                    lblWarning.setText("");
+                    Image pic = ImageIO.read(f1);
+                    pic = pic.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
+                    photo = new ImageIcon(pic);
+                    lblPhoto.setIcon(photo);
+                } catch (Exception e) {
 
-           }
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Please select a picture", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception ex) {
+           lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }
-        else {
-            
-            JOptionPane.showMessageDialog(null, "Please select a picture","Warning",JOptionPane.WARNING_MESSAGE);
-        }        
-        
+
+
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -401,6 +360,7 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblPhoto;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField txtFieldAge;
     private javax.swing.JTextField txtFieldEducationBackground;
     private javax.swing.JTextField txtFieldEthnicity;
