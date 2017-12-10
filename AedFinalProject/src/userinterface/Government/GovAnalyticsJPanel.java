@@ -159,59 +159,77 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         combo2 = new javax.swing.JComboBox();
         combo3 = new javax.swing.JComboBox();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("People Analysis");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 190, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 220, -1));
 
         panelGraph.setBackground(new java.awt.Color(153, 153, 153));
         add(panelGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 670, 420));
 
+        btnAge.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(btnAge);
+        btnAge.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnAge.setForeground(new java.awt.Color(71, 79, 112));
         btnAge.setText("Age");
         btnAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgeActionPerformed(evt);
             }
         });
-        add(btnAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, -1, -1));
+        add(btnAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 90, -1));
 
+        btnReason.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(btnReason);
+        btnReason.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnReason.setForeground(new java.awt.Color(71, 79, 112));
         btnReason.setText("Reason");
         btnReason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReasonActionPerformed(evt);
             }
         });
-        add(btnReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, -1, -1));
+        add(btnReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 140, -1));
 
+        btnGender.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(btnGender);
+        btnGender.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnGender.setForeground(new java.awt.Color(71, 79, 112));
         btnGender.setText("Gender");
         btnGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenderActionPerformed(evt);
             }
         });
-        add(btnGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
+        add(btnGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 120, -1));
 
+        btnEthnicity.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(btnEthnicity);
+        btnEthnicity.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnEthnicity.setForeground(new java.awt.Color(71, 79, 112));
         btnEthnicity.setText("Ethnicity");
         btnEthnicity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEthnicityActionPerformed(evt);
             }
         });
-        add(btnEthnicity, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
+        add(btnEthnicity, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 130, -1));
 
+        btnEdu.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(btnEdu);
+        btnEdu.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnEdu.setForeground(new java.awt.Color(71, 79, 112));
         btnEdu.setText("Education");
         btnEdu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEduActionPerformed(evt);
             }
         });
-        add(btnEdu, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
+        add(btnEdu, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 140, -1));
 
         panelEthnicity.setBackground(new java.awt.Color(153, 153, 153));
         add(panelEthnicity, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 100, 590, 410));
@@ -222,6 +240,8 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         panelAge.setBackground(new java.awt.Color(153, 153, 153));
         add(panelAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 560, 600, 410));
 
+        combo1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        combo1.setForeground(new java.awt.Color(71, 79, 112));
         combo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo1ActionPerformed(evt);
@@ -229,6 +249,8 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         });
         add(combo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 60, 210, -1));
 
+        combo2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        combo2.setForeground(new java.awt.Color(71, 79, 112));
         combo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo2ActionPerformed(evt);
@@ -236,6 +258,8 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         });
         add(combo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 220, -1));
 
+        combo3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        combo3.setForeground(new java.awt.Color(71, 79, 112));
         combo3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo3ActionPerformed(evt);
