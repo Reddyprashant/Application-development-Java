@@ -100,6 +100,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
         lblWarning = new javax.swing.JLabel();
+        btnAssignToMe = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,7 +123,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
                 btnServeActionPerformed(evt);
             }
         });
-        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, -1, -1));
+        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
@@ -159,6 +160,15 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
+
+        btnAssignToMe.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnAssignToMe.setText("Assign to Me");
+        btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignToMeActionPerformed(evt);
+            }
+        });
+        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -212,7 +222,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
                 UserAccount acc = null;
 
                 if (p.getReceiver() != null) {
-                    if (p.getStatus().equals("Verified") || p.getStatus().equals("Requested")) {
+                    if (p.getStatus().equals("Verified")|| p.getStatus().equals("Pending")) {
                         if (p instanceof SignUpRequestOrganization) {
                             orgRequest = (SignUpRequestOrganization) p;
                             //You can check for non duplicate of enterprise here.
@@ -263,9 +273,34 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnServeActionPerformed
 
+    private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
+        // TODO add your handling code here:
+                int selectedRow = tblReq.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            SignUpRequestOrganization p = (SignUpRequestOrganization) tblReq.getValueAt(selectedRow, 5);
+
+            if (p.getStatus().equals("Requested")) {
+                //  System.out.println("admin name"+ account.getUsername());
+                p.setStatus("Pending");
+                p.setReceiver(account);
+
+                populateWorkQueueTable();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Already assigned");
+            }
+
+        }
+
+    }//GEN-LAST:event_btnAssignToMeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnServe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

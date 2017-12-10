@@ -25,13 +25,13 @@ import userinterface.Beneficiary.ShelterRequestAreaJPanel;
  */
 public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
     
-    JPanel userProcessContainer;
-    UserAccount account; 
-    HomelessOrganization organization; 
-    Enterprise enterprise; 
-    EcoSystem business;
-    StateNetwork state;
-    CountryNetwork country;
+    private JPanel userProcessContainer;
+    private UserAccount account; 
+    private HomelessOrganization organization; 
+    private Enterprise enterprise; 
+    private EcoSystem business;
+    private StateNetwork state;
+    private CountryNetwork country;
     /** Creates new form AdminWorkAreaJPanel */
     public HomelessAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, HomelessOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
