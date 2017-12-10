@@ -93,8 +93,11 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         txtLoc = new javax.swing.JTextField();
         btnLocation = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        organizationJTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        organizationJTable.setForeground(new java.awt.Color(71, 79, 112));
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -125,67 +128,89 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
             organizationJTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 60, 480, 92));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 540, 120));
 
+        addJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        addJButton.setForeground(new java.awt.Color(71, 79, 112));
         addJButton.setText("Add Organization");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, -1, -1));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 560, 160, 40));
 
-        organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 225, 81, -1));
+        organizationJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        organizationJComboBox.setForeground(new java.awt.Color(71, 79, 112));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, 120, -1));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Organization Type ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 228, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
 
+        backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(71, 79, 112));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 100, 40));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Organization Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, -1, -1));
 
+        orgNameTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        orgNameTextField.setForeground(new java.awt.Color(71, 79, 112));
         orgNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orgNameTextFieldActionPerformed(evt);
             }
         });
-        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 80, -1));
+        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 370, 120, -1));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Organization City");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, -1, -1));
 
+        txtcity.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtcity.setForeground(new java.awt.Color(71, 79, 112));
         txtcity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcityActionPerformed(evt);
             }
         });
-        add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 80, -1));
+        add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 120, -1));
 
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Organization Address");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
 
+        txtAddress.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtAddress.setForeground(new java.awt.Color(71, 79, 112));
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAddressActionPerformed(evt);
             }
         });
-        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 80, -1));
+        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 120, -1));
 
-        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
         jLabel18.setText("Location :");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 100, -1));
-        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 170, -1));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 100, -1));
 
-        btnLocation.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtLoc.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtLoc.setForeground(new java.awt.Color(71, 79, 112));
+        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 120, -1));
+
+        btnLocation.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnLocation.setForeground(new java.awt.Color(71, 79, 112));
         btnLocation.setText("Set Location");
         btnLocation.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +218,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
                 btnLocationActionPerformed(evt);
             }
         });
-        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 140, 30));
+        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed

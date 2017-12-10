@@ -155,21 +155,27 @@ DefaultTableModel model = (DefaultTableModel) tblView.getModel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblView = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Logistics Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 130, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 600, -1));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 130, 20));
 
+        btnComplete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnComplete.setForeground(new java.awt.Color(71, 79, 112));
         btnComplete.setText("Complete");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCompleteActionPerformed(evt);
             }
         });
-        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 140, -1));
+        add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 130, 40));
 
+        availableTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        availableTable.setForeground(new java.awt.Color(71, 79, 112));
         availableTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -188,16 +194,20 @@ DefaultTableModel model = (DefaultTableModel) tblView.getModel();
         });
         jScrollPane1.setViewportView(availableTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 790, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 790, 90));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Vehicles Requested");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 170, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 210, 30));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Vehicles Available");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 150, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 210, 30));
 
+        requestTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        requestTable.setForeground(new java.awt.Color(71, 79, 112));
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -221,36 +231,48 @@ DefaultTableModel model = (DefaultTableModel) tblView.getModel();
         });
         jScrollPane2.setViewportView(requestTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 650, 270));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 650, 270));
 
-        add(comboVaccine, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 220, -1));
+        comboVaccine.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        comboVaccine.setForeground(new java.awt.Color(71, 79, 112));
+        add(comboVaccine, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 650, 220, -1));
 
+        txtquant.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtquant.setForeground(new java.awt.Color(71, 79, 112));
         txtquant.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtquantKeyPressed(evt);
             }
         });
-        add(txtquant, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 100, -1));
+        add(txtquant, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 650, 100, -1));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Vehicle Type");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, 90, 20));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 650, 110, 20));
 
+        sellBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        sellBtn.setForeground(new java.awt.Color(71, 79, 112));
         sellBtn.setText("Add Vehicle");
         sellBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sellBtnActionPerformed(evt);
             }
         });
-        add(sellBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 650, 170, -1));
+        add(sellBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 700, 130, 40));
 
+        btnDelete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(71, 79, 112));
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, -1, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, -1, 40));
 
+        tblView.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        tblView.setForeground(new java.awt.Color(71, 79, 112));
         tblView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -269,7 +291,7 @@ DefaultTableModel model = (DefaultTableModel) tblView.getModel();
         });
         jScrollPane3.setViewportView(tblView);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, 410, 150));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 410, 150));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed

@@ -97,91 +97,123 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         txtCountry = new javax.swing.JTextField();
         txtCity = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Register");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 160, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 160, 30));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Name :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
 
+        txtName.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtName.setForeground(new java.awt.Color(71, 79, 112));
         txtName.setEnabled(false);
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 170, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 170, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Country:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 80, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 80, -1));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("User Name :");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
 
+        txtUserName.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(71, 79, 112));
         txtUserName.setEnabled(false);
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 170, -1));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 170, -1));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("Email Id :");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
 
+        txtEmail.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(71, 79, 112));
         txtEmail.setEnabled(false);
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 170, -1));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 170, -1));
 
+        txtEnterprise.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtEnterprise.setForeground(new java.awt.Color(71, 79, 112));
         txtEnterprise.setEnabled(false);
-        add(txtEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 170, -1));
+        add(txtEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 320, 170, -1));
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(71, 79, 112));
         jLabel9.setText("State :");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 80, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 80, -1));
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(71, 79, 112));
         jLabel10.setText("City :");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 80, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, 80, -1));
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(71, 79, 112));
         jLabel11.setText("Enterprise :");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 90, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 160, -1));
 
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(71, 79, 112));
         jLabel12.setText("Organization :");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 100, -1));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 160, -1));
 
+        txtOrgName.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtOrgName.setForeground(new java.awt.Color(71, 79, 112));
         txtOrgName.setEnabled(false);
-        add(txtOrgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 170, -1));
+        add(txtOrgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 240, 170, -1));
 
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(71, 79, 112));
         jLabel13.setText("Organization Name :");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 150, -1));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 160, -1));
 
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(71, 79, 112));
         jLabel14.setText("Documents :");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 100, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 100, -1));
 
+        lblImage.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        lblImage.setForeground(new java.awt.Color(71, 79, 112));
         lblImage.setText("Image");
-        add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 220, 210));
+        add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 220, 210));
 
+        txtState.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtState.setForeground(new java.awt.Color(71, 79, 112));
         txtState.setEnabled(false);
-        add(txtState, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 170, -1));
+        add(txtState, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 170, -1));
 
+        txtOrg.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtOrg.setForeground(new java.awt.Color(71, 79, 112));
         txtOrg.setEnabled(false);
-        add(txtOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 170, -1));
+        add(txtOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, 170, -1));
 
+        txtCountry.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtCountry.setForeground(new java.awt.Color(71, 79, 112));
         txtCountry.setEnabled(false);
         txtCountry.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCountryKeyPressed(evt);
             }
         });
-        add(txtCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 170, -1));
+        add(txtCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 170, -1));
 
+        txtCity.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtCity.setForeground(new java.awt.Color(71, 79, 112));
         txtCity.setEnabled(false);
-        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 170, -1));
+        add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 280, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed

@@ -94,8 +94,13 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
         tblReq = new javax.swing.JTable();
         btnAssign1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane2.setForeground(new java.awt.Color(71, 79, 112));
+
+        jTable2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jTable2.setForeground(new java.awt.Color(71, 79, 112));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -109,37 +114,52 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 337, -1, 198));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, -1, 198));
 
+        btnAssign.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnAssign.setForeground(new java.awt.Color(71, 79, 112));
         btnAssign.setText("Assign to me");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 140, 40));
 
+        btnServe.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnServe.setForeground(new java.awt.Color(71, 79, 112));
         btnServe.setText("Serve");
         btnServe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnServeActionPerformed(evt);
             }
         });
-        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 266, -1, -1));
+        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 370, 110, 40));
 
+        jButton3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(71, 79, 112));
         jButton3.setText("Send Request to BGV");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 553, -1, -1));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 720, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Recieved");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 43, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 190, -1));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("jLabel2");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 308, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Government Admin Request Area Panel");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 14, 389, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 520, -1));
 
+        jScrollPane1.setForeground(new java.awt.Color(71, 79, 112));
+
+        tblReq.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        tblReq.setForeground(new java.awt.Color(71, 79, 112));
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -158,15 +178,17 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 77, 690, 182));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 690, 182));
 
+        btnAssign1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnAssign1.setForeground(new java.awt.Color(71, 79, 112));
         btnAssign1.setText("Assign to BGV");
         btnAssign1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssign1ActionPerformed(evt);
             }
         });
-        add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 266, -1, -1));
+        add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 180, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
