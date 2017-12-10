@@ -5,32 +5,19 @@
  */
 package userinterface.googleApi;
 
-import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
 import Business.LatLong;
-import Business.Network.CountryNetwork;
-import Business.Network.StateNetwork;
-import Business.UserAccount.UserAccount;
 import com.teamdev.jxbrowser.chromium.Browser;
+
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-import org.netbeans.lib.awtextra.AbsoluteLayout;
 import userinterface.Beneficiary.BeneficiaryManageOrganizationJPanel;
-import userinterface.EntityAdmin.Education.EducationRequestAreaJPanel;
 import userinterface.EntityAdmin.EntityManageOrganizationJPanel;
 import userinterface.Government.GovernmentManageOrganizationJPanel;
 import userinterface.Logistics.LogisticsManageOrganizationJPanel;
 import userinterface.SignUp.SignUpJPanel;
-import utility.googleMap.GoogleMapsSample;
 
 /**
  *
