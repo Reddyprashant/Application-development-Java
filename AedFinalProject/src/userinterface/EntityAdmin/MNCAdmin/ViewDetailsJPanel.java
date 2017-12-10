@@ -210,7 +210,7 @@ private MNCRequestAreaJPanel mncRequestPanel;
         int availableVolunteers= Integer.parseInt(availVolTextField.getText());
         int requiredVolunteers = Integer.parseInt(reqVolText.getText());
         Date eventDate = date.parse(dateField.getText());
-         if(availableVolunteers > requiredVolunteers){
+         if(availableVolunteers <= requiredVolunteers){
 if(organization.getEventDirectory().getEventDirectory() == null){
     organization.setEventDirectory(new EventDirectory());
 }

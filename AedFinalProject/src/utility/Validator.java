@@ -150,10 +150,6 @@ public static String DISASTER_REQUEST="A Disaster Request has been raised.";
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
 
-        // Setup mail server
-        // properties.setProperty("mail.smtp.host", host);
-        //  properties.put("mail.smtp.starttls.enable", "true");
-        // Get the default Session object.
         Session session = Session.getDefaultInstance(properties);
 
         try {
