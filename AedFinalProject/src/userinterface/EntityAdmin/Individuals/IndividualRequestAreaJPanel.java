@@ -35,6 +35,7 @@ import Business.SignUp.SignUpRequestOrganization;
 import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.logging.Level;
@@ -61,8 +62,9 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
     StateNetwork state;
     EcoSystem system;
     JPanel userProcessContainer;
-IndividualOrganization organization;
-    public IndividualRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, IndividualOrganization organization,Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
+    IndividualOrganization organization;
+
+    public IndividualRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, IndividualOrganization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         //this.organizationDir = organizationDir;
         this.userProcessContainer = userProcessContainer;
@@ -71,57 +73,74 @@ IndividualOrganization organization;
         this.state = network;
         this.country = cNetwork;
         this.account = account;
-        this.organization=organization;
+        this.organization = organization;
         populateWorkQueueTable();
         populateUpdatedTable();
-        
-    }
 
+    }
 
     public void populateWorkQueueTable() {
-        System.out.println("entity");
-        DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
+        try {
+            lblWarning.setText("");
+            DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
 
-        model.setRowCount(0);
-        //System.out.println("qasda" + enterprise.getWorkQueue().getWorkRequestList().size() + " " + enterprise);
-        // SignUpRequest s=null;
-        
-        for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
-            System.out.println("work request");
-            if(work instanceof BeneficiaryWorkRequest ){
-                  BeneficiaryWorkRequest s = (BeneficiaryWorkRequest) work;
-                Object[] row = new Object[6];
-                 //System.out.println("qwe"+s.getSenderOrganization());
-                row[0] = s.getSenderOrganization();
-                row[1] = s.getEventName();
-                row[2] = s.getNumberOfVolunteersRequest();
-                row[3] = s.getEventDate();
-                row[4] = s;
-                model.addRow(row);
+            model.setRowCount(0);
+            if (enterprise.getWorkQueue() == null) {
+                enterprise.setWorkQueue(new WorkQueue());
             }
-            
-        }
-    }
-public void populateUpdatedTable()
-{
-     DefaultTableModel model = (DefaultTableModel) UpdatedJTable.getModel();
+            if (enterprise.getWorkQueue().getWorkRequestList().size() > 0) {
+                for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
+                    if (work instanceof BeneficiaryWorkRequest) {
+                        BeneficiaryWorkRequest s = (BeneficiaryWorkRequest) work;
+                        Object[] row = new Object[6];
+                        row[0] = s.getSenderOrganization();
+                        row[1] = s.getEventName();
+                        row[2] = s.getNumberOfVolunteersRequest();
+                        row[3] = s.getEventDate();
+                        row[4] = s;
+                        model.addRow(row);
+                    }
 
-        model.setRowCount(0);
-        if(organization.getEventDirectory()==null){
-            organization.setEventDirectory(new EventDirectory());
-            
+                }
+
+            } else {
+                lblWarning.setText("*Work Request is not Available");
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
-        for (Event event : organization.getEventDirectory().getEventDirectory()) {
-                Object[] row = new Object[6];
-                row[0]=event.getEventId();
-                row[1] = event.getSenderOrganization();
-                row[2] = event.getAvailVolunteers();
-                row[3] = event;
-                row[4] = event.getEventDate();
-                model.addRow(row);
     }
-        
-}
+    
+
+    public void populateUpdatedTable() {
+        try {
+            lblWarning.setText("");
+            DefaultTableModel model = (DefaultTableModel) UpdatedJTable.getModel();
+
+            model.setRowCount(0);
+            if (organization.getEventDirectory() == null) {
+                organization.setEventDirectory(new EventDirectory());
+
+            }
+            if (organization.getEventDirectory().getEventDirectory().size() > 0) {
+                lblWarning.setText("");
+                for (Event event : organization.getEventDirectory().getEventDirectory()) {
+                    Object[] row = new Object[6];
+                    row[0] = event.getEventId();
+                    row[1] = event.getSenderOrganization();
+                    row[2] = event.getAvailVolunteers();
+                    row[3] = event;
+                    row[4] = event.getEventDate();
+                    model.addRow(row);
+                }
+            } else {
+                lblWarning.setText("*NO Events are Available");
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -139,6 +158,8 @@ public void populateUpdatedTable()
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        backJButton = new javax.swing.JButton();
+        lblWarning = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -208,45 +229,57 @@ public void populateUpdatedTable()
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Individual Request Area Panel");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 460, -1));
+
+        backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(71, 79, 112));
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 790, 110, 40));
+
+        lblWarning.setForeground(new java.awt.Color(255, 51, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 860, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblReq.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
-            BeneficiaryWorkRequest orgRequest = null;
-            //SignUpRequestEnterprise e = null;
-            UserAccount acc=null;
-            if (p.getStatus().equals("Complete")) {
-            if(organization.getEventDirectory()== null){
-                organization.setEventDirectory(new EventDirectory());
-                System.out.println("event dir null");
-            }
-    Event event = organization.getEventDirectory().createEvent();
-      event.setAvailVolunteers(1);
-      event.setEventDate(p.getEventDate());
-      event.setEventName(p.getEventName());
-      event.setRequiredVolunteers(p.getNumberOfVolunteersRequest());
-      event.setServingOrganization(organization);
-      event.setSenderOrganization(p.getSenderOrganization());
-      
-      
-      
-          p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
-          p.getEventDirectory().getEventDirectory().add(event);
-      if(p.isLogisticRequest()==true && p.getNumberOfVolunteersRequest()==0){
-                try {
-                    p.setStatus("Complete");
-                    Validator.sendMessage(p.getSender().getEmployee().getEmailId());
-                } catch (SendFailedException ex) {
-                    Logger.getLogger(IndividualRequestAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-      }
-      
-                //if (p.getStatus().equals("Pending")) {
+        try {
+            lblWarning.setText("");
+            int selectedRow = tblReq.getSelectedRow();
+            if (selectedRow < 0) {
+                JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
+                BeneficiaryWorkRequest orgRequest = null;
+                UserAccount acc = null;
+                if (p.getStatus().equals("Complete")) {
+                    if (organization.getEventDirectory() == null) {
+                        organization.setEventDirectory(new EventDirectory());
+
+                    }
+                    Event event = organization.getEventDirectory().createEvent();
+                    event.setAvailVolunteers(1);
+                    event.setEventDate(p.getEventDate());
+                    event.setEventName(p.getEventName());
+                    event.setRequiredVolunteers(p.getNumberOfVolunteersRequest());
+                    event.setServingOrganization(organization);
+                    event.setSenderOrganization(p.getSenderOrganization());
+
+                    p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
+                    p.getEventDirectory().getEventDirectory().add(event);
+                    if (p.isLogisticRequest() == true && p.getNumberOfVolunteersRequest() == 0) {
+                        try {
+                            p.setStatus("Complete");
+                            Validator.sendMessage(p.getSender().getEmployee().getEmailId());
+                        } catch (SendFailedException ex) {
+                            // Logger.getLogger(IndividualRequestAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    //if (p.getStatus().equals("Pending")) {
 //                    if (p instanceof BeneficiaryWorkRequest) {
 //                         try {
 //                            Validator.sendMessage(p.getEmail());
@@ -255,40 +288,43 @@ public void populateUpdatedTable()
 //                             p.setStatus("Cancelled");
 //                            // populateWorkQueueTable();
 //                             return;
-                        //}
-                                               //You can check for non duplicate of enterprise here.
-                       // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
-                        
-                       
-                    
-
-                    
+                    //}
+                    //You can check for non duplicate of enterprise here.
+                    // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
 
                     populateWorkQueueTable();
                     populateUpdatedTable();
-        }
-    else {
+                } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
                 }
 
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+        }
 
-        }         
-            
 
-
-        
     }//GEN-LAST:event_btnCompleteActionPerformed
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable UpdatedJTable;
+    private javax.swing.JButton backJButton;
     private javax.swing.JButton btnComplete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTable tblReq;
     // End of variables declaration//GEN-END:variables
 }

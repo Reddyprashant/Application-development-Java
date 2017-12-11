@@ -6,17 +6,11 @@
 
 package userinterface.Government.BGV;
 
-import userinterface.Beneficiary.OlgAgeHome.*;
-import userinterface.Beneficiary.Orphanage.*;
 import Business.EcoSystem;
-//import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.BGVOrganization;
-//import Business.Organization.ClinicOrganization;
-import Business.Organization.Organization;
-import Business.Organization.OrphanageOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -28,13 +22,13 @@ import userinterface.EntityAdmin.Education.EntityOrganizationManageEmployeeJPane
  */
 public class BGVAdminWorkAreaJPanel extends javax.swing.JPanel {
     
-    JPanel userProcessContainer;
-    UserAccount account; 
-    BGVOrganization organization; 
-    Enterprise enterprise; 
-    EcoSystem business;
-    StateNetwork state;
-    CountryNetwork country;
+    private JPanel userProcessContainer;
+    private UserAccount account; 
+    private BGVOrganization organization; 
+    private Enterprise enterprise; 
+    private EcoSystem business;
+    private StateNetwork state;
+    private CountryNetwork country;
     /** Creates new form AdminWorkAreaJPanel */
     public BGVAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, BGVOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
@@ -115,11 +109,6 @@ public class BGVAdminWorkAreaJPanel extends javax.swing.JPanel {
         userProcessContainer.add("EntityOrganizationManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-//        BGVManageEmployeeJPanel manageEmployeeJPanel;
-//        manageEmployeeJPanel = new BGVManageEmployeeJPanel(userProcessContainer,  enterprise.getOrganizationDirectory());
-//        userProcessContainer.add("BGVManageEmployeeJPanel", manageEmployeeJPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
     

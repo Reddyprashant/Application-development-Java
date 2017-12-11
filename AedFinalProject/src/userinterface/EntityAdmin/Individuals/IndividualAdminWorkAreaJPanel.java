@@ -6,17 +6,11 @@
 
 package userinterface.EntityAdmin.Individuals;
 
-import userinterface.EntityAdmin.Hospital.*;
-import userinterface.EntityAdmin.MNCAdmin.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-import Business.Organization.HospitalOrganization;
 import Business.Organization.IndividualOrganization;
-//import Business.Organization.MNCOrganization;
-//import Business.Organization.MNCOrganization;
-import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -29,14 +23,14 @@ import userinterface.googleApi.HomelessFoundJPanel;
  */
 public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
     
-    JPanel userProcessContainer;
-    UserAccount account; 
-    IndividualOrganization organization; 
-    Enterprise enterprise; 
-    EcoSystem business;
+    private JPanel userProcessContainer;
+    private UserAccount account; 
+    private IndividualOrganization organization; 
+    private Enterprise enterprise; 
+    private EcoSystem business;
        
-    StateNetwork state;
-    CountryNetwork country;
+    private StateNetwork state;
+    private CountryNetwork country;
     /** Creates new form AdminWorkAreaJPanel */
     public IndividualAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, IndividualOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();

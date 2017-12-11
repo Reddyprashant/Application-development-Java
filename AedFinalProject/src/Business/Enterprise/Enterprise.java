@@ -6,9 +6,7 @@ package Business.Enterprise;
 
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
-import Business.Role.Role;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 
 /**
@@ -24,6 +22,10 @@ public abstract class Enterprise extends Organization{
         super(name, null,null);
         this.enterpriseType = type;
         organizationDirectory = new OrganizationDirectory();
+    }
+
+    public void setOrganizationDirectory(OrganizationDirectory organizationDirectory) {
+        this.organizationDirectory = organizationDirectory;
     }
  
     public enum EnterpriseType{

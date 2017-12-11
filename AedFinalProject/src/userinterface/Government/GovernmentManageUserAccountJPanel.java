@@ -4,18 +4,21 @@
  */
 package userinterface.Government;
 
-import userinterface.EntityAdmin.*;
 import Business.EcoSystem;
 //import userinterface.AdministrativeRole.*;
 import Business.Employee.Employee;
+import Business.Employee.EmployeeDirectory;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
+import Business.Organization.OrganizationDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import utility.Validator;
 
 /**
  *
@@ -35,46 +38,93 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
         this.container = container;
 
         popOrganizationComboBox();
-       // employeeJComboBox.removeAllItems();
         popData();
     }
 
     public void popOrganizationComboBox() {
-        organizationJComboBox.removeAllItems();
+        try {
+            lblWarning.setText("");
+            organizationJComboBox.removeAllItems();
+            if (enterprise.getOrganizationDirectory() == null) {
+                enterprise.setOrganizationDirectory(new OrganizationDirectory());
+            }
+            if (enterprise.getOrganizationDirectory().getOrganizationList().size() > 0) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    organizationJComboBox.addItem(organization);
+                }
+            } else {
+                lblWarning.setText("*Employee is not Available");
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
 
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            organizationJComboBox.addItem(organization);
         }
     }
-    
-    public void populateEmployeeComboBox(Organization organization){
-        employeeJComboBox.removeAllItems();
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
-            employeeJComboBox.addItem(employee);
+
+    public void populateEmployeeComboBox(Organization organization) {
+        try {
+            lblWarning.setText("");
+            employeeJComboBox.removeAllItems();
+            if (organization.getEmployeeDirectory() == null) {
+                organization.setEmployeeDirectory(new EmployeeDirectory());
+            }
+            if (organization.getEmployeeDirectory().getEmployeeList().size() > 0) {
+                for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+                    employeeJComboBox.addItem(employee);
+                }
+            } else {
+                lblWarning.setText("*Employee is not Available");
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }
-    
-    private void populateRoleComboBox(Enterprise e){
-        roleJComboBox.removeAllItems();
-        for (Role role : e.getSupportedRole()){
-            roleJComboBox.addItem(role);
+
+    private void populateRoleComboBox(Enterprise e) {
+        try {
+            lblWarning.setText("");
+            roleJComboBox.removeAllItems();
+            if (e != null) {
+                if (e.getSupportedRole() != null) {
+
+                    for (Role role : e.getSupportedRole()) {
+                        roleJComboBox.addItem(role);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }
 
     public void popData() {
+        try {
+            lblWarning.setText("");
+            DefaultTableModel model = (DefaultTableModel) userJTable.getModel();
 
-        DefaultTableModel model = (DefaultTableModel) userJTable.getModel();
-
-        model.setRowCount(0);
-
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-                Object row[] = new Object[2];
-                row[0] = ua;
-                row[1] = ua.getRole();
-                ((DefaultTableModel) userJTable.getModel()).addRow(row);
+            model.setRowCount(0);
+            if (enterprise.getOrganizationDirectory() == null) {
+                enterprise.setOrganizationDirectory(new OrganizationDirectory());
             }
+            if (enterprise.getOrganizationDirectory().getOrganizationList().size() > 0) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization.getUserAccountDirectory() == null) {
+                        organization.setUserAccountDirectory(new UserAccountDirectory());
+                    }
+                    if (organization.getUserAccountDirectory().getUserAccountList().size() > 0) {
+                        for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                            Object row[] = new Object[2];
+                            row[0] = ua;
+                            row[1] = ua.getRole();
+                            ((DefaultTableModel) userJTable.getModel()).addRow(row);
+                        }
+                    }
+                }
+            } else {
+                lblWarning.setText("*Organization is not Available");
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }
 
@@ -93,7 +143,6 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         userJTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        passwordJTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         employeeJComboBox = new javax.swing.JComboBox();
         backjButton1 = new javax.swing.JButton();
@@ -101,6 +150,11 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
         organizationJComboBox = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         roleJComboBox = new javax.swing.JComboBox();
+        jLabel7 = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        lblAcceptedUserName = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -117,6 +171,11 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
 
         nameJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(71, 79, 112));
+        nameJTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nameJTextFieldFocusLost(evt);
+            }
+        });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, 146, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -163,10 +222,6 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel2.setText("Password");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, 80, -1));
 
-        passwordJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        passwordJTextField.setForeground(new java.awt.Color(71, 79, 112));
-        add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 146, -1));
-
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Employee");
@@ -174,7 +229,6 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
 
         employeeJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         employeeJComboBox.setForeground(new java.awt.Color(71, 79, 112));
-        employeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, 146, -1));
 
         backjButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -194,7 +248,6 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
 
         organizationJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(71, 79, 112));
-        organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationJComboBoxActionPerformed(evt);
@@ -209,30 +262,68 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
 
         roleJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         roleJComboBox.setForeground(new java.awt.Color(71, 79, 112));
-        roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 146, -1));
+
+        jLabel7.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel7.setText("Manage User Account");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, -1, -1));
+
+        lblUserName.setForeground(new java.awt.Color(255, 51, 0));
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, -1));
+
+        lblAcceptedUserName.setForeground(new java.awt.Color(0, 204, 0));
+        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, -1));
+
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, -1, -1));
+
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusLost(evt);
+            }
+        });
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 140, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
-        String userName = nameJTextField.getText();
-        String password = passwordJTextField.getText();
-        if(!((userName.equals("") || (password.equals(""))))){
-        if(EcoSystem.checkIfUsernameIsUnique(userName)){
-        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-        Role role = (Role) roleJComboBox.getSelectedItem();
-        JOptionPane.showMessageDialog(null, "Account created succesfull", "Warning", JOptionPane.WARNING_MESSAGE); 
-        nameJTextField.setText("");
-        passwordJTextField.setText("");
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-        
-        popData();
-        }
-        else{
-           JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE); 
-        }
-        }else{
-             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+        try {
+            lblWarning.setText("");
+            String userName = nameJTextField.getText();
+            String password = String.valueOf(txtPassword.getPassword());
+            if (!((userName.equals("")))) {
+                if (!(password.equals(""))) {
+                    if (organizationJComboBox.getSelectedItem() != null) {
+                        if (employeeJComboBox.getSelectedItem() != null) {
+                            if (roleJComboBox.getSelectedItem() != null) {
+                                Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+                                Employee employee = (Employee) employeeJComboBox.getSelectedItem();
+                                Role role = (Role) roleJComboBox.getSelectedItem();
+                                JOptionPane.showMessageDialog(null, "Account created succesfull", "Warning", JOptionPane.WARNING_MESSAGE);
+                                nameJTextField.setText("");
+                                txtPassword.setText("");
+                                organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+
+                                popData();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Please Select Role", "Warning", JOptionPane.WARNING_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Please Select Employee", "Warning", JOptionPane.WARNING_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please Select Organization", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please Enter Password", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please Enter User Name", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            }
+        }catch(Exception ex){
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
@@ -245,11 +336,48 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateEmployeeComboBox(organization);
             populateRoleComboBox(enterprise);
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
+
+    private void nameJTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameJTextFieldFocusLost
+        // TODO add your handling code here:
+        String userName = nameJTextField.getText();
+        if (!nameJTextField.getText().isEmpty()) {
+            if (!Validator.validateUserName(nameJTextField.getText())) {
+                lblAcceptedUserName.setText("");
+                lblUserName.setText("*Only AlphaNumeric Characters and Spaces are allowed");
+                nameJTextField.setText("");
+            } else if (!EcoSystem.checkIfUsernameIsUnique(nameJTextField.getText())) {
+                lblUserName.setText("*" + userName + " " + "is already taken please enter new username");
+                nameJTextField.setText("");
+            } else {
+
+                lblUserName.setText("");
+                lblAcceptedUserName.setText(userName + " " + "is available");
+            }
+        }
+    }//GEN-LAST:event_nameJTextFieldFocusLost
+
+    private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
+        // TODO add your handling code here:
+
+        String password = String.valueOf(txtPassword.getPassword());
+        if (!password.isEmpty()) {
+            if (!Validator.validatePassword(password)) {
+                JOptionPane.showMessageDialog(null, "Password should Contain \n"
+                        + "       # At least one digit\n"
+                        + "       # At least one lower case letter\n"
+                        + "       # At least one upper case letter\n"
+                        + "       # At least one special character(!@#$%^&+=~|?)\n"
+                        + "       # no whitespace allowed in the entire string\n"
+                        + "       # at least eight characters");
+                txtPassword.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtPasswordFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backjButton1;
@@ -260,11 +388,15 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAcceptedUserName;
+    private javax.swing.JLabel lblUserName;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox organizationJComboBox;
-    private javax.swing.JTextField passwordJTextField;
     private javax.swing.JComboBox roleJComboBox;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTable userJTable;
     // End of variables declaration//GEN-END:variables
 }

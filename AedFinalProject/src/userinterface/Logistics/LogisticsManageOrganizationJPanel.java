@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.googleApi.OrganizationLocationJPanel;
+import utility.Validator;
 
 /**
  *
@@ -25,7 +26,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
 
     private OrganizationDirectory directory;
     private JPanel userProcessContainer;
-    LatLong latLong;
+    private LatLong latLong;
 
     /**
      * Creates new form ManageOrganizationJPanel
@@ -51,16 +52,27 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
     }
 
     private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+        try {
+            lblWarning.setText("");
+            DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
 
-        model.setRowCount(0);
+            model.setRowCount(0);
+            if (directory != null) {
+                if (directory.getOrganizationList().size() > 0) {
 
-        for (Organization organization : directory.getOrganizationList()) {
-            Object[] row = new Object[3];
-            row[0] = organization.getOrganizationID();
-            row[1] = organization.getName();
+                    for (Organization organization : directory.getOrganizationList()) {
+                        Object[] row = new Object[3];
+                        row[0] = organization.getOrganizationID();
+                        row[1] = organization.getName();
 
-            model.addRow(row);
+                        model.addRow(row);
+                    }
+                } else {
+                    lblWarning.setText("*Organization is not Available");
+                }
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }
 
@@ -86,6 +98,10 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         txtLoc = new javax.swing.JTextField();
         btnLocation = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        lblCity = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -159,9 +175,9 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
 
         orgNameTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         orgNameTextField.setForeground(new java.awt.Color(71, 79, 112));
-        orgNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orgNameTextFieldActionPerformed(evt);
+        orgNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                orgNameTextFieldFocusLost(evt);
             }
         });
         add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 370, 170, -1));
@@ -173,9 +189,9 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
 
         txtcity.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         txtcity.setForeground(new java.awt.Color(71, 79, 112));
-        txtcity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcityActionPerformed(evt);
+        txtcity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtcityFocusLost(evt);
             }
         });
         add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 170, -1));
@@ -198,30 +214,53 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 450, 140, -1));
+
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel4.setText("Manage Organization");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
+
+        lblCity.setForeground(new java.awt.Color(255, 51, 51));
+        add(lblCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 410, -1, -1));
+
+        lblName.setForeground(new java.awt.Color(255, 51, 51));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 370, -1, -1));
+
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-
-        Type type = (Type) organizationJComboBox.getSelectedItem();
-        String name = orgNameTextField.getText();
-        String city = txtcity.getText();
-        if (!(name.isEmpty())) {
-            if (!(city.isEmpty())) {
-                if (latLong != null) {
-                    directory.createOrganization(type, name, city, latLong);
-                    JOptionPane.showMessageDialog(null, "Organization created successfully");
-                    orgNameTextField.setText("");
-                    txtcity.setText("");
-                    txtLoc.setText("");
-                    populateTable();
+        try {
+            lblWarning.setText("");
+            lblName.setText("");
+            lblCity.setText("");
+            Type type = (Type) organizationJComboBox.getSelectedItem();
+            String name = orgNameTextField.getText();
+            String city = txtcity.getText();
+            if (organizationJComboBox.getSelectedItem() != null) {
+                if (!(name.isEmpty())) {
+                    if (!(city.isEmpty())) {
+                        if (latLong != null || txtLoc.getText().isEmpty()) {
+                            directory.createOrganization(type, name, city, latLong);
+                            JOptionPane.showMessageDialog(null, "Organization created successfully");
+                            orgNameTextField.setText("");
+                            txtcity.setText("");
+                            txtLoc.setText("");
+                            populateTable();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Select the Location", "Warning", JOptionPane.WARNING_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Enter value for city", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Select the Location", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Enter Organization Name", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Enter value for city", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Select Organization ", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Enter Organization Name", "Warning", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }//GEN-LAST:event_addJButtonActionPerformed
 
@@ -232,21 +271,42 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void orgNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_orgNameTextFieldActionPerformed
-
-    private void txtcityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtcityActionPerformed
-
     private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
         // TODO add your handling code here
-        OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
-        userProcessContainer.add("OrganizationLocationJPanel", muajp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        try {
+            lblWarning.setText("");
+            OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
+            userProcessContainer.add("OrganizationLocationJPanel", muajp);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+        }
     }//GEN-LAST:event_btnLocationActionPerformed
+
+    private void orgNameTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_orgNameTextFieldFocusLost
+        // TODO add your handling code here:
+        if (!orgNameTextField.getText().isEmpty()) {
+            if (!Validator.validateName(orgNameTextField.getText())) {
+                lblName.setText("*Only Alphabets and Spaces are allowed");
+                orgNameTextField.setText("");
+            } else {
+                lblName.setText("");
+            }
+        }
+    }//GEN-LAST:event_orgNameTextFieldFocusLost
+
+    private void txtcityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcityFocusLost
+        // TODO add your handling code here:
+        if (!txtcity.getText().isEmpty()) {
+            if (!Validator.validateName(txtcity.getText())) {
+                lblCity.setText("*Only Alphabets and Spaces are allowed");
+                txtcity.setText("");
+            } else {
+                lblCity.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtcityFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
@@ -256,7 +316,11 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField orgNameTextField;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;

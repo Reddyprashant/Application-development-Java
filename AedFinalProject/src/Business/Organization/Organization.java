@@ -62,7 +62,6 @@ private String name;
         personList= new PersonDirectory();
         eventDirectory= new EventDirectory();
         this.city=city;
-      //  this.address=address;
         latLong=address;
         ++counter;
     }
@@ -71,6 +70,14 @@ private String name;
     
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
+    }
+
+    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
+        this.employeeDirectory = employeeDirectory;
+    }
+
+    public void setUserAccountDirectory(UserAccountDirectory userAccountDirectory) {
+        this.userAccountDirectory = userAccountDirectory;
     }
 
     public int getOrganizationID() {

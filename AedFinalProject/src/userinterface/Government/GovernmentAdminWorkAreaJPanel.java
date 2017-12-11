@@ -7,13 +7,10 @@
 package userinterface.Government;
 
 //import userinterface.AdministrativeRole.*;
-import userinterface.Beneficiary.*;
-import userinterface.EntityAdmin.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -24,12 +21,12 @@ import javax.swing.JPanel;
  */
 public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
     
-    JPanel userProcessContainer;
-    Enterprise enterprise;
-    UserAccount account;
-    CountryNetwork country;
-    StateNetwork state;
-    EcoSystem system;
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private UserAccount account;
+    private CountryNetwork country;
+    private StateNetwork state;
+    private EcoSystem system;
     /** Creates new form AdminWorkAreaJPanel */
     public GovernmentAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
@@ -39,7 +36,6 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.state=network;
         this.country=cNetwork;
         this.account=account;
-        System.out.println("userinterface.EntityAdmin.EntityAdminWorkAreaJPanel.<init>()");
         valueLabel.setText(enterprise.getName());
     }
     
@@ -137,7 +133,6 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         GovernmentManageUserAccountJPanel muajp = new GovernmentManageUserAccountJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("GovernmentManageUserAccountJPanel", muajp);
-
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_userJButtonActionPerformed
@@ -146,7 +141,6 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         GovernmentManageEmployeeJPanel manageEmployeeJPanel = new GovernmentManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("GovernmentManageEmployeeJPanel", manageEmployeeJPanel);
-
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         
@@ -171,6 +165,10 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
         // TODO add your handling code here:
+         GovernmentRequestAreaJPanel governmentRequestAreaJPanel = new GovernmentRequestAreaJPanel(userProcessContainer, account, enterprise,state,country,system);
+        userProcessContainer.add("GovernmentRequestAreaJPanel", governmentRequestAreaJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);        
     }//GEN-LAST:event_btnRequestActionPerformed
     
     

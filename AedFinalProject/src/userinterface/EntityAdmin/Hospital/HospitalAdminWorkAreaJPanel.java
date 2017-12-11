@@ -5,7 +5,6 @@
  */
 package userinterface.EntityAdmin.Hospital;
 
-import userinterface.EntityAdmin.MNCAdmin.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
@@ -13,7 +12,6 @@ import Business.Network.StateNetwork;
 import Business.Organization.HospitalOrganization;
 //import Business.Organization.MNCOrganization;
 //import Business.Organization.MNCOrganization;
-import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -25,14 +23,14 @@ import userinterface.EntityAdmin.Education.EntityOrganizationManageEmployeeJPane
  */
 public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
-    UserAccount account;
-    HospitalOrganization organization;
-    Enterprise enterprise;
-    EcoSystem business;
+    private JPanel userProcessContainer;
+    private UserAccount account;
+    private HospitalOrganization organization;
+    private Enterprise enterprise;
+    private EcoSystem business;
 
-    StateNetwork state;
-    CountryNetwork country;
+    private StateNetwork state;
+    private CountryNetwork country;
 
     /**
      * Creates new form AdminWorkAreaJPanel
@@ -58,7 +56,6 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        userJButton = new javax.swing.JButton();
         manageEmployeeJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
@@ -71,17 +68,6 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Hospital Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 580, 50));
-
-        userJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        userJButton.setForeground(new java.awt.Color(71, 79, 112));
-        userJButton.setText("Manage User Account");
-        userJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        userJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userJButtonActionPerformed(evt);
-            }
-        });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, 200, 80));
 
         manageEmployeeJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageEmployeeJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -112,26 +98,15 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 200, 80));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 200, 80));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
-        // TODO add your handling code here:
-//        ClinicManageUserAccountJPanel muajp = new ClinicManageUserAccountJPanel( userProcessContainer,  account,  organization,  enterprise,  business);
-//        userProcessContainer.add("ClinicManageUserAccountJPanel", muajp);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-    }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
       EntityOrganizationManageEmployeeJPanel manageEmployeeJPanel = new EntityOrganizationManageEmployeeJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
         userProcessContainer.add("EntityOrganizationManageEmployeeJPanel", manageEmployeeJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-//        HospitalManageEmployeeJPanel manageEmployeeJPanel = new HospitalManageEmployeeJPanel(userProcessContainer,  enterprise.getOrganizationDirectory());
-//        userProcessContainer.add("HospitalManageEmployeeJPanel", manageEmployeeJPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+
 
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
@@ -149,7 +124,6 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton manageEmployeeJButton;
-    private javax.swing.JButton userJButton;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 

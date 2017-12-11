@@ -10,27 +10,17 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-import Business.Organization.BGVOrganization;
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
-import Business.Role.BeneficiaryAdminRole;
 import Business.Role.EducationAdmin;
-import Business.Role.EntityAdminRole;
-import Business.Role.GovtAdminRole;
 import Business.Role.HospitalAdmin;
 import Business.Role.IndividualAdmin;
-import Business.Role.LogisticAdminRole;
 import Business.Role.MNCAdmin;
 import Business.Role.NGOAdmin;
 import Business.SignUp.SignUpRequest;
-import Business.SignUp.SignUpRequestEnterprise;
 import Business.SignUp.SignUpRequestOrganization;
-import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -88,8 +78,6 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                                 row[5] = s;
                                 
                                 model.addRow(row);
-                            } else {
-                                lblWarning.setText("*Request for Organization is not Available");
                                 
                             }
                             
@@ -198,7 +186,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 670, 110, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 720, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -213,7 +201,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                 SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
                 
                 if (p.getStatus().equals("Requested")) {
-                    //  System.out.println("admin name"+ account.getUsername());
+                    
                     p.setStatus("Pending");
                     p.setReceiver(account);
                     
@@ -250,12 +238,11 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                         } catch (SendFailedException ex) {
                             JOptionPane.showMessageDialog(null, "User has a wrong email address");
                             p.setStatus("Cancelled");
-                            // populateWorkQueueTable();
+                            
                             return;
                         }
                         orgRequest = (SignUpRequestOrganization) p;
-                        //You can check for non duplicate of enterprise here.
-                        // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
+                       
                         Employee emp = new Employee();
                         emp.setName(p.getName());
                         emp.setEmailId(p.getEmail());

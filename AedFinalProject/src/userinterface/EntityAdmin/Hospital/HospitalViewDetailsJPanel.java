@@ -5,7 +5,6 @@
  */
 package userinterface.EntityAdmin.Hospital;
 
-import userinterface.EntityAdmin.MNCAdmin.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Event.Event;
@@ -13,8 +12,6 @@ import Business.Event.EventDirectory;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.HospitalOrganization;
-import Business.Organization.MNCOrganization;
-import Business.Person.Person;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
 import java.awt.CardLayout;
@@ -24,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import utility.Validator;
 
 /**
  *
@@ -34,25 +32,26 @@ public class HospitalViewDetailsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewDetailsJPanel
      */
-       private Enterprise enterprise;
-    UserAccount account;
-    CountryNetwork country;
-    StateNetwork state;
-    EcoSystem system;
-    JPanel userProcessContainer;
-HospitalOrganization organization;
-BeneficiaryWorkRequest workRequest;
-private HospitalRequestAreaJPanel hosRequestPanel;
-    public HospitalViewDetailsJPanel(JPanel userProcessContainer, UserAccount account, HospitalOrganization organization,Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business, BeneficiaryWorkRequest p)  {
+    private Enterprise enterprise;
+    private UserAccount account;
+    private CountryNetwork country;
+    private StateNetwork state;
+    private EcoSystem system;
+    private JPanel userProcessContainer;
+    private HospitalOrganization organization;
+    private BeneficiaryWorkRequest workRequest;
+    private HospitalRequestAreaJPanel hosRequestPanel;
+
+    public HospitalViewDetailsJPanel(JPanel userProcessContainer, UserAccount account, HospitalOrganization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business, BeneficiaryWorkRequest p) {
         initComponents();
-            this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.system = business;
         this.state = network;
         this.country = cNetwork;
         this.account = account;
-        this.organization=organization;
-        this.workRequest=p;
+        this.organization = organization;
+        this.workRequest = p;
         nameLabel.setText(organization.getName());
         reqComboBox.setText(p.getRequestType().getValue());
         eventNameTextfield.setText(p.getEventName());
@@ -60,6 +59,12 @@ private HospitalRequestAreaJPanel hosRequestPanel;
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         dateField.setText(sdf.format(p.getEventDate()));
         detailTextArea.setText(p.getEventDetails());
+        nameLabel.setEnabled(false);
+        reqComboBox.setEnabled(false);
+        eventNameTextfield.setEnabled(false);
+        reqVolText.setEnabled(false);
+        dateField.setEnabled(false);
+        detailTextArea.setEnabled(false);
     }
 
     /**
@@ -90,6 +95,7 @@ private HospitalRequestAreaJPanel hosRequestPanel;
         nameLabel = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         reqComboBox = new javax.swing.JTextField();
+        lblWarning = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,9 +128,9 @@ private HospitalRequestAreaJPanel hosRequestPanel;
 
         availVolTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         availVolTextField.setForeground(new java.awt.Color(71, 79, 112));
-        availVolTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                availVolTextFieldActionPerformed(evt);
+        availVolTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                availVolTextFieldKeyTyped(evt);
             }
         });
         add(availVolTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 232, -1));
@@ -133,11 +139,6 @@ private HospitalRequestAreaJPanel hosRequestPanel;
         dateField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         dateField.setForeground(new java.awt.Color(71, 79, 112));
         dateField.setEnabled(false);
-        dateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateFieldActionPerformed(evt);
-            }
-        });
         add(dateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 330, 232, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -201,69 +202,72 @@ private HospitalRequestAreaJPanel hosRequestPanel;
         reqComboBox.setForeground(new java.awt.Color(71, 79, 112));
         reqComboBox.setEnabled(false);
         add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 232, -1));
+
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 580, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
         // TODO add your handling code here:
-        try
-        {
-        SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-        String name = eventNameTextfield.getText();
-        int availableVolunteers= Integer.parseInt(availVolTextField.getText());
-        int requiredVolunteers = Integer.parseInt(reqVolText.getText());
-        Date eventDate = date.parse(dateField.getText());
-        if(availableVolunteers <= requiredVolunteers){
-if(organization.getEventDirectory().getEventDirectory() == null){
-    organization.setEventDirectory(new EventDirectory());
-}
-        Event event=  organization.getEventDirectory().createEvent();
-            event.setAvailVolunteers(availableVolunteers);
-            event.setRequiredVolunteers(requiredVolunteers);
-            
-           event.setEventDate(eventDate);
-            event.setEventName(name);
-            event.setServingOrganization(organization);
-            event.setSenderOrganization(workRequest.getSenderOrganization());
-            
-            workRequest.setNumberOfVolunteersRequest(requiredVolunteers-availableVolunteers);
-            workRequest.getEventDirectory().getEventDirectory().add(event);
-       if(workRequest.getNumberOfVolunteersRequest()==0 && workRequest.isLogisticRequest()==true){
-            workRequest.setStatus("Complete");
-            
-        }
-       JOptionPane.showMessageDialog(null, "Details updated Successfully");
-            availVolTextField.setText("");
-         }else{
-              JOptionPane.showMessageDialog(null, "Available volunteers cannot be more than Required Volunteers");
-         }   
-        }
-        catch(ParseException e)
-            
-        {
+        try {
+            lblWarning.setText("");
+            if (!availVolTextField.getText().isEmpty()) {
+                SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+                String name = eventNameTextfield.getText();
+                int availableVolunteers = Integer.parseInt(availVolTextField.getText());
+                int requiredVolunteers = Integer.parseInt(reqVolText.getText());
+                Date eventDate = date.parse(dateField.getText());
+                if (availableVolunteers <= requiredVolunteers) {
+                    if (organization.getEventDirectory().getEventDirectory() == null) {
+                        organization.setEventDirectory(new EventDirectory());
+                    }
+                    Event event = organization.getEventDirectory().createEvent();
+                    event.setAvailVolunteers(availableVolunteers);
+                    event.setRequiredVolunteers(requiredVolunteers);
+
+                    event.setEventDate(eventDate);
+                    event.setEventName(name);
+                    event.setServingOrganization(organization);
+                    event.setSenderOrganization(workRequest.getSenderOrganization());
+
+                    workRequest.setNumberOfVolunteersRequest(requiredVolunteers - availableVolunteers);
+                    workRequest.getEventDirectory().getEventDirectory().add(event);
+                    if (workRequest.getNumberOfVolunteersRequest() == 0 && workRequest.isLogisticRequest() == true) {
+                        workRequest.setStatus("Complete");
+
+                    }
+                    JOptionPane.showMessageDialog(null, "Details updated Successfully");
+                    availVolTextField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please fill Available volunteers ");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Available volunteers cannot be more than Required Volunteers");
+            }
+        } catch (ParseException e) {
             JOptionPane.showMessageDialog(null, "Please enter date in MM/dd/yyyy format");
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }//GEN-LAST:event_UpdateBtnActionPerformed
-
-    private void dateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateFieldActionPerformed
-
-    private void availVolTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availVolTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_availVolTextFieldActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-        
-        Component[] componentArray=userProcessContainer.getComponents();
-        HospitalRequestAreaJPanel hosRequestPanel =(HospitalRequestAreaJPanel)userProcessContainer.getComponent(componentArray.length -1);
+
+        Component[] componentArray = userProcessContainer.getComponents();
+        HospitalRequestAreaJPanel hosRequestPanel = (HospitalRequestAreaJPanel) userProcessContainer.getComponent(componentArray.length - 1);
         hosRequestPanel.populateUpdatedTable();
         hosRequestPanel.populateWorkQueueTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-        
+
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void availVolTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availVolTextFieldKeyTyped
+        // TODO add your handling code here:
+        Validator.onlyInteger(evt, availVolTextField);
+    }//GEN-LAST:event_availVolTextFieldKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -283,6 +287,7 @@ if(organization.getEventDirectory().getEventDirectory() == null){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField reqComboBox;
     private javax.swing.JTextField reqVolText;
