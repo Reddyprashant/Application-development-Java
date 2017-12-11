@@ -64,12 +64,12 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("              Homeless Admin Work Area");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 530, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 630, 40));
 
-        userJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        userJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         userJButton.setForeground(new java.awt.Color(71, 79, 112));
         userJButton.setText("Manage Request");
         userJButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -80,7 +80,7 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 180, 60));
 
-        manageEmployeeJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        manageEmployeeJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageEmployeeJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageEmployeeJButton.setText("Manage Person");
         manageEmployeeJButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -91,15 +91,15 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 170, 60));
 
-        enterpriseLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
         enterpriseLabel.setText("Enterprise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 120, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 140, 30));
 
-        valueLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 130, 20));
+        valueLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 130, 20));
 
-        btnShelter.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnShelter.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnShelter.setForeground(new java.awt.Color(245, 5, 8));
         btnShelter.setText("Homeless Found!!!");
         btnShelter.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));

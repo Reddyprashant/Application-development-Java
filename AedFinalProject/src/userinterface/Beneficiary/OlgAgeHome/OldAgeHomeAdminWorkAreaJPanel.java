@@ -63,12 +63,12 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Old Age Home Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 620, -1));
 
-        userJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        userJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         userJButton.setForeground(new java.awt.Color(71, 79, 112));
         userJButton.setText("Manage Request");
         userJButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -77,9 +77,9 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 170, 60));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 170, 60));
 
-        manageEmployeeJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        manageEmployeeJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageEmployeeJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageEmployeeJButton.setText("Manage Person");
         manageEmployeeJButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -90,19 +90,19 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 160, 60));
+        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 160, 60));
         manageEmployeeJButton.getAccessibleContext().setAccessibleDescription("");
 
-        enterpriseLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
         enterpriseLabel.setText("Enterprise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 120, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 140, 30));
 
-        valueLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        valueLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         valueLabel.setForeground(new java.awt.Color(71, 79, 112));
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 130, 20));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 130, 20));
 
-        btnShelter.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnShelter.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnShelter.setForeground(new java.awt.Color(255, 3, 8));
         btnShelter.setText("Homeless Found!!!");
         btnShelter.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -111,7 +111,7 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnShelterActionPerformed(evt);
             }
         });
-        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 190, 70));
+        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 190, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed

@@ -219,13 +219,13 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Disaster Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 570, -1));
 
         reqBtn.setBackground(new java.awt.Color(0, 0, 0));
-        reqBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        reqBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         reqBtn.setForeground(new java.awt.Color(241, 51, 51));
         reqBtn.setText("Request For Help!!!!  >>>>>");
         reqBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -233,10 +233,9 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
                 reqBtnActionPerformed(evt);
             }
         });
-        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 310, 50));
+        add(reqBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 310, 50));
         reqBtn.getAccessibleContext().setAccessibleName("Request For Help!!!");
 
-        availableTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         availableTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         availableTable.setForeground(new java.awt.Color(71, 79, 112));
         availableTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -257,17 +256,17 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
         });
         jScrollPane1.setViewportView(availableTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 700, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 570, 700, 90));
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Volunteers Requested");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 170, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 220, 30));
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Volunteers Available");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 150, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, 190, 30));
 
         requestTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         requestTable.setForeground(new java.awt.Color(71, 79, 112));
@@ -294,9 +293,9 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
         });
         jScrollPane2.setViewportView(requestTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 720, 90));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 720, 90));
 
-        btnDelete.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(71, 79, 112));
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -304,7 +303,7 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, -1, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 420, -1, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));

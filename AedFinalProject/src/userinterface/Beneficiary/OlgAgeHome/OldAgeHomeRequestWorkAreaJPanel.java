@@ -185,12 +185,12 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("OldAge Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 530, -1));
 
-        reqBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        reqBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         reqBtn.setForeground(new java.awt.Color(249, 6, 9));
         reqBtn.setText("Request For Help >>>>>");
         reqBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -203,8 +203,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane1.setForeground(new java.awt.Color(71, 79, 112));
 
-        availableTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        availableTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        availableTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         availableTable.setForeground(new java.awt.Color(71, 79, 112));
         availableTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -224,22 +223,21 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(availableTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, 700, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 600, 700, 90));
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Volunteers Requested");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 170, 30));
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Volunteers Available");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 180, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, 180, 30));
 
         jScrollPane2.setForeground(new java.awt.Color(71, 79, 112));
 
-        requestTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        requestTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        requestTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         requestTable.setForeground(new java.awt.Color(71, 79, 112));
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -266,7 +264,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 720, 90));
 
-        btnDelete.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(71, 79, 112));
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -276,7 +274,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 460, -1, 40));
 
-        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(71, 79, 112));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -284,7 +282,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 710, 110, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 110, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 780, -1, -1));

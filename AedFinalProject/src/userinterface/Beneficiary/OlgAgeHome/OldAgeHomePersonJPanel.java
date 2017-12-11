@@ -178,7 +178,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
         jScrollPane1.setForeground(new java.awt.Color(71, 79, 112));
 
-        organizationJTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        organizationJTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         organizationJTable.setForeground(new java.awt.Color(71, 79, 112));
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -207,7 +207,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 850, 92));
 
-        btnCreatePerson.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnCreatePerson.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnCreatePerson.setForeground(new java.awt.Color(71, 79, 112));
         btnCreatePerson.setText("Create Person");
         btnCreatePerson.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +217,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         });
         add(btnCreatePerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 740, 180, 50));
 
-        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(71, 79, 112));
         btnBack.setText("<< Back");
         btnBack.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -226,14 +226,14 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 770, 120, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 850, 110, 40));
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("*Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 50, -1));
 
-        nameJTextField.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        nameJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(71, 79, 112));
         nameJTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -242,17 +242,17 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 126, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Person Details");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 220, 30));
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Create Person");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 220, 30));
 
-        ageTextField.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        ageTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         ageTextField.setForeground(new java.awt.Color(71, 79, 112));
         ageTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -261,18 +261,18 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         });
         add(ageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 130, -1));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("*Age:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 50, -1));
 
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("*Reason For Joining");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 570, -1, -1));
 
         buttonGroup3.add(ARadioButton);
-        ARadioButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        ARadioButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         ARadioButton.setForeground(new java.awt.Color(71, 79, 112));
         ARadioButton.setText("Individual and relational factors");
         ARadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -280,10 +280,10 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
                 ARadioButtonActionPerformed(evt);
             }
         });
-        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 570, -1, -1));
+        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 570, 320, -1));
 
         buttonGroup3.add(BRadioButton2);
-        BRadioButton2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        BRadioButton2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         BRadioButton2.setForeground(new java.awt.Color(71, 79, 112));
         BRadioButton2.setText("Economic Issues");
         BRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -291,10 +291,10 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
                 BRadioButton2ActionPerformed(evt);
             }
         });
-        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 570, -1, -1));
+        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 570, 170, -1));
 
         buttonGroup3.add(CRadioButton3);
-        CRadioButton3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        CRadioButton3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         CRadioButton3.setForeground(new java.awt.Color(71, 79, 112));
         CRadioButton3.setText("System failures");
         CRadioButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -302,10 +302,10 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
                 CRadioButton3ActionPerformed(evt);
             }
         });
-        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 570, -1, -1));
+        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 570, 160, -1));
 
         buttonGroup3.add(ORadioButton4);
-        ORadioButton4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        ORadioButton4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         ORadioButton4.setForeground(new java.awt.Color(71, 79, 112));
         ORadioButton4.setText("Others");
         ORadioButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -313,79 +313,79 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
                 ORadioButton4ActionPerformed(evt);
             }
         });
-        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 570, -1, -1));
+        add(ORadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 570, 90, -1));
 
         jScrollPane2.setForeground(new java.awt.Color(71, 79, 112));
 
         TextArea.setColumns(20);
-        TextArea.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        TextArea.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         TextArea.setRows(5);
         TextArea.setEnabled(false);
         jScrollPane2.setViewportView(TextArea);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 610, -1, 52));
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("*Sex:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 40, -1));
 
-        jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Ethnicity:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 70, -1));
 
-        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(71, 79, 112));
         jLabel8.setText("*Education Background:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, -1, -1));
 
         buttonGroup2.add(rdBtnHighschoolGrad);
-        rdBtnHighschoolGrad.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnHighschoolGrad.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnHighschoolGrad.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnHighschoolGrad.setText("Highschool Graduate");
-        add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, -1, -1));
+        add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 210, -1));
 
         buttonGroup2.add(rdBtnCollegeGrad);
-        rdBtnCollegeGrad.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnCollegeGrad.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnCollegeGrad.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnCollegeGrad.setText("College Graduate");
-        add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 530, -1, -1));
+        add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 530, 180, -1));
 
         buttonGroup2.add(rdBtnUneducated);
-        rdBtnUneducated.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnUneducated.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnUneducated.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnUneducated.setText("Uneducated");
-        add(rdBtnUneducated, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 530, -1, -1));
+        add(rdBtnUneducated, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 530, 150, -1));
 
         buttonGroup1.add(rdBtnMale);
-        rdBtnMale.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnMale.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnMale.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnMale.setText("Male");
-        add(rdBtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
+        add(rdBtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 80, -1));
 
         buttonGroup1.add(rdBtnFemale);
-        rdBtnFemale.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnFemale.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnFemale.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnFemale.setText("Female");
-        add(rdBtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, -1, -1));
+        add(rdBtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 90, -1));
 
         buttonGroup1.add(rdBtnOthers);
-        rdBtnOthers.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        rdBtnOthers.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnOthers.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnOthers.setText("Others");
-        add(rdBtnOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, -1, -1));
+        add(rdBtnOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 100, -1));
 
-        reqComboBox.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        reqComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         reqComboBox.setForeground(new java.awt.Color(71, 79, 112));
         add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 110, -1));
 
-        jLabel9.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(71, 79, 112));
         jLabel9.setText("Description: ");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 620, -1, -1));
 
-        btnUpload.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnUpload.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnUpload.setForeground(new java.awt.Color(71, 79, 112));
         btnUpload.setText("Upload ");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
@@ -395,12 +395,12 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         });
         add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 680, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(71, 79, 112));
         jLabel10.setText("*Photo:");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 680, -1, -1));
 
-        btnViewDetails.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnViewDetails.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnViewDetails.setForeground(new java.awt.Color(71, 79, 112));
         btnViewDetails.setText("View Details");
         btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
@@ -410,7 +410,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         });
         add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, -1, 40));
 
-        jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(71, 79, 112));
         jLabel11.setText("* Mandatory Fields");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 810, -1, -1));
@@ -418,7 +418,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         picText.setForeground(new java.awt.Color(71, 79, 112));
         add(picText, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 680, 90, -1));
 
-        btnDelete.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(71, 79, 112));
         btnDelete.setText("Delete request");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {

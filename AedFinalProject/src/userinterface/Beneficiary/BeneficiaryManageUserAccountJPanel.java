@@ -146,7 +146,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
         setForeground(new java.awt.Color(71, 79, 112));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        createUserJButton.setFont(new java.awt.Font("Al Bayan", 1, 14)); // NOI18N
+        createUserJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         createUserJButton.setForeground(new java.awt.Color(71, 79, 112));
         createUserJButton.setText("Create");
         createUserJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -154,23 +154,24 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
                 createUserJButtonActionPerformed(evt);
             }
         });
-        add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 430, 110, 40));
+        add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 560, 110, 40));
 
-        nameJTextField.setFont(new java.awt.Font("Al Bayan", 1, 14)); // NOI18N
+        nameJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(71, 79, 112));
         nameJTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 nameJTextFieldFocusLost(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 146, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 146, -1));
 
-        jLabel1.setFont(new java.awt.Font("Al Bayan", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("User Name");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, 80, -1));
 
-        userJTable.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        userJTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        userJTable.setForeground(new java.awt.Color(71, 79, 112));
         userJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -200,22 +201,23 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
             userJTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 28, 375, 179));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 375, 179));
 
-        jLabel2.setFont(new java.awt.Font("Al Bayan", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Password");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, 80, -1));
 
-        jLabel3.setFont(new java.awt.Font("Al Bayan", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Employee");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 70, -1));
 
+        employeeJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         employeeJComboBox.setForeground(new java.awt.Color(71, 79, 112));
-        add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 146, -1));
+        add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, 146, -1));
 
-        backjButton1.setFont(new java.awt.Font("Al Bayan", 1, 14)); // NOI18N
+        backjButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         backjButton1.setForeground(new java.awt.Color(71, 79, 112));
         backjButton1.setText("Back");
         backjButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -223,38 +225,39 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
                 backjButton1ActionPerformed(evt);
             }
         });
-        add(backjButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 472, 110, 40));
+        add(backjButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 110, 40));
 
-        jLabel5.setFont(new java.awt.Font("Al Bayan", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Organization");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 360, 110, -1));
 
+        organizationJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(71, 79, 112));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 146, -1));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 146, -1));
 
-        jLabel4.setFont(new java.awt.Font("Al Bayan", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Role");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 50, -1));
 
-        roleJComboBox.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        roleJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         roleJComboBox.setForeground(new java.awt.Color(71, 79, 112));
-        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 146, -1));
+        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, 146, -1));
 
-        passwordJTextField.setFont(new java.awt.Font("Al Bayan", 1, 14)); // NOI18N
+        passwordJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         passwordJTextField.setForeground(new java.awt.Color(71, 79, 112));
         passwordJTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 passwordJTextFieldFocusLost(evt);
             }
         });
-        add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 150, -1));
+        add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, 150, -1));
 
         lblPassword.setForeground(new java.awt.Color(255, 0, 0));
         add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, 20));
