@@ -117,7 +117,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         manageNetworkJButton.setBackground(new java.awt.Color(71, 79, 112));
-        manageNetworkJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        manageNetworkJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageNetworkJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageNetworkJButton.setText("Manage Network");
         manageNetworkJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -129,7 +129,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1.add(manageNetworkJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 240, 80));
 
         manageAdminJButton.setBackground(new java.awt.Color(0, 0, 0));
-        manageAdminJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        manageAdminJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageAdminJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageAdminJButton.setText("Manage Enterprise Admin");
         manageAdminJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -141,7 +141,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 240, 80));
 
         manageEnterpriseJButton.setBackground(new java.awt.Color(0, 0, 0));
-        manageEnterpriseJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        manageEnterpriseJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageEnterpriseJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageEnterpriseJButton.setText("Manage Enterprise");
         manageEnterpriseJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -152,17 +152,17 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(manageEnterpriseJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 230, 80));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Selected Node:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
 
-        selectedNodeJLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        selectedNodeJLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         selectedNodeJLabel.setForeground(new java.awt.Color(71, 79, 112));
         selectedNodeJLabel.setText("<view_selected_node>");
-        jPanel1.add(selectedNodeJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
+        jPanel1.add(selectedNodeJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
 
-        btnDisease.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnDisease.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnDisease.setForeground(new java.awt.Color(71, 79, 112));
         btnDisease.setText("Manage Request Catalog");
         btnDisease.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));

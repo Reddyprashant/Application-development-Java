@@ -108,7 +108,6 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane2.setForeground(new java.awt.Color(71, 79, 112));
 
-        requestTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         requestTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         requestTable.setForeground(new java.awt.Color(71, 79, 112));
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
