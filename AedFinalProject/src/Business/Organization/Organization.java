@@ -30,7 +30,7 @@ private String name;
     
     private LatLong latLong;
     public enum Type{
-        OldAge("Oldage Home Organization"),Orphanage("Orphanage Organization"),Homeless("Homeless Shelter Organization"), Disaster("Disaster Recovery Organization"),Hospital("Hospital Organization"),Education("Education Organization"),NGO("NGO Organization"),MNC("MNC Organization"),Individuals("Individuals Organization"),Transportation("Transportation Organization"),Rental("Rental Organization"),BGV("BGV Organization");
+        OldAge("Oldage Home Organization"),Orphanage("Orphanage Organization"),Homeless("Homeless Shelter Organization"), Disaster("Disaster Recovery Organization"),Hospital("Hospital Organization"),Education("Education Organization"),NGO("NGO Organization"),MNC("MNC Organization"),Individuals("Individuals Organization"),Transportation("Transportation Organization"),BGV("BGV Organization");
         private String value;
         private Type(String value) {
             this.value = value;

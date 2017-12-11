@@ -14,6 +14,8 @@ import Business.Network.StateNetwork;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.Beneficiary.BeneficiaryManageOrganizationJPanel;
+import userinterface.Beneficiary.BeneficiaryManageUserAccountJPanel;
 import userinterface.Government.GovernmentManageEmployeeJPanel;
 
 /**
@@ -121,11 +123,13 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        LogisticsManageUserAccountJPanel muajp = new LogisticsManageUserAccountJPanel(userProcessContainer, enterprise);
+      
+        BeneficiaryManageUserAccountJPanel muajp = new BeneficiaryManageUserAccountJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("LogisticsManageUserAccountJPanel", muajp);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed

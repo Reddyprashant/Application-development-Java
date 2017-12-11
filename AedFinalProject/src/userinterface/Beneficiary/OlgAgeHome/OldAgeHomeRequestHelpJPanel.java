@@ -342,7 +342,7 @@ public void populateComboBox() {
                                                                 int no = Integer.parseInt(noOfVehText.getText());
                                                                 Date time = times.parse(timeField.getText());
                                                                 String address = addressText.getText();
-                                                                requests.setLogisticRequest(true);
+                                                                requests.setLogisticRequest(false);
                                                                 if (carBtn.isSelected()) {
                                                                     requests.setTypeOfVehicle("Car");
 

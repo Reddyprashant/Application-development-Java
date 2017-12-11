@@ -69,10 +69,7 @@ public class OrganizationDirectory {
             organization = new TransportOrganization(name,city,address);
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.Rental.getValue())){
-            organization = new RentalOrganization(name,city,address);
-            organizationList.add(organization);
-        }
+        
         else if (type.getValue().equals(Type.BGV.getValue())){
             organization = new BGVOrganization(name,city,address);
             organizationList.add(organization);
