@@ -31,11 +31,11 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="70" green="4f" red="47" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Logistics Work Area -Adminstrative Role"/>
+        <Property name="text" type="java.lang.String" value="Transportation Work Area"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="200" y="30" width="600" height="-1"/>
+          <AbsoluteConstraints x="420" y="30" width="370" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

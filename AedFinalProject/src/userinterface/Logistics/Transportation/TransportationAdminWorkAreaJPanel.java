@@ -63,7 +63,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
 
         model.setRowCount(0);
-
+if(organization.getWorkQueue()!= null){
         for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
             if (work instanceof BeneficiaryWorkRequest) {
                 BeneficiaryWorkRequest b= (BeneficiaryWorkRequest)work;
@@ -77,6 +77,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
                 model.addRow(row);
             }
         }
+    }
     }
     
     
@@ -160,8 +161,8 @@ DefaultTableModel model = (DefaultTableModel) tblView.getModel();
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel1.setText("Logistics Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 600, -1));
+        jLabel1.setText("Transportation Work Area");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 370, -1));
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 130, 20));
 
         btnComplete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N

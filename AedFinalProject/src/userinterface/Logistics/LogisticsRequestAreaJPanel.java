@@ -12,7 +12,6 @@ import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.BGVOrganization;
 import Business.Organization.Organization;
-import Business.Role.RentalAdmin;
 import Business.Role.TransportationAdmin;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestOrganization;
@@ -222,11 +221,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                         if(orgRequest.getOrgType()== Organization.Type.Transportation){
                             acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new TransportationAdmin());
                         }
-                        else if(orgRequest.getOrgType()== Organization.Type.Rental){
-                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new RentalAdmin());
-                        }
-                       
-
+                                     
                         try {
                             Validator.sendMessage(p.getEmail());
                         } catch (SendFailedException ex) {
