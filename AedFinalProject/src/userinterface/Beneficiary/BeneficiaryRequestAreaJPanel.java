@@ -135,7 +135,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Beneficiary Admin Request Area Panel");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 500, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 530, -1));
 
         tblReq.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         tblReq.setForeground(new java.awt.Color(71, 79, 112));

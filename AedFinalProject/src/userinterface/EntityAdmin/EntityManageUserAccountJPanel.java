@@ -5,7 +5,7 @@
 package userinterface.EntityAdmin;
 
 import Business.EcoSystem;
-//import userinterface.AdministrativeRole.*;
+
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -41,44 +41,103 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
 
     public void popOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
-        if (enterprise.getOrganizationDirectory() != null) {
-            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                organizationJComboBox.addItem(organization);
+        try {
+            lblWarning.setText("");
+
+            if (enterprise.getOrganizationDirectory() != null) {
+                if (enterprise.getOrganizationDirectory().getOrganizationList().size() > 0) {
+                    for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                        organizationJComboBox.addItem(organization);
+                    }
+                } else {
+                    lblWarning.setText("*NO Organization is available in the Enterprise");
+                }
+            } else {
+                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
             }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }
 
     public void populateEmployeeComboBox(Organization organization) {
         employeeJComboBox.removeAllItems();
-        if (organization.getEmployeeDirectory() != null) {
-            for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
-                employeeJComboBox.addItem(employee);
+        try {
+            lblWarning.setText("");
+            if (organization.getEmployeeDirectory() != null) {
+                if (organization.getEmployeeDirectory().getEmployeeList().size() > 0) {
+                    for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+                        employeeJComboBox.addItem(employee);
+                    }
+                } else {
+                    lblWarning.setText("*NO Employees present for this Organization");
+                }
+            } else {
+                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
             }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }
 
     private void populateRoleComboBox(Organization e) {
         roleJComboBox.removeAllItems();
-        for (Role role : e.getSupportedRole()) {
-            roleJComboBox.addItem(role);
+        try {
+            lblWarning.setText("");
+            if (e != null) {
+                if (e.getSupportedRole() != null) {
+                    for (Role role : e.getSupportedRole()) {
+                        roleJComboBox.addItem(role);
+                    }
+                } else {
+                    lblWarning.setText("*NO Roles Available for this Organization. Please Add Roles");
+                }
+            } else {
+                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }
 
     public void popData() {
+        try {
+            lblWarning.setText("");
+            DefaultTableModel model = (DefaultTableModel) userJTable.getModel();
 
-        DefaultTableModel model = (DefaultTableModel) userJTable.getModel();
+            model.setRowCount(0);
+            if (enterprise.getOrganizationDirectory() != null) {
+                if (enterprise.getOrganizationDirectory().getOrganizationList().size() > 0) {
 
-        model.setRowCount(0);
-        if (enterprise.getOrganizationDirectory() != null) {
-            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-                    Object row[] = new Object[2];
-                    row[0] = ua;
-                    row[1] = ua.getRole();
-                    ((DefaultTableModel) userJTable.getModel()).addRow(row);
+                    for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                        if (organization.getUserAccountDirectory() != null) {
+                            if (organization.getUserAccountDirectory().getUserAccountList().size() > 0) {
+
+                                for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                                    Object row[] = new Object[2];
+                                    row[0] = ua;
+                                    row[1] = ua.getRole();
+                                    ((DefaultTableModel) userJTable.getModel()).addRow(row);
+                                }
+                            } else {
+                                lblWarning.setText("*User Accounts are not present");
+                            }
+                        } else {
+                            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+
+                        }
+                    }
+
+                } else {
+                    lblWarning.setText("*NO Organization is Available");
                 }
+            } else {
+                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
             }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
+
     }
 
     /**
@@ -104,6 +163,10 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         roleJComboBox = new javax.swing.JComboBox();
         pwdFiledPassword = new javax.swing.JPasswordField();
+        lblUserName = new javax.swing.JLabel();
+        lblAcceptedUserName = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -120,6 +183,11 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
 
         nameJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(71, 79, 112));
+        nameJTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nameJTextFieldFocusLost(evt);
+            }
+        });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 146, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -174,7 +242,6 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
 
         employeeJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         employeeJComboBox.setForeground(new java.awt.Color(71, 79, 112));
-        employeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 146, -1));
 
         backjButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -208,7 +275,6 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
 
         roleJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         roleJComboBox.setForeground(new java.awt.Color(71, 79, 112));
-        roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 146, -1));
 
         pwdFiledPassword.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -218,45 +284,64 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
                 pwdFiledPasswordFocusLost(evt);
             }
         });
-        pwdFiledPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pwdFiledPasswordActionPerformed(evt);
-            }
-        });
         add(pwdFiledPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, 150, 30));
+
+        lblUserName.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, -1, -1));
+
+        lblAcceptedUserName.setForeground(new java.awt.Color(0, 204, 51));
+        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, -1, -1));
+
+        lblWarning.setForeground(new java.awt.Color(255, 51, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 570, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel6.setText("Manage User Account");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
         //Creating User Account for Entity
-
-        String userName = nameJTextField.getText();
-        String password = String.valueOf(pwdFiledPassword.getPassword());
-        if (!(userName.equals(""))) {                                                               // checking whether the username is empty     
+        try {
+            lblWarning.setText("");
+            String userName = nameJTextField.getText();
+            String password = String.valueOf(pwdFiledPassword.getPassword());
+            if (!(userName.equals(""))) {                                                               // checking whether the username is empty     
                 if (!password.isEmpty()) {
-            if (!Validator.validatePassword(password)) {
-            return;
-            }// checking whether the password is empty
-                if (EcoSystem.checkIfUsernameIsUnique(userName)) {                                    // checking whether the username is Unique
-                    Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-                    Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-                    Role role = (Role) roleJComboBox.getSelectedItem();
-                    if (organization != null) {
-                        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-                        JOptionPane.showMessageDialog(null, "Account created succesfull");
-                        nameJTextField.setText("");
-                        pwdFiledPassword.setText("");
-                        popData();
+                    if (organizationJComboBox.getSelectedItem() != null) {
+                        if (employeeJComboBox.getSelectedItem() != null) {
+                            if (roleJComboBox.getSelectedItem() != null) {
+
+                                Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+                                Employee employee = (Employee) employeeJComboBox.getSelectedItem();
+                                Role role = (Role) roleJComboBox.getSelectedItem();
+                                if (organization != null) {
+                                    organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+                                    JOptionPane.showMessageDialog(null, "Account created succesfull");
+                                    nameJTextField.setText("");
+                                    pwdFiledPassword.setText("");
+                                    popData();
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Organization not available.", "Warning", JOptionPane.WARNING_MESSAGE);
+                                }
+
+                            } else {
+                                lblWarning.setText("*NO Roles are Available");
+                            }
+                        } else {
+                            lblWarning.setText("*NO Employees are Available, please Add Employees");
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Organization not available.", "Warning", JOptionPane.WARNING_MESSAGE);
+                        lblWarning.setText("*Organization is not available");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Enter value for password", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Enter value for password", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Enter value for username", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Enter value for username", "Warning", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
@@ -275,13 +360,9 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 
-    private void pwdFiledPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdFiledPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pwdFiledPasswordActionPerformed
-
     private void pwdFiledPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwdFiledPasswordFocusLost
         // TODO add your handling code here:
-         String password = String.valueOf(pwdFiledPassword.getPassword());
+        String password = String.valueOf(pwdFiledPassword.getPassword());
         if (!password.isEmpty()) {
             if (!Validator.validatePassword(password)) {
                 JOptionPane.showMessageDialog(null, "Password should Contain \n"
@@ -296,6 +377,26 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_pwdFiledPasswordFocusLost
 
+    private void nameJTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameJTextFieldFocusLost
+        // TODO add your handling code here:
+        String userName = nameJTextField.getText();
+        if (!nameJTextField.getText().isEmpty()) {
+            if (!Validator.validateUserName(nameJTextField.getText())) {
+                lblAcceptedUserName.setText("");
+                lblUserName.setText("*Only AlphaNumeric Characters and '_' and '.' are allowed");
+                nameJTextField.setText("");
+            } else if (!EcoSystem.checkIfUsernameIsUnique(nameJTextField.getText())) {
+                lblAcceptedUserName.setText("");
+                lblAcceptedUserName.setText("*" + userName + " " + "is already taken please enter new username");
+                nameJTextField.setText("");
+            } else {
+
+                lblUserName.setText("");
+                lblAcceptedUserName.setText(userName + " " + "is available");
+            }
+        }
+    }//GEN-LAST:event_nameJTextFieldFocusLost
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backjButton1;
     private javax.swing.JButton createUserJButton;
@@ -305,7 +406,11 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAcceptedUserName;
+    private javax.swing.JLabel lblUserName;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JPasswordField pwdFiledPassword;

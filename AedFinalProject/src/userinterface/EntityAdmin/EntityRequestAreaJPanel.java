@@ -47,12 +47,12 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
      * Creates new form EntityManageRequestJPanel
      */
     private Enterprise enterprise;
-    UserAccount account;
-    CountryNetwork country;
-    StateNetwork state;
-    EcoSystem system;
-    JPanel userProcessContainer;
-
+    private UserAccount account;
+    private CountryNetwork country;
+    private StateNetwork state;
+    private EcoSystem system;
+    private JPanel userProcessContainer;
+    
     public EntityRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         //this.organizationDir = organizationDir;
@@ -64,27 +64,51 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         this.account = account;
         populateWorkQueueTable();
     }
-
+    
     public void populateWorkQueueTable() {
-        DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
-
-        model.setRowCount(0);
-        //System.out.println("qasda" + enterprise.getWorkQueue().getWorkRequestList().size() + " " + enterprise);
-        // SignUpRequest s=null;
-        for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
-            //System.out.println("q" + work);
-            if (work instanceof SignUpRequestOrganization) {
-                SignUpRequestOrganization s = (SignUpRequestOrganization) work;
-                Object[] row = new Object[6];
-                row[0] = s.getOrgName();
-                row[1] = s.getReceiver();
-                row[2] = s.getEnterprise();
-                row[3] = s.getOrgType().getValue();
-                row[4] = s.getCity();
-                row[5] = s;
-
-                model.addRow(row);
+        try {
+            lblWarning.setText("");
+            DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
+            
+            model.setRowCount(0);
+            if (enterprise != null) {
+                if (enterprise.getWorkQueue() != null) {
+                    if (enterprise.getWorkQueue().getWorkRequestList().size() > 0) {
+                        for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
+                            
+                            if (work instanceof SignUpRequestOrganization) {
+                                lblWarning.setText("");
+                                SignUpRequestOrganization s = (SignUpRequestOrganization) work;
+                                Object[] row = new Object[6];
+                                row[0] = s.getOrgName();
+                                row[1] = s.getReceiver();
+                                row[2] = s.getEnterprise();
+                                row[3] = s.getOrgType().getValue();
+                                row[4] = s.getCity();
+                                row[5] = s;
+                                
+                                model.addRow(row);
+                            } else {
+                                lblWarning.setText("*Request for Organization is not Available");
+                                
+                            }
+                            
+                        }
+                    } else {
+                        lblWarning.setText("*Work Request is not Available");
+                        
+                    }
+                } else {
+                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+                    
+                }
+            } else {
+                lblWarning.setText("*Enterprise is not Available");
+                
             }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+            
         }
     }
 
@@ -104,6 +128,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
+        lblWarning = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -171,33 +196,43 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 670, 110, 40));
+
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblReq.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-
-            SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
-
-            if (p.getStatus().equals("Requested")) {
-                //  System.out.println("admin name"+ account.getUsername());
-                p.setStatus("Pending");
-                p.setReceiver(account);
-
-                populateWorkQueueTable();
-
+        try {
+            lblWarning.setText("");
+            int selectedRow = tblReq.getSelectedRow();
+            if (selectedRow < 0) {
+                JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "Already assigned");
+                
+                SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
+                
+                if (p.getStatus().equals("Requested")) {
+                    //  System.out.println("admin name"+ account.getUsername());
+                    p.setStatus("Pending");
+                    p.setReceiver(account);
+                    
+                    populateWorkQueueTable();
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "Already assigned");
+                }
+                
             }
-
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+            
         }
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
         // TODO add your handling code here:
+        try{lblWarning.setText("");
         int selectedRow = tblReq.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -205,53 +240,48 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
             SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
             SignUpRequestOrganization orgRequest = null;
             //SignUpRequestEnterprise e = null;
-            UserAccount acc=null;
-
+            UserAccount acc = null;
+            
             if (p.getReceiver() != null) {
                 if (p.getStatus().equals("Pending")) {
                     if (p instanceof SignUpRequestOrganization) {
-                         try {
+                        try {
                             Validator.sendMessage(p.getEmail());
                         } catch (SendFailedException ex) {
                             JOptionPane.showMessageDialog(null, "User has a wrong email address");
-                             p.setStatus("Cancelled");
+                            p.setStatus("Cancelled");
                             // populateWorkQueueTable();
-                             return;
+                            return;
                         }
                         orgRequest = (SignUpRequestOrganization) p;
                         //You can check for non duplicate of enterprise here.
-                       // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
+                        // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
                         Employee emp = new Employee();
                         emp.setName(p.getName());
                         emp.setEmailId(p.getEmail());
-                        Enterprise e= orgRequest.getEnterprise();
+                        Enterprise e = orgRequest.getEnterprise();
                         CountryNetwork country = orgRequest.getCountry();
-                        StateNetwork state= orgRequest.getState();
+                        StateNetwork state = orgRequest.getState();
                         
-                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity(), orgRequest.getLatLong());
+                        Organization org = e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity(), orgRequest.getLatLong());
                         
-                        if(orgRequest.getOrgType()== Organization.Type.MNC){
+                        if (orgRequest.getOrgType() == Organization.Type.MNC) {
                             acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new MNCAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.Education){
+                        } else if (orgRequest.getOrgType() == Organization.Type.Education) {
                             acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new EducationAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.Individuals){
+                        } else if (orgRequest.getOrgType() == Organization.Type.Individuals) {
                             acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new IndividualAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.Hospital){
+                        } else if (orgRequest.getOrgType() == Organization.Type.Hospital) {
                             acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new HospitalAdmin());
-                        }
-                        else if(orgRequest.getOrgType()== Organization.Type.NGO){
+                        } else if (orgRequest.getOrgType() == Organization.Type.NGO) {
                             acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new NGOAdmin());
                         }
-
-                       
+                        
                     }
-
+                    
                     p.setStatus("Complete");
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
-
+                    
                     populateWorkQueueTable();
                 } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
@@ -259,12 +289,15 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Please assign first");
             }
-
+            
         }
+        }catch(Exception ex){
+                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+                }
     }//GEN-LAST:event_btnCompleteActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
+        
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -278,6 +311,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTable tblReq;
     // End of variables declaration//GEN-END:variables
 }
