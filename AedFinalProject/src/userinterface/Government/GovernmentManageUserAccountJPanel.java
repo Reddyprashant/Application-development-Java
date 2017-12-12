@@ -266,7 +266,7 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel7.setText("Manage User Account");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 310, -1));
 
         lblUserName.setForeground(new java.awt.Color(255, 51, 0));
         add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, -1));

@@ -95,6 +95,7 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         disTable = new javax.swing.JTable();
         mapBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -215,6 +216,10 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
             }
         });
         add(mapBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 569, -1, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1310, 860));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLatKeyPressed
@@ -401,6 +406,7 @@ public void populateTable( ArrayList<Organization> org)
     private javax.swing.JTable disTable;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton helpBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

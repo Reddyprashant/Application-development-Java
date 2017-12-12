@@ -61,6 +61,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
         btnCreateState = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -68,7 +69,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Register For State");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 300, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 310, 60));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
@@ -108,6 +109,10 @@ public class SignUpJPanelState extends javax.swing.JPanel {
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1310, 880));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStateActionPerformed
@@ -174,6 +179,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
     private javax.swing.JButton btnCreateState;
     private javax.swing.JComboBox comboCountry;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblName;
