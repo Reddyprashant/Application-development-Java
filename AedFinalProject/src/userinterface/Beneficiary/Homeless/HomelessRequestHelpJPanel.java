@@ -119,7 +119,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
         enterpriseLabel.setText("Organization :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 240, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 200, 30));
 
         jLabel7.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
@@ -286,7 +286,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 130, -1));
 
         lblValue.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
-        add(lblValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, -1, -1));
+        add(lblValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed

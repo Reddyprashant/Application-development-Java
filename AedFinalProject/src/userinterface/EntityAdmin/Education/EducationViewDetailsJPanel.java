@@ -241,11 +241,12 @@ public class EducationViewDetailsJPanel extends javax.swing.JPanel {
                 availVolTextField.setText("");
             }
             else{
-                JOptionPane.showMessageDialog(null, "Please add value for Available volunteers");
+                
+                JOptionPane.showMessageDialog(null, "Available volunteers cannot be more than Required Volunteers");
             }
             
             } else {
-                JOptionPane.showMessageDialog(null, "Available volunteers cannot be more than Required Volunteers");
+                JOptionPane.showMessageDialog(null, "Please enter value for Available volunteers");
             }
 
         } catch (ParseException e) {

@@ -287,10 +287,17 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
                 BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
                 BeneficiaryWorkRequest orgRequest = null;
                 UserAccount acc = null;
-                if (p.getStatus().equals("Complete")) {
+                if (!p.getStatus().equals("Complete")) {
                     if (organization.getEventDirectory() == null) {
                         organization.setEventDirectory(new EventDirectory());
                     }
+                     try {
+                           
+                            Validator.sendMessage(p.getSender().getEmployee().getEmailId());
+                            return;
+                        } catch (SendFailedException ex) {
+                            //   Logger.getLogger(MNCRequestAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     Event event = organization.getEventDirectory().createEvent();
                     event.setAvailVolunteers(p.getNumberOfVolunteersRequest());
                     event.setEventDate(p.getEventDate());
@@ -301,12 +308,8 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
                     p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
                     p.getEventDirectory().getEventDirectory().add(event);
                     if (p.getNumberOfVolunteersRequest() == 0 && p.isLogisticRequest() == true) {
-                        try {
-                            p.setStatus("Complete");
-                            Validator.sendMessage(p.getSender().getEmployee().getEmailId());
-                        } catch (SendFailedException ex) {
-                            //   Logger.getLogger(MNCRequestAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                       
+                         p.setStatus("Complete");
                     }
 
                     //if (p.getStatus().equals("Pending")) {
