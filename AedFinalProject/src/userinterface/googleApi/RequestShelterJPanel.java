@@ -69,7 +69,8 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         txtLat.setText(String.valueOf(latLong.getLatitude()));
         txtLong.setText(String.valueOf(latLong.getLongitude()));
         if(account == null){
-            helpBtn.setEnabled(false);
+            //helpBtn.setEnabled(false);
+            btnHome.setEnabled(false);
         }
     }
 
@@ -350,7 +351,7 @@ public void populateTable( ArrayList<Organization> org)
 
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
         // TODO add your handling code here:
-        
+        if(account!=null){
         for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
             for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
                 
@@ -383,6 +384,10 @@ public void populateTable( ArrayList<Organization> org)
         {
             JOptionPane.showMessageDialog(null, "No organization found Within 10 Miles. Please request for help", "Warning", JOptionPane.WARNING_MESSAGE);
             
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please register yourself to perform this action. Raise Request for Shelter.");
         }
             
     }//GEN-LAST:event_helpBtnActionPerformed

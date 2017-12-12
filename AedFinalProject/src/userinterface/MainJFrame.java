@@ -43,20 +43,18 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         EcoSystem.setInstance(system);
-        setExtendedState(getExtendedState()| JFrame.MAXIMIZED_BOTH);
-//        VaccineDirectory v= new VaccineDirectory();
-//        DiseaseDirectory d= new DiseaseDirectory();
-//        system.setDiseaseList(d);
-//        system.setVaccineList(v);
-populateCountryCombo();
+        setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        populateCountryCombo();
 
     }
 
-    public void populateCountryCombo(){
+    public void populateCountryCombo() {
+        comboCountry.removeAllItems();;
         for (CountryNetwork countryNetwork : system.getNetworkList()) {
             comboCountry.addItem(countryNetwork);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -175,66 +173,64 @@ populateCountryCombo();
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
-        System.out.println("event"+evt);
+        System.out.println("event" + evt);
         String userName = userNameJTextField.getText();
         // Get Password
         char[] passwordCharArray = passwordField.getPassword();
-        
+
         String password = String.valueOf(passwordCharArray);
 
         //Step1: Check in the system user account directory if you have the user
-        
         UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
-        
+
         Enterprise inEnterprise = null;
         Organization inOrganization = null;
-        StateNetwork inNetwork= null;
-        CountryNetwork outNetwork=null;
+        StateNetwork inNetwork = null;
+        CountryNetwork outNetwork = null;
         if (userAccount == null) {
             //Step2: Go inside each network to check each enterprise
             for (CountryNetwork cnetwork : system.getNetworkList()) {
-            for (StateNetwork network : cnetwork.getStateList()) {
-                //Step 2-a: Check against each enterprise
-                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
-                    if (userAccount == null) {
-                        //Step3: Check against each organization inside that enterprise
-                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
-                            
-                            if (userAccount != null) {
-                            //    System.out.println("organi"+ organization.getName());
-                                inEnterprise = enterprise;
-                                inOrganization = organization;
-                                inNetwork= network;
-                                outNetwork=cnetwork;
-                                break;
+                for (StateNetwork network : cnetwork.getStateList()) {
+                    //Step 2-a: Check against each enterprise
+                    for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                        userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+                        if (userAccount == null) {
+                            //Step3: Check against each organization inside that enterprise
+                            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                                userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+
+                                if (userAccount != null) {
+                                    //    System.out.println("organi"+ organization.getName());
+                                    inEnterprise = enterprise;
+                                    inOrganization = organization;
+                                    inNetwork = network;
+                                    outNetwork = cnetwork;
+                                    break;
+                                }
                             }
+                        } else {
+                            inNetwork = network;
+                            inEnterprise = enterprise;
+                            outNetwork = cnetwork;
+                            break;
                         }
-                    } else {
-                        inNetwork= network;
-                        inEnterprise = enterprise;
-                        outNetwork=cnetwork;
+                        if (inOrganization != null) {
+                            break;
+                        }
+                    }
+                    if (inEnterprise != null) {
                         break;
                     }
-                    if (inOrganization != null) {
-                        break;
-                    }
-                }
-                if (inEnterprise != null) {
-                    break;
                 }
             }
-        }
-        }
-        else{
+        } else {
             for (CountryNetwork countryNetwork : system.getNetworkList()) {
-                if(countryNetwork.getName().equalsIgnoreCase(userName)){
-                    outNetwork=countryNetwork;
+                if (countryNetwork.getName().equalsIgnoreCase(userName)) {
+                    outNetwork = countryNetwork;
                 }
             }
         }
-    
+
         if (userAccount == null) {
             JOptionPane.showMessageDialog(null, "Invalid Credentails!");
             return;
@@ -242,14 +238,14 @@ populateCountryCombo();
             CardLayout layout = (CardLayout) container.getLayout();
             container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, outNetwork, system));
             layout.next(container);
-            lblWelcome.setText("Welcome"+userAccount.getEmployee().getName());
+            lblWelcome.setText("Welcome" + userAccount.getEmployee().getName());
         }
-         loginJButton.setEnabled(false);
-         btnSignUp.setEnabled(false);
+        loginJButton.setEnabled(false);
+        btnSignUp.setEnabled(false);
         logoutJButton.setEnabled(true);
         userNameJTextField.setEnabled(false);
         passwordField.setEnabled(false);
-        
+
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -271,98 +267,95 @@ populateCountryCombo();
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
-        
-                    SignUpWelcome panel = new SignUpWelcome(container,system);
-                    container.add("SignUpWelcome", panel);
-                    CardLayout layout = (CardLayout) container.getLayout();
-                    layout.next(container);   
-        
+
+        SignUpWelcome panel = new SignUpWelcome(container, system);
+        container.add("SignUpWelcome", panel);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.next(container);
+
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
-        {
-        //loginJButtonActionPerformed(evt)  ;
-        
-            String userName = userNameJTextField.getText();
-        // Get Password
-        char[] passwordCharArray = passwordField.getPassword();
-        
-        String password = String.valueOf(passwordCharArray);
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            //loginJButtonActionPerformed(evt)  ;
 
-        //Step1: Check in the system user account directory if you have the user
-        
-        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
-        
-        Enterprise inEnterprise = null;
-        Organization inOrganization = null;
-        StateNetwork inNetwork= null;
-        CountryNetwork outNetwork=null;
-        if (userAccount == null) {
-            //Step2: Go inside each network to check each enterprise
-            for (CountryNetwork cnetwork : system.getNetworkList()) {
-            for (StateNetwork network : cnetwork.getStateList()) {
-                //Step 2-a: Check against each enterprise
-                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
-                    if (userAccount == null) {
-                        //Step3: Check against each organization inside that enterprise
-                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
-                            
-                            if (userAccount != null) {
-                            //    System.out.println("organi"+ organization.getName());
+            String userName = userNameJTextField.getText();
+            // Get Password
+            char[] passwordCharArray = passwordField.getPassword();
+
+            String password = String.valueOf(passwordCharArray);
+
+            //Step1: Check in the system user account directory if you have the user
+            UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+
+            Enterprise inEnterprise = null;
+            Organization inOrganization = null;
+            StateNetwork inNetwork = null;
+            CountryNetwork outNetwork = null;
+            if (userAccount == null) {
+                //Step2: Go inside each network to check each enterprise
+                for (CountryNetwork cnetwork : system.getNetworkList()) {
+                    for (StateNetwork network : cnetwork.getStateList()) {
+                        //Step 2-a: Check against each enterprise
+                        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                            userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+                            if (userAccount == null) {
+                                //Step3: Check against each organization inside that enterprise
+                                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                                    userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+
+                                    if (userAccount != null) {
+                                        //    System.out.println("organi"+ organization.getName());
+                                        inEnterprise = enterprise;
+                                        inOrganization = organization;
+                                        inNetwork = network;
+                                        outNetwork = cnetwork;
+                                        break;
+                                    }
+                                }
+                            } else {
+                                inNetwork = network;
                                 inEnterprise = enterprise;
-                                inOrganization = organization;
-                                inNetwork= network;
-                                outNetwork=cnetwork;
+                                outNetwork = cnetwork;
+                                break;
+                            }
+                            if (inOrganization != null) {
                                 break;
                             }
                         }
-                    } else {
-                        inNetwork= network;
-                        inEnterprise = enterprise;
-                        outNetwork=cnetwork;
-                        break;
-                    }
-                    if (inOrganization != null) {
-                        break;
+                        if (inEnterprise != null) {
+                            break;
+                        }
                     }
                 }
-                if (inEnterprise != null) {
-                    break;
+            } else {
+                for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                    if (countryNetwork.getName().equalsIgnoreCase(userName)) {
+                        outNetwork = countryNetwork;
+                    }
                 }
             }
-        }
-        }
-        else{
-            for (CountryNetwork countryNetwork : system.getNetworkList()) {
-                if(countryNetwork.getName().equalsIgnoreCase(userName)){
-                    outNetwork=countryNetwork;
-                }
+
+            if (userAccount == null) {
+                JOptionPane.showMessageDialog(null, "Invalid Credentails!");
+                return;
+            } else {
+                CardLayout layout = (CardLayout) container.getLayout();
+                container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, outNetwork, system));
+                layout.next(container);
             }
-        }
-    
-        if (userAccount == null) {
-            JOptionPane.showMessageDialog(null, "Invalid Credentails!");
-            return;
-        } else {
-            CardLayout layout = (CardLayout) container.getLayout();
-            container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, outNetwork, system));
-            layout.next(container);
-        }
-         loginJButton.setEnabled(false);
-         btnSignUp.setEnabled(false);
-        logoutJButton.setEnabled(true);
-        userNameJTextField.setEnabled(false);
-        passwordField.setEnabled(false);
+            loginJButton.setEnabled(false);
+            btnSignUp.setEnabled(false);
+            logoutJButton.setEnabled(true);
+            userNameJTextField.setEnabled(false);
+            passwordField.setEnabled(false);
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         DistanceJPanel manageOrganizationJPanel = new DistanceJPanel(container);
+        DistanceJPanel manageOrganizationJPanel = new DistanceJPanel(container);
         container.add("DistanceJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
@@ -370,9 +363,9 @@ populateCountryCombo();
 
     private void btnHomelessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomelessActionPerformed
         // TODO add your handling code here:
-         CountryNetwork c= (CountryNetwork)comboCountry.getSelectedItem();
-          StateNetwork s= (StateNetwork)comboState.getSelectedItem();
-         HomelessFoundJPanel manageOrganizationJPanel = new HomelessFoundJPanel(container,null,null,null,s,c,system);
+        CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
+        StateNetwork s = (StateNetwork) comboState.getSelectedItem();
+        HomelessFoundJPanel manageOrganizationJPanel = new HomelessFoundJPanel(container, null, null, null, s, c, system);
         container.add("HomelessFoundJPanel1", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
@@ -380,8 +373,9 @@ populateCountryCombo();
 
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
         // TODO add your handling code here:
-        CountryNetwork c= (CountryNetwork)comboCountry.getSelectedItem();
-        if(c!= null){
+        CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
+        if (c != null) {
+            comboState.removeAllItems();
             for (StateNetwork stateNetwork : c.getStateList()) {
                 comboState.addItem(stateNetwork);
             }
