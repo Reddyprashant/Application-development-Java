@@ -318,22 +318,22 @@ public class SignUpJPanel extends javax.swing.JPanel {
         add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 710, -1, -1));
 
         lblEmail.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 350, 20));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, -1, -1));
 
         lblUserName.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 280, 20));
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, -1, -1));
 
         lblAcceptedUserName.setForeground(new java.awt.Color(0, 204, 0));
-        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 230, 200, 10));
+        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 230, -1, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 300, 20));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, -1, -1));
 
         lblOrganization.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 570, 280, 20));
+        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 570, -1, -1));
 
         lblCity.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 620, 220, 20));
+        add(lblCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 620, -1, -1));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 830, -1, -1));
@@ -341,7 +341,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        try {
+        try {lblAcceptedUserName.setText("");
             CountryNetwork country = (CountryNetwork) comboCountry.getSelectedItem();
             StateNetwork state = (StateNetwork) comboState.getSelectedItem();
             Enterprise e = (Enterprise) comboEnterprise.getSelectedItem();
@@ -369,7 +369,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                         if (enterprise == e) {
                             for (WorkRequest workReq : e.getWorkQueue().getWorkRequestList()) {
                                 if (workReq instanceof SignUpRequestOrganization) {
-                                    System.out.println("iifififif" + latLong.getLatitude() + latLong.getLongitude());
+                                    
                                     if (((SignUpRequestOrganization) workReq).getOrgName().equals(txtOrgName.getText()) && ((SignUpRequestOrganization) workReq).getLatLong().getLatitude() == latLong.getLatitude() && ((SignUpRequestOrganization) workReq).getLatLong().getLongitude() == latLong.getLongitude()) {
                                         JOptionPane.showMessageDialog(null, "Request is already raised for this organization");
                                         return;

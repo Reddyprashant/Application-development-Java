@@ -148,7 +148,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
                 }
 
                 JOptionPane.showMessageDialog(null, "State Request created successfully");
-                 dB4OUtil.storeSystem(system);
+                 //dB4OUtil.storeSystem(system);
                 txtName.setText("");
 
             } else {
