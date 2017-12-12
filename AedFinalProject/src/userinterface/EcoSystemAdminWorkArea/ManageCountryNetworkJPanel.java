@@ -66,6 +66,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -105,7 +106,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Country Name");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 120, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 120, -1));
 
         submitJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         submitJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -119,7 +120,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
 
         nameJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(71, 79, 112));
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 93, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, 110, -1));
 
         backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         backJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -145,6 +146,9 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
             }
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, 160, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -204,6 +208,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;

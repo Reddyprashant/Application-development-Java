@@ -160,6 +160,7 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
         lblWarning = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -242,6 +243,9 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
 
         lblWarning.setForeground(new java.awt.Color(255, 51, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 860, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
@@ -322,6 +326,7 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblWarning;

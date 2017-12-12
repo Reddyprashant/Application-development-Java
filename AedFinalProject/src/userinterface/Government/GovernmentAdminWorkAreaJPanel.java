@@ -55,6 +55,7 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel = new javax.swing.JLabel();
         btnAnalytics = new javax.swing.JButton();
         btnRequest = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,10 +63,11 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Government Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 590, -1));
 
+        userJButton.setBackground(new java.awt.Color(255, 255, 255));
         userJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        userJButton.setForeground(new java.awt.Color(71, 79, 112));
+        userJButton.setForeground(new java.awt.Color(255, 255, 255));
         userJButton.setText("Manage User");
         userJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         userJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -115,10 +117,10 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnAnalyticsActionPerformed(evt);
             }
         });
-        add(btnAnalytics, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 630, 170, 80));
+        add(btnAnalytics, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 660, 170, 80));
 
         btnRequest.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        btnRequest.setForeground(new java.awt.Color(71, 79, 112));
+        btnRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnRequest.setText("Manage Request");
         btnRequest.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +129,9 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, 190, 80));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -177,6 +182,7 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRequest;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JButton manageOrganizationJButton;
     private javax.swing.JButton userJButton;

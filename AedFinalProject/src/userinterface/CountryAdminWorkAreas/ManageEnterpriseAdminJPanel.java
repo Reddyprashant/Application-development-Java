@@ -124,6 +124,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -166,7 +167,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 136, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 70, -1));
 
@@ -194,7 +195,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 690, 110, 50));
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 70, -1));
 
@@ -203,7 +204,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 580, 136, -1));
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Name");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 580, 40, -1));
 
@@ -237,7 +238,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, -1, 40));
 
         jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Email Id:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, 80, -1));
 
@@ -255,6 +256,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Manage Enterprise Work Area");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 410, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
@@ -393,6 +397,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox networkJComboBox;

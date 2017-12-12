@@ -102,6 +102,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         lblCity = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -217,7 +218,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel4.setText("Manage Organization");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 280, -1));
 
         lblCity.setForeground(new java.awt.Color(255, 51, 51));
         add(lblCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 410, -1, -1));
@@ -227,6 +228,9 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -317,6 +321,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblName;

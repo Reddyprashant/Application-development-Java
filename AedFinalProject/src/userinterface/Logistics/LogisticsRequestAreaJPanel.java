@@ -106,6 +106,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         btnAssign1 = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
         lblWarning = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,7 +119,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, -1, 40));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, -1, 40));
 
         btnServe.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnServe.setForeground(new java.awt.Color(71, 79, 112));
@@ -170,7 +171,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                 btnAssign1ActionPerformed(evt);
             }
         });
-        add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, -1, 40));
+        add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, -1, 40));
 
         backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         backJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -184,6 +185,9 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
 
         lblWarning.setForeground(new java.awt.Color(255, 51, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -317,6 +321,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAssign1;
     private javax.swing.JButton btnServe;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblWarning;

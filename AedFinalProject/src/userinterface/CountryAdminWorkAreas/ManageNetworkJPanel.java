@@ -66,6 +66,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -147,6 +148,9 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             }
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 140, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1310, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -212,6 +216,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;

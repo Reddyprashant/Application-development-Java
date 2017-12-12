@@ -232,7 +232,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 170, 30));
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Volunteers Available");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, 180, 30));
 
@@ -289,7 +289,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 780, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1310, 870));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed

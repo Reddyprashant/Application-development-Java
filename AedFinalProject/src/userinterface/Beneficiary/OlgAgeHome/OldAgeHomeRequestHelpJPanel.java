@@ -239,7 +239,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         noVehLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         noVehLabel.setForeground(new java.awt.Color(255, 255, 255));
         noVehLabel.setText("Number Of Vehicles");
-        add(noVehLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, -1, -1));
+        add(noVehLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 160, -1));
 
         typeLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         typeLabel.setForeground(new java.awt.Color(71, 79, 112));
@@ -275,7 +275,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         addLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         addLabel.setForeground(new java.awt.Color(255, 255, 255));
         addLabel.setText("Pickup Address");
-        add(addLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 590, 130, -1));
+        add(addLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 590, 120, -1));
 
         addressText.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         add(addressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 580, 170, -1));
@@ -294,7 +294,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1310, 870));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 public void populateComboBox() {
         reqComboBox.removeAllItems();

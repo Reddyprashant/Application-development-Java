@@ -171,6 +171,7 @@ public class EducationRequestAreaJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -246,7 +247,7 @@ public class EducationRequestAreaJPanel extends javax.swing.JPanel {
         add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 390, 90, 40));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Event List");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, -1, -1));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 308, -1, -1));
@@ -273,6 +274,9 @@ public class EducationRequestAreaJPanel extends javax.swing.JPanel {
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 830, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -366,6 +370,7 @@ public class EducationRequestAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblWarning;

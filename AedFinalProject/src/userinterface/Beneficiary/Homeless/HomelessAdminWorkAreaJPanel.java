@@ -109,10 +109,10 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnShelterActionPerformed(evt);
             }
         });
-        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 170, 70));
+        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, 190, 80));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1310, 870));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed

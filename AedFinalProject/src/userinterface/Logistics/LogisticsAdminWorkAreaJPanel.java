@@ -58,6 +58,7 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,10 +66,10 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Entity Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 530, -1));
 
         userJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        userJButton.setForeground(new java.awt.Color(71, 79, 112));
+        userJButton.setForeground(new java.awt.Color(255, 255, 255));
         userJButton.setText("Manage User");
         userJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         userJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +77,7 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 190, 80));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, 190, 80));
 
         manageEmployeeJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageEmployeeJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -110,7 +111,7 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 150, 20));
 
         jButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(71, 79, 112));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Manage Request");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +120,9 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 180, 80));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -161,6 +165,7 @@ public class LogisticsAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JButton manageOrganizationJButton;
     private javax.swing.JButton userJButton;

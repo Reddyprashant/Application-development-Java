@@ -437,7 +437,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, -4, 1310, 870));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed

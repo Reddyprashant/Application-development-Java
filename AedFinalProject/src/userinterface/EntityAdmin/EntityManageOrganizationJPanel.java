@@ -109,6 +109,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         lblWarning = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblCity = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -236,6 +237,9 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
 
         lblCity.setForeground(new java.awt.Color(255, 0, 0));
         add(lblCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 370, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -325,6 +329,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblName;

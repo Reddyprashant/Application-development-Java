@@ -119,6 +119,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         lblValue = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -157,7 +158,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(71, 79, 112));
         jLabel7.setText("Event Details");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, 35));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 120, 35));
 
         buttonGroup1.add(busBtn);
         busBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -195,7 +196,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Logistics");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 100, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
@@ -271,10 +272,10 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Event Name");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 100, -1));
 
         timelabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        timelabel.setForeground(new java.awt.Color(71, 79, 112));
+        timelabel.setForeground(new java.awt.Color(255, 255, 255));
         timelabel.setText("Pickup Time");
         add(timelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, 100, -1));
 
@@ -283,7 +284,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         add(timeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 510, 171, -1));
 
         addLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        addLabel.setForeground(new java.awt.Color(71, 79, 112));
+        addLabel.setForeground(new java.awt.Color(255, 255, 255));
         addLabel.setText("Pickup Address");
         add(addLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 560, 120, -1));
 
@@ -300,6 +301,9 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void carBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carBtnActionPerformed
@@ -575,6 +579,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblName;

@@ -148,6 +148,7 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
         reqBtn = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         lblWarning = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -163,7 +164,7 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 230, 30));
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Volunteers Available");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 240, 30));
 
@@ -251,6 +252,9 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 730, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
@@ -307,6 +311,7 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane3;

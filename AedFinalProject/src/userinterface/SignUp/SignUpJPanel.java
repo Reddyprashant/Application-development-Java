@@ -231,14 +231,14 @@ public class SignUpJPanel extends javax.swing.JPanel {
         add(comboState, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, 170, -1));
 
         jLabel10.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("City :");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 610, 50, -1));
 
         jLabel11.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Enterprise :");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 100, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 100, -1));
 
         comboEnterprise.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         comboEnterprise.addActionListener(new java.awt.event.ActionListener() {
@@ -246,10 +246,10 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 comboEnterpriseActionPerformed(evt);
             }
         });
-        add(comboEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 170, -1));
+        add(comboEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 490, 170, -1));
 
         jLabel12.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Organization :");
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 150, -1));
 
@@ -265,7 +265,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         add(txtOrgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 560, 170, -1));
 
         jLabel13.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Organization Name :");
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, 170, -1));
 
@@ -273,7 +273,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         add(txtImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 650, 170, -1));
 
         jLabel14.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Documents :");
         add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 650, 100, -1));
 
@@ -339,9 +339,11 @@ public class SignUpJPanel extends javax.swing.JPanel {
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 830, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1210, 900));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1210, 860));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed

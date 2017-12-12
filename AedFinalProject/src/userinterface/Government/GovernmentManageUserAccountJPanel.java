@@ -155,6 +155,7 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
         lblAcceptedUserName = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -218,7 +219,7 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 375, 179));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, 80, -1));
 
@@ -283,6 +284,9 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 140, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
@@ -388,6 +392,7 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAcceptedUserName;

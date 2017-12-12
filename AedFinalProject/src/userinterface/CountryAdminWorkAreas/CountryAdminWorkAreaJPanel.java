@@ -105,6 +105,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         selectedNodeJLabel = new javax.swing.JLabel();
         btnDisease = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTree = new javax.swing.JTree();
@@ -138,7 +139,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageAdminJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 240, 80));
+        jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 240, 80));
 
         manageEnterpriseJButton.setBackground(new java.awt.Color(255, 255, 255));
         manageEnterpriseJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -172,7 +173,10 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnDiseaseActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDisease, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 230, 80));
+        jPanel1.add(btnDisease, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, 230, 80));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1050, 860));
 
         jSplitPane1.setRightComponent(jPanel1);
 
@@ -261,6 +265,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTree JTree;
     private javax.swing.JButton btnDisease;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

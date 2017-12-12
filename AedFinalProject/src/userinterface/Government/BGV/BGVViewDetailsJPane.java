@@ -96,6 +96,7 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         txtOrg = new javax.swing.JTextField();
         txtCountry = new javax.swing.JTextField();
         txtCity = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -186,7 +187,7 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 100, -1));
 
         lblImage.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        lblImage.setForeground(new java.awt.Color(71, 79, 112));
+        lblImage.setForeground(new java.awt.Color(255, 255, 255));
         lblImage.setText("Image");
         add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 220, 210));
 
@@ -214,6 +215,9 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         txtCity.setForeground(new java.awt.Color(71, 79, 112));
         txtCity.setEnabled(false);
         add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 280, 170, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -232,6 +236,7 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

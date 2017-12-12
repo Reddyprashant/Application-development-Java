@@ -58,6 +58,7 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         btnHomeless = new javax.swing.JButton();
         btnShelter = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,7 +66,7 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Individual Work Area -Adminstrative Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 600, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
@@ -96,7 +97,7 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnHomelessActionPerformed(evt);
             }
         });
-        add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 190, 80));
+        add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 520, 190, 80));
 
         btnShelter.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnShelter.setForeground(new java.awt.Color(71, 79, 112));
@@ -107,7 +108,10 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnShelterActionPerformed(evt);
             }
         });
-        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 570, 200, 80));
+        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 200, 80));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -141,6 +145,7 @@ public class IndividualAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
     

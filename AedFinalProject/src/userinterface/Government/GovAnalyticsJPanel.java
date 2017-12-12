@@ -158,6 +158,7 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         combo1 = new javax.swing.JComboBox();
         combo2 = new javax.swing.JComboBox();
         combo3 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -266,6 +267,9 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
             }
         });
         add(combo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 520, 190, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1510, 860));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEthnicityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEthnicityActionPerformed
@@ -867,6 +871,7 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox combo1;
     private javax.swing.JComboBox combo2;
     private javax.swing.JComboBox combo3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel panelAge;
     private javax.swing.JPanel panelEthnicity;
