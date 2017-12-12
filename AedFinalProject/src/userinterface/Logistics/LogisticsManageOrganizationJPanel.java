@@ -215,6 +215,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 450, 140, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Manage Organization");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 280, -1));
 

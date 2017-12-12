@@ -75,7 +75,7 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, 180, 80));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, 180, 80));
 
         manageEmployeeJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageEmployeeJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -117,7 +117,7 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnAnalyticsActionPerformed(evt);
             }
         });
-        add(btnAnalytics, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 660, 170, 80));
+        add(btnAnalytics, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 700, 170, 80));
 
         btnRequest.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnRequest.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,7 +128,7 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnRequestActionPerformed(evt);
             }
         });
-        add(btnRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, 190, 80));
+        add(btnRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 540, 190, 80));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));

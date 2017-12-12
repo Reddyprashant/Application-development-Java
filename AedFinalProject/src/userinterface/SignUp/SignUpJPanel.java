@@ -236,7 +236,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 610, 50, -1));
 
         jLabel11.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setForeground(new java.awt.Color(71, 79, 112));
         jLabel11.setText("Enterprise :");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 100, -1));
 
@@ -251,10 +251,10 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jLabel12.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Organization :");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 150, -1));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 150, -1));
 
         comboOrganization.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        add(comboOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, 170, -1));
+        add(comboOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 530, 170, -1));
 
         txtOrgName.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         txtOrgName.addFocusListener(new java.awt.event.FocusAdapter() {
