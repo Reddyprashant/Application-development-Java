@@ -102,13 +102,14 @@ public class SignUpWelcome extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Please Select an Option from Below");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 510, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 510, -1));
 
         comboBoxSignUpType.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         add(comboBoxSignUpType, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, 210, 33));
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Register for Respective Organization");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 550, -1, -1));
 
@@ -125,6 +126,8 @@ public class SignUpWelcome extends javax.swing.JPanel {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/Volunteer.jpg"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 710, -1));
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 880));

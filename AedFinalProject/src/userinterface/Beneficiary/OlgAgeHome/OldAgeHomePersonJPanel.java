@@ -172,6 +172,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         lblWarning = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -267,13 +268,13 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 50, -1));
 
         jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("*Reason For Joining");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 570, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 570, 180, -1));
 
         buttonGroup3.add(ARadioButton);
         ARadioButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        ARadioButton.setForeground(new java.awt.Color(71, 79, 112));
+        ARadioButton.setForeground(new java.awt.Color(255, 255, 255));
         ARadioButton.setText("Individual and relational factors");
         ARadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,24 +332,24 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 40, -1));
 
         jLabel7.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Ethnicity:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 70, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("*Education Background:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, -1, -1));
 
         buttonGroup2.add(rdBtnHighschoolGrad);
         rdBtnHighschoolGrad.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        rdBtnHighschoolGrad.setForeground(new java.awt.Color(71, 79, 112));
+        rdBtnHighschoolGrad.setForeground(new java.awt.Color(255, 255, 255));
         rdBtnHighschoolGrad.setText("Highschool Graduate");
         add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 210, -1));
 
         buttonGroup2.add(rdBtnCollegeGrad);
         rdBtnCollegeGrad.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        rdBtnCollegeGrad.setForeground(new java.awt.Color(71, 79, 112));
+        rdBtnCollegeGrad.setForeground(new java.awt.Color(255, 255, 255));
         rdBtnCollegeGrad.setText("College Graduate");
         add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 530, 180, -1));
 
@@ -381,7 +382,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 110, -1));
 
         jLabel9.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Description: ");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 620, -1, -1));
 
@@ -433,6 +434,10 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, -1, -1));
+
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, -4, 1310, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
@@ -663,6 +668,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -120,6 +120,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         lblOrganizationName = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -236,7 +237,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         add(noOfVehText, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 490, 53, -1));
 
         noVehLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        noVehLabel.setForeground(new java.awt.Color(71, 79, 112));
+        noVehLabel.setForeground(new java.awt.Color(255, 255, 255));
         noVehLabel.setText("Number Of Vehicles");
         add(noVehLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, -1, -1));
 
@@ -264,7 +265,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         add(busBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 450, 70, -1));
 
         timelabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        timelabel.setForeground(new java.awt.Color(71, 79, 112));
+        timelabel.setForeground(new java.awt.Color(255, 255, 255));
         timelabel.setText("Pickup Time");
         add(timelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 540, 100, -1));
 
@@ -272,7 +273,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         add(timeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 53, -1));
 
         addLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        addLabel.setForeground(new java.awt.Color(71, 79, 112));
+        addLabel.setForeground(new java.awt.Color(255, 255, 255));
         addLabel.setText("Pickup Address");
         add(addLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 590, 130, -1));
 
@@ -289,6 +290,11 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 160, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1310, 870));
     }// </editor-fold>//GEN-END:initComponents
 public void populateComboBox() {
         reqComboBox.removeAllItems();
@@ -568,6 +574,7 @@ public void populateComboBox() {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblName;

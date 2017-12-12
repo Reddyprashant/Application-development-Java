@@ -111,6 +111,7 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         lblWarning = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         lblValue = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addFocusListener(new java.awt.event.FocusAdapter() {
@@ -298,6 +299,9 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
 
         lblValue.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         add(lblValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
     public void populateComboBox() {
         reqComboBox.removeAllItems();
@@ -576,6 +580,7 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblName;

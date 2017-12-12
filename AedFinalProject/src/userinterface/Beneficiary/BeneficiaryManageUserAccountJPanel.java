@@ -140,6 +140,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
         lblUserName = new javax.swing.JLabel();
         lblAcceptedUserName = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(71, 79, 112));
@@ -271,6 +272,9 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("Manage User Account Panel");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 390, 60));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1310, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
@@ -370,6 +374,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAcceptedUserName;
     private javax.swing.JLabel lblUserName;
