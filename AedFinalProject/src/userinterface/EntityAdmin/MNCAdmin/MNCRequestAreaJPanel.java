@@ -17,8 +17,6 @@ import Business.WorkQueue.BeneficiaryWorkRequest;
 import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -66,6 +64,7 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
             if (organization.getWorkQueue() == null) {
                 organization.setWorkQueue(new WorkQueue());
             }
+            //Displaying of work request od particular organization
             if (organization.getWorkQueue().getWorkRequestList().size() > 0) {
                 for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
                     if (work instanceof BeneficiaryWorkRequest) {
@@ -87,12 +86,12 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
             if (enterprise.getWorkQueue() == null) {
                 enterprise.setWorkQueue(new WorkQueue());
             }
+            //populating the work request of enterprise
             if (enterprise.getWorkQueue().getWorkRequestList().size() > 0) {
                 for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
                     if (work instanceof BeneficiaryWorkRequest) {
                         BeneficiaryWorkRequest s = (BeneficiaryWorkRequest) work;
                         Object[] row = new Object[6];
-                        //System.out.println("qwe"+s.getSenderOrganization());
                         row[0] = s.getSenderOrganization();
                         row[1] = s.getEventName();
                         row[2] = s.getNumberOfVolunteersRequest();
@@ -120,6 +119,7 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
             if (organization.getEventDirectory() == null) {
                 organization.setEventDirectory(new EventDirectory());
             }
+            //Displaying of Event Directory 
             if (organization.getEventDirectory().getEventDirectory().size() > 0) {
                 for (Event event : organization.getEventDirectory().getEventDirectory()) {
                     Object[] row = new Object[6];
@@ -265,7 +265,7 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-
+                //Assigning the request for the particular person
                 BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
                 p.setStatus("Pending");
                 populateWorkQueueTable();
@@ -289,8 +289,6 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
                 BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
-                BeneficiaryWorkRequest orgRequest = null;
-                UserAccount acc = null;
                 if (!p.getStatus().equals("Complete")) {
                     if (organization.getEventDirectory() == null) {
                         organization.setEventDirectory(new EventDirectory());
@@ -298,9 +296,9 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
                      try {
                            
                             Validator.sendMessage(p.getSender().getEmployee().getEmailId());
-                            return;
+                           
                         } catch (SendFailedException ex) {
-                            //   Logger.getLogger(MNCRequestAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                             return;
                         }
                     Event event = organization.getEventDirectory().createEvent();
                     event.setAvailVolunteers(p.getNumberOfVolunteersRequest());
@@ -315,19 +313,7 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
                        
                          p.setStatus("Complete");
                     }
-
-                    //if (p.getStatus().equals("Pending")) {
-//                    if (p instanceof BeneficiaryWorkRequest) {
-//                         try {
-//                            Validator.sendMessage(p.getEmail());
-//                        } catch (SendFailedException ex) {
-//                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
-//                             p.setStatus("Cancelled");
-//                            // populateWorkQueueTable();
-//                             return;
-                    //}
-                    //You can check for non duplicate of enterprise here.
-                    // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
+                    
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
 
                     populateWorkQueueTable();

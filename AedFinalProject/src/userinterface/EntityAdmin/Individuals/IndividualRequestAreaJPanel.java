@@ -88,6 +88,7 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
             if (enterprise.getWorkQueue() == null) {
                 enterprise.setWorkQueue(new WorkQueue());
             }
+            //Displaying the work requests
             if (enterprise.getWorkQueue().getWorkRequestList().size() > 0) {
                 for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
                     if (work instanceof BeneficiaryWorkRequest) {
@@ -116,12 +117,13 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
         try {
             lblWarning.setText("");
             DefaultTableModel model = (DefaultTableModel) UpdatedJTable.getModel();
-
+            //Displaying the events
             model.setRowCount(0);
             if (organization.getEventDirectory() == null) {
                 organization.setEventDirectory(new EventDirectory());
 
             }
+            //Populating the event directory
             if (organization.getEventDirectory().getEventDirectory().size() > 0) {
                 lblWarning.setText("");
                 for (Event event : organization.getEventDirectory().getEventDirectory()) {
@@ -249,7 +251,7 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
-        // TODO add your handling code here:
+        // Completing the request by subtracting volunteer by 1
         try {
             lblWarning.setText("");
             int selectedRow = tblReq.getSelectedRow();
@@ -264,6 +266,7 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
                         organization.setEventDirectory(new EventDirectory());
 
                     }
+                    //Displays all the events of the individual
                     Event event = organization.getEventDirectory().createEvent();
                     event.setAvailVolunteers(1);
                     event.setEventDate(p.getEventDate());
@@ -279,22 +282,9 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
                             p.setStatus("Complete");
                             Validator.sendMessage(p.getSender().getEmployee().getEmailId());
                         } catch (SendFailedException ex) {
-                            // Logger.getLogger(IndividualRequestAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            
                         }
                     }
-
-                    //if (p.getStatus().equals("Pending")) {
-//                    if (p instanceof BeneficiaryWorkRequest) {
-//                         try {
-//                            Validator.sendMessage(p.getEmail());
-//                        } catch (SendFailedException ex) {
-//                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
-//                             p.setStatus("Cancelled");
-//                            // populateWorkQueueTable();
-//                             return;
-                    //}
-                    //You can check for non duplicate of enterprise here.
-                    // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
 
                     populateWorkQueueTable();

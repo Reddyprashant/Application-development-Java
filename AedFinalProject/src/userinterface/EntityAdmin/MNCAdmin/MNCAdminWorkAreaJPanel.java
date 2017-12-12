@@ -9,7 +9,6 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-//import Business.Organization.MNCOrganization;
 import Business.Organization.MNCOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;

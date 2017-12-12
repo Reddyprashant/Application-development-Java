@@ -13,6 +13,7 @@ import Business.Organization.Organization;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -28,7 +29,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form EntityManageRequestJPanel
      */
-        private JPanel container;
+    private JPanel container;
     private Enterprise enterprise;
     UserAccount account;
     CountryNetwork country;
@@ -36,40 +37,43 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
     EcoSystem system;
     Organization organization;
     JPanel userProcessContainer;
-    public BGVRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+
+    public BGVRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
-     this.organization = organization;
-     this.userProcessContainer = userProcessContainer;
+        this.organization = organization;
+        this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         //this.container = container;
-         this.system=business;
-        this.state=network;
-        this.country=cNetwork;
-        this.account=account;
+        this.system = business;
+        this.state = network;
+        this.country = cNetwork;
+        this.account = account;
         populateWorkQueueTable();
     }
- public void populateWorkQueueTable() {
+
+    public void populateWorkQueueTable() {
         DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
 
         model.setRowCount(0);
-        System.out.println("qasda"+enterprise.getWorkQueue().getWorkRequestList().size()+" "+enterprise);
-       // SignUpRequest s=null;
+        if(organization.getWorkQueue()==null){
+            organization.setWorkQueue(new WorkQueue());
+        }
         for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
-            System.out.println("q"+work);
             if (work instanceof SignUpRequestOrganization) {
-               SignUpRequestOrganization  s= (SignUpRequestOrganization) work;
+                SignUpRequestOrganization s = (SignUpRequestOrganization) work;
                 Object[] row = new Object[6];
                 row[0] = s.getOrgName();
                 row[1] = s.getReceiver();
-                 row[2] = s.getEnterprise();
-                 row[3]= s.getOrgType().getValue();
-                 row[4]=s.getCity();
-                  row[5] = s; 
-                 
+                row[2] = s.getEnterprise();
+                row[3] = s.getOrgType().getValue();
+                row[4] = s.getCity();
+                row[5] = s;
+
                 model.addRow(row);
             }
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,7 +104,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 140, 40));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 140, 40));
 
         btnServe.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnServe.setForeground(new java.awt.Color(71, 79, 112));
@@ -110,7 +114,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
                 btnServeActionPerformed(evt);
             }
         });
-        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 410, 90, 40));
+        add(btnServe, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 410, 90, 40));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
@@ -153,7 +157,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 350, 170, -1));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 410, 120, 40));
 
         backjButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         backjButton1.setForeground(new java.awt.Color(71, 79, 112));
@@ -170,23 +174,20 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
-        // TODO add your handling code here:
-         int selectedRow = tblReq.getSelectedRow();
+        
+        int selectedRow = tblReq.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-          
+
             SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
-          
-            if(p.getStatus().equals("Background Verification")){
-              //  System.out.println("admin name"+ account.getUsername());
+
+            if (p.getStatus().equals("Background Verification")) {
                 p.setStatus("Pending");
                 p.setReceiver(account);
-
                 populateWorkQueueTable();
-               
-            }
-            else{
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Already assigned");
             }
 
@@ -195,96 +196,46 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnServeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServeActionPerformed
         // TODO add your handling code here:
-         int selectedRow = tblReq.getSelectedRow();
+        int selectedRow = tblReq.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
             SignUpRequestOrganization orgRequest = null;
-            //SignUpRequestEnterprise e = null;
-            UserAccount acc=null;
-
+            UserAccount acc = null;
+            //Approving the BGV request after verifying the document
             if (p.getReceiver() != null) {
                 if (p.getStatus().equals("Pending")) {
                     if (p instanceof SignUpRequestOrganization) {
                         orgRequest = (SignUpRequestOrganization) p;
-                        //You can check for non duplicate of enterprise here.
-                       // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
-//                        Employee emp = new Employee();
-//                        emp.setName(p.getName());
-//                        emp.setEmailId(p.getEmail());
-                        Enterprise e= orgRequest.getEnterprise();
-                        //e.getWorkQueue().getWorkRequestList().add(p);
-//                        CountryNetwork country = orgRequest.getCountry();
-//                        StateNetwork state= orgRequest.getState();
-//                        
-//                        Organization org= e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity());
-//                        
-//                        if(orgRequest.getOrgType()== Organization.Type.CommonPeople){
-//                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new CommonPeopleAdmin());
-//                        }
-//                        else if(orgRequest.getOrgType()== Organization.Type.Disaster){
-//                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new DisasterAdmin());
-//                        }
-//                        else if(orgRequest.getOrgType()== Organization.Type.Homeless){
-//                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new HomelessAdmin());
-//                        }
-//                        else if(orgRequest.getOrgType()== Organization.Type.OldAge){
-//                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new OldAgeAdmin());
-//                        }
-//                        else if(orgRequest.getOrgType()== Organization.Type.Orphanage){
-//                            acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new OrphanageAdmin());
-//                        }
-//
-//                        try {
-//                            Validator.sendMessage(p.getEmail());
-//                        } catch (SendFailedException ex) {
-//                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
-//                             p.setStatus("Cancelled");
-//                             populateWorkQueueTable();
-//                             return;
-//                        }
-//                    }
+                        p.setStatus("Verified");
+                        JOptionPane.showMessageDialog(null, "You have successfully Verified the request");
 
-                    p.setStatus("Verified");
-                    JOptionPane.showMessageDialog(null, "You have successfully Verified the request");
-
-                    populateWorkQueueTable();
+                        populateWorkQueueTable();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
+                    JOptionPane.showMessageDialog(null, "Please assign first");
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Please assign first");
-            }
 
-        }
+            }
         }
     }//GEN-LAST:event_btnServeActionPerformed
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        
-       
-         int selectedRow = tblReq.getSelectedRow();
+
+        int selectedRow = tblReq.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
             SignUpRequestOrganization p = (SignUpRequestOrganization) tblReq.getValueAt(selectedRow, 5);
-
-           // if (p.getStatus().equals("Requested")) {
-                //  System.out.println("admin name"+ account.getUsername());
-               // p.setStatus("Pending");
-                
-                //p.setReceiver(account);
-
-        BGVViewDetailsJPane requestAreaJPanel = new BGVViewDetailsJPane(userProcessContainer,  account,  organization,  enterprise,state,country,  system, p);
-        userProcessContainer.add("BGVViewDetailsJPane", requestAreaJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Already assigned");
-//            }
+            BGVViewDetailsJPane requestAreaJPanel = new BGVViewDetailsJPane(userProcessContainer, account, organization, enterprise, state, country, system, p);
+            userProcessContainer.add("BGVViewDetailsJPane", requestAreaJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
 
         }
     }//GEN-LAST:event_userJButtonActionPerformed

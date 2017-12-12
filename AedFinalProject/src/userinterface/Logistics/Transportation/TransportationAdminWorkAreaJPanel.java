@@ -16,7 +16,6 @@ import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import utility.Validator;
 
 /**
  *
@@ -42,7 +41,6 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
 
         populateWorkQueueTable();
-        // populateAvailable();
     }
 
 
@@ -53,6 +51,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
 
             model.setRowCount(0);
+            // If logistics are required for the work request, populate values into table
             if (organization.getWorkQueue() != null) {
                 if (organization.getWorkQueue().getWorkRequestList().size() > 0) {
                     for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
@@ -85,6 +84,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
             String[] columns = {"Field", "Value"};
             DefaultTableModel model = (DefaultTableModel) tblView.getModel();
             model.setRowCount(0);
+            // Based on the selected row ppulate the value associated to it.
             WorkRequest p = (WorkRequest) requestTable.getValueAt(selectedRow, 3);
             if (p instanceof BeneficiaryWorkRequest) {
 
@@ -232,6 +232,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
+                // Complete the Beneficiary request if the logistic is served
                 BeneficiaryWorkRequest work = (BeneficiaryWorkRequest) requestTable.getValueAt(selectedRow, 3);
                 if (!(work.getStatus().equals("Completed")) && !work.isLogisticRequest()) {
                     work.setLogisticRequest(true);
@@ -241,7 +242,6 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
 
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     populateWorkQueueTable();
-                    //populateAvailable();
                 } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
                 }
@@ -260,7 +260,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-
+                //Delete the selected request
                 BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) requestTable.getValueAt(selectedRow, 3);
                 if (organization.getWorkQueue() != null) {
                     organization.getWorkQueue().getWorkRequestList().remove(p);

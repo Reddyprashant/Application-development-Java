@@ -65,7 +65,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                 if (enterprise.getWorkQueue() != null) {
                     if (enterprise.getWorkQueue().getWorkRequestList().size() > 0) {
                         for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
-                            
+                            // populate the work request
                             if (work instanceof SignUpRequestOrganization) {
                                 lblWarning.setText("");
                                 SignUpRequestOrganization s = (SignUpRequestOrganization) work;
@@ -144,7 +144,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 690, 182));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 770, 182));
 
         btnAssign.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnAssign.setForeground(new java.awt.Color(71, 79, 112));
@@ -169,7 +169,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Recieved");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
@@ -203,7 +203,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
             } else {
                 
                 SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
-                
+                //Assigning the request
                 if (p.getStatus().equals("Requested")) {
                     
                     p.setStatus("Pending");
@@ -231,7 +231,6 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
         } else {
             SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
             SignUpRequestOrganization orgRequest = null;
-            //SignUpRequestEnterprise e = null;
             UserAccount acc = null;
             
             if (p.getReceiver() != null) {
@@ -242,7 +241,6 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                         } catch (SendFailedException ex) {
                             JOptionPane.showMessageDialog(null, "User has a wrong email address");
                             p.setStatus("Cancelled");
-                            
                             return;
                         }
                         orgRequest = (SignUpRequestOrganization) p;
@@ -253,7 +251,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                         Enterprise e = orgRequest.getEnterprise();
                         CountryNetwork country = orgRequest.getCountry();
                         StateNetwork state = orgRequest.getState();
-                        
+                        // Creating a Organization and user Account for the request
                         Organization org = e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity(), orgRequest.getLatLong());
                         
                         if (orgRequest.getOrgType() == Organization.Type.MNC) {

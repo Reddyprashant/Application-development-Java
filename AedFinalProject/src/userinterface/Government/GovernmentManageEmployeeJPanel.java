@@ -260,6 +260,7 @@ public class GovernmentManageEmployeeJPanel extends javax.swing.JPanel {
             lblName.setText("");
             if (!nameJTextField.getText().equals("")) {
                 if (!txtEmail.getText().isEmpty()) {
+                    //Creating a organization
                     Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
                     String name = nameJTextField.getText();
                     String email = txtEmail.getText();

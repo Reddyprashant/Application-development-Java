@@ -10,7 +10,6 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -40,7 +39,6 @@ public class EntityAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.state = network;
         this.country = cNetwork;
         this.account = account;
-        System.out.println("userinterface.EntityAdmin.EntityAdminWorkAreaJPanel.<init>()");
         valueLabel.setText(enterprise.getName());
     }
 
@@ -138,15 +136,8 @@ public class EntityAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
         GovernmentManageEmployeeJPanel manageEmployeeJPanel = new GovernmentManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("GovernmentManageEmployeeJPanel3", manageEmployeeJPanel);
-
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-//        EntityManageEmployeeJPanel manageEmployeeJPanel = new EntityManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-//        userProcessContainer.add("EntityManageEmployeeJPanel", manageEmployeeJPanel);
-//
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed

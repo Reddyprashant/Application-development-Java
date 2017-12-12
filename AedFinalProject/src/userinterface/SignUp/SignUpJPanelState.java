@@ -27,17 +27,17 @@ public class SignUpJPanelState extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+
     public SignUpJPanelState(JPanel userProcessContainer, EcoSystem business) {
         initComponents();
         this.system = business;
         this.userProcessContainer = userProcessContainer;
-        if(!system.getNetworkList().isEmpty()){
-        for (CountryNetwork countryNetwork : system.getNetworkList()) {
-            comboCountry.addItem(countryNetwork);
-        }
-      }
-        else{
+        if (!system.getNetworkList().isEmpty()) {
+            for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                comboCountry.addItem(countryNetwork);
+            }
+        } else {
             txtName.setEnabled(false);
             comboCountry.setEnabled(false);
             lblWarning.setText("*Sorry for the inconvenience the system is not set up yet please contact System administrator for the issue");
@@ -118,7 +118,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
     private void btnCreateStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStateActionPerformed
         // TODO add your handling code here:
         try {
-
+// Checking for the existing state
             for (CountryNetwork country : system.getNetworkList()) {
                 for (StateNetwork state : country.getStateList()) {
                     if (state.getName().equals(txtName.getText())) {
@@ -127,7 +127,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
                     }
                 }
             }
-
+// Checking for the work request raised for the state
             for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
                 for (WorkRequest workReq : userAccount.getWorkQueue().getWorkRequestList()) {
                     if (workReq instanceof SignUpRequestState) {
@@ -140,7 +140,7 @@ public class SignUpJPanelState extends javax.swing.JPanel {
             }
 
             if (!txtName.getText().isEmpty()) {
-
+                // Creating a request for State
                 CountryNetwork country = (CountryNetwork) comboCountry.getSelectedItem();
                 SignUpRequestState stateRequest = new SignUpRequestState();
                 stateRequest.setName(txtName.getText());
@@ -148,12 +148,13 @@ public class SignUpJPanelState extends javax.swing.JPanel {
                 stateRequest.setStatus("Requested");
                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
                     if (country.getName().equalsIgnoreCase(userAccount.getUsername())) {
+                        //Assigning the request to the particular country Admin
                         userAccount.getWorkQueue().getWorkRequestList().add(stateRequest);
                     }
                 }
 
                 JOptionPane.showMessageDialog(null, "State Request created successfully");
-                 //dB4OUtil.storeSystem(system);
+                //dB4OUtil.storeSystem(system);
                 txtName.setText("");
 
             } else {

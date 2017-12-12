@@ -48,6 +48,7 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
        
     }
     public void populateValues(){
+        // Displaying all the values in field
         txtName.setText(request.getName());
         txtCity.setText(request.getCity());
         txtEmail.setText(request.getEmail());
@@ -103,8 +104,8 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel1.setText("Register");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 160, 30));
+        jLabel1.setText("View Details");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 220, 30));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));

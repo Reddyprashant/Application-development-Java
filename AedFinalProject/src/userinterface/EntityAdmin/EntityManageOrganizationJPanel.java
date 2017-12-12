@@ -51,10 +51,9 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         organizationJComboBox.addItem(Type.NGO);
         organizationJComboBox.addItem(Type.Individuals);
 
-        //  }
     }
 
-    private void populateTable() {
+    public void populateTable() {
         try {
             lblWarning.setText("");
             DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
@@ -161,7 +160,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
 
         organizationJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(71, 79, 112));
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 81, -1));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 170, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
@@ -190,7 +189,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
                 orgNameTextFieldFocusLost(evt);
             }
         });
-        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 80, -1));
+        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
@@ -204,7 +203,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
                 txtcityFocusLost(evt);
             }
         });
-        add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 80, -1));
+        add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 170, -1));
 
         jLabel18.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
@@ -252,10 +251,10 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
                 if (!(city.isEmpty())) {
                     if (latLong != null || txtLoc.getText().isEmpty()) {
                         if (directory != null) {
+                            //Creating new Organization
                             directory.createOrganization(type, name, city, latLong);
                             JOptionPane.showMessageDialog(null, "Organization created successfully");
                             orgNameTextField.setText("");
-                            
                             txtcity.setText("");
                             txtLoc.setText("");
                             populateTable();

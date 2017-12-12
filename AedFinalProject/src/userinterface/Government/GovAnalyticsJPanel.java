@@ -6,33 +6,23 @@
 package userinterface.Government;
 
 import Business.EcoSystem;
-import Business.Employee.Employee;
 import Business.Enterprise.BeneficiaryEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-import Business.Organization.BGVOrganization;
 import Business.Organization.Organization;
 import Business.Person.Person;
 import Business.Person.PersonDirectory;
-import Business.Role.BGVAdmin;
-import Business.SignUp.SignUpRequest;
-import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.WorkRequest;
 import java.awt.BorderLayout;
-import javax.mail.SendFailedException;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-import utility.Validator;
 
 /**
  *
@@ -43,14 +33,14 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form EntityManageRequestJPanel
      */
-    private JPanel container;
+
     private Enterprise enterprise;
-    UserAccount account;
-    CountryNetwork country;
-    StateNetwork state;
-    EcoSystem system;
-    JPanel userProcessContainer;
-    PersonDirectory pDirectory = new PersonDirectory();
+    private UserAccount account;
+    private CountryNetwork country;
+    private StateNetwork state;
+    private EcoSystem system;
+    private JPanel userProcessContainer;
+    private PersonDirectory pDirectory = new PersonDirectory();
 
     public GovAnalyticsJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
@@ -64,6 +54,7 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
     }
 
     public void populatePersonDirectory() {
+        // Creating a master directory for analysis purpose
         for (StateNetwork stateNetwork : country.getStateList()) {
             for (Enterprise enterprise1 : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
                 if (enterprise1 instanceof BeneficiaryEnterprise) {
@@ -77,11 +68,11 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
                 }
             }
         }
-        System.out.println("Total number of people: " + pDirectory.getPersonList().size());
     }
 
     public void populateBarGraph(DefaultCategoryDataset dataset, JPanel panel) {
-
+try{
+    //Creating Bar chart
         JFreeChart barChart = ChartFactory.createBarChart(
                 "Bar Graph",
                 "Category",
@@ -94,8 +85,11 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         panel.removeAll();
         panel.add(chartPanel, BorderLayout.CENTER);
         panel.validate();
+}catch(Exception e){
+    return;
+}
     }
-
+// populating the combo box with values
     public void populateComboBoxEthnicity(JComboBox reqComboBox) {
         reqComboBox.removeAllItems();
         reqComboBox.addItem("White American");
@@ -269,7 +263,7 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
         add(combo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 520, 190, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1510, 860));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1510, 1000));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEthnicityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEthnicityActionPerformed
@@ -315,7 +309,7 @@ public class GovAnalyticsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEthnicityActionPerformed
 
     private void btnEduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEduActionPerformed
-        // TODO add your handling code here:
+        // Education button clicked populate the relative combobox
         if (btnEdu.isSelected()) {
             populateComboBoxEthnicity(combo1);
             populateComboBoxReasons(combo2);

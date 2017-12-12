@@ -56,9 +56,9 @@ public class EntityOrganizationManageEmployeeJPanel extends javax.swing.JPanel {
             if (organization.getEmployeeDirectory() == null) {
                 organization.setEmployeeDirectory(new EmployeeDirectory());
             }
+            // Populate employee of organizations
             if (organization.getEmployeeDirectory().getEmployeeList().size() > 0) {
                 for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
-
                     Object[] row = new Object[2];
                     row[0] = employee.getId();
                     row[1] = employee.getName();
@@ -140,7 +140,7 @@ public class EntityOrganizationManageEmployeeJPanel extends javax.swing.JPanel {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 140, 40));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 160, 40));
 
         backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         backJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -164,7 +164,7 @@ public class EntityOrganizationManageEmployeeJPanel extends javax.swing.JPanel {
                 nameJTextFieldFocusLost(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 126, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(71, 79, 112));
@@ -188,7 +188,7 @@ public class EntityOrganizationManageEmployeeJPanel extends javax.swing.JPanel {
                 txtEmailFocusLost(evt);
             }
         });
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, 126, -1));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, 160, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, -1, -1));
@@ -210,6 +210,7 @@ public class EntityOrganizationManageEmployeeJPanel extends javax.swing.JPanel {
                 if (!txtEmail.getText().equals("")) {
                     String name = nameJTextField.getText();
                     String emailId = txtEmail.getText();
+                    //Create a Employee in organization
                     organization.getEmployeeDirectory().createEmployee(name, emailId);
                     populateTable(organization);
                 } else {

@@ -44,7 +44,6 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
 
     public LogisticsRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
-        //this.organizationDir = organizationDir;
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.container = container;
@@ -66,7 +65,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
             }
             if (enterprise.getWorkQueue().getWorkRequestList().size() > 0) {
                 for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
-                    System.out.println("q" + work);
+                    //Display the Sign up Request Organization
                     if (work instanceof SignUpRequestOrganization) {
                         SignUpRequestOrganization s = (SignUpRequestOrganization) work;
                         Object[] row = new Object[6];
@@ -103,7 +102,6 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
-        btnAssign1 = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
         lblWarning = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -119,7 +117,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, -1, 40));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, -1, 40));
 
         btnServe.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnServe.setForeground(new java.awt.Color(71, 79, 112));
@@ -134,7 +132,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Request Recieved");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, 30));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
@@ -161,17 +159,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 690, 200));
-
-        btnAssign1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        btnAssign1.setForeground(new java.awt.Color(71, 79, 112));
-        btnAssign1.setText("Assign to BGV");
-        btnAssign1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssign1ActionPerformed(evt);
-            }
-        });
-        add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, -1, 40));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 800, 200));
 
         backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         backJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -200,7 +188,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
             } else {
 
                 SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
-
+                //Assigning the request
                 if (p.getStatus().equals("Requested")) {
                     p.setStatus("Pending");
                     p.setReceiver(account);
@@ -234,7 +222,6 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                         if (p instanceof SignUpRequestOrganization) {
                             orgRequest = (SignUpRequestOrganization) p;
                             //You can check for non duplicate of enterprise here.
-                            // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
                             Employee emp = new Employee();
                             emp.setName(p.getName());
                             emp.setEmailId(p.getEmail());
@@ -243,7 +230,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                             StateNetwork state = orgRequest.getState();
 
                             Organization org = e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity(), orgRequest.getLatLong());
-
+                            //creating a account for transportation
                             if (orgRequest.getOrgType() == Organization.Type.Transportation) {
                                 acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new TransportationAdmin());
                             }
@@ -275,38 +262,6 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnServeActionPerformed
 
-    private void btnAssign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssign1ActionPerformed
-        // TODO add your handling code here:
-        try {
-            lblWarning.setText("");
-            int selectedRow = tblReq.getSelectedRow();
-            if (selectedRow < 0) {
-                JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else {
-
-                SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
-
-                if (p.getStatus().equals("Requested")) {
-                    p.setStatus("Background Verification");
-                    for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
-                        for (Organization organization1 : enterprise1.getOrganizationDirectory().getOrganizationList()) {
-                            if (organization1 instanceof BGVOrganization) {
-                                organization1.getWorkQueue().getWorkRequestList().add(p);
-                            }
-                        }
-                    }
-                    populateWorkQueueTable();
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Already assigned");
-                }
-
-            }
-        } catch (Exception ex) {
-            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
-        }
-    }//GEN-LAST:event_btnAssign1ActionPerformed
-
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
         userProcessContainer.remove(this);
@@ -318,7 +273,6 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnAssign;
-    private javax.swing.JButton btnAssign1;
     private javax.swing.JButton btnServe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

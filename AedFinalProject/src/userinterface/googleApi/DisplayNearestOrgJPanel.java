@@ -13,28 +13,11 @@ import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.ShelterWorkRequest;
 import com.teamdev.jxbrowser.chromium.Browser;
-import com.teamdev.jxbrowser.chromium.JSValue;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.SendFailedException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-import userinterface.Beneficiary.BeneficiaryManageOrganizationJPanel;
-import userinterface.EntityAdmin.EntityManageOrganizationJPanel;
-import userinterface.Government.GovernmentManageOrganizationJPanel;
-import userinterface.Logistics.LogisticsManageOrganizationJPanel;
-import userinterface.SignUp.SignUpJPanel;
 import utility.Validator;
 
 /**

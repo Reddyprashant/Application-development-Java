@@ -30,36 +30,20 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
 
+    Browser browser;
+    BrowserView view;
+    LatLong latLong;
 
-     Browser browser;
-     BrowserView view;
-      LatLong latLong;
     public OrganizationLocationJPanel(JPanel userProcessContainer) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-
-       // GoogleMapsSample g= new GoogleMapsSample();
-         latLong= new LatLong();
-             browser = new Browser();
-             view = new BrowserView(browser);
-            browser.loadURL("https://www.google.com/maps");
-//          JPanel frame = new JPanel();
-        
-           // frame.add(toolBar, BorderLayout.SOUTH);
-          //  frame.setSize(900, 500);
-            //frame.setLocationRelativeTo(null);
-            //frame.setVisible(true);
-//            JButton setMarkerButton = new JButton("Set Marker");
-//          setMarkerButton.addActionListener(new ActionListener() {
-//              public void actionPerformed(ActionEvent e) {
-//              
-//              }
-//                  });
-//           frame.add(setMarkerButton);
-            this.mapContainer.add(view,"a");
-//            this.jPanel1.add(frame,"b");
-            this.mapContainer.setVisible(true);
-      //  g.returnLatLong(JPanel userProcessContainer,UserAccount account,Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system);
+        this.userProcessContainer = userProcessContainer;
+        latLong = new LatLong();
+        browser = new Browser();
+        view = new BrowserView(browser);
+        //Loading the google maps in jpanel
+        browser.loadURL("https://www.google.com/maps");
+        this.mapContainer.add(view, "a");
+        this.mapContainer.setVisible(true);
     }
 
     /**
@@ -108,49 +92,43 @@ public class OrganizationLocationJPanel extends javax.swing.JPanel {
 
     private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
         // TODO add your handling code here:
-        try{
-         if(browser.getURL()!= null){
-            
-                    System.out.println(browser.getURL());
-                    String[] a= browser.getURL().split("!3d",0);
-                    String[] b= a[1].split("!4d");
-                    System.out.println("Lat"+b[0]+"  "+"Lon"+b[1]);
-                    double lat= Double.parseDouble(b[0]);
-                    double lon= Double.parseDouble(b[1]);
-                    latLong.setLatitude(lat);
-                    latLong.setLongitude(lon);
-                    }
-         System.out.println("Lat"+latLong.getLatitude()+latLong.getLongitude());
-         
-         userProcessContainer.remove(this);
-          Component[] componentArray=userProcessContainer.getComponents();
-          if(userProcessContainer.getComponent(componentArray.length -1) instanceof SignUpJPanel){
-        SignUpJPanel eduRequestPanel =(SignUpJPanel)userProcessContainer.getComponent(componentArray.length -1);
-        eduRequestPanel.populateLatLong(latLong);
-          }
-          else if(userProcessContainer.getComponent(componentArray.length -1) instanceof BeneficiaryManageOrganizationJPanel){
-        BeneficiaryManageOrganizationJPanel eduRequestPanel =(BeneficiaryManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
-        eduRequestPanel.populateLatLong(latLong);
-          }
-          else if(userProcessContainer.getComponent(componentArray.length -1) instanceof EntityManageOrganizationJPanel){
-        EntityManageOrganizationJPanel eduRequestPanel =(EntityManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
-        eduRequestPanel.populateLatLong(latLong);
-          }
-          else if(userProcessContainer.getComponent(componentArray.length -1) instanceof GovernmentManageOrganizationJPanel){
-        GovernmentManageOrganizationJPanel eduRequestPanel =(GovernmentManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
-        eduRequestPanel.populateLatLong(latLong);
-          }
-          else if(userProcessContainer.getComponent(componentArray.length -1) instanceof LogisticsManageOrganizationJPanel){
-        LogisticsManageOrganizationJPanel eduRequestPanel =(LogisticsManageOrganizationJPanel)userProcessContainer.getComponent(componentArray.length -1);
-        eduRequestPanel.populateLatLong(latLong);
-          }
-          
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-        }catch(Exception e){
+        try {
+            if (browser.getURL() != null) {
+                //Splitting the url and taking the required value from browser URL
+                String[] a = browser.getURL().split("!3d", 0);
+                String[] b = a[1].split("!4d");
+                double lat = Double.parseDouble(b[0]);
+                double lon = Double.parseDouble(b[1]);
+                latLong.setLatitude(lat);
+                latLong.setLongitude(lon);
+            }
+            //Removing one userProcessContainer and checking which panel is the previous panel
+            userProcessContainer.remove(this);
+            Component[] componentArray = userProcessContainer.getComponents();
+            //Populating the previous panel LatLong value from the value elected from the Map
+            if (userProcessContainer.getComponent(componentArray.length - 1) instanceof SignUpJPanel) {
+                SignUpJPanel eduRequestPanel = (SignUpJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                eduRequestPanel.populateLatLong(latLong);
+            } else if (userProcessContainer.getComponent(componentArray.length - 1) instanceof BeneficiaryManageOrganizationJPanel) {
+                BeneficiaryManageOrganizationJPanel eduRequestPanel = (BeneficiaryManageOrganizationJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                eduRequestPanel.populateLatLong(latLong);
+            } else if (userProcessContainer.getComponent(componentArray.length - 1) instanceof EntityManageOrganizationJPanel) {
+                EntityManageOrganizationJPanel eduRequestPanel = (EntityManageOrganizationJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                eduRequestPanel.populateLatLong(latLong);
+            } else if (userProcessContainer.getComponent(componentArray.length - 1) instanceof GovernmentManageOrganizationJPanel) {
+                GovernmentManageOrganizationJPanel eduRequestPanel = (GovernmentManageOrganizationJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                eduRequestPanel.populateLatLong(latLong);
+            } else if (userProcessContainer.getComponent(componentArray.length - 1) instanceof LogisticsManageOrganizationJPanel) {
+                LogisticsManageOrganizationJPanel eduRequestPanel = (LogisticsManageOrganizationJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                eduRequestPanel.populateLatLong(latLong);
+            }
+
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.previous(userProcessContainer);
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Set Location first");
         }
-        
+
     }//GEN-LAST:event_btnLocationActionPerformed
 
 

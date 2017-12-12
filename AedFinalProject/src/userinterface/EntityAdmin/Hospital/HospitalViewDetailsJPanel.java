@@ -52,6 +52,7 @@ public class HospitalViewDetailsJPanel extends javax.swing.JPanel {
         this.account = account;
         this.organization = organization;
         this.workRequest = p;
+        //Populating all the values
         nameLabel.setText(organization.getName());
         reqComboBox.setText(p.getRequestType().getValue());
         eventNameTextfield.setText(p.getEventName());
@@ -216,6 +217,7 @@ public class HospitalViewDetailsJPanel extends javax.swing.JPanel {
         try {
             lblWarning.setText("");
             if (!availVolTextField.getText().isEmpty()) {
+                // Adding the volunteers to the request
                 SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
                 String name = eventNameTextfield.getText();
                 int availableVolunteers = Integer.parseInt(availVolTextField.getText());
@@ -225,6 +227,7 @@ public class HospitalViewDetailsJPanel extends javax.swing.JPanel {
                     if (organization.getEventDirectory().getEventDirectory() == null) {
                         organization.setEventDirectory(new EventDirectory());
                     }
+                    // Creating a event for the organization
                     Event event = organization.getEventDirectory().createEvent();
                     event.setAvailVolunteers(availableVolunteers);
                     event.setRequiredVolunteers(requiredVolunteers);
@@ -235,6 +238,7 @@ public class HospitalViewDetailsJPanel extends javax.swing.JPanel {
                     event.setSenderOrganization(workRequest.getSenderOrganization());
 
                     workRequest.setNumberOfVolunteersRequest(requiredVolunteers - availableVolunteers);
+                    //Adding event to the workRequest
                     workRequest.getEventDirectory().getEventDirectory().add(event);
                     if (workRequest.getNumberOfVolunteersRequest() == 0 && workRequest.isLogisticRequest() == true) {
                         workRequest.setStatus("Complete");

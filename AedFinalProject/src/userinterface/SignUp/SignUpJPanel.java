@@ -42,7 +42,8 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private JFileChooser openFile = new JFileChooser();
     private String type;
     private LatLong latLong;
-     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+
     public SignUpJPanel(JPanel userProcessContainer, EcoSystem business, SignUpRequest.SignUpType type) {
         initComponents();
         this.system = business;
@@ -73,7 +74,6 @@ public class SignUpJPanel extends javax.swing.JPanel {
             txtOrgName.setEnabled(false);
             txtCity.setEnabled(false);
             txtLoc.setEditable(false);
-//            JOptionPane.showMessageDialog(null, "System is not available for the country, please contact the system administrator");
             lblWarning.setText("*System is not available for the country, please contact the system administrator");
         }
     }
@@ -348,13 +348,14 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        try {lblAcceptedUserName.setText("");
+        try {
+            lblAcceptedUserName.setText("");
             CountryNetwork country = (CountryNetwork) comboCountry.getSelectedItem();
             StateNetwork state = (StateNetwork) comboState.getSelectedItem();
             Enterprise e = (Enterprise) comboEnterprise.getSelectedItem();
             Organization.Type type = (Type) comboOrganization.getSelectedItem();
             String password = String.valueOf(txtPassword.getPassword());
-
+// Checking for the organization name and Location 
             for (CountryNetwork countryNetwork : system.getNetworkList()) {
                 for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
                     for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
@@ -369,14 +370,14 @@ public class SignUpJPanel extends javax.swing.JPanel {
                     }
                 }
             }
-
+//Checking for the request for the particular organization is raised or not
             for (CountryNetwork countryNetwork : system.getNetworkList()) {
                 for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
                     for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
                         if (enterprise == e) {
                             for (WorkRequest workReq : e.getWorkQueue().getWorkRequestList()) {
                                 if (workReq instanceof SignUpRequestOrganization) {
-                                    
+
                                     if (((SignUpRequestOrganization) workReq).getOrgName().equals(txtOrgName.getText()) && ((SignUpRequestOrganization) workReq).getLatLong().getLatitude() == latLong.getLatitude() && ((SignUpRequestOrganization) workReq).getLatLong().getLongitude() == latLong.getLongitude()) {
                                         JOptionPane.showMessageDialog(null, "Request is already raised for this organization");
                                         return;
@@ -390,76 +391,69 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
             if (!txtUserName.getText().isEmpty()) {
                 if (!txtName.getText().isEmpty()) {
-                     if (!txtEmail.getText().isEmpty()) {
-                          if (!txtOrgName.getText().isEmpty()) {
-                    if (!txtCity.getText().isEmpty()) {
-                        if (!password.isEmpty()) {
-                            if (!txtLoc.getText().isEmpty()) {
-                                   if (!txtImage.getText().isEmpty()) {
-                                SignUpRequestOrganization orgRequest = new SignUpRequestOrganization();
-                                orgRequest.setName(txtName.getText());
-                                orgRequest.setUserName(txtUserName.getText());
-                                orgRequest.setPassword(password);
-                                orgRequest.setEmail(txtEmail.getText());
-                                orgRequest.setCountry(country);
-                                orgRequest.setState(state);
-                                orgRequest.setCity(txtCity.getText());
-                                orgRequest.setOrgType(type);
-                                orgRequest.setStatus("Requested");
-                                orgRequest.setOrgName(txtOrgName.getText());
-                                orgRequest.setEnterprise(e);
-                                orgRequest.setImage(file);
-                                orgRequest.setLatLong(latLong);
-                                //   orgRequest.setEnterprise((Enterprise.EnterpriseType)comboEnterprise.getSelectedItem());
-//                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
-//                    if(country.getName().equalsIgnoreCase(userAccount.getUsername())){
-//                        userAccount.getWorkQueue().getWorkRequestList().add(orgRequest);
-//                    }
-//                }
-                                if (orgRequest.getImage() == (null)) {
-                                    JOptionPane.showMessageDialog(null, "Please load the Authorised Organization Document");
-                                    return;
-                                }
-                                for (CountryNetwork countryNetwork : system.getNetworkList()) {
-                                    for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
-                                        for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
-                                            // System.out.println("enterall"+e.getEnterpriseType()+stateNetwork.getName()+countryNetwork.getName());
-                                            if (enterprise == e) {
-                                                //   System.out.println("enter"+e.getEnterpriseType()+" "+enterprise);
-                                                e.getWorkQueue().getWorkRequestList().add(orgRequest);
+                    if (!txtEmail.getText().isEmpty()) {
+                        if (!txtOrgName.getText().isEmpty()) {
+                            if (!txtCity.getText().isEmpty()) {
+                                if (!password.isEmpty()) {
+                                    if (!txtLoc.getText().isEmpty()) {
+                                        if (!txtImage.getText().isEmpty()) {
+                                            //Creating Organization request
+                                            SignUpRequestOrganization orgRequest = new SignUpRequestOrganization();
+                                            orgRequest.setName(txtName.getText());
+                                            orgRequest.setUserName(txtUserName.getText());
+                                            orgRequest.setPassword(password);
+                                            orgRequest.setEmail(txtEmail.getText());
+                                            orgRequest.setCountry(country);
+                                            orgRequest.setState(state);
+                                            orgRequest.setCity(txtCity.getText());
+                                            orgRequest.setOrgType(type);
+                                            orgRequest.setStatus("Requested");
+                                            orgRequest.setOrgName(txtOrgName.getText());
+                                            orgRequest.setEnterprise(e);
+                                            orgRequest.setImage(file);
+                                            orgRequest.setLatLong(latLong);
+                                            if (orgRequest.getImage() == (null)) {
+                                                JOptionPane.showMessageDialog(null, "Please load the Authorised Organization Document");
+                                                return;
                                             }
-                                        }
-                                    }
-                                }
+                                            for (CountryNetwork countryNetwork : system.getNetworkList()) {
+                                                for (StateNetwork stateNetwork : countryNetwork.getStateList()) {
+                                                    for (Enterprise enterprise : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
+                                                        if (enterprise == e) {
+                                                            e.getWorkQueue().getWorkRequestList().add(orgRequest);
+                                                        }
+                                                    }
+                                                }
+                                            }
 
-                                JOptionPane.showMessageDialog(null, "Registration successful. Your account will be available in 24 hrs");
-                                 //dB4OUtil.storeSystem(system);
- txtName.setText("");
-            txtUserName.setText("");
-            txtEmail.setText("");
-            txtImage.setText("");
-            txtPassword.setText("");
-            txtOrgName.setText("");
-            txtCity.setText("");
-            txtLoc.setText("");
+                                            JOptionPane.showMessageDialog(null, "Registration successful. Your account will be available in 24 hrs");
+                                            //dB4OUtil.storeSystem(system);
+                                            txtName.setText("");
+                                            txtUserName.setText("");
+                                            txtEmail.setText("");
+                                            txtImage.setText("");
+                                            txtPassword.setText("");
+                                            txtOrgName.setText("");
+                                            txtCity.setText("");
+                                            txtLoc.setText("");
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "Please add the document");
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Please Choose your location");
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Please enter value for password");
+                                }
                             } else {
-                                JOptionPane.showMessageDialog(null, "Please add the document");
-                            }
-                                   } else {
-                                JOptionPane.showMessageDialog(null, "Please Choose your location");
+                                JOptionPane.showMessageDialog(null, "Please enter value for City");
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "Please enter value for password");
+                            JOptionPane.showMessageDialog(null, "Please enter the org name");
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Please enter value for City");
+                        JOptionPane.showMessageDialog(null, "Please enter the email");
                     }
-                    } else {
-                    JOptionPane.showMessageDialog(null, "Please enter the org name");
-                }
-                     } else {
-                    JOptionPane.showMessageDialog(null, "Please enter the email");
-                }
                 } else {
                     JOptionPane.showMessageDialog(null, "Please enter the Name");
                 }
@@ -477,16 +471,12 @@ public class SignUpJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
-        // TODO add your handling code here:
+try{
         openFile.setCurrentDirectory(new File("c:\\temp"));
         int value = openFile.showOpenDialog(btnFile);
         if (value == JFileChooser.APPROVE_OPTION) {
             try {
                 file = ImageIO.read(openFile.getSelectedFile());
-                //person.setImage(file);
-//                 Image smallImage = person.getImage().getScaledInstance(250, 250,Image.SCALE_SMOOTH);
-//       ImageIcon imgIcon=new ImageIcon(smallImage);
-//       imageLabel.setIcon(imgIcon);
                 txtImage.setText(openFile.getSelectedFile().getPath());
                 JOptionPane.showMessageDialog(null, "Image Loaded Successfully");
             } catch (IOException ioe) {
@@ -495,10 +485,13 @@ public class SignUpJPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "No file");
         }
+}catch(Exception e){
+    
+}
     }//GEN-LAST:event_btnFileActionPerformed
 
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
-        // TODO add your handling code here:
+        // Populate the State combo box
         comboState.removeAllItems();
 
         CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
@@ -539,14 +532,13 @@ public class SignUpJPanel extends javax.swing.JPanel {
             txtOrgName.setEnabled(false);
             txtCity.setEnabled(false);
             txtLoc.setEditable(false);
-//            JOptionPane.showMessageDialog(null, "System is not available for the country, please contact the system administrator");
             lblWarning.setText("*System is not available for the State, please contact the system administrator");
             return;
         }
     }//GEN-LAST:event_comboCountryActionPerformed
 
     private void comboStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboStateActionPerformed
-        // TODO add your handling code here:
+        // Populate the Enterprise combo box
         comboEnterprise.removeAllItems();
         StateNetwork stateNetwork = (StateNetwork) comboState.getSelectedItem();
         if (stateNetwork != null) {
@@ -597,7 +589,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_comboStateActionPerformed
 
     private void comboEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEnterpriseActionPerformed
-        // TODO add your handling code here:
+        // Populate Organizations
         comboOrganization.removeAllItems();
         Enterprise e = (Enterprise) comboEnterprise.getSelectedItem();
         if (e != null) {
@@ -641,7 +633,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_comboEnterpriseActionPerformed
 
     private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
-        // TODO add your handling code here:
+        // Check for unique username and username as String
         String userName = txtUserName.getText();
         if (!txtUserName.getText().isEmpty()) {
             if (!Validator.validateUserName(txtUserName.getText())) {
@@ -660,7 +652,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtUserNameFocusLost
 
     private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
-        // TODO add your handling code here
+        // Set the locatin from google maps
         OrganizationLocationJPanel muajp = new OrganizationLocationJPanel(userProcessContainer);
         userProcessContainer.add("OrganizationLocationJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

@@ -266,14 +266,10 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         if (value == JFileChooser.APPROVE_OPTION) {
             try {
                 file = ImageIO.read(openFile.getSelectedFile());
-                //person.setImage(file);
-//                 Image smallImage = person.getImage().getScaledInstance(250, 250,Image.SCALE_SMOOTH);
-//       ImageIcon imgIcon=new ImageIcon(smallImage);
-//       imageLabel.setIcon(imgIcon);
                 txtImage.setText(openFile.getSelectedFile().getPath());
                 JOptionPane.showMessageDialog(null, "Image Loaded Successfully");
             } catch (IOException ioe) {
-                JOptionPane.showMessageDialog(null, "Image load unsuccessfull");
+                JOptionPane.showMessageDialog(null, "Please load different image");
             }
         } else {
             JOptionPane.showMessageDialog(null, "No file");
@@ -286,8 +282,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
             lblAcceptedUserName.setText("");
             lblUserName1.setText("");
             lblEmail.setText("");
-            // for (CountryNetwork country : system.getNetworkList()) {
-            //  for (StateNetwork state : country.getStateList()) {
+            //Checking for the existing Enterprise
             StateNetwork states = (StateNetwork) comboState.getSelectedItem();
             for (Enterprise enterprise : states.getEnterpriseDirectory().getEnterpriseList()) {
                 if ((EnterpriseType) comboEnterprise.getSelectedItem() == enterprise.getEnterpriseType()) {
@@ -295,9 +290,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
                     return;
                 }
             }
-            // }
-            // }
-
+// Checking if the request is already raised for the particular enterprise
             for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
                 for (WorkRequest workReq : userAccount.getWorkQueue().getWorkRequestList()) {
                     if (workReq instanceof SignUpRequestEnterprise) {
@@ -315,8 +308,13 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
                     if (!txtName.getText().isEmpty()) {
                         if (!txtEmail.getText().isEmpty()) {
                             if (!txtImage.getText().isEmpty()) {
+                                //Checking for unique username
+                                if (!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())) {
+                                    return;
+                                }
                                 CountryNetwork country = (CountryNetwork) comboCountry.getSelectedItem();
                                 StateNetwork state = (StateNetwork) comboState.getSelectedItem();
+                                // Creating a Enterprise Sign up request
                                 SignUpRequestEnterprise enterpriseRequest = new SignUpRequestEnterprise();
                                 enterpriseRequest.setName(txtName.getText());
                                 enterpriseRequest.setUserName(txtUserName.getText());
@@ -371,7 +369,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
         // TODO add your handling code here:
         comboState.removeAllItems();
-
+//Populating state based on the country network 
         CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
         if (!c.getStateList().isEmpty()) {
             lblWarning.setText("");

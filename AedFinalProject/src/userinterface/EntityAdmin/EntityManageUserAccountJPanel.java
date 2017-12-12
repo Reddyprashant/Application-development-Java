@@ -35,7 +35,6 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         this.container = container;
 
         popOrganizationComboBox();
-        // employeeJComboBox.removeAllItems();
         popData();
     }
 
@@ -112,7 +111,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
                     for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
                         if (organization.getUserAccountDirectory() != null) {
                             if (organization.getUserAccountDirectory().getUserAccountList().size() > 0) {
-
+                                //Displaying all the user Account
                                 for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
                                     Object row[] = new Object[2];
                                     row[0] = ua;
@@ -316,7 +315,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
                     if (organizationJComboBox.getSelectedItem() != null) {
                         if (employeeJComboBox.getSelectedItem() != null) {
                             if (roleJComboBox.getSelectedItem() != null) {
-
+                                // Creating user account
                                 Organization organization = (Organization) organizationJComboBox.getSelectedItem();
                                 Employee employee = (Employee) employeeJComboBox.getSelectedItem();
                                 Role role = (Role) roleJComboBox.getSelectedItem();

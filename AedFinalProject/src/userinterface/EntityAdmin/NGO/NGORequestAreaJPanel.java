@@ -42,7 +42,6 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
 
     public NGORequestAreaJPanel(JPanel userProcessContainer, UserAccount account, NGOOrganization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
-        //this.organizationDir = organizationDir;
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.system = business;
@@ -59,7 +58,7 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
         try {
             lblWarning.setText("");
             DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
-
+            // Display all the work queues in table
             model.setRowCount(0);
             if (organization.getWorkQueue() == null) {
                 organization.setWorkQueue(new WorkQueue());
@@ -112,7 +111,7 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
         try {
             lblWarning.setText("");
             DefaultTableModel model = (DefaultTableModel) UpdatedJTable.getModel();
-
+            //populating the event Directory based on the work requested selected
             model.setRowCount(0);
             if (organization.getEventDirectory() == null) {
                 organization.setEventDirectory(new EventDirectory());
@@ -260,14 +259,14 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
-        // TODO add your handling code here:
+        
         try {
             lblWarning.setText("");
             int selectedRow = tblReq.getSelectedRow();
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-
+                // Assigning the request for himself
                 BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
                 p.setStatus("Pending");
                 populateWorkQueueTable();
@@ -284,20 +283,18 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
-        // TODO add your handling code here:
+        // Completing the request by providing all the volunteers required
         try {
             lblWarning.setText("");
             int selectedRow = tblReq.getSelectedRow();
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
+                //Completing the request by providing all the volunteers required
                 BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
-                BeneficiaryWorkRequest orgRequest = null;
-                UserAccount acc = null;
                 if (p.getStatus().equals("Complete")) {
                     if (organization.getEventDirectory() == null) {
                         organization.setEventDirectory(new EventDirectory());
-                        System.out.println("event dir null");
                     }
                     Event event = organization.getEventDirectory().createEvent();
                     event.setAvailVolunteers(p.getNumberOfVolunteersRequest());
@@ -309,34 +306,18 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
                     p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
                     p.getEventDirectory().getEventDirectory().add(event);
                     if (p.getNumberOfVolunteersRequest() == 0 && p.isLogisticRequest() == true) {
-//                        p.setStatus("Complete");
                         try {
                             p.setStatus("Complete");
                             Validator.sendMessage(p.getSender().getEmployee().getEmailId());
                         } catch (SendFailedException ex) {
-                            //   Logger.getLogger(MNCRequestAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            
                         }
                     }
-
-                    //if (p.getStatus().equals("Pending")) {
-//                    if (p instanceof BeneficiaryWorkRequest) {
-//                         try {
-//                            Validator.sendMessage(p.getEmail());
-//                        } catch (SendFailedException ex) {
-//                            JOptionPane.showMessageDialog(null, "User has a wrong email address");
-//                             p.setStatus("Cancelled");
-//                            // populateWorkQueueTable();
-//                             return;
-                    //}
-                    //You can check for non duplicate of enterprise here.
-                    // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
-
                     populateWorkQueueTable();
                 } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
                 }
-
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");

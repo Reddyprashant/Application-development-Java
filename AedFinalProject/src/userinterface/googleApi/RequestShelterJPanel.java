@@ -16,11 +16,8 @@ import Business.Organization.IndividualOrganization;
 import Business.Organization.OldAgeOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrphanageOrganization;
-import Business.SignUp.SignUpRequest;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ShelterWorkRequest;
-import com.teamdev.jxbrowser.chromium.Browser;
-import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.File;
@@ -48,27 +45,29 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
     Enterprise enterprise;
     StateNetwork state;
     CountryNetwork country;
-    EcoSystem system; 
-      LatLong latLong;
-      Organization organization;
-      ImageIcon image;
-      private ArrayList<Organization> orglist5;
-      private ArrayList<Organization> orglist10;
-    public RequestShelterJPanel(JPanel userProcessContainer,UserAccount account,Organization org, Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system, LatLong latLng) {
+    EcoSystem system;
+    LatLong latLong;
+    Organization organization;
+    ImageIcon image;
+    private ArrayList<Organization> orglist5;
+    private ArrayList<Organization> orglist10;
+
+    public RequestShelterJPanel(JPanel userProcessContainer, UserAccount account, Organization org, Enterprise enterprise, StateNetwork state, CountryNetwork country, EcoSystem system, LatLong latLng) {
         initComponents();
-         this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.enterprise=enterprise;
-        this.state=state;
-        this.country=country;
-        this.system=system;
-        this.latLong=latLng;
-        this.organization=org;
-        orglist5=new ArrayList<>();
-        orglist10= new ArrayList<>();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.enterprise = enterprise;
+        this.state = state;
+        this.country = country;
+        this.system = system;
+        this.latLong = latLng;
+        this.organization = org;
+        orglist5 = new ArrayList<>();
+        orglist10 = new ArrayList<>();
+        //Setting the value of Latitude and Longitude
         txtLat.setText(String.valueOf(latLong.getLatitude()));
         txtLong.setText(String.valueOf(latLong.getLongitude()));
-        if(account == null){
+        if (account == null) {
             //helpBtn.setEnabled(false);
             btnHome.setEnabled(false);
         }
@@ -227,92 +226,91 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
 
     private void txtLatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLatKeyPressed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtLatKeyPressed
 
     private void txtLongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLongKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLongKeyPressed
-public void populateTable( ArrayList<Organization> org)
-{
-    DefaultTableModel model = (DefaultTableModel) disTable.getModel();
-        
+    public void populateTable(ArrayList<Organization> org) {
+        //Populating the value of organizations nearby
+        DefaultTableModel model = (DefaultTableModel) disTable.getModel();
+
         model.setRowCount(0);
         for (Organization organization1 : org) {
-        
-    
-         Object[] row = new Object[3];
+
+            Object[] row = new Object[3];
             row[0] = organization1;
             row[1] = organization1.populateDistance(latLong);
-           
-            
+
             model.addRow(row);
         }
-}
+    }
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
-        if(image != null){
-            ShelterWorkRequest request= new ShelterWorkRequest();
+        try{
+        if (image != null) {
+            //Request for shelter of homeless person
+            ShelterWorkRequest request = new ShelterWorkRequest();
             request.setImage(image);
             request.setStatus("Requested");
             request.setSender(account);
             request.setLatLong(latLong);
-           
-            if(state.getEnterpriseDirectory() != null){
-            for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
-                    if(organization instanceof HomelessOrganization || organization instanceof OrphanageOrganization || organization instanceof OldAgeOrganization || organization instanceof IndividualOrganization ){
-                        
-                        organization.getWorkQueue().getWorkRequestList().add(request);
-                        if(organization.populateDistance(latLong) < 5){
-                            System.out.println("Distance 5"+organization.getName()+" : "+organization.populateDistance(latLong));
+
+            if (state.getEnterpriseDirectory() != null) {
+                for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
+                    for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
+                        if (organization instanceof HomelessOrganization || organization instanceof OrphanageOrganization || organization instanceof OldAgeOrganization || organization instanceof IndividualOrganization) {
+
+                            organization.getWorkQueue().getWorkRequestList().add(request);
+                            // Checking for distanceless than 5 miles
+                            if (organization.populateDistance(latLong) < 5) {
                                 for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
-                                     try{
-                                    Validator.sendMessage(employee.getEmailId());
-                                }catch(SendFailedException s){
-                                
-                            }
-                                
-                            }
-                            
-                        }
-                        else if(organization.populateDistance(latLong) < 10){
-                            System.out.println("Distance 10 "+organization.getName()+" : "+organization.populateDistance(latLong));
+                                    try {
+                                        Validator.sendMessage(employee.getEmailId());
+                                    } catch (SendFailedException s) {
+
+                                    }
+
+                                }
+
+                            } // Checking for distanceless than 10 miles
+                            else if (organization.populateDistance(latLong) < 10) {
+                                System.out.println("Distance 10 " + organization.getName() + " : " + organization.populateDistance(latLong));
                                 for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
-                                     try{
-                                    Validator.sendMessage(employee.getEmailId());
-                                }catch(SendFailedException s){
-                                
+                                    try {
+                                        Validator.sendMessage(employee.getEmailId());
+                                    } catch (SendFailedException s) {
+
+                                    }
+
+                                }
+                            } else {
+                                System.out.println("Distance " + organization.getName() + " : " + organization.populateDistance(latLong));
+                                for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+                                    try {
+                                        Validator.sendMessage(employee.getEmailId());
+                                    } catch (SendFailedException s) {
+
+                                    }
+
+                                }
                             }
-                        
                         }
                     }
-                        else{
-                               System.out.println("Distance "+organization.getName()+" : "+organization.populateDistance(latLong));
-                                for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
-                                     try{
-                                    Validator.sendMessage(employee.getEmailId());
-                                }catch(SendFailedException s){
-                                
-                            }
-                        
-                        } 
-                            }
                 }
+
+                if (account != null) {
+                    account.getWorkQueue().getWorkRequestList().add(request);
+                }
+                JOptionPane.showMessageDialog(null, "Shelter Request Raised");
             }
-            }
-            
-            
-           if(account!=null){ 
-            account.getWorkQueue().getWorkRequestList().add(request);
-           }
-           JOptionPane.showMessageDialog(null, "Shelter Request Raised");
-            }
-        
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(null, "Please upload the image", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        
+        }catch(Exception e){
+            
+        }
 
     }//GEN-LAST:event_reqBtnActionPerformed
 
@@ -326,70 +324,57 @@ public void populateTable( ArrayList<Organization> org)
                 Image pic = ImageIO.read(f1);
                 pic = pic.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
                 image = new ImageIcon(pic);
-                System.out.println("userinmed()"+image);
                 lblPic.setIcon(image);
-                 txtImage.setText(chooser.getSelectedFile().getPath());
+                txtImage.setText(chooser.getSelectedFile().getPath());
                 JOptionPane.showMessageDialog(null, "Picture uploaded successfully.");
             } catch (Exception e) {
-                
+                JOptionPane.showMessageDialog(null, "Upload different picture.");
             }
-        }
-        else {
+        } else {
 
-            JOptionPane.showMessageDialog(null, "Please select a picture","Warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a picture", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
-       JPanel j= account.getRole().createWorkArea(userProcessContainer, account,organization, enterprise, state, country, system);
-         userProcessContainer.add("workarea1", j);
+        JPanel j = account.getRole().createWorkArea(userProcessContainer, account, organization, enterprise, state, country, system);
+        userProcessContainer.add("workarea1", j);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
         // TODO add your handling code here:
-        if(account!=null){
-        for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
-            for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
-                
-                  if (organization instanceof HomelessOrganization|| organization instanceof OrphanageOrganization ||organization instanceof OldAgeOrganization) {
-                    
-                      if(organization.populateDistance(latLong )<5)
-                      {
-                          orglist5.add(organization);
-                        // populateTable(organization);
-                      }
-                      else if (organization.populateDistance(latLong )<10)
-                      {
-                          orglist10.add(organization);
-                      }
+        if (account != null) {
+            for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
+
+                    if (organization instanceof HomelessOrganization || organization instanceof OrphanageOrganization || organization instanceof OldAgeOrganization) {
+
+                        if (organization.populateDistance(latLong) < 5) {
+                            orglist5.add(organization);
+                        } else if (organization.populateDistance(latLong) < 10) {
+                            orglist10.add(organization);
+                        }
+                    }
+
                 }
-  
-                
+
             }
-            
-        }
-        if(orglist5.size()>0)
-        {
-        populateTable(orglist5);
-        }
-        else if(orglist10.size()>0)
-        {
-            populateTable(orglist10);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "No organization found Within 10 Miles. Please request for help", "Warning", JOptionPane.WARNING_MESSAGE);
-            
-        }
-        }
-        else{
+            if (orglist5.size() > 0) {
+                populateTable(orglist5);
+            } else if (orglist10.size() > 0) {
+                populateTable(orglist10);
+            } else {
+                JOptionPane.showMessageDialog(null, "No organization found Within 10 Miles. Please request for help", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "Please register yourself to perform this action. Raise Request for Shelter.");
         }
-            
+
     }//GEN-LAST:event_helpBtnActionPerformed
 
     private void mapBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapBtnActionPerformed
@@ -400,12 +385,11 @@ public void populateTable( ArrayList<Organization> org)
         } else {
 
             Organization p = (Organization) disTable.getValueAt(selectedRow, 0);
-           //String latLong = String.valueOf(organization.getLatLong());
-            DisplayNearestOrgJPanel displayNearestOrgJPanel = new DisplayNearestOrgJPanel(userProcessContainer,account,organization,enterprise,state,country,system, p.getLatLong());
-        userProcessContainer.add("DisplayNearestOrgJPanel", displayNearestOrgJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-            
+            DisplayNearestOrgJPanel displayNearestOrgJPanel = new DisplayNearestOrgJPanel(userProcessContainer, account, organization, enterprise, state, country, system, p.getLatLong());
+            userProcessContainer.add("DisplayNearestOrgJPanel", displayNearestOrgJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+
         }
     }//GEN-LAST:event_mapBtnActionPerformed
 

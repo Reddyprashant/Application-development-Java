@@ -103,7 +103,7 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
 
         enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
-        enterpriseLabel.setText("Enterprise:");
+        enterpriseLabel.setText("Organization:");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 160, 30));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -212,7 +212,7 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
-        // TODO add your handling code here:
+        // Updating the number of volunteers
         try {
             lblWarning.setText("");
             SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
@@ -224,6 +224,7 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
                 if (organization.getEventDirectory().getEventDirectory() == null) {
                     organization.setEventDirectory(new EventDirectory());
                 }
+                //Creating event for each volunteer group served
                 Event event = organization.getEventDirectory().createEvent();
                 event.setAvailVolunteers(availableVolunteers);
                 event.setRequiredVolunteers(requiredVolunteers);

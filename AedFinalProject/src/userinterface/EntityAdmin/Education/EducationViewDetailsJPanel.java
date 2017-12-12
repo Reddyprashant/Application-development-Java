@@ -52,6 +52,7 @@ public class EducationViewDetailsJPanel extends javax.swing.JPanel {
         this.account = account;
         this.organization = organization;
         this.workRequest = p;
+        //Populating the valiues
         nameLabel.setText(organization.getName());
         reqComboBox.setText(p.getRequestType().getValue());
         eventNameTextfield.setText(p.getEventName());
@@ -226,6 +227,7 @@ public class EducationViewDetailsJPanel extends javax.swing.JPanel {
                 if (organization.getEventDirectory().getEventDirectory() == null) {
                     organization.setEventDirectory(new EventDirectory());
                 }
+                //Creating event for the request
                 Event event = organization.getEventDirectory().createEvent();
                 event.setAvailVolunteers(availableVolunteers);
                 event.setRequiredVolunteers(requiredVolunteers);
@@ -238,6 +240,7 @@ public class EducationViewDetailsJPanel extends javax.swing.JPanel {
                 workRequest.setNumberOfVolunteersRequest(requiredVolunteers - availableVolunteers);
                 workRequest.getEventDirectory().getEventDirectory().add(event);
                 if (workRequest.getNumberOfVolunteersRequest() == 0 && workRequest.isLogisticRequest() == true) {
+                    //If required Volunteers are 0 completing the work request
                     workRequest.setStatus("Complete");
 
                 }

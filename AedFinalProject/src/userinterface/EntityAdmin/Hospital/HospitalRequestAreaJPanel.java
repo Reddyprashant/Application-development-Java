@@ -17,8 +17,6 @@ import Business.WorkQueue.BeneficiaryWorkRequest;
 import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -66,6 +64,7 @@ public class HospitalRequestAreaJPanel extends javax.swing.JPanel {
             if (organization.getWorkQueue() == null) {
                 organization.setWorkQueue(new WorkQueue());
             }
+            //populating the table with the requests
             if (organization.getWorkQueue().getWorkRequestList().size() > 0) {
                 for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
                     if (work instanceof BeneficiaryWorkRequest) {
@@ -117,6 +116,7 @@ public class HospitalRequestAreaJPanel extends javax.swing.JPanel {
             if (organization.getEventDirectory() == null) {
                 organization.setEventDirectory(new EventDirectory());
             }
+            //Populating the events of the hospital
             if (organization.getEventDirectory().getEventDirectory().size() > 0) {
                 lblWarning.setText("");
                 for (Event event : organization.getEventDirectory().getEventDirectory()) {
@@ -270,7 +270,7 @@ public class HospitalRequestAreaJPanel extends javax.swing.JPanel {
         } else {
 
             BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
-
+            //Assigning status to Pending
             p.setStatus("Pending");
 
             populateWorkQueueTable();
@@ -293,11 +293,11 @@ public class HospitalRequestAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
-            UserAccount acc = null;
             if (p.getStatus().equals("Complete")) {
                 if (organization.getEventDirectory() == null) {
                     organization.setEventDirectory(new EventDirectory());
                 }
+                //Creating event for the work request
                 Event event = organization.getEventDirectory().createEvent();
                 event.setAvailVolunteers(p.getNumberOfVolunteersRequest());
                 event.setEventDate(p.getEventDate());

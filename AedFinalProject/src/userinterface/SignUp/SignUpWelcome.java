@@ -6,15 +6,9 @@
 package userinterface.SignUp;
 
 import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Network.CountryNetwork;
-import Business.Network.StateNetwork;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequest.SignUpType;
-import Business.SignUp.SignUpRequestCountry;
-import Business.SignUp.SignUpRequestState;
 import java.awt.CardLayout;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -38,40 +32,10 @@ public class SignUpWelcome extends javax.swing.JPanel {
 
     private void populateRoleComboBox() {
         comboBoxSignUpType.removeAllItems();
-//
-//        if (system.getNetworkList().isEmpty()) {
-//            comboBoxSignUpType.addItem(Business.SignUp.SignUpRequest.SignUpType.Country);
-//        } else {
-//            for (CountryNetwork cNetwork : system.getNetworkList()) {
-//                if (cNetwork.getStateList().isEmpty()) {
-//                    comboBoxSignUpType.addItem(Business.SignUp.SignUpRequest.SignUpType.Country);
-//                    comboBoxSignUpType.addItem(Business.SignUp.SignUpRequest.SignUpType.State);
-//                    return;
-//                }
-//                else{
-//                    for(StateNetwork sNetwork:cNetwork.getStateList()){
-//                        if(sNetwork.getEnterpriseDirectory().getEnterpriseList().isEmpty()){
-//                            
-//                    comboBoxSignUpType.addItem(Business.SignUp.SignUpRequest.SignUpType.Country);
-//                    comboBoxSignUpType.addItem(Business.SignUp.SignUpRequest.SignUpType.State);
-//                    comboBoxSignUpType.addItem(Business.SignUp.SignUpRequest.SignUpType.Enterprise);
-//                    return;
-//                        
-//                    }
-//                        else{
-                            for (SignUpRequest.SignUpType e : Business.SignUp.SignUpRequest.SignUpType.values()) {
-                                comboBoxSignUpType.addItem(e); 
-                                
-                        }
-//                        return;    
-//                    }
-//                }
-//            }
+        for (SignUpRequest.SignUpType e : Business.SignUp.SignUpRequest.SignUpType.values()) {
+            comboBoxSignUpType.addItem(e);
         }
-//                    else if(!system.getNetworkList().isEmpty() && ){
-//            for (SignUpRequest.SignUpType e : Business.SignUp.SignUpRequest.SignUpType.values()) {
-//                comboBoxSignUpType.addItem(e);
-//            }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -138,8 +102,9 @@ public class SignUpWelcome extends javax.swing.JPanel {
         try {
             SignUpType type = (SignUpType) comboBoxSignUpType.getSelectedItem();
             CardLayout layout = (CardLayout) container.getLayout();
+            //Checking for the type of form to be displayed
             if (type == (SignUpRequest.SignUpType.State)) {
-                
+
                 container.add("workArea", new SignUpJPanelState(container, system));
             } else if (type == (SignUpRequest.SignUpType.Country)) {
                 container.add("workArea", new SignUpJPanelCountry(container, system));

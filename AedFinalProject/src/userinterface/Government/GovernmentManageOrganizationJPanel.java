@@ -46,19 +46,13 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
 
     private void populateCombo() {
         organizationJComboBox.removeAllItems();
-        //  for (Type type : Organization.Type.values()){
-        //     if (!type.getValue().equals(Type.Clinic.getValue()))
         organizationJComboBox.addItem(Type.BGV);
-//                organizationJComboBox.addItem(Type.Hospital);
-//                organizationJComboBox.addItem(Type.MNC);
-//                organizationJComboBox.addItem(Type.NGO);
-//                organizationJComboBox.addItem(Type.Individuals);
 
-        //  }
     }
 
     private void populateTable() {
         try {
+            //Populating the organization list in this enterprise
             lblWarning.setText("");
             DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
 
@@ -161,7 +155,7 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
 
         organizationJComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         organizationJComboBox.setForeground(new java.awt.Color(71, 79, 112));
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 81, -1));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 120, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
@@ -190,7 +184,7 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
                 orgNameTextFieldFocusLost(evt);
             }
         });
-        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 80, -1));
+        add(orgNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
@@ -264,6 +258,7 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
                     if (!(city.isEmpty())) {
                         if (latLong != null || txtLoc.getText().isEmpty()) {
                             if (txtAddress.getText().isEmpty()) {
+                                // creating new Organization
                                 directory.createOrganization(type, name, city, latLong);
                                 populateTable();
                                 JOptionPane.showMessageDialog(null, "Organization created successfully");

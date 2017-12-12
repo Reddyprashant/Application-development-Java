@@ -83,7 +83,7 @@ public class EducationAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         valueLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         valueLabel.setForeground(new java.awt.Color(71, 79, 112));
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 160, 20));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 160, 30));
 
         jButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(71, 79, 112));

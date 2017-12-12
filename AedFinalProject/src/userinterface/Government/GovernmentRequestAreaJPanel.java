@@ -10,7 +10,6 @@ import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-import Business.Organization.BGVOrganization;
 import Business.Organization.Organization;
 import Business.Role.BGVAdmin;
 import Business.SignUp.SignUpRequest;
@@ -23,7 +22,6 @@ import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import sun.security.acl.WorldGroupImpl;
 import utility.Validator;
 
 /**
@@ -104,7 +102,6 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
-        btnAssign1 = new javax.swing.JButton();
         backjButton1 = new javax.swing.JButton();
         lblWarning = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -120,7 +117,7 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 140, 40));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 140, 40));
 
         btnServe.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnServe.setForeground(new java.awt.Color(71, 79, 112));
@@ -166,16 +163,6 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 690, 182));
 
-        btnAssign1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        btnAssign1.setForeground(new java.awt.Color(71, 79, 112));
-        btnAssign1.setText("Assign to BGV");
-        btnAssign1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssign1ActionPerformed(evt);
-            }
-        });
-        add(btnAssign1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 180, 40));
-
         backjButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         backjButton1.setForeground(new java.awt.Color(71, 79, 112));
         backjButton1.setText("<< Back");
@@ -195,7 +182,7 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
-        // TODO add your handling code here:
+        // Assigning the request to himself
         try {
             lblWarning.setText("");
             int selectedRow = tblReq.getSelectedRow();
@@ -222,7 +209,7 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnServeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServeActionPerformed
-        // TODO add your handling code here:
+        //  Completing the requestt to create BGV organization
         try {
             lblWarning.setText("");
             int selectedRow = tblReq.getSelectedRow();
@@ -237,6 +224,14 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
                     if (p.getStatus().equals("Pending")) {
                         if (p instanceof SignUpRequestOrganization) {
                             orgRequest = (SignUpRequestOrganization) p;
+                             try {
+                                Validator.sendMessage(p.getEmail());
+                            } catch (SendFailedException ex) {
+                                JOptionPane.showMessageDialog(null, "User has a wrong email address");
+                                p.setStatus("Cancelled");
+                                populateWorkQueueTable();
+                                return;
+                            }
                             Employee emp = new Employee();
                             emp.setName(p.getName());
                             emp.setEmailId(p.getEmail());
@@ -250,14 +245,7 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
                                 acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new BGVAdmin());
                             }
 
-                            try {
-                                Validator.sendMessage(p.getEmail());
-                            } catch (SendFailedException ex) {
-                                JOptionPane.showMessageDialog(null, "User has a wrong email address");
-                                p.setStatus("Cancelled");
-                                populateWorkQueueTable();
-                                return;
-                            }
+                           
                         }
 
                         p.setStatus("Complete");
@@ -277,38 +265,6 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnServeActionPerformed
 
-    private void btnAssign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssign1ActionPerformed
-        // TODO add your handling code here:
-        try {
-            lblWarning.setText("");
-            int selectedRow = tblReq.getSelectedRow();
-            if (selectedRow < 0) {
-                JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else {
-
-                SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
-
-                if (p.getStatus().equals("Requested")) {
-                    p.setStatus("Background Verification");
-                    for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
-                        for (Organization organization1 : enterprise1.getOrganizationDirectory().getOrganizationList()) {
-                            if (organization1 instanceof BGVOrganization) {
-                                organization1.getWorkQueue().getWorkRequestList().add(p);
-                            }
-                        }
-                    }
-                    populateWorkQueueTable();
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Already assigned");
-                }
-
-            }
-        } catch (Exception ex) {
-            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
-        }
-    }//GEN-LAST:event_btnAssign1ActionPerformed
-
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
         // TODO add your handling code here:
         container.remove(this);
@@ -320,7 +276,6 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backjButton1;
     private javax.swing.JButton btnAssign;
-    private javax.swing.JButton btnAssign1;
     private javax.swing.JButton btnServe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -6,8 +6,6 @@ package userinterface.Logistics;
 
 //import userinterface.AdministrativeRole.*;
 import Business.LatLong;
-import userinterface.Government.*;
-import userinterface.EntityAdmin.*;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
@@ -55,7 +53,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         try {
             lblWarning.setText("");
             DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-
+            //populating organization tables
             model.setRowCount(0);
             if (directory != null) {
                 if (directory.getOrganizationList().size() > 0) {
@@ -245,6 +243,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
                 if (!(name.isEmpty())) {
                     if (!(city.isEmpty())) {
                         if (latLong != null || txtLoc.getText().isEmpty()) {
+                            // Creating organizations
                             directory.createOrganization(type, name, city, latLong);
                             JOptionPane.showMessageDialog(null, "Organization created successfully");
                             orgNameTextField.setText("");
@@ -301,7 +300,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_orgNameTextFieldFocusLost
 
     private void txtcityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcityFocusLost
-        // TODO add your handling code here:
+        // Validating city name
         if (!txtcity.getText().isEmpty()) {
             if (!Validator.validateName(txtcity.getText())) {
                 lblCity.setText("*Only Alphabets and Spaces are allowed");

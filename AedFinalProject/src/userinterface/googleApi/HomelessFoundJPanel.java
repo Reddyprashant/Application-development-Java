@@ -14,17 +14,9 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-import org.netbeans.lib.awtextra.AbsoluteLayout;
-import utility.googleMap.GoogleMapsSample;
 
 /**
  *
@@ -42,40 +34,26 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
     CountryNetwork country;
     EcoSystem system;
     final Browser browser;
-     BrowserView view;
-      LatLong latLong;
-      Organization organization;
-    public HomelessFoundJPanel(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system) {
+    BrowserView view;
+    LatLong latLong;
+    Organization organization;
+
+    public HomelessFoundJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, StateNetwork state, CountryNetwork country, EcoSystem system) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.enterprise=enterprise;
-        this.state=state;
-        this.country=country;
-        this.system=system;
-        this.organization=organization;
-       // GoogleMapsSample g= new GoogleMapsSample();
-         latLong= new LatLong();
-             browser = new Browser();
-             view = new BrowserView(browser);
-            browser.loadURL("https://www.google.com/maps");
-//          JPanel frame = new JPanel();
-        
-           // frame.add(toolBar, BorderLayout.SOUTH);
-          //  frame.setSize(900, 500);
-            //frame.setLocationRelativeTo(null);
-            //frame.setVisible(true);
-//            JButton setMarkerButton = new JButton("Set Marker");
-//          setMarkerButton.addActionListener(new ActionListener() {
-//              public void actionPerformed(ActionEvent e) {
-//              
-//              }
-//                  });
-//           frame.add(setMarkerButton);
-            this.mapContainer.add(view,"a");
-//            this.jPanel1.add(frame,"b");
-            this.mapContainer.setVisible(true);
-      //  g.returnLatLong(JPanel userProcessContainer,UserAccount account,Enterprise enterprise,StateNetwork state,CountryNetwork country,EcoSystem system);
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.enterprise = enterprise;
+        this.state = state;
+        this.country = country;
+        this.system = system;
+        this.organization = organization;
+        latLong = new LatLong();
+        browser = new Browser();
+        view = new BrowserView(browser);
+        //Loading the google maps
+        browser.loadURL("https://www.google.com/maps");
+        this.mapContainer.add(view, "a");
+        this.mapContainer.setVisible(true);
     }
 
     /**
@@ -124,33 +102,25 @@ public class HomelessFoundJPanel extends javax.swing.JPanel {
 
     private void btnLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocationActionPerformed
         // TODO add your handling code here:
-        try{
-         if(browser.getURL()!= null){
-            
-                    System.out.println(browser.getURL());
-                    
-                    String[] a= browser.getURL().split("!3d",0);
-                  if(a[1]!=null)
-                  {
-                    String[] b= a[1].split("!4d");
-                    System.out.println("Lat"+b[0]+"  "+"Lon"+b[1]);
-                    double lat= Double.parseDouble(b[0]);
-                    double lon= Double.parseDouble(b[1]);
+        try {
+            if (browser.getURL() != null) {
+                //Retrieving the url from the browser and splitting to get the Latitude and Longitude
+                String[] a = browser.getURL().split("!3d", 0);
+                if (a[1] != null) {
+                    String[] b = a[1].split("!4d");
+                    double lat = Double.parseDouble(b[0]);
+                    double lon = Double.parseDouble(b[1]);
                     latLong.setLatitude(lat);
                     latLong.setLongitude(lon);
-                    }
-                  else 
-                  {
-                      JOptionPane.showMessageDialog(null, "Set the Location");
-                  }
-         }
-         System.out.println("Lat"+latLong.getLatitude()+latLong.getLongitude());
-         
-         RequestShelterJPanel manageOrganizationJPanel = new RequestShelterJPanel(userProcessContainer,account,organization,enterprise,state,country,system, latLong);
-        userProcessContainer.add("RequestShelterJPanel", manageOrganizationJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-         }catch(Exception e){
+                } else {
+                    JOptionPane.showMessageDialog(null, "Set the Location");
+                }
+            }
+            RequestShelterJPanel manageOrganizationJPanel = new RequestShelterJPanel(userProcessContainer, account, organization, enterprise, state, country, system, latLong);
+            userProcessContainer.add("RequestShelterJPanel", manageOrganizationJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Set the Location first");
         }
     }//GEN-LAST:event_btnLocationActionPerformed

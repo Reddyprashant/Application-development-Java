@@ -52,6 +52,7 @@ public class NGOViewDetailsJPanel extends javax.swing.JPanel {
         this.account = account;
         this.organization = organization;
         this.workRequest = p;
+        // Populate the fields with the appropriate value from work request
         nameLabel.setText(organization.getName());
         reqComboBox.setText(p.getRequestType().getValue());
         eventNameTextfield.setText(p.getEventName());
@@ -216,6 +217,7 @@ public class NGOViewDetailsJPanel extends javax.swing.JPanel {
         try {
             lblWarning.setText("");
             if (!availVolTextField.getText().isEmpty()) {
+                //Converting the date to given format
                 SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
                 String name = eventNameTextfield.getText();
                 int availableVolunteers = Integer.parseInt(availVolTextField.getText());
@@ -225,6 +227,7 @@ public class NGOViewDetailsJPanel extends javax.swing.JPanel {
                     if (organization.getEventDirectory().getEventDirectory() == null) {
                         organization.setEventDirectory(new EventDirectory());
                     }
+                    // Creating a event for serving the particular request
                     Event event = organization.getEventDirectory().createEvent();
                     event.setAvailVolunteers(availableVolunteers);
                     event.setRequiredVolunteers(requiredVolunteers);
@@ -233,14 +236,15 @@ public class NGOViewDetailsJPanel extends javax.swing.JPanel {
                     event.setEventName(name);
                     event.setServingOrganization(organization);
                     event.setSenderOrganization(workRequest.getSenderOrganization());
-
+                    // Updating the number of volunteers and adding the event to work request
                     workRequest.setNumberOfVolunteersRequest(requiredVolunteers - availableVolunteers);
                     workRequest.getEventDirectory().getEventDirectory().add(event);
                     if (workRequest.getNumberOfVolunteersRequest() == 0 && workRequest.isLogisticRequest() == true) {
                         workRequest.setStatus("Complete");
-                        JOptionPane.showMessageDialog(null, "Details updated Successfully");
+                        JOptionPane.showMessageDialog(null, "Details completed Successfully");
                         availVolTextField.setText("");
                     }
+                    JOptionPane.showMessageDialog(null, "Details updated Successfully");
                 } else {
                     JOptionPane.showMessageDialog(null, "Available volunteers cannot be more than Required Volunteers");
                 }
