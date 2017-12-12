@@ -92,8 +92,8 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
-        enterpriseLabel.setText("Enterprise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 140, 30));
+        enterpriseLabel.setText("Organization:");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 160, 30));
 
         valueLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 130, 20));

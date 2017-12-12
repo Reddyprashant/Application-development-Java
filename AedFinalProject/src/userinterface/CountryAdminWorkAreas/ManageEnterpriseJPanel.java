@@ -139,6 +139,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         nameJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(71, 79, 112));
+        nameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameJTextFieldKeyPressed(evt);
+            }
+        });
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 600, 136, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -261,6 +266,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_formKeyPressed
+
+    private void nameJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameJTextFieldKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_nameJTextFieldKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

@@ -154,6 +154,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         lblWarning = new javax.swing.JLabel();
         lblWarningTable = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -366,7 +367,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 110, -1));
 
         jLabel9.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Description: ");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 560, -1, -1));
 
@@ -381,7 +382,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 620, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("*Photo:");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, -1, -1));
 
@@ -419,6 +420,10 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
             }
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 150, 40));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        jLabel12.setText("jLabel12");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
@@ -730,6 +735,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

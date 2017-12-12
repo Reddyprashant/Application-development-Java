@@ -113,7 +113,6 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        organizationJTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         organizationJTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         organizationJTable.setForeground(new java.awt.Color(71, 79, 112));
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(

@@ -78,8 +78,8 @@ public class EducationAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
-        enterpriseLabel.setText("Enterprise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 150, 30));
+        enterpriseLabel.setText("Organization :");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 170, 30));
 
         valueLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         valueLabel.setForeground(new java.awt.Color(71, 79, 112));

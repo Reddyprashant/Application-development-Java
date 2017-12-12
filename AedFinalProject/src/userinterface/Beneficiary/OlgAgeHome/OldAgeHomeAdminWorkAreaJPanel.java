@@ -94,8 +94,8 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
-        enterpriseLabel.setText("Enterprise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 140, 30));
+        enterpriseLabel.setText("Organization:");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 170, 30));
 
         valueLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         valueLabel.setForeground(new java.awt.Color(71, 79, 112));

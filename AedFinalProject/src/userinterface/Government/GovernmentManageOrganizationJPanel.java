@@ -95,8 +95,6 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
         orgNameTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtcity = new javax.swing.JTextField();
-        txtAddress = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         txtLoc = new javax.swing.JTextField();
         btnLocation = new javax.swing.JButton();
@@ -189,7 +187,7 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Organization City");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 150, -1));
 
         txtcity.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         txtcity.setForeground(new java.awt.Color(71, 79, 112));
@@ -200,23 +198,14 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
         });
         add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, 120, -1));
 
-        txtAddress.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        txtAddress.setForeground(new java.awt.Color(71, 79, 112));
-        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, 120, -1));
-
-        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel4.setText("Organization Address");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, -1, -1));
-
         jLabel18.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
         jLabel18.setText("Location :");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 100, -1));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 100, -1));
 
         txtLoc.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         txtLoc.setForeground(new java.awt.Color(71, 79, 112));
-        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 440, 120, -1));
+        add(txtLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, 120, -1));
 
         btnLocation.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnLocation.setForeground(new java.awt.Color(71, 79, 112));
@@ -226,7 +215,7 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
                 btnLocationActionPerformed(evt);
             }
         });
-        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 440, -1, -1));
+        add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 400, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel5.setText("Manage Organization");
@@ -257,18 +246,18 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
                 if (!(name.isEmpty())) {
                     if (!(city.isEmpty())) {
                         if (latLong != null || txtLoc.getText().isEmpty()) {
-                            if (txtAddress.getText().isEmpty()) {
+                            //if (txtAddress.getText().isEmpty()) {
                                 // creating new Organization
                                 directory.createOrganization(type, name, city, latLong);
                                 populateTable();
                                 JOptionPane.showMessageDialog(null, "Organization created successfully");
                                 orgNameTextField.setText("");
-                                txtAddress.setText("");
+                                //txtAddress.setText("");
                                 txtcity.setText("");
                                 txtLoc.setText("");
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Please Enter Address", "Warning", JOptionPane.WARNING_MESSAGE);
-                            }
+//                            } else {
+//                                JOptionPane.showMessageDialog(null, "Please Enter Address", "Warning", JOptionPane.WARNING_MESSAGE);
+//                            }
                         } else {
                             JOptionPane.showMessageDialog(null, "Select the Location", "Warning", JOptionPane.WARNING_MESSAGE);
                         }
@@ -338,7 +327,6 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
@@ -348,7 +336,6 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField orgNameTextField;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable organizationJTable;
-    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtLoc;
     private javax.swing.JTextField txtcity;
     // End of variables declaration//GEN-END:variables

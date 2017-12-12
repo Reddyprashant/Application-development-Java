@@ -67,6 +67,7 @@ public class EntityAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("Entity Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 130, 540, -1));
 
+        userJButton.setBackground(new java.awt.Color(204, 204, 204));
         userJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         userJButton.setForeground(new java.awt.Color(255, 255, 255));
         userJButton.setText("Manage User");
