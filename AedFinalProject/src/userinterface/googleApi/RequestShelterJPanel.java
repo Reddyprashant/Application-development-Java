@@ -68,7 +68,9 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
         orglist10= new ArrayList<>();
         txtLat.setText(String.valueOf(latLong.getLatitude()));
         txtLong.setText(String.valueOf(latLong.getLongitude()));
-        
+        if(account == null){
+            helpBtn.setEnabled(false);
+        }
     }
 
     /**
@@ -253,6 +255,7 @@ public void populateTable( ArrayList<Organization> org)
             request.setStatus("Requested");
             request.setSender(account);
             request.setLatLong(latLong);
+           
             if(state.getEnterpriseDirectory() != null){
             for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization organization : enterprise1.getOrganizationDirectory().getOrganizationList()) {
@@ -298,10 +301,12 @@ public void populateTable( ArrayList<Organization> org)
             }
             
             
-            
+           if(account!=null){ 
             account.getWorkQueue().getWorkRequestList().add(request);
+           }
            JOptionPane.showMessageDialog(null, "Shelter Request Raised");
             }
+        
             
         }else{
             JOptionPane.showMessageDialog(null, "Please upload the image", "Warning", JOptionPane.WARNING_MESSAGE);

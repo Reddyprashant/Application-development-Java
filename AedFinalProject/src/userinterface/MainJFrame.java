@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import userinterface.SignUp.SignUpWelcome;
 import userinterface.googleApi.DistanceJPanel;
+import userinterface.googleApi.HomelessFoundJPanel;
 
 /**
  *
@@ -47,8 +48,15 @@ public class MainJFrame extends javax.swing.JFrame {
 //        DiseaseDirectory d= new DiseaseDirectory();
 //        system.setDiseaseList(d);
 //        system.setVaccineList(v);
+populateCountryCombo();
+
     }
 
+    public void populateCountryCombo(){
+        for (CountryNetwork countryNetwork : system.getNetworkList()) {
+            comboCountry.addItem(countryNetwork);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,6 +79,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnHomeless = new javax.swing.JButton();
         lblWelcome = new javax.swing.JLabel();
+        comboCountry = new javax.swing.JComboBox();
+        comboState = new javax.swing.JComboBox();
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,10 +148,19 @@ public class MainJFrame extends javax.swing.JFrame {
                 btnHomelessActionPerformed(evt);
             }
         });
-        jPanel1.add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 110, 50));
+        jPanel1.add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 110, 30));
 
         lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 40));
+
+        comboCountry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCountryActionPerformed(evt);
+            }
+        });
+        jPanel1.add(comboCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 110, -1));
+
+        jPanel1.add(comboState, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 110, -1));
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -351,11 +370,23 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnHomelessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomelessActionPerformed
         // TODO add your handling code here:
-         DistanceJPanel manageOrganizationJPanel = new DistanceJPanel(container);
-        container.add("DistanceJPanel", manageOrganizationJPanel);
+         CountryNetwork c= (CountryNetwork)comboCountry.getSelectedItem();
+          StateNetwork s= (StateNetwork)comboState.getSelectedItem();
+         HomelessFoundJPanel manageOrganizationJPanel = new HomelessFoundJPanel(container,null,null,null,s,c,system);
+        container.add("HomelessFoundJPanel1", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
     }//GEN-LAST:event_btnHomelessActionPerformed
+
+    private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
+        // TODO add your handling code here:
+        CountryNetwork c= (CountryNetwork)comboCountry.getSelectedItem();
+        if(c!= null){
+            for (StateNetwork stateNetwork : c.getStateList()) {
+                comboState.addItem(stateNetwork);
+            }
+        }
+    }//GEN-LAST:event_comboCountryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -394,6 +425,8 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHomeless;
     private javax.swing.JButton btnSignUp;
+    private javax.swing.JComboBox comboCountry;
+    private javax.swing.JComboBox comboState;
     private javax.swing.JPanel container;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
