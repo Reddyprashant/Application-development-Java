@@ -41,18 +41,11 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.business = business;
         this.organization = organization;
 
-        populateCombo();
         populateWorkQueueTable();
         // populateAvailable();
     }
 
-    public void populateCombo() {
-        comboVehicle.removeAll();
-        comboVehicle.addItem("Mini Van");
-        comboVehicle.addItem("Bus");
-        comboVehicle.addItem("Car");
 
-    }
 
     public void populateWorkQueueTable() {
         try {
@@ -84,20 +77,6 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
     }
 
-    public void populateAvailable() {
-//        DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
-//
-//        model.setRowCount(0);
-//
-//        for (Vaccine vaccine : s.getVaccineList().getVaccineList()) {
-//
-//            Object[] row = new Object[2];
-//            row[0] = vaccine.getVaccineName();
-//            row[1] = vaccine.getQuantity();
-//            model.addRow(row);
-//
-//        }
-    }
 
     public void populateView(int selectedRow) {
         // DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
@@ -146,16 +125,9 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         btnComplete = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        availableTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         requestTable = new javax.swing.JTable();
-        comboVehicle = new javax.swing.JComboBox();
-        txtquant = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        sellBtn = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblView = new javax.swing.JTable();
@@ -180,37 +152,10 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 130, 40));
 
-        availableTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        availableTable.setForeground(new java.awt.Color(71, 79, 112));
-        availableTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Vehicle Type", "Quantity"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(availableTable);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 790, 90));
-
         jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("Vehicles Requested");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 210, 30));
-
-        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel5.setText("Vehicles Available");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 210, 30));
 
         requestTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         requestTable.setForeground(new java.awt.Color(71, 79, 112));
@@ -238,34 +183,6 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(requestTable);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 650, 270));
-
-        comboVehicle.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        comboVehicle.setForeground(new java.awt.Color(71, 79, 112));
-        add(comboVehicle, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 660, 220, -1));
-
-        txtquant.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        txtquant.setForeground(new java.awt.Color(71, 79, 112));
-        txtquant.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtquantKeyPressed(evt);
-            }
-        });
-        add(txtquant, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 660, 100, -1));
-
-        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
-        jLabel2.setText("Vehicle Type");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 660, 110, 20));
-
-        sellBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        sellBtn.setForeground(new java.awt.Color(71, 79, 112));
-        sellBtn.setText("Add Vehicle");
-        sellBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sellBtnActionPerformed(evt);
-            }
-        });
-        add(sellBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 710, 130, 40));
 
         btnDelete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(71, 79, 112));
@@ -331,12 +248,6 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCompleteActionPerformed
 
-    private void sellBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellBtnActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_sellBtnActionPerformed
-
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         try {
@@ -358,11 +269,6 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void txtquantKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtquantKeyPressed
-        // TODO add your handling code here:
-        Validator.onlyInteger(evt, txtquant);
-    }//GEN-LAST:event_txtquantKeyPressed
-
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
         // TODO add your handling code here:
         int selectedRow = requestTable.getSelectedRow();
@@ -373,22 +279,15 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable availableTable;
     private javax.swing.JButton btnComplete;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JComboBox comboVehicle;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblWarning;
     private javax.swing.JTable requestTable;
-    private javax.swing.JButton sellBtn;
     private javax.swing.JTable tblView;
-    private javax.swing.JTextField txtquant;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 

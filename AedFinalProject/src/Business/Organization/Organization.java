@@ -6,6 +6,7 @@
 
 package Business.Organization;
 
+import Business.EcoSystem;
 import Business.Employee.EmployeeDirectory;
 import Business.Event.EventDirectory;
 import Business.LatLong;
@@ -27,8 +28,10 @@ private String name;
     private PersonDirectory personList;
     private String city;
     private EventDirectory eventDirectory;
-    
+    private int temp;
     private LatLong latLong;
+    
+    private EcoSystem system= EcoSystem.getInstance();
     public enum Type{
         OldAge("Oldage Home Organization"),Orphanage("Orphanage Organization"),Homeless("Homeless Shelter Organization"), Disaster("Disaster Recovery Organization"),Hospital("Hospital Organization"),Education("Education Organization"),NGO("NGO Organization"),MNC("MNC Organization"),Individuals("Individuals Organization"),Transportation("Transportation Organization"),BGV("BGV Organization");
         private String value;
@@ -57,13 +60,18 @@ private String name;
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
-        organizationID = counter;
+       
+         if(counter==0){
+            counter= system.orgCount;
+        }
+        organizationID = ++counter;
+       system.orgCount = counter;
         roles = new HashSet<>();
         personList= new PersonDirectory();
         eventDirectory= new EventDirectory();
         this.city=city;
         latLong=address;
-        ++counter;
+        
     }
 
     public abstract HashSet<Role> getSupportedRole();

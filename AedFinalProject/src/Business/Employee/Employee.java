@@ -4,6 +4,8 @@
  */
 package Business.Employee;
 
+import Business.EcoSystem;
+
 /**
  *
  * @author raunak
@@ -13,11 +15,15 @@ public class Employee {
     private String name;
     private String emailId;
     private int id;
-    private static int count = 1;
+    private static int eCount = 0;
+    private EcoSystem system= EcoSystem.getInstance();
 
     public Employee() {
-        id = count;
-        count++;
+        if(eCount==0){
+            eCount= system.employeeCount;
+        }
+        id = ++eCount;
+       system.employeeCount  = eCount;
     }
 
     public int getId() {

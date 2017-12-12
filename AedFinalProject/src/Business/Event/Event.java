@@ -5,6 +5,7 @@
  */
 package Business.Event;
 
+import Business.EcoSystem;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import java.util.Date;
@@ -21,12 +22,15 @@ public class Event {
    private int requiredVolunteers;
     private Organization senderOrganization;
     private Organization servingOrganization;
-    private static int count=0;
+    private static int evCount=0;
     private String eventId;
-
+ private EcoSystem system= EcoSystem.getInstance();
     public Event() {
-        eventId= "EventId" +  ++count;
-       
+         if(evCount==0){
+            evCount= system.eventCount;
+        }
+        eventId= "EventId" +  ++evCount;
+       system.eventCount  = evCount;
     }
     
     public String getEventName() {
