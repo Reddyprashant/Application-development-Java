@@ -152,8 +152,6 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, -1, -1));
-
-        lblImage.setText("qw");
         jPanel1.add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 320, 280));
 
         jButton1.setText("Valid");

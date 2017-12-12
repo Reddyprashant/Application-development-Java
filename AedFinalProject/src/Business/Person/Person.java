@@ -6,6 +6,7 @@
 
 package Business.Person;
 
+import Business.EcoSystem;
 import java.util.Date;
 import javax.swing.ImageIcon;
 
@@ -23,7 +24,18 @@ public class Person {
     private static int pCount;
     private String reasonDescription;
     private ImageIcon phtoto;
-
+    private EcoSystem system= EcoSystem.getInstance();
+     public Person(){
+        dateOfJoining= new Date();
+        
+       
+       if(pCount==0){
+            pCount= system.pCounter;
+        }
+        personId="PID"+ (++pCount);
+       system.pCounter = pCount;
+    }
+    
     public ImageIcon getPhtoto() {
         return phtoto;
     }
@@ -42,12 +54,7 @@ public class Person {
     }
     
     
-    public Person(){
-        dateOfJoining= new Date();
-        pCount++;
-        personId="PID"+pCount;
-      
-    }
+   
 
     public int getAge() {
         return age;

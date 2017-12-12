@@ -29,6 +29,7 @@ public class EcoSystem extends Organization {
     public int employeeCount;
     public int eventCount;
      public int orgCount;
+     public int pCounter;
 
     public static EcoSystem getInstance() {
         if (business == null) {
