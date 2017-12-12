@@ -8,10 +8,12 @@ package userinterface.Beneficiary;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.EnterpriseDirectory;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.BGVOrganization;
 import Business.Organization.Organization;
+import Business.Organization.OrganizationDirectory;
 import Business.Role.DisasterAdmin;
 import Business.Role.HomelessAdmin;
 import Business.Role.OldAgeAdmin;
@@ -19,6 +21,7 @@ import Business.Role.OrphanageAdmin;
 import Business.SignUp.SignUpRequest;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.mail.SendFailedException;
@@ -46,7 +49,6 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
 
     public BeneficiaryRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
-        //this.organizationDir = organizationDir;
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.container = container;
@@ -57,27 +59,32 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         populateWorkQueueTable();
     }
 
+    //Code to populate Work Queue Table
     public void populateWorkQueueTable() {
         try {
-            DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
-
-            model.setRowCount(0);
             lblWarning.setText("");
-            // SignUpRequest s=null;
-            for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
-                System.out.println("q" + work);
-                if (work instanceof SignUpRequestOrganization) {
-                    SignUpRequestOrganization s = (SignUpRequestOrganization) work;
-                    Object[] row = new Object[6];
-                    row[0] = s.getOrgName();
-                    row[1] = s.getReceiver();
-                    row[2] = s.getEnterprise();
-                    row[3] = s.getOrgType().getValue();
-                    row[4] = s.getCity();
-                    row[5] = s;
+            DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
+            model.setRowCount(0);
+            if (enterprise.getWorkQueue() == null) {
+                enterprise.setWorkQueue(new WorkQueue());
+            }
+            if (enterprise.getWorkQueue().getWorkRequestList().size() > 0) {
+                for (WorkRequest work : enterprise.getWorkQueue().getWorkRequestList()) {
+                    if (work instanceof SignUpRequestOrganization) {
+                        SignUpRequestOrganization s = (SignUpRequestOrganization) work;
+                        Object[] row = new Object[6];
+                        row[0] = s.getOrgName();
+                        row[1] = s.getReceiver();
+                        row[2] = s.getEnterprise();
+                        row[3] = s.getOrgType().getValue();
+                        row[4] = s.getCity();
+                        row[5] = s;
 
-                    model.addRow(row);
+                        model.addRow(row);
+                    }
                 }
+            } else {
+                lblWarning.setText("*NO WorkRequest is Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
@@ -102,7 +109,6 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         tblReq = new javax.swing.JTable();
         lblWarning = new javax.swing.JLabel();
         btnAssignToMe = new javax.swing.JButton();
-        backJButton = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -174,16 +180,6 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         });
         add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 160, 40));
 
-        backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        backJButton.setForeground(new java.awt.Color(71, 79, 112));
-        backJButton.setText("<< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 940, 110, 40));
-
         btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(71, 79, 112));
         btnBack.setText("<< Back");
@@ -200,6 +196,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
+        //Code to Assign the WorkRequest to BGV
         try {
             lblWarning.setText("");
             int selectedRow = tblReq.getSelectedRow();
@@ -210,12 +207,19 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
                 SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
 
                 if (p.getStatus().equals("Requested")) {
-                    //  System.out.println("admin name"+ account.getUsername());
                     p.setStatus("Background Verification");
-                    //  p.setReceiver(account);
+                    if (state.getEnterpriseDirectory() == null) {
+                        state.setEnterpriseDirectory(new EnterpriseDirectory());
+                    }
                     for (Enterprise enterprise1 : state.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (enterprise1.getOrganizationDirectory() == null) {
+                            enterprise1.setOrganizationDirectory(new OrganizationDirectory());
+                        }
                         for (Organization organization1 : enterprise1.getOrganizationDirectory().getOrganizationList()) {
                             if (organization1 instanceof BGVOrganization) {
+                                if (organization1.getWorkQueue() == null) {
+                                    organization1.setWorkQueue(new WorkQueue());
+                                }
                                 organization1.getWorkQueue().getWorkRequestList().add(p);
                             }
                         }
@@ -236,6 +240,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnServeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServeActionPerformed
         // TODO add your handling code here:
+        //Code to Serve Beneficiary Request
         try {
             lblWarning.setText("");
             int selectedRow = tblReq.getSelectedRow();
@@ -245,22 +250,29 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
                 lblWarning.setText("");
                 SignUpRequest p = (SignUpRequest) tblReq.getValueAt(selectedRow, 5);
                 SignUpRequestOrganization orgRequest = null;
-                //SignUpRequestEnterprise e = null;
                 UserAccount acc = null;
 
                 if (p.getReceiver() != null) {
-                    if (p.getStatus().equals("Verified")|| p.getStatus().equals("Pending")) {
+                    if (p.getStatus().equals("Verified") || p.getStatus().equals("Pending")) {
                         if (p instanceof SignUpRequestOrganization) {
                             orgRequest = (SignUpRequestOrganization) p;
-                            //You can check for non duplicate of enterprise here.
-                            // Enterprise enterprise = e.getState().getEnterpriseDirectory().createAndAddEnterprise(e.getName(), e.getEnterprise());
                             Employee emp = new Employee();
                             emp.setName(p.getName());
                             emp.setEmailId(p.getEmail());
                             Enterprise e = orgRequest.getEnterprise();
                             CountryNetwork country = orgRequest.getCountry();
                             StateNetwork state = orgRequest.getState();
-
+                            try {
+                                Validator.sendMessage(p.getEmail());
+                            } catch (SendFailedException ex) {
+                                JOptionPane.showMessageDialog(null, "User has a wrong email address");
+                                p.setStatus("Cancelled");
+                                populateWorkQueueTable();
+                                return;
+                            }
+                            if (e.getOrganizationDirectory() == null) {
+                                e.setOrganizationDirectory(new OrganizationDirectory());
+                            }
                             Organization org = e.getOrganizationDirectory().createOrganization(orgRequest.getOrgType(), orgRequest.getName(), orgRequest.getCity(), orgRequest.getLatLong());
 
                             if (orgRequest.getOrgType() == Organization.Type.Disaster) {
@@ -273,20 +285,11 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
                                 acc = org.getUserAccountDirectory().createUserAccount(p.getUserName(), p.getPassword(), emp, new OrphanageAdmin());
                             }
 
-                            try {
-                                Validator.sendMessage(p.getEmail());
-                            } catch (SendFailedException ex) {
-                                JOptionPane.showMessageDialog(null, "User has a wrong email address");
-                                p.setStatus("Cancelled");
-                                populateWorkQueueTable();
-                                return;
-                            }
+                            p.setStatus("Complete");
+                            JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+
+                            populateWorkQueueTable();
                         }
-
-                        p.setStatus("Complete");
-                        JOptionPane.showMessageDialog(null, "You have successfully completed the request");
-
-                        populateWorkQueueTable();
                     } else {
                         JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
                     }
@@ -302,34 +305,28 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
-                int selectedRow = tblReq.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-
-            SignUpRequestOrganization p = (SignUpRequestOrganization) tblReq.getValueAt(selectedRow, 5);
-
-            if (p.getStatus().equals("Requested")) {
-                //  System.out.println("admin name"+ account.getUsername());
-                p.setStatus("Pending");
-                p.setReceiver(account);
-
-                populateWorkQueueTable();
-
+        //Code to Assign the Work Request
+        try {
+            lblWarning.setText("");
+            int selectedRow = tblReq.getSelectedRow();
+            if (selectedRow < 0) {
+                JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "Already assigned");
-            }
+                SignUpRequestOrganization p = (SignUpRequestOrganization) tblReq.getValueAt(selectedRow, 5);
+                if (p.getStatus().equals("Requested")) {
+                    p.setStatus("Pending");
+                    p.setReceiver(account);
+                    populateWorkQueueTable();
 
+                } else {
+                    JOptionPane.showMessageDialog(null, "Already assigned");
+                }
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }
 
     }//GEN-LAST:event_btnAssignToMeActionPerformed
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
@@ -340,7 +337,6 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnBack;

@@ -4,7 +4,6 @@
  */
 package userinterface.Beneficiary;
 
-//import userinterface.AdministrativeRole.*;
 import Business.LatLong;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
@@ -38,30 +37,29 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         populateCombo();
     }
 
+    //Code to Populate OrganizationJCombox
     private void populateCombo() {
         organizationJComboBox.removeAllItems();
-        //  for (Type type : Organization.Type.values()){
-        //     if (!type.getValue().equals(Type.Clinic.getValue()))
         organizationJComboBox.addItem(Type.Homeless);
         organizationJComboBox.addItem(Type.OldAge);
         organizationJComboBox.addItem(Type.Orphanage);
         organizationJComboBox.addItem(Type.Disaster);
-
-        //  }
     }
 
+    //Code to populate Latitude and Longitude of the marked location for the organization
     public void populateLatLong(LatLong latLong) {
         this.latLong = latLong;
         txtLoc.setText(latLong.getLatitude() + "," + latLong.getLongitude());
     }
 
+    //Code to populate Organization Table
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
 
         model.setRowCount(0);
         try {
             if (directory != null) {
-                if (directory.getOrganizationList().size() > 0) {
+                if (directory.getOrganizationList().size() > 0) {   //Code to check whether the organization list is empty
                     lblWarningTable.setText("");
                     lblWarning.setText("");
                     for (Organization organization : directory.getOrganizationList()) {
@@ -242,24 +240,38 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
+       //Code to add Organization into Beneficiary Enterprise
         try {
-            if (directory != null && !orgNameTextField.getText().isEmpty() && !txtcity.getText().isEmpty() && !txtLoc.getText().isEmpty()) {
-                lblWarning.setText("");
-                lblWarningTable.setText("");
-                Type type = (Type) organizationJComboBox.getSelectedItem();
-                String name = orgNameTextField.getText();
-                String city = txtcity.getText();
-                directory.createOrganization(type, name, city, latLong);
-                JOptionPane.showMessageDialog(null, "Organization created successfully");
-                orgNameTextField.setText("");
-                txtcity.setText("");
-                txtLoc.setText("");
-                populateTable();
-            }
-            
-                else{
-                        lblWarning.setText("Please enter all the values");
+            lblCity1.setText("");
+            lblName.setText("");
+            lblWarning.setText("");
+            lblWarningTable.setText("");
+            if (directory != null) {
+                if (!orgNameTextField.getText().isEmpty()) {
+                    if (!txtcity.getText().isEmpty()) {
+                        if (!txtLoc.getText().isEmpty()) {
+                            lblWarning.setText("");
+                            lblWarningTable.setText("");
+                            Type type = (Type) organizationJComboBox.getSelectedItem();
+                            String name = orgNameTextField.getText();
+                            String city = txtcity.getText();
+                            directory.createOrganization(type, name, city, latLong);
+                            JOptionPane.showMessageDialog(null, "Organization created successfully");
+                            orgNameTextField.setText("");
+                            txtcity.setText("");
+                            txtLoc.setText("");
+                            populateTable();
+                        } else {
+                            lblWarning.setText("Please select a location");
                         }
+                    } else {
+                        lblWarning.setText("Please enter your City");
+                    }
+                } else {
+                    lblWarning.setText("Please enter Organization Name");
+                }
+
+            }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }

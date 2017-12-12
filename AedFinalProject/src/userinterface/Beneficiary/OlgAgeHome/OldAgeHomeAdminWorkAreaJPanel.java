@@ -7,12 +7,10 @@
 package userinterface.Beneficiary.OlgAgeHome;
 
 import Business.EcoSystem;
-//import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.OldAgeOrganization;
-//import Business.Organization.ClinicOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -24,13 +22,13 @@ import userinterface.Beneficiary.ShelterRequestAreaJPanel;
  */
 public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
     
-    JPanel userProcessContainer;
-    UserAccount account; 
-    OldAgeOrganization organization; 
-    Enterprise enterprise; 
-    EcoSystem business;
-    StateNetwork state;
-    CountryNetwork country;
+    private JPanel userProcessContainer;
+    private UserAccount account; 
+    private OldAgeOrganization organization; 
+    private Enterprise enterprise; 
+    private EcoSystem business;
+    private StateNetwork state;
+    private CountryNetwork country;
     /** Creates new form AdminWorkAreaJPanel */
     public OldAgeHomeAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, OldAgeOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
@@ -120,7 +118,7 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-       
+       //Code to move to Request Work Area Panel
         OldAgeHomeRequestWorkAreaJPanel muajp = new OldAgeHomeRequestWorkAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
         userProcessContainer.add("OldAgeHomeRequestWorkAreaJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -128,7 +126,7 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-
+        //Code to move to OldAge Home Person Panel
         OldAgeHomePersonJPanel manageEmployeeJPanel;
         manageEmployeeJPanel = new OldAgeHomePersonJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
         userProcessContainer.add("OldAgeHomeManageEmployeeJPanel", manageEmployeeJPanel);
@@ -139,6 +137,7 @@ public class OldAgeHomeAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnShelterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShelterActionPerformed
         // TODO add your handling code here:
+        //Code to move to Shelter Request Area Panel
         ShelterRequestAreaJPanel muajp = new ShelterRequestAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
         userProcessContainer.add("ShelterRequestAreaJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

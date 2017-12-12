@@ -5,12 +5,14 @@
 package userinterface.Beneficiary;
 
 import Business.EcoSystem;
-//import userinterface.AdministrativeRole.*;
 import Business.Employee.Employee;
+import Business.Employee.EmployeeDirectory;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
+import Business.Organization.OrganizationDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -35,80 +37,95 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
         this.container = container;
 
         popOrganizationComboBox();
-        // employeeJComboBox.removeAllItems();
         popData();
     }
-
+//Code to populate Organization Combo Box
     public void popOrganizationComboBox() {
-        organizationJComboBox.removeAllItems();
-
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            organizationJComboBox.addItem(organization);
-        }
-    }
-
-    public void populateEmployeeComboBox(Organization organization) {
-        employeeJComboBox.removeAllItems();
-        if (organization != null) {
-            if (organization.getEmployeeDirectory() != null) {
-                if (organization.getEmployeeDirectory().getEmployeeList().size() > 0) {
-                    lblWarning.setText("");
-                    for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
-                        employeeJComboBox.addItem(employee);
-                    }
-                } else {
-                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
-                }
-
-            } else {
-                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+        try {
+            lblWarning.setText("");
+            organizationJComboBox.removeAllItems();
+            if (enterprise.getOrganizationDirectory() == null) {
+                enterprise.setOrganizationDirectory(new OrganizationDirectory());
             }
-
-        } else {
+            if (enterprise.getOrganizationDirectory().getOrganizationList().size() > 0) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    organizationJComboBox.addItem(organization);
+                }
+            } else {
+                lblWarning.setText("*NO Organization is Available");
+            }
+        } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }
     }
+    
+    //Code to populate Employee Combo Box
+    public void populateEmployeeComboBox(Organization organization) {
+        try {
+            lblWarning.setText("");
+            employeeJComboBox.removeAllItems();
+            if (organization.getEmployeeDirectory() == null) {
+                organization.setEmployeeDirectory(new EmployeeDirectory());
+            }
+            if (organization.getEmployeeDirectory().getEmployeeList().size() > 0) {
+                lblWarning.setText("");
+                for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+                    employeeJComboBox.addItem(employee);
+                }
 
+            } else {
+                lblWarning.setText("*NO Employee is present for this Organization");
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+        }
+    }
+    
+    //Code to populate Role Combo Box
     private void populateRoleComboBox(Organization e) {
-        roleJComboBox.removeAllItems();
-        if (e != null) {
+        try {
+            lblWarning.setText("");
+            roleJComboBox.removeAllItems();
             if (e.getSupportedRole() != null) {
                 lblWarning.setText("");
                 for (Role role : e.getSupportedRole()) {
                     roleJComboBox.addItem(role);
                 }
             } else {
-                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+                lblWarning.setText("*NO Roles are Available in this organization");
             }
-        } else {
+        } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }
     }
-
+    
+    //Code to Load User Account Details into UserJTable
     public void popData() {
+        try {
+            lblWarning.setText("");
+            DefaultTableModel model = (DefaultTableModel) userJTable.getModel();
 
-        DefaultTableModel model = (DefaultTableModel) userJTable.getModel();
-
-        model.setRowCount(0);
-        if (enterprise != null) {
-            if (enterprise.getOrganizationDirectory() != null) {
-                if (enterprise.getOrganizationDirectory().getOrganizationList().size() > 0) {
-                    lblWarning.setText("");
-                    for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                        for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-                            Object row[] = new Object[2];
-                            row[0] = ua;
-                            row[1] = ua.getRole();
-                            ((DefaultTableModel) userJTable.getModel()).addRow(row);
-                        }
+            model.setRowCount(0);
+            if (enterprise.getOrganizationDirectory() == null) {
+                enterprise.setOrganizationDirectory(new OrganizationDirectory());
+            }
+            if (enterprise.getOrganizationDirectory().getOrganizationList().size() > 0) {
+                lblWarning.setText("");
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if(organization.getUserAccountDirectory()== null){
+                        organization.setUserAccountDirectory(new UserAccountDirectory());
                     }
-                } else {
-                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+                    for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                        Object row[] = new Object[2];
+                        row[0] = ua;
+                        row[1] = ua.getRole();
+                        ((DefaultTableModel) userJTable.getModel()).addRow(row);
+                    }
                 }
             } else {
-                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+                lblWarning.setText("*NO Organization is Available");
             }
-        } else {
+        } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }
     }
@@ -263,7 +280,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 650, -1, -1));
 
         lblUserName.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 480, -1, -1));
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, -1, -1));
 
         lblAcceptedUserName.setForeground(new java.awt.Color(0, 204, 102));
         add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, -1, -1));
@@ -278,36 +295,54 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
+        //Code to create User Account details for the organization
         try {
             lblWarning.setText("");
             String userName = nameJTextField.getText();
             String password = String.valueOf(passwordJTextField.getPassword());
-            if(employeeJComboBox.getSelectedItem() != null){
-            if (!((userName.equals("")))) {
-                if (!(password.equals(""))) {
-                    if (EcoSystem.checkIfUsernameIsUnique(userName)) {
-                        lblWarning.setText("");
-                        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-                        Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-                        Role role = (Role) roleJComboBox.getSelectedItem();
+            if (employeeJComboBox.getSelectedItem() != null) {
+                if (!((userName.equals("")))) {
+                    if (!(password.equals(""))) {
+                        if (EcoSystem.checkIfUsernameIsUnique(userName)) {
+                            lblWarning.setText("");
+                            Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+                            Employee employee = (Employee) employeeJComboBox.getSelectedItem();
+                            Role role = (Role) roleJComboBox.getSelectedItem();
+                            if (!Validator.validatePassword(password)) {
+                                JOptionPane.showMessageDialog(null, "Password should Contain \n"
+                                        + "       # At least one digit\n"
+                                        + "       # At least one lower case letter\n"
+                                        + "       # At least one upper case letter\n"
+                                        + "       # At least one special character(!@#$%^&+=~|?)\n"
+                                        + "       # no whitespace allowed in the entire string\n"
+                                        + "       # at least eight characters");
+                                passwordJTextField.setText("");
+                                return;
+                            }
+                            if (!EcoSystem.checkIfUsernameIsUnique(nameJTextField.getText())) {
+                                nameJTextField.setText("");
+                                JOptionPane.showMessageDialog(null, userName + " " + "is already taken please enter new username");
+                                return;
+                            }
 
-                        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-                        JOptionPane.showMessageDialog(null, "Account created succesfull");
-                        nameJTextField.setText("");
-                        passwordJTextField.setText("");
-                        popData();
+                            organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+                            JOptionPane.showMessageDialog(null, "Account created succesfull");
+                            nameJTextField.setText("");
+                            passwordJTextField.setText("");
+                            popData();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Enter value for password", "Warning", JOptionPane.WARNING_MESSAGE);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Enter value for password", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Enter value for username", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Enter value for username", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-        }else {
                 JOptionPane.showMessageDialog(null, "No Employee available", "Warning", JOptionPane.WARNING_MESSAGE);
-            }} catch (Exception ex) {
+            }
+        } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed

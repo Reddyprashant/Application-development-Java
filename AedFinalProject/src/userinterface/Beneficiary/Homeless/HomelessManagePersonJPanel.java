@@ -14,20 +14,17 @@ import Business.Organization.HomelessOrganization;
 import Business.Person.Person;
 import Business.Person.PersonDirectory;
 import Business.UserAccount.UserAccount;
-import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.Box;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import sun.swing.ImageIconUIResource;
 import utility.Validator;
 
 /**
@@ -88,9 +85,6 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
             }
 
             if (organization.getPersonList().getPersonList().size() > 0) {
-
-                lblWarning.setText("");
-                lblWarningTable.setText("");
 
                 for (Person person : organization.getPersonList().getPersonList()) {
 
@@ -428,6 +422,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
+
         try {
             int temp = 0;
             lblWarning.setText("");
@@ -618,6 +613,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
+        //Code to Upload Picture
         try {
             lblWarning.setText("");
             JFileChooser chooser = new JFileChooser();
@@ -644,18 +640,23 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
     private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
         // TODO add your handling code here:
+        //Code to view Person Details
+        try {
+            lblWarning.setText("");
+            int selectedrow = organizationJTable.getSelectedRow();
 
-        int selectedrow = organizationJTable.getSelectedRow();
+            if (selectedrow < 0) {
+                JOptionPane.showMessageDialog(null, "Please select a Row from table first to view details", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                Person p = (Person) organizationJTable.getValueAt(selectedrow, 0);
+                BeneficiaryPersonViewJPanel muajp = new BeneficiaryPersonViewJPanel(userProcessContainer, p);
+                userProcessContainer.add("HomelessPersonViewJPanel", muajp);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
 
-        if (selectedrow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a Row from table first to view details", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            Person p = (Person) organizationJTable.getValueAt(selectedrow, 0);
-            BeneficiaryPersonViewJPanel muajp = new BeneficiaryPersonViewJPanel(userProcessContainer, p);
-            userProcessContainer.add("HomelessPersonViewJPanel", muajp);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
-
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
 
 
@@ -680,28 +681,34 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow = organizationJTable.getSelectedRow();
-        if (selectedRow >= 0) {
+        //code to delete Person from the organization
+        try {
+            lblWarning.setText("");
+            int selectedRow = organizationJTable.getSelectedRow();
+            if (selectedRow >= 0) {
 
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog(null, "Would you like to delete the details", "Warning", dialogButton);
-            if (dialogResult == JOptionPane.YES_OPTION) {
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog(null, "Would you like to delete the details", "Warning", dialogButton);
+                if (dialogResult == JOptionPane.YES_OPTION) {
 
-                Person p = (Person) organizationJTable.getValueAt(selectedRow, 0);
+                    Person p = (Person) organizationJTable.getValueAt(selectedRow, 0);
 
-                for (Person person : organization.getPersonList().getPersonList()) {
-                    if (p == person) {
-                        organization.getPersonList().getPersonList().remove(p);
-                        break;
+                    for (Person person : organization.getPersonList().getPersonList()) {
+                        if (p == person) {
+                            organization.getPersonList().getPersonList().remove(p);
+                            break;
+                        }
+
                     }
 
+                    JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+                    populateTable(organization);
                 }
-
-                JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
-                populateTable(organization);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select a Row from table ", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a Row from table ", "Warning", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

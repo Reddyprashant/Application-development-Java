@@ -68,15 +68,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         lblOrganizationName.setText(organization.getName());
         populateComboBox();
 
-//        for (StateNetwork stateNetwork : country.getStateList()) {
-//            for (Enterprise enterprise1 : stateNetwork.getEnterpriseDirectory().getEnterpriseList()) {
-//                for (Organization organization1 : enterprise1.getOrganizationDirectory().getOrganizationList()) {
-//                    reqComboBox.addItem(organization1.);
-//                    
-//                }
-//                
-//            }
-//        }
+
     }
 
     /**
@@ -237,7 +229,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         add(noOfVehText, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 490, 53, -1));
 
         noVehLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        noVehLabel.setForeground(new java.awt.Color(255, 255, 255));
+        noVehLabel.setForeground(new java.awt.Color(71, 79, 112));
         noVehLabel.setText("Number Of Vehicles");
         add(noVehLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 160, -1));
 
@@ -308,6 +300,7 @@ public void populateComboBox() {
 
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
         // TODO add your handling code here:
+        //Code to Raise OldAgeHome Request
         try {
             lblWarning.setText("");
             lblName.setText("");
@@ -330,8 +323,6 @@ public void populateComboBox() {
                                             BeneficiaryWorkRequest requests = new BeneficiaryWorkRequest();
                                             requests.setEventDate(date);
                                             requests.setSenderOrganization(organization);
-
-                                            //if(Organization.RequestType.Education.getValue()==request.getValue())
                                             requests.setRequestType(request);
                                             requests.setEventName(eventName);
                                             requests.setEventDetails(eventDetails);
@@ -481,8 +472,6 @@ public void populateComboBox() {
                 } else {
                     JOptionPane.showMessageDialog(null, "Please Select the request type from the combo box");
                 }
-            } else {
-                lblWarning.setText("*Disaster Organization is not Present. Please contact system administrator-- poojithsshetty@gmail.com");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact-- poojithsshetty@gmail.com");
@@ -494,11 +483,8 @@ public void populateComboBox() {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-
         Component[] componentArray = userProcessContainer.getComponents();
         OldAgeHomeRequestWorkAreaJPanel oldAgeRequestPanel = (OldAgeHomeRequestWorkAreaJPanel) userProcessContainer.getComponent(componentArray.length - 1);
-        // oldAgeRequestPanel.populateUpdatedTable();
-
         oldAgeRequestPanel.populateWorkQueueTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

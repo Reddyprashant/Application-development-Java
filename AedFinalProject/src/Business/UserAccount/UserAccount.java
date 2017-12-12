@@ -23,6 +23,10 @@ public class UserAccount {
     public UserAccount() {
         workQueue = new WorkQueue();
     }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
+    }
     
     
     

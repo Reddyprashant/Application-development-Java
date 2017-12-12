@@ -3,23 +3,18 @@
  *
  * Created on October 10, 2008, 8:50 AM
  */
-
 package userinterface.Beneficiary.Homeless;
 
-//import Business.Clinic.Pharmacy;
-//import userinterface.Hospital.Clinic.*;
 import Business.EcoSystem;
-//import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
 import Business.Event.Event;
 import Business.Event.EventDirectory;
 import Business.Network.CountryNetwork;
-//import Business.Network.Network;
 import Business.Network.StateNetwork;
 import Business.Organization.HomelessOrganization;
-//import Business.Supplier.Vaccine;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
@@ -29,139 +24,71 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author  raunak
+ * @author raunak
  */
 public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
-    
+
     private JPanel userProcessContainer;
-    private UserAccount account; 
-    private HomelessOrganization organization; 
-    private Enterprise enterprise; 
+    private UserAccount account;
+    private HomelessOrganization organization;
+    private Enterprise enterprise;
     private EcoSystem business;
     private StateNetwork state;
     private CountryNetwork country;
-    
-    /** Creates new form AdminWorkAreaJPanel */
-    public HomelessRequestWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, HomelessOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+
+    /**
+     * Creates new form AdminWorkAreaJPanel
+     */
+    public HomelessRequestWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, HomelessOrganization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.account=account;
-        this.business=business;
-        this.organization= organization;
-          this.state=network;
-        this.country=cNetwork;
-       // populateCombo();
-        //populateQuantity();
-       //populateWorkQueueTable();
-       //populateAvailable();
-       populateWorkQueueTable();
-       
+        this.account = account;
+        this.business = business;
+        this.organization = organization;
+        this.state = network;
+        this.country = cNetwork;
+        populateWorkQueueTable();
+
     }
-    
-//    public void populateCombo(){
-//        for (Vaccine vaccine : business.getVaccineList().getVaccineList()) {
-//            comboVaccine.addItem(vaccine);
-//        }
-//        
-//    }
-//    public void populateWorkQueueTable(){
-//         DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
-//        
-//        model.setRowCount(0);
-//        
-//        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-//           if(work instanceof PharmacyWorkRequest){ 
-//            Object[] row = new Object[4];
-//            row[0] = work.getVaccine().getVaccineName();
-//            row[1] = ((PharmacyWorkRequest) work).getQuantity();
-//            row[2] = work;
-//            row[3] = work.getReceiver();
-//            model.addRow(row);
-//           }
-//        }
-//    }
-//     public void populateAvailable(){
-//         DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
-//        
-//        model.setRowCount(0);
-//        Pharmacy p= organization.getP();
-//         System.out.println("pharmacy"+ p.getVaccine().getVaccineList().size());
-//        for (Vaccine vaccine : p.getVaccine().getVaccineList()){
-//          
-//            Object[] row = new Object[2];
-//            row[0] = vaccine.getVaccineName();
-//            row[1] = vaccine.getQuantity();
-//            model.addRow(row);
-//           
-//        }
-//    }
-//     public void populateQuantity(){
-//         
-//         for ( WorkRequest workRequest : account.getWorkQueue().getWorkRequestList()) {
-//            // HashMap<WorkRequest,Integer> map = new HashMap<WorkRequest,Integer>();
-//             int temp=0;
-//             PharmacyWorkRequest p= (PharmacyWorkRequest) workRequest;
-//             if(workRequest.getStatus().equals("Complete") && !p.isAdd() ){ //&& add == false
-//                 Vaccine v = workRequest.getVaccine();
-//                
-//                  for (Vaccine vaccine : organization.getP().getVaccine().getVaccineList()) {
-//                     if(v.getVaccineName().equals(vaccine.getVaccineName())){
-//                         temp=1;
-//                          vaccine.setQuantity(p.getQuantity()+vaccine.getQuantity());
-//                     }
-//                     
-//                 }
-//                  if(temp==0){
-//                       Vaccine vac= organization.getP().getVaccine().addVaccine();
-//                       vac.setDisease(v.getDisease());
-//                       vac.setVaccineName(v.getVaccineName());
-//                       vac.setQuantity(p.getQuantity());
-//                   }
-//                 p.setAdd(true); 
-//             }
-//         }
-//        
-//     }
-//    
+
+    //Code to Load Work Queue Table
     public void populateWorkQueueTable() {
         try {
             lblWarning.setText("");
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
 
             model.setRowCount(0);
-            if (organization != null) {
-                if (organization.getWorkQueue() != null) {
-                    if (organization.getWorkQueue().getWorkRequestList().size() > 0) {
+            if (organization.getWorkQueue() == null) {
+                organization.setWorkQueue(new WorkQueue());
+            }
+            if (organization.getWorkQueue().getWorkRequestList().size() > 0) {
 
-                        lblWarning.setText("");
-                        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
-                            if (work instanceof BeneficiaryWorkRequest) {
-                                if (((BeneficiaryWorkRequest) work).getEventDate().equals(new Date()) || ((BeneficiaryWorkRequest) work).getEventDate().after(new Date())) {
-                                    Object[] row = new Object[6];
-                                    row[0] = ((BeneficiaryWorkRequest) work).getRequestType();
-                                    row[1] = ((BeneficiaryWorkRequest) work).getEventName();
-                                    row[2] = ((BeneficiaryWorkRequest) work).getEventDate();
-                                    row[3] = ((BeneficiaryWorkRequest) work).getNumberOfVolunteersRequest();
-                                    row[4] = work;
-                                    row[5] = ((BeneficiaryWorkRequest) work).isLogisticRequest();
-                                    model.addRow(row);
-                                }
-                            }
+                lblWarning.setText("");
+                for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
+                    if (work instanceof BeneficiaryWorkRequest) {
+                        if (((BeneficiaryWorkRequest) work).getEventDate().equals(new Date()) || ((BeneficiaryWorkRequest) work).getEventDate().after(new Date())) {
+                            Object[] row = new Object[6];
+                            row[0] = ((BeneficiaryWorkRequest) work).getRequestType();
+                            row[1] = ((BeneficiaryWorkRequest) work).getEventName();
+                            row[2] = ((BeneficiaryWorkRequest) work).getEventDate();
+                            row[3] = ((BeneficiaryWorkRequest) work).getNumberOfVolunteersRequest();
+                            row[4] = work;
+                            row[5] = ((BeneficiaryWorkRequest) work).isLogisticRequest();
+                            model.addRow(row);
                         }
-                    } else {
-                        lblWarning.setText("*There are NO WorkRequests for Homeless People Management");
                     }
-                } else {
-                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
                 }
+
             } else {
-                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+                lblWarning.setText("*NO Work Request is Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }
+
+    //Code to Load populateAvailable table
     public void populateAvailable(int rows) {
 
         try {
@@ -169,13 +96,10 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) availableTable.getModel();
 
             model.setRowCount(0);
-            //Pharmacy p= organization.getP();
             WorkRequest p = (WorkRequest) requestTable.getValueAt(rows, 4);
             if (p instanceof BeneficiaryWorkRequest) {
-
                 EventDirectory eventDir = ((BeneficiaryWorkRequest) p).getEventDirectory();
                 if (eventDir != null) {
-
                     for (Event e : eventDir.getEventDirectory()) {
 
                         Object[] row = new Object[4];
@@ -186,18 +110,17 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
                         model.addRow(row);
 
                     }
-                } else {
-                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. contact -- poojithsShetty@gmail.com");
                 }
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
-    }    
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -269,7 +192,7 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 170, 30));
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel5.setForeground(new java.awt.Color(240, 240, 240));
         jLabel5.setText("Volunteers Available");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 550, 180, 30));
 
@@ -331,7 +254,7 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
 
-        HomelessRequestHelpJPanel muajp = new HomelessRequestHelpJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
+        HomelessRequestHelpJPanel muajp = new HomelessRequestHelpJPanel(userProcessContainer, account, organization, enterprise, state, country, business);
         userProcessContainer.add("HomelessRequestHelpJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -340,8 +263,8 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
 
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
         // TODO add your handling code here:
-        int selectedRow= requestTable.getSelectedRow();
-        if(selectedRow >=0){
+        int selectedRow = requestTable.getSelectedRow();
+        if (selectedRow >= 0) {
             //JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
             populateAvailable(selectedRow);
 
@@ -350,22 +273,35 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow = requestTable.getSelectedRow();
-        if (selectedRow >= 0) {
+        //Code to Delete Homeless Work Request
+        try {
+            lblWarning.setText("");
+            int selectedRow = requestTable.getSelectedRow();
+            if (selectedRow >= 0) {
 
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog(null, "Would you like to delete the details", "Warning", dialogButton);
-            if (dialogResult == JOptionPane.YES_OPTION) {
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog(null, "Would you like to delete the details", "Warning", dialogButton);
+                if (dialogResult == JOptionPane.YES_OPTION) {
 
-                WorkRequest p = (WorkRequest) requestTable.getValueAt(selectedRow, 4);
-
-                // s.getWorkQueue().getWorkRequestList().remove(p);
-                organization.getWorkQueue().getWorkRequestList().remove(p);
-                account.getWorkQueue().getWorkRequestList().remove(p);
-                business.getWorkQueue().getWorkRequestList().remove(p);
-                JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
-                populateWorkQueueTable();
+                    WorkRequest p = (WorkRequest) requestTable.getValueAt(selectedRow, 4);
+                    if (organization.getWorkQueue() == null) {
+                        organization.setWorkQueue(new WorkQueue());
+                    }
+                    if (account.getWorkQueue() == null) {
+                        account.setWorkQueue(new WorkQueue());
+                    }
+                    if (business.getWorkQueue() == null) {
+                        business.setWorkQueue(new WorkQueue());
+                    }
+                    organization.getWorkQueue().getWorkRequestList().remove(p);
+                    account.getWorkQueue().getWorkRequestList().remove(p);
+                    business.getWorkQueue().getWorkRequestList().remove(p);
+                    JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+                    populateWorkQueueTable();
+                }
             }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -380,8 +316,8 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_formMouseReleased
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable availableTable;
     private javax.swing.JButton btnBack;
@@ -396,5 +332,5 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton reqBtn;
     private javax.swing.JTable requestTable;
     // End of variables declaration//GEN-END:variables
-    
+
 }

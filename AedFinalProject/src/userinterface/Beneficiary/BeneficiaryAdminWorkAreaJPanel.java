@@ -39,8 +39,7 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.state = network;
         this.country = cNetwork;
         this.account = account;
-        System.out.println("userinterface.EntityAdmin.EntityAdminWorkAreaJPanel.<init>()");
-        valueLabel.setText(enterprise.getName());
+        // valueLabel.setText(enterprise.getName());
     }
 
     /**
@@ -101,7 +100,7 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
         add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 200, 70));
 
         valueLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 130, 20));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 130, 20));
 
         jButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(71, 79, 112));
@@ -121,29 +120,24 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
+        //Manage User Account Panel
         BeneficiaryManageUserAccountJPanel muajp = new BeneficiaryManageUserAccountJPanel(userProcessContainer, enterprise);
         userProcessContainer.add("BeneficiaryManageUserAccountJPanel", muajp);
-
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
+       //Manage Employee Panel
         GovernmentManageEmployeeJPanel manageEmployeeJPanel = new GovernmentManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("GovernmentManageEmployeeJPanel2", manageEmployeeJPanel);
-
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-//        BeneficiaryManageEmployeeJPanel manageEmployeeJPanel = new BeneficiaryManageEmployeeJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-//        userProcessContainer.add("BeneficiaryManageEmployeeJPanel", manageEmployeeJPanel);
-//
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
 
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
-
+        //Manage Organization Panel
         BeneficiaryManageOrganizationJPanel manageOrganizationJPanel = new BeneficiaryManageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("BeneficiaryManageOrganizationJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -152,6 +146,7 @@ public class BeneficiaryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //Manage Beneficiary Request Panel
         BeneficiaryRequestAreaJPanel manageRequestJPanel = new BeneficiaryRequestAreaJPanel(userProcessContainer, account, enterprise, state, country, system);
         userProcessContainer.add("BeneficiaryRequestAreaJPanel", manageRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

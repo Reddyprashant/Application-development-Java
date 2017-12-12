@@ -22,6 +22,10 @@ public class StateNetwork{
        
         enterpriseDirectory = new EnterpriseDirectory();
     }
+
+    public void setEnterpriseDirectory(EnterpriseDirectory enterpriseDirectory) {
+        this.enterpriseDirectory = enterpriseDirectory;
+    }
     
 
     public EnterpriseDirectory getEnterpriseDirectory() {

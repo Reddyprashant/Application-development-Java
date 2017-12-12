@@ -6,14 +6,13 @@ package userinterface.Beneficiary.OlgAgeHome;
 
 import userinterface.Beneficiary.BeneficiaryPersonViewJPanel;
 import Business.EcoSystem;
-//import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.GovernmentEnterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-//import Business.Organization.ClinicOrganization;
 import Business.Organization.OldAgeOrganization;
 import Business.Person.Person;
+import Business.Person.PersonDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -58,7 +57,6 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         this.country = cNetwork;
         TextArea.enable(false);
         populateComboBox();
-        // populateOrganizationEmpComboBox();
     }
 
     public void populateComboBox() {
@@ -71,20 +69,6 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         reqComboBox.addItem("Others");
     }
 
-//    public void populateOrganizationComboBox(){
-//        organizationJComboBox.removeAllItems();
-//        
-//        for (Role role : organization.getSupportedRole()){
-//            organizationJComboBox.addItem(role);
-//        }
-//    }
-//    public void populateOrganizationEmpComboBox(){
-//        organizationEmpJComboBox.removeAllItems();
-//        
-//        for (Role role : organization.getSupportedRole()){
-//            organizationEmpJComboBox.addItem(role);
-//        }
-//    }
     private void populateTable(OldAgeOrganization organization) {
         try {
             lblName.setText("");
@@ -93,33 +77,26 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
 
             model.setRowCount(0);
-            if (organization != null) {
-                if (organization.getPersonList() != null) {
+            if (organization.getPersonList() == null) {
+                organization.setPersonList(new PersonDirectory());
+            }
+            if (organization.getPersonList().getPersonList().size() > 0) {
 
-                    if (organization.getPersonList().getPersonList().size() > 0) {
+                for (Person person : organization.getPersonList().getPersonList()) {
 
-                        lblWarning.setText("");
+                    Object[] row = new Object[5];
+                    row[0] = person.getPersonId();
+                    row[1] = person;
+                    row[2] = person.getAge();
+                    row[3] = person.getSex();
+                    row[4] = person.getDateOfJoining();
 
-                        for (Person person : organization.getPersonList().getPersonList()) {
-
-                            Object[] row = new Object[5];
-                            row[0] = person.getPersonId();
-                            row[1] = person;
-                            row[2] = person.getAge();
-                            row[3] = person.getSex();
-                            row[4] = person.getDateOfJoining();
-
-                            model.addRow(row);
-                        }
-                    } else {
-                        lblWarning.setText("*NO Data for Person is Available");
-                    }
-                } else {
-                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+                    model.addRow(row);
                 }
             } else {
-                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+                lblWarning.setText("*NO Data for Person is Available");
             }
+
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
@@ -441,7 +418,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
 
-   
+
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
         try {
             int temp = 0;
@@ -658,18 +635,22 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
     private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
         // TODO add your handling code here:
+        try {
+            lblWarning.setText("");
+            int selectedrow = organizationJTable.getSelectedRow();
 
-        int selectedrow = organizationJTable.getSelectedRow();
+            if (selectedrow < 0) {
+                JOptionPane.showMessageDialog(null, "Please select a Row from table first to view details", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                Person p = (Person) organizationJTable.getValueAt(selectedrow, 1);
+                BeneficiaryPersonViewJPanel muajp = new BeneficiaryPersonViewJPanel(userProcessContainer, p);
+                userProcessContainer.add("HomelessPersonViewJPanel", muajp);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
 
-        if (selectedrow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a Row from table first to view details", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            Person p = (Person) organizationJTable.getValueAt(selectedrow, 1);
-            BeneficiaryPersonViewJPanel muajp = new BeneficiaryPersonViewJPanel(userProcessContainer, p);
-            userProcessContainer.add("HomelessPersonViewJPanel", muajp);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
-
+            }
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
 
     }//GEN-LAST:event_btnViewDetailsActionPerformed

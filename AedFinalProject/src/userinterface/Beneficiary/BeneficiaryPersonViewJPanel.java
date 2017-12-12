@@ -39,6 +39,7 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
         populateValues();
     }
 
+    //Code to populate Values in the Text Fields
     public void populateValues() {
         try {
             lblWarning.setText("");
@@ -252,7 +253,7 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-
+        //Code to Update Person details
         try {
             lblWarning.setText("");
             if (p != null) {
@@ -291,13 +292,12 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
                 } else {
                     JOptionPane.showMessageDialog(null, "Please Enter Name", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
-            } else {
-                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
-
             }
         } catch (NumberFormatException ex) {
 
             JOptionPane.showMessageDialog(null, "Please Enter number for Age", "Warning", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }
 
         txtFieldAge.setEnabled(false);
@@ -312,6 +312,7 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
+        //Code to Upload Picture
         try {
             lblWarning.setText("");
             JFileChooser chooser = new JFileChooser();
@@ -332,7 +333,7 @@ public class BeneficiaryPersonViewJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Please select a picture", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception ex) {
-           lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
+            lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }
 
 

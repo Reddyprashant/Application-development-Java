@@ -6,13 +6,11 @@
 
 package userinterface.Beneficiary.Homeless;
 
-import userinterface.Beneficiary.Orphanage.*;
+
 import Business.EcoSystem;
-//import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-//import Business.Organization.ClinicOrganization;
 import Business.Organization.HomelessOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -117,6 +115,7 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
+        //Code to move to Homeless Request WorkArea Panel
         HomelessRequestWorkAreaJPanel muajp = new HomelessRequestWorkAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
         userProcessContainer.add("HomelessRequestWorkAreaJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -124,7 +123,7 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-
+        //Code to move to Manage Person Panel
         HomelessManagePersonJPanel manageEmployeeJPanel;
         manageEmployeeJPanel = new HomelessManagePersonJPanel(userProcessContainer,  account,  organization,  enterprise,state,country,  business);
         userProcessContainer.add("HomelessManagePersonJPanel", manageEmployeeJPanel);
@@ -135,6 +134,7 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnShelterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShelterActionPerformed
         // TODO add your handling code here:
+        //Code to move to Shelter Request Panel
          ShelterRequestAreaJPanel muajp = new ShelterRequestAreaJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
         userProcessContainer.add("ShelterRequestAreaJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

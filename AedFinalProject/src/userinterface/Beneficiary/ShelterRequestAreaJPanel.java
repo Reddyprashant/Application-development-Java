@@ -13,6 +13,7 @@ import Business.Organization.IndividualOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ShelterWorkRequest;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -51,43 +52,38 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
         populateWorkQueueTable();
     }
 
+    //Code to Load Populate Work Queue Table
     public void populateWorkQueueTable() {
         try {
+            lblWarning.setText("");
             DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
 
             model.setRowCount(0);
-            if (organization != null) {
-                if (organization.getWorkQueue() != null) {
-                    if (organization.getWorkQueue().getWorkRequestList().size() > 0) {
+            if (organization.getWorkQueue() == null) {
+                organization.setWorkQueue(new WorkQueue());
+            }
+            if (organization.getWorkQueue().getWorkRequestList().size() > 0) {
 
-                        lblWarning.setText("");
-                        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
+                lblWarning.setText("");
+                for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
 
-                            if (work instanceof ShelterWorkRequest) {
-                                ShelterWorkRequest s = (ShelterWorkRequest) work;
-                                Object[] row = new Object[6];
-                                row[0] = s.getRequestDate();
-                                row[1] = s.getSender();
-                                row[2] = s.getReceiver();
-                                row[3] = s;
-                                row[4] = s.getPersonPresent();
-                                row[5] = s.getPersonAbsent();
+                    if (work instanceof ShelterWorkRequest) {
+                        ShelterWorkRequest s = (ShelterWorkRequest) work;
+                        Object[] row = new Object[6];
+                        row[0] = s.getRequestDate();
+                        row[1] = s.getSender();
+                        row[2] = s.getReceiver();
+                        row[3] = s;
+                        row[4] = s.getPersonPresent();
+                        row[5] = s.getPersonAbsent();
 
-                                model.addRow(row);
-                            } else {
-                                lblWarning.setText("*NO Shelter Request Found");
-                            }
-                        }
-                    } else {
-                        lblWarning.setText("*NO Shelter Request Found");
+                        model.addRow(row);
                     }
-                } else {
-                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
                 }
             } else {
-                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
-
+                lblWarning.setText("*NO Shelter Request Found");
             }
+
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
         }
@@ -197,6 +193,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
+        //Code to Assign the Work Request
         try {
             lblWarning.setText("");
             int selectedRow = tblReq.getSelectedRow();
@@ -207,15 +204,13 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
                 ShelterWorkRequest p = (ShelterWorkRequest) tblReq.getValueAt(selectedRow, 3);
 
                 if (p.getStatus().equals("Requested") && !(organization instanceof IndividualOrganization)) {
-                    //  System.out.println("admin name"+ account.getUsername());
                     p.setStatus("Pending");
                     p.setReceiver(account);
-
                     populateWorkQueueTable();
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Already assigned");
-                    
+
                 }
 
             }
@@ -227,6 +222,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnServeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServeActionPerformed
         // TODO add your handling code here:
+        //Code to Complete the Request
         try {
             lblWarning.setText("");
             int selectedRow = tblReq.getSelectedRow();
@@ -235,14 +231,10 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
             } else {
                 lblWarning.setText("");
                 ShelterWorkRequest p = (ShelterWorkRequest) tblReq.getValueAt(selectedRow, 3);
-                // SignUpRequestOrganization orgRequest = null;
-                //SignUpRequestEnterprise e = null;
                 UserAccount acc = null;
-
                 if (p.getReceiver() != null) {
                     if (p.getStatus().equals("Pending") && p.getReceiver() == account && !(organization instanceof IndividualOrganization)) {
                         if (p instanceof ShelterWorkRequest) {
-
                             p.setStatus("Complete");
                             JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                         }
@@ -262,6 +254,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
+        //Code to View Details of the Work Request
         try {
             lblWarning.setText("");
             int selectedRow = tblReq.getSelectedRow();
@@ -282,7 +275,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-                
+        //Back Button
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

@@ -48,7 +48,6 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
      */
     public HomelessRequestHelpJPanel(JPanel userProcessContainer, UserAccount account, HomelessOrganization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
-        //this.request=request;
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.account = account;
@@ -262,7 +261,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         add(vanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 470, 120, -1));
 
         timelabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        timelabel.setForeground(new java.awt.Color(71, 79, 112));
+        timelabel.setForeground(new java.awt.Color(240, 240, 240));
         timelabel.setText("Pickup Time");
         add(timelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 560, 110, -1));
 
@@ -271,7 +270,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
         add(timeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 560, 171, -1));
 
         addLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        addLabel.setForeground(new java.awt.Color(71, 79, 112));
+        addLabel.setForeground(new java.awt.Color(240, 240, 240));
         addLabel.setText("Pickup Address");
         add(addLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 600, 120, -1));
 
@@ -333,6 +332,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //Code to Raise Homeless Request 
         try {
             lblWarning.setText("");
             lblName.setText("");
@@ -355,8 +355,6 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                                             BeneficiaryWorkRequest requests = new BeneficiaryWorkRequest();
                                             requests.setEventDate(date);
                                             requests.setSenderOrganization(organization);
-
-                                            //if(Organization.RequestType.Education.getValue()==request.getValue())
                                             requests.setRequestType(request);
                                             requests.setEventName(eventName);
                                             requests.setEventDetails(eventDetails);
@@ -368,29 +366,28 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                                                 if (!noOfVehText.getText().isEmpty()) {
                                                     if (!timeField.getText().isEmpty()) {
                                                         if (!addressText.getText().isEmpty()) {
-                                                            if(carBtn.isSelected()||vanBtn.isSelected()||busBtn.isSelected()){
-                                                            SimpleDateFormat times = new SimpleDateFormat("hh:mm");
-                                                            int no = Integer.parseInt(noOfVehText.getText());
-                                                            Date time = times.parse(timeField.getText());
-                                                            String address = addressText.getText();
-                                                            requests.setLogisticRequest(false);
-                                                            if (carBtn.isSelected()) {
-                                                                requests.setTypeOfVehicle("Car");
+                                                            if (carBtn.isSelected() || vanBtn.isSelected() || busBtn.isSelected()) {
+                                                                SimpleDateFormat times = new SimpleDateFormat("hh:mm");
+                                                                int no = Integer.parseInt(noOfVehText.getText());
+                                                                Date time = times.parse(timeField.getText());
+                                                                String address = addressText.getText();
+                                                                requests.setLogisticRequest(false);
+                                                                if (carBtn.isSelected()) {
+                                                                    requests.setTypeOfVehicle("Car");
 
-                                                            } else if (vanBtn.isSelected()) {
-                                                                requests.setTypeOfVehicle("Van");
-                                                            } else if (busBtn.isSelected()) {
-                                                                requests.setTypeOfVehicle("Bus");
+                                                                } else if (vanBtn.isSelected()) {
+                                                                    requests.setTypeOfVehicle("Van");
+                                                                } else if (busBtn.isSelected()) {
+                                                                    requests.setTypeOfVehicle("Bus");
+                                                                }
+                                                                requests.setNoOfVehicle(no);
+                                                                requests.setPickupTime(time);
+                                                                requests.setAddress(address);
+                                                            } else {
+                                                                JOptionPane.showMessageDialog(null, "Please Select the type of vehicle");
+                                                                return;
                                                             }
-                                                            requests.setNoOfVehicle(no);
-                                                            requests.setPickupTime(time);
-                                                            requests.setAddress(address);
-                                                        } 
-                                                            else{
-                                                            JOptionPane.showMessageDialog(null, "Please Select the type of vehicle");
-                                                            return;      
-                                                            }   
-                                                        }else {
+                                                        } else {
                                                             JOptionPane.showMessageDialog(null, "Please Enter Integer Value for address");
                                                             return;
                                                         }
@@ -422,7 +419,6 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                                                     }
                                                 }
                                             } else if (request == Organization.RequestType.Education) {
-                                                //enterprise.getOrganizationDirectory().getOrganizationList().
                                                 for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
                                                     for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
                                                         if (organization1 instanceof EducationOrganization) {
@@ -431,7 +427,6 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                                                     }
                                                 }
                                             } else if (request == Organization.RequestType.Hospital) {
-                                                //enterprise.getOrganizationDirectory().getOrganizationList().
                                                 for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
                                                     for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
                                                         if (organization1 instanceof HospitalOrganization) {
@@ -440,7 +435,6 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                                                     }
                                                 }
                                             } else if (request == Organization.RequestType.MNC) {
-                                                //enterprise.getOrganizationDirectory().getOrganizationList().
                                                 for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
                                                     for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
                                                         if (organization1 instanceof MNCOrganization) {
@@ -450,7 +444,6 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                                                     }
                                                 }
                                             } else if (request == Organization.RequestType.NGO) {
-                                                //enterprise.getOrganizationDirectory().getOrganizationList().
                                                 for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
                                                     for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
                                                         if (organization1 instanceof NGOOrganization) {
@@ -507,8 +500,6 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                 } else {
                     JOptionPane.showMessageDialog(null, "Please Select the request type from the combo box");
                 }
-            } else {
-                lblWarning.setText("*Disaster Organization is not Present. Please contact system administrator-- poojithsshetty@gmail.com");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact-- poojithsshetty@gmail.com");
@@ -519,11 +510,8 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-
         Component[] componentArray = userProcessContainer.getComponents();
         HomelessRequestWorkAreaJPanel homelessRequestPanel = (HomelessRequestWorkAreaJPanel) userProcessContainer.getComponent(componentArray.length - 1);
-        // oldAgeRequestPanel.populateUpdatedTable();
-
         homelessRequestPanel.populateWorkQueueTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

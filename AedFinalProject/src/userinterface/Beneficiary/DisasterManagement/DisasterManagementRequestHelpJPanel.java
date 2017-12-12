@@ -340,6 +340,7 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
 
     private void btnRequestHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestHelpActionPerformed
         // TODO add your handling code here:
+        //Code to Raise Disaster Request
         try {
             lblWarning.setText("");
             lblName.setText("");
@@ -375,29 +376,28 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
                                                 if (!noOfVehText.getText().isEmpty()) {
                                                     if (!timeField.getText().isEmpty()) {
                                                         if (!addressText.getText().isEmpty()) {
-                                                            if(carBtn.isSelected()||vanBtn.isSelected()||busBtn.isSelected()){
-                                                            SimpleDateFormat times = new SimpleDateFormat("hh:mm");
-                                                            int no = Integer.parseInt(noOfVehText.getText());
-                                                            Date time = times.parse(timeField.getText());
-                                                            String address = addressText.getText();
-                                                            requests.setLogisticRequest(false);
-                                                            if (carBtn.isSelected()) {
-                                                                requests.setTypeOfVehicle("Car");
+                                                            if (carBtn.isSelected() || vanBtn.isSelected() || busBtn.isSelected()) {
+                                                                SimpleDateFormat times = new SimpleDateFormat("hh:mm");
+                                                                int no = Integer.parseInt(noOfVehText.getText());
+                                                                Date time = times.parse(timeField.getText());
+                                                                String address = addressText.getText();
+                                                                requests.setLogisticRequest(false);
+                                                                if (carBtn.isSelected()) {
+                                                                    requests.setTypeOfVehicle("Car");
 
-                                                            } else if (vanBtn.isSelected()) {
-                                                                requests.setTypeOfVehicle("Van");
-                                                            } else if (busBtn.isSelected()) {
-                                                                requests.setTypeOfVehicle("Bus");
+                                                                } else if (vanBtn.isSelected()) {
+                                                                    requests.setTypeOfVehicle("Van");
+                                                                } else if (busBtn.isSelected()) {
+                                                                    requests.setTypeOfVehicle("Bus");
+                                                                }
+                                                                requests.setNoOfVehicle(no);
+                                                                requests.setPickupTime(time);
+                                                                requests.setAddress(address);
+                                                            } else {
+                                                                JOptionPane.showMessageDialog(null, "Please Select the type of vehicle");
+                                                                return;
                                                             }
-                                                            requests.setNoOfVehicle(no);
-                                                            requests.setPickupTime(time);
-                                                            requests.setAddress(address);
-                                                        } 
-                                                            else{
-                                                            JOptionPane.showMessageDialog(null, "Please Select the type of vehicle");
-                                                            return;      
-                                                            }   
-                                                        }else {
+                                                        } else {
                                                             JOptionPane.showMessageDialog(null, "Please Enter Integer Value for address");
                                                             return;
                                                         }
@@ -415,13 +415,13 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
                                                 for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
                                                     for (Organization organization1 : enter.getOrganizationDirectory().getOrganizationList()) {
                                                         if (organization1 instanceof TransportOrganization) {
-                                                            
+
                                                             organization1.getWorkQueue().getWorkRequestList().add(requests);
                                                         }
                                                     }
                                                 }
                                             }
-                                            
+
                                             if (request == Organization.RequestType.ANY) {
                                                 for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
                                                     if (enter instanceof EntityEnterprise) {
@@ -524,12 +524,10 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        //Back Button
         userProcessContainer.remove(this);
-
         Component[] componentArray = userProcessContainer.getComponents();
         DisasterManagementRequestWorkAreaJPanel disasterManagementRequestWorkAreaJPanel = (DisasterManagementRequestWorkAreaJPanel) userProcessContainer.getComponent(componentArray.length - 1);
-        // oldAgeRequestPanel.populateUpdatedTable();
-
         disasterManagementRequestWorkAreaJPanel.populateWorkQueueTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

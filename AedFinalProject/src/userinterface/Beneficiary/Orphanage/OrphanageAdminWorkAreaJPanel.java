@@ -7,11 +7,9 @@
 package userinterface.Beneficiary.Orphanage;
 
 import Business.EcoSystem;
-//import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-//import Business.Organization.ClinicOrganization;
 import Business.Organization.OrphanageOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -24,13 +22,13 @@ import userinterface.Beneficiary.ShelterRequestAreaJPanel;
  */
 public class OrphanageAdminWorkAreaJPanel extends javax.swing.JPanel {
     
-    JPanel userProcessContainer;
-    UserAccount account; 
-    OrphanageOrganization organization; 
-    Enterprise enterprise; 
-    EcoSystem business;
-    StateNetwork state;
-    CountryNetwork country;
+    private JPanel userProcessContainer;
+    private UserAccount account; 
+    private OrphanageOrganization organization; 
+    private Enterprise enterprise; 
+    private EcoSystem business;
+    private StateNetwork state;
+    private CountryNetwork country;
     /** Creates new form AdminWorkAreaJPanel */
     public OrphanageAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
