@@ -264,7 +264,7 @@ public class GovernmentManageEmployeeJPanel extends javax.swing.JPanel {
                     String name = nameJTextField.getText();
                     String email = txtEmail.getText();
                     organization.getEmployeeDirectory().createEmployee(name, email);
-                    populateTable(organization);
+                    populateTable((Organization)organizationJComboBox.getSelectedItem());
                     JOptionPane.showMessageDialog(null, "Employee Created Successfully");
                     nameJTextField.setText("");
                     txtEmail.setText("");
