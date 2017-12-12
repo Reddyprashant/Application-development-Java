@@ -7,20 +7,27 @@ package userinterface.Beneficiary.Homeless;
 import userinterface.Beneficiary.BeneficiaryPersonViewJPanel;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.GovernmentEnterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 import Business.Organization.HomelessOrganization;
 import Business.Person.Person;
+import Business.Person.PersonDirectory;
 import Business.UserAccount.UserAccount;
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.File;
 import javax.imageio.ImageIO;
+import javax.swing.Box;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import sun.swing.ImageIconUIResource;
 import utility.Validator;
 
 /**
@@ -28,7 +35,7 @@ import utility.Validator;
  * @author raunak
  */
 public class HomelessManagePersonJPanel extends javax.swing.JPanel {
-    
+
     private JPanel userProcessContainer;
     private UserAccount account;
     private HomelessOrganization organization;
@@ -52,11 +59,10 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         this.state = network;
         this.country = cNetwork;
         TextArea.enable(false);
-        //  populateOrganizationComboBox();
-        // populateOrganizationEmpComboBox();
         populateComboBox();
+
     }
-    
+
     public void populateComboBox() {
         reqComboBox.removeAllItems();
         reqComboBox.addItem("White American");
@@ -66,57 +72,39 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         reqComboBox.addItem("Middle Eastern");
         reqComboBox.addItem("Others");
     }
+//Code to load organizationJTable
 
-//    public void populateOrganizationComboBox(){
-//        organizationJComboBox.removeAllItems();
-//        
-//        for (Role role : organization.getSupportedRole()){
-//            organizationJComboBox.addItem(role);
-//        }
-//    }
-//    public void populateOrganizationEmpComboBox(){
-//        organizationEmpJComboBox.removeAllItems();
-//        
-//        for (Role role : organization.getSupportedRole()){
-//            organizationEmpJComboBox.addItem(role);
-//        }
-//    }
     private void populateTable(HomelessOrganization organization) {
         try {
             lblName.setText("");
             lblWarning.setText("");
             lblWarningTable.setText("");
-            
+
             DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-            
+
             model.setRowCount(0);
-            if (organization != null) {
-                if (organization.getPersonList() != null) {
-                    
-                    if (organization.getPersonList().getPersonList().size() > 0) {
-                        
-                        lblWarning.setText("");
-                        lblWarningTable.setText("");
-                        
-                        for (Person person : organization.getPersonList().getPersonList()) {
-                            
-                            Object[] row = new Object[5];
-                            row[0] = person.getPersonId();
-                            row[1] = person;
-                            row[2] = person.getAge();
-                            row[3] = person.getSex();
-                            row[4] = person.getDateOfJoining();
-                            
-                            model.addRow(row);
-                        }
-                    } else {
-                        lblWarningTable.setText("*NO Data for Person is Available");
-                    }
-                } else {
-                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+            if (organization.getPersonList() == null) {
+                organization.setPersonList(new PersonDirectory());
+            }
+
+            if (organization.getPersonList().getPersonList().size() > 0) {
+
+                lblWarning.setText("");
+                lblWarningTable.setText("");
+
+                for (Person person : organization.getPersonList().getPersonList()) {
+
+                    Object[] row = new Object[5];
+                    row[0] = person;
+                    row[1] = person.getName();
+                    row[2] = person.getAge();
+                    row[3] = person.getSex();
+                    row[4] = person.getDateOfJoining();
+
+                    model.addRow(row);
                 }
             } else {
-                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+                lblWarningTable.setText("*NO Data for Person is Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
@@ -441,27 +429,27 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
         try {
+            int temp = 0;
             lblWarning.setText("");
             lblWarningTable.setText("");
             lblName.setText("");
-            
+            //code for checking whether the fields are empty or null
             if (!(nameJTextField.getText().isEmpty())) {
                 if (!(ageTextField.getText().isEmpty())) {
                     if (((rdBtnMale.isSelected() || rdBtnFemale.isSelected() || rdBtnOthers.isSelected()))) {
-                        
+
                         if (rdBtnCollegeGrad.isSelected() || rdBtnHighschoolGrad.isSelected() || rdBtnUneducated.isSelected()) {
-                            
+
                             if (ARadioButton.isSelected() || BRadioButton2.isSelected() || CRadioButton3.isSelected() || ORadioButton4.isSelected()) {
-                                
+
                                 if (!(picText.getText().isEmpty())) {
-                                    
+
                                     try {
-                                        //SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-                                        //ClinicOrganization organization = (ClinicOrganization) organizationEmpJComboBox.getSelectedItem();
+                                        //Assigning the Values to variables
                                         String name = nameJTextField.getText();
                                         int age = Integer.parseInt(ageTextField.getText());
                                         String ethnicity = (String) reqComboBox.getSelectedItem();
-                                        
+
                                         String sex = null;
                                         if (rdBtnMale.isSelected()) {
                                             sex = "Male";
@@ -478,7 +466,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                                         } else if (rdBtnUneducated.isSelected()) {
                                             educationBG = "Uneducated";
                                         }
-                                        
+
                                         String reason = null;
                                         if (ARadioButton.isSelected()) {
                                             reason = "Individual and relational factors";
@@ -489,18 +477,90 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                                         } else if (ORadioButton4.isSelected()) {
                                             reason = "Others";
                                         }
-                                        
+
                                         String reasonDescription = TextArea.getText();
-                                        organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
-                                        JOptionPane.showMessageDialog(null, "Person Created");
-                                        nameJTextField.setText("");
-                                        ageTextField.setText("");
-                                        btnGrpSex.clearSelection();
-                                        btnGrpEducationBackGround.clearSelection();
-                                        btnGrpReasons.clearSelection();
-                                        TextArea.setText("");
-                                        picText.setText("");
-                                        populateTable(organization);
+
+                                        for (Enterprise e : state.getEnterpriseDirectory().getEnterpriseList()) {
+
+                                            if (e instanceof GovernmentEnterprise) {
+
+                                                if (e.getPersonList().getPersonList().size() == 0) {
+                                                    organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                                    e.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                                    JOptionPane.showMessageDialog(null, "Person Created");
+                                                    nameJTextField.setText("");
+                                                    ageTextField.setText("");
+                                                    btnGrpSex.clearSelection();
+                                                    btnGrpEducationBackGround.clearSelection();
+                                                    btnGrpReasons.clearSelection();
+                                                    TextArea.setText("");
+                                                    picText.setText("");
+                                                    populateTable(organization);
+                                                    //checking whether the person's profile is present in the Government Enterprise
+                                                } else {
+                                                    for (Person person : e.getPersonList().getPersonList()) {
+                                                        Box box = Box.createHorizontalBox();
+                                                        JLabel label = new JLabel("Photo");
+                                                        box.add(label);
+
+                                                        if (person.getAge() == age && person.getEducationBackground().equals(educationBG) && person.getName().equals(name) && person.getEthnicity().equals(ethnicity) && person.getSex().equals(sex)) {
+
+                                                            ImageIcon icon = person.getPhtoto();
+                                                            int dialogButton = JOptionPane.YES_NO_OPTION;
+                                                            int dialogResult = JOptionPane.showConfirmDialog(null, new JLabel(icon, JLabel.CENTER), "WARNING SIMILAR PROFILE FOUND!! Please CONFIRM", dialogButton);
+
+                                                            if (dialogResult == JOptionPane.YES_OPTION) {
+
+                                                                organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                                                temp = 1;
+                                                                JOptionPane.showMessageDialog(null, "Person Created");
+                                                                nameJTextField.setText("");
+                                                                ageTextField.setText("");
+                                                                btnGrpSex.clearSelection();
+                                                                btnGrpEducationBackGround.clearSelection();
+                                                                btnGrpReasons.clearSelection();
+                                                                TextArea.setText("");
+                                                                picText.setText("");
+                                                                populateTable(organization);
+                                                                break;
+                                                                //Matching the profiles in the Government Enterprise
+                                                            }
+                                                            if (dialogResult == JOptionPane.NO_OPTION) {
+
+                                                                nameJTextField.setText("");
+                                                                ageTextField.setText("");
+                                                                btnGrpSex.clearSelection();
+                                                                btnGrpEducationBackGround.clearSelection();
+                                                                btnGrpReasons.clearSelection();
+                                                                TextArea.setText("");
+                                                                picText.setText("");
+                                                                populateTable(organization);
+                                                                return;
+
+                                                            }
+                                                        }
+
+                                                    }
+                                                    //Selecting NO option in the Confirm Dialog box
+                                                    if (temp == 0) {
+                                                        organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                                        e.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                                        JOptionPane.showMessageDialog(null, "Person Created");
+                                                        nameJTextField.setText("");
+                                                        ageTextField.setText("");
+                                                        btnGrpSex.clearSelection();
+                                                        btnGrpEducationBackGround.clearSelection();
+                                                        btnGrpReasons.clearSelection();
+                                                        TextArea.setText("");
+                                                        picText.setText("");
+                                                        populateTable(organization);
+                                                    }
+
+                                                }
+
+                                            }
+                                        }
+
                                     } catch (NumberFormatException p) {
                                         JOptionPane.showMessageDialog(null, "Please enter Valid Age");
                                     }
@@ -519,17 +579,18 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                 } else {
                     JOptionPane.showMessageDialog(null, "Please enter the age", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
-                
+
             } else {
                 JOptionPane.showMessageDialog(null, "Please enter the name", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception ex) {
+            // ex.printStackTrace();
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }//GEN-LAST:event_btnCreatePersonActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        
+
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -568,12 +629,12 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                     pic = pic.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
                     picText.setText(chooser.getSelectedFile().getPath());
                     photo = new ImageIcon(pic);
-                    
+
                 } catch (Exception e) {
-                    
+
                 }
             } else {
-                
+
                 JOptionPane.showMessageDialog(null, "Please select a picture", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception ex) {
@@ -585,18 +646,18 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         int selectedrow = organizationJTable.getSelectedRow();
-        
+
         if (selectedrow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a Row from table first to view details", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            Person p = (Person) organizationJTable.getValueAt(selectedrow, 1);
+            Person p = (Person) organizationJTable.getValueAt(selectedrow, 0);
             BeneficiaryPersonViewJPanel muajp = new BeneficiaryPersonViewJPanel(userProcessContainer, p);
             userProcessContainer.add("HomelessPersonViewJPanel", muajp);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
-            
+
         }
-        
+
 
     }//GEN-LAST:event_btnViewDetailsActionPerformed
 
@@ -626,7 +687,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
             int dialogResult = JOptionPane.showConfirmDialog(null, "Would you like to delete the details", "Warning", dialogButton);
             if (dialogResult == JOptionPane.YES_OPTION) {
 
-                Person p = (Person) organizationJTable.getValueAt(selectedRow, 1);
+                Person p = (Person) organizationJTable.getValueAt(selectedRow, 0);
 
                 for (Person person : organization.getPersonList().getPersonList()) {
                     if (p == person) {

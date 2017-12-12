@@ -9,6 +9,7 @@ import userinterface.Beneficiary.Homeless.*;
 import Business.EcoSystem;
 //import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.GovernmentEnterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
 //import Business.Organization.ClinicOrganization;
@@ -19,8 +20,10 @@ import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.File;
 import javax.imageio.ImageIO;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -56,8 +59,9 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         this.country = cNetwork;
         TextArea.enable(false);
         populateComboBox();
-        // populateOrganizationEmpComboBox();
+
     }
+//populating Ethnicity Combo box
 
     public void populateComboBox() {
         reqComboBox.removeAllItems();
@@ -68,21 +72,8 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         reqComboBox.addItem("Middle Eastern");
         reqComboBox.addItem("Others");
     }
-//    public void populateOrganizationComboBox(){
-//        organizationJComboBox.removeAllItems();
-//        
-//        for (Role role : organization.getSupportedRole()){
-//            organizationJComboBox.addItem(role);
-//        }
-//    }
-//    public void populateOrganizationEmpComboBox(){
-//        organizationEmpJComboBox.removeAllItems();
-//        
-//        for (Role role : organization.getSupportedRole()){
-//            organizationEmpJComboBox.addItem(role);
-//        }
-//    }
 
+    //populating Person Table
     private void populateTable(OrphanageOrganization organization) {
         try {
             lblName.setText("");
@@ -134,8 +125,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
         btnGrpReasons = new javax.swing.ButtonGroup();
         btnGrpEducationBackGround = new javax.swing.ButtonGroup();
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroupSex = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         organizationJTable = new javax.swing.JTable();
         btnCreatePerson = new javax.swing.JButton();
@@ -266,7 +256,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
         btnGrpReasons.add(ARadioButton);
         ARadioButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        ARadioButton.setForeground(new java.awt.Color(255, 255, 255));
+        ARadioButton.setForeground(new java.awt.Color(71, 79, 112));
         ARadioButton.setText("Individual and relational factors");
         ARadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,7 +274,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
                 BRadioButton2ActionPerformed(evt);
             }
         });
-        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 550, 160, -1));
+        add(BRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 550, 160, -1));
 
         btnGrpReasons.add(CRadioButton3);
         CRadioButton3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -295,7 +285,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
                 CRadioButton3ActionPerformed(evt);
             }
         });
-        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 550, 170, -1));
+        add(CRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 550, 170, -1));
 
         btnGrpReasons.add(ORadioButton4);
         ORadioButton4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -335,13 +325,13 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
         btnGrpEducationBackGround.add(rdBtnHighschoolGrad);
         rdBtnHighschoolGrad.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        rdBtnHighschoolGrad.setForeground(new java.awt.Color(255, 255, 255));
+        rdBtnHighschoolGrad.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnHighschoolGrad.setText("Highschool Graduate");
         add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, 200, -1));
 
         btnGrpEducationBackGround.add(rdBtnCollegeGrad);
         rdBtnCollegeGrad.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        rdBtnCollegeGrad.setForeground(new java.awt.Color(255, 255, 255));
+        rdBtnCollegeGrad.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnCollegeGrad.setText("College Graduate");
         add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 510, 170, -1));
 
@@ -351,19 +341,19 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         rdBtnUneducated.setText("Uneducated");
         add(rdBtnUneducated, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 510, -1, -1));
 
-        buttonGroup1.add(rdBtnMale);
+        buttonGroupSex.add(rdBtnMale);
         rdBtnMale.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnMale.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnMale.setText("Male");
         add(rdBtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 80, -1));
 
-        buttonGroup1.add(rdBtnFemale);
+        buttonGroupSex.add(rdBtnFemale);
         rdBtnFemale.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnFemale.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnFemale.setText("Female");
         add(rdBtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 90, -1));
 
-        buttonGroup1.add(rdBtnOthers);
+        buttonGroupSex.add(rdBtnOthers);
         rdBtnOthers.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnOthers.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnOthers.setText("Others");
@@ -389,7 +379,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 660, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("*Photo:");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 660, -1, -1));
 
@@ -435,6 +425,11 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
     private void btnCreatePersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePersonActionPerformed
         try {
+            int temp = 0;
+            lblWarning.setText("");
+
+            lblName.setText("");
+            //code for checking whether the fields are empty or null
             if (!(nameJTextField.getText().isEmpty())) {
                 if (!(ageTextField.getText().isEmpty())) {
                     if (((rdBtnMale.isSelected() || rdBtnFemale.isSelected() || rdBtnOthers.isSelected()))) {
@@ -444,16 +439,16 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
                             if (ARadioButton.isSelected() || BRadioButton2.isSelected() || CRadioButton3.isSelected() || ORadioButton4.isSelected()) {
 
                                 if (!(picText.getText().isEmpty())) {
+
                                     try {
-                                        //SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
-                                        //ClinicOrganization organization = (ClinicOrganization) organizationEmpJComboBox.getSelectedItem();
+                                        //Assigning the Values to variables
                                         String name = nameJTextField.getText();
                                         int age = Integer.parseInt(ageTextField.getText());
                                         String ethnicity = (String) reqComboBox.getSelectedItem();
 
                                         String sex = null;
                                         if (rdBtnMale.isSelected()) {
-                                            sex = "Mle";
+                                            sex = "Male";
                                         } else if (rdBtnFemale.isSelected()) {
                                             sex = "Female";
                                         } else if (rdBtnOthers.isSelected()) {
@@ -480,21 +475,91 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
                                         }
 
                                         String reasonDescription = TextArea.getText();
-                                        organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
-                                        JOptionPane.showMessageDialog(null, "Person Created");
-                                        nameJTextField.setText("");
-                                        ageTextField.setText("");
-                                        buttonGroup1.clearSelection();
-                                        btnGrpEducationBackGround.clearSelection();
-                                        btnGrpReasons.clearSelection();
-                                        TextArea.setText("");
-                                        picText.setText("");
-                                        populateTable(organization);
+
+                                        for (Enterprise e : state.getEnterpriseDirectory().getEnterpriseList()) {
+
+                                            if (e instanceof GovernmentEnterprise) {
+
+                                                if (e.getPersonList().getPersonList().size() == 0) {
+                                                    organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                                    e.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                                    JOptionPane.showMessageDialog(null, "Person Created");
+                                                    nameJTextField.setText("");
+                                                    ageTextField.setText("");
+                                                    buttonGroupSex.clearSelection();
+                                                    btnGrpEducationBackGround.clearSelection();
+                                                    btnGrpReasons.clearSelection();
+                                                    TextArea.setText("");
+                                                    picText.setText("");
+                                                    populateTable(organization);
+                                                    //checking whether the person's profile is present in the Government Enterprise
+                                                } else {
+                                                    for (Person person : e.getPersonList().getPersonList()) {
+                                                        Box box = Box.createHorizontalBox();
+                                                        JLabel label = new JLabel("Photo");
+                                                        box.add(label);
+
+                                                        if (person.getAge() == age && person.getEducationBackground().equals(educationBG) && person.getName().equals(name) && person.getEthnicity().equals(ethnicity) && person.getSex().equals(sex)) {
+
+                                                            ImageIcon icon = person.getPhtoto();
+                                                            int dialogButton = JOptionPane.YES_NO_OPTION;
+                                                            int dialogResult = JOptionPane.showConfirmDialog(null, new JLabel(icon, JLabel.CENTER), "WARNING SIMILAR PROFILE FOUND!! Please CONFIRM", dialogButton);
+
+                                                            if (dialogResult == JOptionPane.YES_OPTION) {
+
+                                                                organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                                                temp = 1;
+                                                                JOptionPane.showMessageDialog(null, "Person Created");
+                                                                nameJTextField.setText("");
+                                                                ageTextField.setText("");
+                                                                buttonGroupSex.clearSelection();
+                                                                btnGrpEducationBackGround.clearSelection();
+                                                                btnGrpReasons.clearSelection();
+                                                                TextArea.setText("");
+                                                                picText.setText("");
+                                                                populateTable(organization);
+                                                                break;
+                                                                //Matching the profiles in the Government Enterprise
+                                                            }
+                                                            if (dialogResult == JOptionPane.NO_OPTION) {
+
+                                                                nameJTextField.setText("");
+                                                                ageTextField.setText("");
+                                                                buttonGroupSex.clearSelection();
+                                                                btnGrpEducationBackGround.clearSelection();
+                                                                btnGrpReasons.clearSelection();
+                                                                TextArea.setText("");
+                                                                picText.setText("");
+                                                                populateTable(organization);
+                                                                return;
+
+                                                            }
+                                                        }
+
+                                                    }
+                                                    //Selecting NO option in the Confirm Dialog box
+                                                    if (temp == 0) {
+                                                        organization.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                                        e.getPersonList().createperson(name, age, reason, ethnicity, sex, educationBG, reasonDescription, photo);
+                                                        JOptionPane.showMessageDialog(null, "Person Created");
+                                                        nameJTextField.setText("");
+                                                        ageTextField.setText("");
+                                                        buttonGroupSex.clearSelection();
+                                                        btnGrpEducationBackGround.clearSelection();
+                                                        btnGrpReasons.clearSelection();
+                                                        TextArea.setText("");
+                                                        picText.setText("");
+                                                        populateTable(organization);
+                                                    }
+
+                                                }
+
+                                            }
+                                        }
 
                                     } catch (NumberFormatException p) {
                                         JOptionPane.showMessageDialog(null, "Please enter Valid Age");
                                     }
-
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Please upload the picture", "Warning", JOptionPane.WARNING_MESSAGE);
                                 }
@@ -515,9 +580,9 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Please enter the name", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception ex) {
+            // ex.printStackTrace();
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
-
     }//GEN-LAST:event_btnCreatePersonActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -549,6 +614,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
+        //Uploading the pic
         try {
             lblWarning.setText("");
             JFileChooser chooser = new JFileChooser();
@@ -575,7 +641,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
     private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
         // TODO add your handling code here:
-
+        //Code to view Person Details
         int selectedrow = organizationJTable.getSelectedRow();
 
         if (selectedrow < 0) {
@@ -593,6 +659,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        //Deleting the person
         int selectedRow = organizationJTable.getSelectedRow();
         if (selectedRow >= 0) {
 
@@ -644,8 +711,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup btnGrpReasons;
     private javax.swing.JButton btnUpload;
     private javax.swing.JButton btnViewDetails;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroupSex;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
