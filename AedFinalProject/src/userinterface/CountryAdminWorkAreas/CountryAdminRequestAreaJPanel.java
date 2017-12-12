@@ -46,16 +46,13 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
     public CountryAdminRequestAreaJPanel(JPanel userProcessContainer, UserAccount account, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-
         this.system = business;
         this.account = account;
         this.cNetwork = cNetwork;
-        // populateCombo();
-        // populateQuantity();
         populateWorkQueueTable();
 
     }
-
+// Populating the Work Queue Table
     public void populateWorkQueueTable() {
         DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
 

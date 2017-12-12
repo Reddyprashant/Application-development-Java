@@ -5,7 +5,6 @@
  */
 package userinterface.EcoSystemAdminWorkArea;
 
-import userinterface.CountryAdminWorkAreas.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
@@ -37,12 +36,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.account = account;
-        // this.cNetwork=cNetwork;
         populateTree();
     }
 
     public void populateTree() {
-
+//Loading the JTree
         DefaultTreeModel model = (DefaultTreeModel) JTree.getModel();
 
         ArrayList<CountryNetwork> cnetworkList = system.getNetworkList();
@@ -63,28 +61,25 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         DefaultMutableTreeNode networkNode;
         DefaultMutableTreeNode enterpriseNode;
         DefaultMutableTreeNode organizationNode;
+        //Adding country network
         for (int h = 0; h < cnetworkList.size(); h++) {
-            System.out.println("country"+ cnetworkList.get(h));
             cNetwork = cnetworkList.get(h);
             cnetworkNode = new DefaultMutableTreeNode(cNetwork.getName());
             networks.insert(cnetworkNode, h);
-
             networkList = cNetwork.getStateList();
+            //Adding State List
             for (int i = 0; i < networkList.size(); i++) {
-                System.out.println("state"+ networkList.get(i));
                 network = networkList.get(i);
                 networkNode = new DefaultMutableTreeNode(network.getName());
                 cnetworkNode.insert(networkNode, i);
-
                 enterpriseList = network.getEnterpriseDirectory().getEnterpriseList();
-
+                //Adding enterpriseList
                 for (int j = 0; j < enterpriseList.size(); j++) {
-                    System.out.println("enterprizse"+ enterpriseList.get(j));
                     enterprise = enterpriseList.get(j);
                     enterpriseNode = new DefaultMutableTreeNode(enterprise.getName());
                     networkNode.insert(enterpriseNode, j);
-
                     organizationList = enterprise.getOrganizationDirectory().getOrganizationList();
+                    //Adding organization  List
                     for (int k = 0; k < organizationList.size(); k++) {
                         organization = organizationList.get(k);
                         organizationNode = new DefaultMutableTreeNode(organization.getName());

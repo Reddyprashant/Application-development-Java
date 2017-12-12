@@ -43,10 +43,8 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     public void populateTree() {
-
+// Populating the JTree 
         DefaultTreeModel model = (DefaultTreeModel) JTree.getModel();
-
-        // ArrayList<CountryNetwork> cnetworkList = system.getNetworkList();
         ArrayList<StateNetwork> networkList = cNetwork.getStateList();
         ArrayList<Enterprise> enterpriseList;
         ArrayList<Organization> organizationList;
@@ -62,20 +60,19 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         DefaultMutableTreeNode networkNode;
         DefaultMutableTreeNode enterpriseNode;
         DefaultMutableTreeNode organizationNode;
-        // for (int h = 0; h < cnetworkList.size(); h++) {
-
+// Populating Network in JTree
         for (int i = 0; i < networkList.size(); i++) {
             network = networkList.get(i);
             networkNode = new DefaultMutableTreeNode(network.getName());
             networks.insert(networkNode, i);
 
             enterpriseList = network.getEnterpriseDirectory().getEnterpriseList();
-
+// Populating Enterprise in JTree
             for (int j = 0; j < enterpriseList.size(); j++) {
                 enterprise = enterpriseList.get(j);
                 enterpriseNode = new DefaultMutableTreeNode(enterprise.getName());
                 networkNode.insert(enterpriseNode, j);
-
+// Populating Organization in JTree
                 organizationList = enterprise.getOrganizationDirectory().getOrganizationList();
                 for (int k = 0; k < organizationList.size(); k++) {
                     organization = organizationList.get(k);
@@ -84,7 +81,6 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
                 }
             }
         }
-        //}
 
         model.reload();
     }
@@ -217,21 +213,13 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageEnterpriseJButtonActionPerformed
 
     private void manageAdminJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAdminJButtonActionPerformed
-        // TODO add your handling code here:
+        // Manage Enterprise Admin 
         if(cNetwork.getStateList() != null){
         if (cNetwork.getStateList().size() > 0) {
-           // for (StateNetwork cState : cNetwork.getStateList()) {
-              //  if (!cState.getEnterpriseDirectory().getEnterpriseList().isEmpty()) {
                     ManageEnterpriseAdminJPanel manageEnterpriseAdminJPanel = new ManageEnterpriseAdminJPanel(userProcessContainer, cNetwork, system);
                     userProcessContainer.add("manageEnterpriseAdminJPanel", manageEnterpriseAdminJPanel);
-
                     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
                     layout.next(userProcessContainer);
-                //    break;
-                //} else {
-                  //  JOptionPane.showMessageDialog(null, "Add Enterprise into the network");
-                //}
-           // }
         } else {
             JOptionPane.showMessageDialog(null, "Add State into the network");
         }
@@ -256,7 +244,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void btnDiseaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiseaseActionPerformed
         // TODO add your handling code here:
         CountryAdminRequestAreaJPanel manageNetworkJPanel = new CountryAdminRequestAreaJPanel(userProcessContainer, account, cNetwork, system);
-        userProcessContainer.add("AdminRequestAreaJPanel", manageNetworkJPanel);
+        userProcessContainer.add("CountryAdminRequestAreaJPanel", manageNetworkJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnDiseaseActionPerformed

@@ -37,7 +37,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         this.cNetwork = cNetwork;
         populateNetworkTable();
     }
-
+//Populating the States table
     private void populateNetworkTable() {
         DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
 
@@ -147,7 +147,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 140, 40));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 160, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1310, 870));
@@ -187,7 +187,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+        // Delete the button
         int selectedRow = networkJTable.getSelectedRow();
         if (selectedRow >= 0) {
 
