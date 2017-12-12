@@ -8,6 +8,7 @@ import userinterface.CountryAdminWorkAreas.*;
 import Business.EcoSystem;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -34,10 +35,9 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
 
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        //  this.cNetwork=cNetwork;
         populateNetworkTable();
     }
-
+//Populating all the networks
     private void populateNetworkTable() {
         DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
 
@@ -152,7 +152,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-
+//Adding Country network
         String name = nameJTextField.getText();
         if (!name.equals("")) {
             for (CountryNetwork countryNetwork : system.getNetworkList()) {
@@ -174,6 +174,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+       try{
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -181,6 +182,9 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
         sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+       }catch(Exception e){
+           
+       }
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -189,7 +193,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-
+            UserAccount ua=null;
             CountryNetwork p = (CountryNetwork) networkJTable.getValueAt(selectedRow, 0);
 
             for (CountryNetwork network : system.getNetworkList()) {
@@ -197,6 +201,15 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
                     system.getNetworkList().remove(p);
                     break;
                 }
+            }
+            
+            for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
+                if(userAccount.getUsername().equals(p.getName())){
+                    ua=userAccount;
+                }
+            }
+            if(ua!= null){
+                system.getUserAccountDirectory().getUserAccountList().remove(ua);
             }
 
             JOptionPane.showMessageDialog(null, "You have successfully deleted the account");

@@ -271,18 +271,8 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
                             Employee employee = system.getEmployeeDirectory().createEmployee(name,email);
                             UserAccount account = null;
                             account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new CountryAdminRole());
-                            
-//            if (system.getEnterpriseType() == Enterprise.EnterpriseType.Beneficiary) {
-//                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new BeneficiaryAdminRole());
-//            } else if (system.getEnterpriseType() == Enterprise.EnterpriseType.Entity) {
-//                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new EntityAdminRole());
-//            } else if (system.getEnterpriseType() == Enterprise.EnterpriseType.Government) {
-//                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new GovtAdminRole());
-//            }else if (system.getEnterpriseType() == Enterprise.EnterpriseType.Logistic) {
-//                account = system.getUserAccountDirectory().createUserAccount(username, password, employee, new LogisticAdminRole());
-//            }          
-JOptionPane.showMessageDialog(null, "Useraccount created", "Warning", JOptionPane.WARNING_MESSAGE);
-
+                                     
+                            JOptionPane.showMessageDialog(null, "Useraccount created", "Warning", JOptionPane.WARNING_MESSAGE);
                             populateTable(); 
                             txtEmail.setText("");
                             usernameJTextField.setText("");
@@ -331,17 +321,11 @@ JOptionPane.showMessageDialog(null, "Useraccount created", "Warning", JOptionPan
         } else {
 
             UserAccount p = (UserAccount) enterpriseJTable.getValueAt(selectedRow, 1);
-
-          //  for (CountryNetwork network : system.getNetworkList()) {
-              //  for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                     for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
                         if (p == userAccount) {
                             system.getUserAccountDirectory().getUserAccountList().remove(p);
                             break;
                         }
-
-                   // }
-             //   }
             }
 
             JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
