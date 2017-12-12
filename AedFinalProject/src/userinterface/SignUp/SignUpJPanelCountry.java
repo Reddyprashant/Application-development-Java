@@ -9,6 +9,7 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Network.CountryNetwork;
 import Business.SignUp.SignUpRequestCountry;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.image.BufferedImage;
 import javax.swing.JFileChooser;
@@ -58,6 +59,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         txtPassword = new javax.swing.JPasswordField();
         lblName = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(71, 79, 112));
@@ -130,15 +132,20 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 170, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, -1, -1));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, -1, 0));
 
         lblEmail.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, -1, -1));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, 10, 0));
+
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        try {
+        try {lblWarning.setText("");
+            lblEmail.setText("");
+        lblName.setText("");
             for (WorkRequest workReq : system.getWorkQueue().getWorkRequestList()) {
                 if (workReq instanceof SignUpRequestCountry) {
                     if (((SignUpRequestCountry) workReq).getName().equals(txtName.getText())) {
@@ -154,23 +161,23 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                     return;
                 }
             }
-
-            String password = String.valueOf(txtPassword.getPassword());
-             if (!password.isEmpty()) {
-            if (!Validator.validatePassword(password)) {
-                txtPassword.setText("");
-                return;
-            }
-        }
-             if (!txtEmail.getText().isEmpty()) {
-            if (!Validator.validateEmail(txtEmail.getText())) {
-                lblEmail.setText("*Enter a Valid Email");
-                txtEmail.setText("");
-                return;
-            } else {
-                lblEmail.setText("");
-            }
-        }
+//
+String password = String.valueOf(txtPassword.getPassword());
+//             if (!password.isEmpty()) {
+//            if (!Validator.validatePassword(password)) {
+//                txtPassword.setText("");
+//                return;
+//            }
+//        }
+//             if (!txtEmail.getText().isEmpty()) {
+//            if (!Validator.validateEmail(txtEmail.getText())) {
+//                lblEmail.setText("*Enter a Valid Email");
+//                txtEmail.setText("");
+//                return;
+//            } else {
+//                lblEmail.setText("");
+//            }
+        //}
             if (!txtName.getText().isEmpty()) {
                 if (!txtUserName.getText().isEmpty()) {
                     if (!password.isEmpty()) {
@@ -183,10 +190,14 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                                 countryRequest.setPassword(password);
                                 countryRequest.setEmail(txtEmail.getText());
                                 countryRequest.setStatus("Requested");
+                                if(system.getWorkQueue()== null){
+                                    system.setWorkQueue(new WorkQueue());
+                                }
+                                
                                 system.getWorkQueue().getWorkRequestList().add(countryRequest);
 
                                 JOptionPane.showMessageDialog(null, "Request raised Successfully");
-                                 dB4OUtil.storeSystem(system);
+                                 //dB4OUtil.storeSystem(system);
                                 txtEmail.setText("");
                                 txtPassword.setText("");
                                 txtName.setText("");
@@ -209,7 +220,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Please enter the Name");
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
+            lblWarning.setText(" *Sorry for the inconvinence. Technical team is working on it. Contact poojithsshetty@gmail.com");
         }
 
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -267,6 +278,7 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;

@@ -36,16 +36,17 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private EcoSystem system;
     private BufferedImage file;
     private JFileChooser openFile;
-     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+
     public SignUpJPanelEnterprise(JPanel userProcessContainer, EcoSystem business) {
         initComponents();
         this.system = business;
         this.userProcessContainer = userProcessContainer;
         openFile = new JFileChooser();
         populateComboBox();
-        
+
     }
-    
+
     public void populateComboBox() {
         comboCountry.removeAllItems();
         if (!system.getNetworkList().isEmpty()) {
@@ -235,16 +236,16 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         add(comboState, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 170, -1));
 
         lblEmail.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, -1));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, -1, -1));
 
         lblName1.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, -1, -1));
+        add(lblName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 210, -1, -1));
 
         lblUserName1.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblUserName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, -1, -1));
+        add(lblUserName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, -1, -1));
 
         lblAcceptedUserName.setForeground(new java.awt.Color(0, 204, 51));
-        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
+        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 270, -1, -1));
 
         lblWarning.setForeground(new java.awt.Color(255, 51, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, -1, -1));
@@ -278,18 +279,21 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private void btnCreateStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateStateActionPerformed
         // TODO add your handling code here:
         try {
-           // for (CountryNetwork country : system.getNetworkList()) {
-              //  for (StateNetwork state : country.getStateList()) {
-              StateNetwork states= (StateNetwork) comboState.getSelectedItem();
-                    for (Enterprise enterprise : states.getEnterpriseDirectory().getEnterpriseList()) {
-                        if ((EnterpriseType) comboEnterprise.getSelectedItem() == enterprise.getEnterpriseType()) {
-                            JOptionPane.showMessageDialog(null, "Enterprise Already Present");
-                            return;
-                        }
-                    }
-               // }
-           // }
-            
+            lblAcceptedUserName.setText("");
+            lblUserName1.setText("");
+            lblEmail.setText("");
+            // for (CountryNetwork country : system.getNetworkList()) {
+            //  for (StateNetwork state : country.getStateList()) {
+            StateNetwork states = (StateNetwork) comboState.getSelectedItem();
+            for (Enterprise enterprise : states.getEnterpriseDirectory().getEnterpriseList()) {
+                if ((EnterpriseType) comboEnterprise.getSelectedItem() == enterprise.getEnterpriseType()) {
+                    JOptionPane.showMessageDialog(null, "Enterprise Already Present");
+                    return;
+                }
+            }
+            // }
+            // }
+
             for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
                 for (WorkRequest workReq : userAccount.getWorkQueue().getWorkRequestList()) {
                     if (workReq instanceof SignUpRequestEnterprise) {
@@ -300,7 +304,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
                     }
                 }
             }
-            
+
             String password = String.valueOf(txtPassword.getPassword());
             if (!txtUserName.getText().isEmpty()) {
                 if (!password.isEmpty()) {
@@ -319,7 +323,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
                                 enterpriseRequest.setStatus("Requested");
                                 enterpriseRequest.setEnterprise((Enterprise.EnterpriseType) comboEnterprise.getSelectedItem());
                                 enterpriseRequest.setImage(file);
-                                
+
                                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
                                     if (country.getName().equalsIgnoreCase(userAccount.getUsername())) {
                                         userAccount.getWorkQueue().getWorkRequestList().add(enterpriseRequest);
@@ -328,21 +332,21 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
 
                                 //business.getWorkQueue().getWorkRequestList().add(stateRequest);
                                 JOptionPane.showMessageDialog(null, "Request raised successfully");
-                                 dB4OUtil.storeSystem(system);
+                                //dB4OUtil.storeSystem(system);
                                 txtName.setText("");
                                 txtImage.setText("");
                                 txtEmail.setText("");
                                 txtPassword.setText("");
                                 txtUserName.setText("");
                                 lblAcceptedUserName.setText("");
-                                
+
                             } else {
                                 JOptionPane.showMessageDialog(null, "Please Upload an Image");
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "Please enter Email");
                         }
-                        
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Please enter Name");
                     }
@@ -355,7 +359,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Enter integer for Salary", "Warning", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
-            
+
             JOptionPane.showMessageDialog(null, "Sorry for the inconvinence. Technical team is working on it", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCreateStateActionPerformed
@@ -363,7 +367,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
         // TODO add your handling code here:
         comboState.removeAllItems();
-        
+
         CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
         if (!c.getStateList().isEmpty()) {
             lblWarning.setText("");
@@ -413,11 +417,13 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
             if (!Validator.validateUserName(txtUserName.getText())) {
                 lblUserName1.setText("*Only AlphaNumeric Characters and '_' and '.' are allowed");
                 txtUserName.setText("");
+                lblAcceptedUserName.setText("");
             } else if (!EcoSystem.checkIfUsernameIsUnique(txtUserName.getText())) {
                 lblUserName1.setText("*" + userName + " " + "is already taken please enter new username");
                 txtUserName.setText("");
+                lblAcceptedUserName.setText("");
             } else {
-                
+
                 lblUserName1.setText("");
                 lblAcceptedUserName.setText(userName + " " + "is available");
             }

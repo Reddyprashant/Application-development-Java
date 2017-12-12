@@ -318,22 +318,22 @@ public class SignUpJPanel extends javax.swing.JPanel {
         add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 710, -1, -1));
 
         lblEmail.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, -1));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 350, 20));
 
         lblUserName.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, -1, -1));
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 280, 20));
 
         lblAcceptedUserName.setForeground(new java.awt.Color(0, 204, 0));
-        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, -1, -1));
+        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 230, 200, 10));
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 300, 20));
 
         lblOrganization.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 540, -1, -1));
+        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 570, 280, 20));
 
         lblCity.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 590, -1, -1));
+        add(lblCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 620, 220, 20));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 830, -1, -1));
@@ -426,7 +426,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                                 }
 
                                 JOptionPane.showMessageDialog(null, "Registration successful. Your account will be available in 24 hrs");
-                                 dB4OUtil.storeSystem(system);
+                                 //dB4OUtil.storeSystem(system);
  txtName.setText("");
             txtUserName.setText("");
             txtEmail.setText("");
