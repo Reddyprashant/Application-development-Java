@@ -30,7 +30,8 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
     private EcoSystem system;
     private BufferedImage file;
     private JFileChooser openFile;
-     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+
     public SignUpJPanelCountry(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.system = system;
@@ -132,10 +133,10 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 170, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, -1, 0));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, -1, -1));
 
         lblEmail.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, 10, 0));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, -1, -1));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, -1, -1));
@@ -143,9 +144,11 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        try {lblWarning.setText("");
+        try {
+            lblWarning.setText("");
             lblEmail.setText("");
-        lblName.setText("");
+            lblName.setText("");
+            //Checking if workRequest is already Raised.
             for (WorkRequest workReq : system.getWorkQueue().getWorkRequestList()) {
                 if (workReq instanceof SignUpRequestCountry) {
                     if (((SignUpRequestCountry) workReq).getName().equals(txtName.getText())) {
@@ -154,35 +157,21 @@ public class SignUpJPanelCountry extends javax.swing.JPanel {
                     }
                 }
             }
-
+            //Checking if the WorkRequest completed and country is already added
             for (CountryNetwork cN : system.getNetworkList()) {
                 if (txtName.getText().equals(cN.getName())) {
                     JOptionPane.showMessageDialog(null, "Country Already exists please enter a new country");
                     return;
                 }
             }
-//
-String password = String.valueOf(txtPassword.getPassword());
-//             if (!password.isEmpty()) {
-//            if (!Validator.validatePassword(password)) {
-//                txtPassword.setText("");
-//                return;
-//            }
-//        }
-//             if (!txtEmail.getText().isEmpty()) {
-//            if (!Validator.validateEmail(txtEmail.getText())) {
-//                lblEmail.setText("*Enter a Valid Email");
-//                txtEmail.setText("");
-//                return;
-//            } else {
-//                lblEmail.setText("");
-//            }
-        //}
+            
+            //Adding the workRequest into WorkQueue after checking whether any fields are empty
+            String password = String.valueOf(txtPassword.getPassword());
             if (!txtName.getText().isEmpty()) {
                 if (!txtUserName.getText().isEmpty()) {
                     if (!password.isEmpty()) {
-                        if(!txtEmail.getText().isEmpty()){
-                        if (txtUserName.getText().equalsIgnoreCase(txtName.getText())) {
+                        if (!txtEmail.getText().isEmpty()) {
+                            if (txtUserName.getText().equalsIgnoreCase(txtName.getText())) {
 
                                 SignUpRequestCountry countryRequest = new SignUpRequestCountry();
                                 countryRequest.setUserName(txtUserName.getText());
@@ -190,24 +179,24 @@ String password = String.valueOf(txtPassword.getPassword());
                                 countryRequest.setPassword(password);
                                 countryRequest.setEmail(txtEmail.getText());
                                 countryRequest.setStatus("Requested");
-                                if(system.getWorkQueue()== null){
+                                if (system.getWorkQueue() == null) {
                                     system.setWorkQueue(new WorkQueue());
                                 }
-                                
+
                                 system.getWorkQueue().getWorkRequestList().add(countryRequest);
 
                                 JOptionPane.showMessageDialog(null, "Request raised Successfully");
-                                 //dB4OUtil.storeSystem(system);
+                                //dB4OUtil.storeSystem(system);
                                 txtEmail.setText("");
                                 txtPassword.setText("");
                                 txtName.setText("");
                                 txtUserName.setText("");
 
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Username and Country name should be same");
+                            }
                         } else {
-                            JOptionPane.showMessageDialog(null, "Username and Country name should be same");
-                        }
-                        }else{
-                             JOptionPane.showMessageDialog(null, "Please enter value for emailId ");
+                            JOptionPane.showMessageDialog(null, "Please enter value for emailId ");
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "Please enter value for password ");
@@ -220,13 +209,14 @@ String password = String.valueOf(txtPassword.getPassword());
                 JOptionPane.showMessageDialog(null, "Please enter the Name");
             }
         } catch (Exception ex) {
-            lblWarning.setText(" *Sorry for the inconvinence. Technical team is working on it. Contact poojithsshetty@gmail.com");
+            lblWarning.setText(" *Sorry for the inconvinence. Technical team is working on it. Contact --poojithsshetty@gmail.com");
         }
 
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
         // TODO add your handling code here:
+        //Validations for Name field
         if (!txtName.getText().isEmpty()) {
             if (!Validator.validateName(txtName.getText())) {
                 lblName.setText("*Only Alphabets and Spaces are allowed");
@@ -240,6 +230,7 @@ String password = String.valueOf(txtPassword.getPassword());
 
     private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
         // TODO add your handling code here:
+       //Validations for password
         String password = String.valueOf(txtPassword.getPassword());
         if (!password.isEmpty()) {
             if (!Validator.validatePassword(password)) {
@@ -251,13 +242,13 @@ String password = String.valueOf(txtPassword.getPassword());
                         + "       # no whitespace allowed in the entire string\n"
                         + "       # at least eight characters");
                 txtPassword.setText("");
-                return;
             }
         }
     }//GEN-LAST:event_txtPasswordFocusLost
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
         // TODO add your handling code here:
+        //Validations for Email pattern
         if (!txtEmail.getText().isEmpty()) {
             if (!Validator.validateEmail(txtEmail.getText())) {
                 lblEmail.setText("*Enter a Valid Email");
