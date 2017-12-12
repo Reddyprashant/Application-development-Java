@@ -170,7 +170,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 830, -1, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 740, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed

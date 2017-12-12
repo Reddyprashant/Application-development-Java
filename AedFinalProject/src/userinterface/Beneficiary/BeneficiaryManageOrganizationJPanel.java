@@ -173,7 +173,7 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 110, 40));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 110, 40));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
@@ -225,13 +225,13 @@ public class BeneficiaryManageOrganizationJPanel extends javax.swing.JPanel {
         add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 430, -1, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 51));
-        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 350, -1, -1));
 
         lblCity1.setForeground(new java.awt.Color(255, 0, 51));
-        add(lblCity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
+        add(lblCity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, -1, -1));
 
         lblWarningTable.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblWarningTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, -1));
+        add(lblWarningTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, -1, -1));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, -1, -1));

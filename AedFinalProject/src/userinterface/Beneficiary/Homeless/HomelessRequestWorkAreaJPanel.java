@@ -319,10 +319,10 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 850, 90, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 730, 90, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 740, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed

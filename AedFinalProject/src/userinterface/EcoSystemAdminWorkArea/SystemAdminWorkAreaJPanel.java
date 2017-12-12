@@ -123,7 +123,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageNetworkJButton.setBackground(new java.awt.Color(71, 79, 112));
+        manageNetworkJButton.setBackground(new java.awt.Color(255, 255, 255));
         manageNetworkJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageNetworkJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageNetworkJButton.setText("Manage Network");
@@ -135,7 +135,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(manageNetworkJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 200, 80));
 
-        manageAdminJButton.setBackground(new java.awt.Color(0, 0, 0));
+        manageAdminJButton.setBackground(new java.awt.Color(255, 255, 255));
         manageAdminJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageAdminJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageAdminJButton.setText("Manage Country Admin");
@@ -157,6 +157,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         selectedNodeJLabel.setText("<view_selected_node>");
         jPanel1.add(selectedNodeJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
 
+        btnRequestArea.setBackground(new java.awt.Color(255, 255, 255));
         btnRequestArea.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnRequestArea.setForeground(new java.awt.Color(71, 79, 112));
         btnRequestArea.setText("Manage Request Catalog");

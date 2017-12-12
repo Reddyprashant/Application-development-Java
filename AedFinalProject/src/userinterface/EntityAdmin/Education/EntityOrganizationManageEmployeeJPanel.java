@@ -95,8 +95,11 @@ public class EntityOrganizationManageEmployeeJPanel extends javax.swing.JPanel {
         lblEmail = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        organizationJTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 0, 14)); // NOI18N
+        organizationJTable.setForeground(new java.awt.Color(71, 79, 112));
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -126,62 +129,74 @@ public class EntityOrganizationManageEmployeeJPanel extends javax.swing.JPanel {
             organizationJTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 63, 480, 92));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 480, 92));
 
         addJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        addJButton.setForeground(new java.awt.Color(71, 79, 112));
         addJButton.setText("Create Employee");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 315, -1, -1));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 140, 40));
 
         backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(71, 79, 112));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 315, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 509, 100, 50));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 40, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 40, -1));
 
+        nameJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        nameJTextField.setForeground(new java.awt.Color(71, 79, 112));
         nameJTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 nameJTextFieldFocusLost(evt);
             }
         });
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 126, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 126, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(71, 79, 112));
         jLabel4.setText("View Employee");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 190, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 190, 30));
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(71, 79, 112));
         jLabel5.setText("Create Employee");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 170, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 170, 30));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Email");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 40, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 40, -1));
 
+        txtEmail.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(71, 79, 112));
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtEmailFocusLost(evt);
             }
         });
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 126, -1));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, 126, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, -1, -1));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, -1, -1));
 
         lblEmail.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, -1, -1));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, -1, -1));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed

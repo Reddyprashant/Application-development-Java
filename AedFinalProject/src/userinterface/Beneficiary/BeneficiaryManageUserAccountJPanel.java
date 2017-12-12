@@ -136,11 +136,10 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         roleJComboBox = new javax.swing.JComboBox();
         passwordJTextField = new javax.swing.JPasswordField();
-        lblPassword = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
         lblUserName = new javax.swing.JLabel();
         lblAcceptedUserName = new javax.swing.JLabel();
-        lblUserName2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(71, 79, 112));
@@ -225,7 +224,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
                 backjButton1ActionPerformed(evt);
             }
         });
-        add(backjButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 110, 40));
+        add(backjButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 110, 40));
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
@@ -259,20 +258,19 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
         });
         add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, 150, -1));
 
-        lblPassword.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, 20));
-
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 650, -1, -1));
 
         lblUserName.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, -1, -1));
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 480, -1, -1));
 
         lblAcceptedUserName.setForeground(new java.awt.Color(0, 204, 102));
-        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, -1, -1));
+        add(lblAcceptedUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, -1, -1));
 
-        lblUserName2.setForeground(new java.awt.Color(255, 0, 51));
-        add(lblUserName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(71, 79, 112));
+        jLabel6.setText("Manage User Account Panel");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 390, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
@@ -331,7 +329,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
         if (!nameJTextField.getText().isEmpty()) {
             if (!Validator.validateUserName(nameJTextField.getText())) {
                 lblAcceptedUserName.setText("");
-                lblUserName2.setText("*Only AlphaNumeric Characters and '_' and '.' are allowed");
+                lblUserName.setText("*Only AlphaNumeric Characters and '_' and '.' are allowed");
                 nameJTextField.setText("");
             } else if (!EcoSystem.checkIfUsernameIsUnique(nameJTextField.getText())) {
                 lblAcceptedUserName.setText("");
@@ -339,7 +337,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
                 nameJTextField.setText("");
             } else {
 
-                lblUserName2.setText("");
+                lblUserName.setText("");
                 lblAcceptedUserName.setText(userName + " " + "is available");
             }
         }
@@ -371,11 +369,10 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAcceptedUserName;
-    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUserName;
-    private javax.swing.JLabel lblUserName2;
     private javax.swing.JLabel lblWarning;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox organizationJComboBox;

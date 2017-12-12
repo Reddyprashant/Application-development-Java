@@ -116,7 +116,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageNetworkJButton.setBackground(new java.awt.Color(71, 79, 112));
+        manageNetworkJButton.setBackground(new java.awt.Color(255, 255, 255));
         manageNetworkJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageNetworkJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageNetworkJButton.setText("Manage Network");
@@ -128,7 +128,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(manageNetworkJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 240, 80));
 
-        manageAdminJButton.setBackground(new java.awt.Color(0, 0, 0));
+        manageAdminJButton.setBackground(new java.awt.Color(255, 255, 255));
         manageAdminJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageAdminJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageAdminJButton.setText("Manage Enterprise Admin");
@@ -140,7 +140,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(manageAdminJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 240, 80));
 
-        manageEnterpriseJButton.setBackground(new java.awt.Color(0, 0, 0));
+        manageEnterpriseJButton.setBackground(new java.awt.Color(255, 255, 255));
         manageEnterpriseJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageEnterpriseJButton.setForeground(new java.awt.Color(71, 79, 112));
         manageEnterpriseJButton.setText("Manage Enterprise");
@@ -162,6 +162,7 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
         selectedNodeJLabel.setText("<view_selected_node>");
         jPanel1.add(selectedNodeJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
 
+        btnDisease.setBackground(new java.awt.Color(255, 255, 255));
         btnDisease.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnDisease.setForeground(new java.awt.Color(71, 79, 112));
         btnDisease.setText("Manage Request Catalog");

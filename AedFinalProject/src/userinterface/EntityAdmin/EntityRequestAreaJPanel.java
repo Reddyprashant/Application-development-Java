@@ -183,7 +183,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 670, 110, 40));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 110, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 720, -1, -1));

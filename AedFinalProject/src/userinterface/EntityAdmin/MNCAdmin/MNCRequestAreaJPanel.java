@@ -247,10 +247,10 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 790, 110, 40));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 730, 110, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 51));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 850, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 760, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed

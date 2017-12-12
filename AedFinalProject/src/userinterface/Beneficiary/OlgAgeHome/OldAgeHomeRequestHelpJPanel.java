@@ -171,7 +171,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 130, 40));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 730, 110, 40));
 
         reqComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 126, -1));
@@ -285,7 +285,7 @@ public class OldAgeHomeRequestHelpJPanel extends javax.swing.JPanel {
         add(lblOrganizationName, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, -1, -1));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 730, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 730, -1, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 160, -1, -1));

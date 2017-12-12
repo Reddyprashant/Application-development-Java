@@ -180,7 +180,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 110, 50));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 110, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 51, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, -1, -1));

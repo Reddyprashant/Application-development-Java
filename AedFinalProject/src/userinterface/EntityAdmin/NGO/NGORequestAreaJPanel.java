@@ -249,7 +249,7 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 840, -1, 40));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, -1, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 51, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 710, -1, -1));

@@ -282,7 +282,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 110, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 740, 110, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 780, -1, -1));

@@ -67,7 +67,7 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("              Homeless Admin Work Area");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 630, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 630, 40));
 
         userJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         userJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -78,7 +78,7 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 180, 60));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 180, 80));
 
         manageEmployeeJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         manageEmployeeJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -89,7 +89,7 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 170, 60));
+        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 170, 80));
 
         enterpriseLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(71, 79, 112));
@@ -108,7 +108,7 @@ public class HomelessAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnShelterActionPerformed(evt);
             }
         });
-        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 170, 50));
+        add(btnShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 170, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed

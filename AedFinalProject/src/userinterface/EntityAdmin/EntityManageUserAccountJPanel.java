@@ -179,7 +179,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
                 createUserJButtonActionPerformed(evt);
             }
         });
-        add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, -1, -1));
+        add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, 110, 40));
 
         nameJTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         nameJTextField.setForeground(new java.awt.Color(71, 79, 112));
@@ -228,7 +228,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
             userJTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 375, 179));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 90, 460, 179));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
@@ -252,7 +252,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
                 backjButton1ActionPerformed(evt);
             }
         });
-        add(backjButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 112, -1));
+        add(backjButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 112, 50));
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));
@@ -296,8 +296,9 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 570, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(71, 79, 112));
         jLabel6.setText("Manage User Account");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 310, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed

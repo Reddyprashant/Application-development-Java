@@ -168,7 +168,7 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 850, 110, 40));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 760, 110, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed

@@ -180,7 +180,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
 
         lblWarning.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         lblWarning.setForeground(new java.awt.Color(71, 79, 112));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, 540, 20));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, -1, -1));
 
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +188,7 @@ public class ShelterRequestAreaJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 90, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 90, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed

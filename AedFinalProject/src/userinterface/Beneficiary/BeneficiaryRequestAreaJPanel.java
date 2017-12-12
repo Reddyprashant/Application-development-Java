@@ -103,6 +103,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         lblWarning = new javax.swing.JLabel();
         btnAssignToMe = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -160,7 +161,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 690, 182));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 510, -1, -1));
 
         btnAssignToMe.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnAssignToMe.setForeground(new java.awt.Color(71, 79, 112));
@@ -181,6 +182,16 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 940, 110, 40));
+
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(71, 79, 112));
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -316,11 +327,19 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnAssignToMe;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnServe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

@@ -175,7 +175,7 @@ public class GovernmentManageOrganizationJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 850, 110, 40));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 110, 40));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));

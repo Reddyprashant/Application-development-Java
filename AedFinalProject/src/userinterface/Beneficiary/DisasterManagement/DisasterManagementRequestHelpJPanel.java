@@ -219,7 +219,7 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 850, -1, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, -1, 40));
 
         noVehLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         noVehLabel.setForeground(new java.awt.Color(71, 79, 112));
@@ -291,13 +291,13 @@ public class DisasterManagementRequestHelpJPanel extends javax.swing.JPanel {
         add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, -1, -1));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 51));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 570, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 690, -1, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 51));
-        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, -1, -1));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
 
         lblValue.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
-        add(lblValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
+        add(lblValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
     public void populateComboBox() {
         reqComboBox.removeAllItems();

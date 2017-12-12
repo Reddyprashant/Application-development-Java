@@ -129,7 +129,7 @@ public class ManageCountryNetworkJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 840, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, -1, 40));
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(71, 79, 112));

@@ -251,7 +251,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 690, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 679, 90, 40));
 
         noVehLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         noVehLabel.setForeground(new java.awt.Color(71, 79, 112));

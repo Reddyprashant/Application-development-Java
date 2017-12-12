@@ -86,6 +86,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
         userJButton = new javax.swing.JButton();
+        backjButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -152,6 +153,16 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 350, 170, -1));
+
+        backjButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        backjButton1.setForeground(new java.awt.Color(71, 79, 112));
+        backjButton1.setText("<< Back");
+        backjButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backjButton1ActionPerformed(evt);
+            }
+        });
+        add(backjButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 100, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -274,8 +285,16 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_userJButtonActionPerformed
 
+    private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
+        // TODO add your handling code here:
+        container.remove(this);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.previous(container);
+    }//GEN-LAST:event_backjButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backjButton1;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnServe;
     private javax.swing.JLabel jLabel1;

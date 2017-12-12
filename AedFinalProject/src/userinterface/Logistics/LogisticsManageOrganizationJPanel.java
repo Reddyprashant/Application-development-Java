@@ -166,7 +166,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 100, 40));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 100, 40));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));

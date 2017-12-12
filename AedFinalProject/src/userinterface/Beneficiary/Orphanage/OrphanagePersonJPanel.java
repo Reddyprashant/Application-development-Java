@@ -223,7 +223,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 760, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 749, 120, 40));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
@@ -272,7 +272,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
                 ARadioButtonActionPerformed(evt);
             }
         });
-        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
+        add(ARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, 320, -1));
 
         btnGrpReasons.add(BRadioButton2);
         BRadioButton2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N

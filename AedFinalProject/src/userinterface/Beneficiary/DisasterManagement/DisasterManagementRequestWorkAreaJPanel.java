@@ -228,6 +228,7 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
         reqBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         reqBtn.setForeground(new java.awt.Color(241, 51, 51));
         reqBtn.setText("Request For Help!!!!  >>>>>");
+        reqBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         reqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reqBtnActionPerformed(evt);
@@ -306,7 +307,7 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 420, -1, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed

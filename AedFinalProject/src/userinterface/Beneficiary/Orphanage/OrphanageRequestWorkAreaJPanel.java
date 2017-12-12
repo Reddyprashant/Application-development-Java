@@ -169,7 +169,6 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane3.setForeground(new java.awt.Color(71, 79, 112));
 
-        requestTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         requestTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,7 +197,6 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane4.setForeground(new java.awt.Color(71, 79, 112));
 
-        availableTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         availableTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         availableTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -252,7 +250,7 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 750, 110, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 810, -1, -1));
+        add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 730, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked

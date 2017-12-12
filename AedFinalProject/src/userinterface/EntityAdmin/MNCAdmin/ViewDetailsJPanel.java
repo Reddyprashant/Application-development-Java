@@ -164,7 +164,7 @@ public class ViewDetailsJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 110, 40));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 650, 110, 40));
 
         jLabel6.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(71, 79, 112));

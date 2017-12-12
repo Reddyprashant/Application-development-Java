@@ -195,7 +195,7 @@ public class HospitalViewDetailsJPanel extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 840, 110, 40));
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 110, 40));
 
         reqComboBox.setEditable(false);
         reqComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N

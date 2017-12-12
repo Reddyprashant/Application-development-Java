@@ -196,7 +196,7 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 850, -1, 40));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 780, -1, 40));
 
         btnDelete.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(71, 79, 112));

@@ -239,7 +239,7 @@ public class GovernmentManageUserAccountJPanel extends javax.swing.JPanel {
                 backjButton1ActionPerformed(evt);
             }
         });
-        add(backjButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, 100, 40));
+        add(backjButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, 100, 40));
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(71, 79, 112));

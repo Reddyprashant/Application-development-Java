@@ -105,7 +105,6 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         txtLoc = new javax.swing.JTextField();
         btnLocation = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -176,7 +175,7 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 830, 110, 40));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 110, 40));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
@@ -224,10 +223,6 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
             }
         });
         add(btnLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 410, -1, -1));
-
-        btnBack.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        btnBack.setText("<<Back");
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, -1, -1));
 
         lblName.setForeground(new java.awt.Color(255, 0, 0));
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, -1, -1));
@@ -324,7 +319,6 @@ public class EntityManageOrganizationJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLocation;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;

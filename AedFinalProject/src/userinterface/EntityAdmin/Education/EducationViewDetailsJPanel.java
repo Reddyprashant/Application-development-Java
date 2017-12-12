@@ -197,7 +197,7 @@ public class EducationViewDetailsJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 830, 120, 40));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 120, 40));
 
         reqComboBox.setEditable(false);
         reqComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N

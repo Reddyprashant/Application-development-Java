@@ -90,11 +90,6 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="requestTable">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="3"/>
-              </Border>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans Typewriter" size="14" style="1"/>
             </Property>
@@ -137,11 +132,6 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="availableTable">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="3"/>
-              </Border>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans Typewriter" size="14" style="1"/>
             </Property>
@@ -230,7 +220,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="810" width="-1" height="-1"/>
+          <AbsoluteConstraints x="190" y="730" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

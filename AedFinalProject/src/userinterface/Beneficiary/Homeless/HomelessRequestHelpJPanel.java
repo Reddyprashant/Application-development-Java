@@ -218,7 +218,7 @@ public class HomelessRequestHelpJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 850, -1, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 710, -1, 40));
 
         noVehLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         noVehLabel.setForeground(new java.awt.Color(71, 79, 112));
