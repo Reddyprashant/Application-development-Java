@@ -51,7 +51,7 @@ public static String DISASTER_REQUEST="A Disaster Request has been raised.";
     public static boolean validateName(String name) {
         Pattern pattern;
         Matcher matcher;
-        String NAME_PATTERN = "^[A-Za-z\\s]+$";
+        String NAME_PATTERN = "^[A-Za-z]{1,}[\\s]{0,1}[A-Za-z]{0,}$" ;
         pattern = Pattern.compile(NAME_PATTERN);
         matcher = pattern.matcher(name);
         return matcher.matches();
@@ -60,7 +60,7 @@ public static String DISASTER_REQUEST="A Disaster Request has been raised.";
     public static boolean validateUserName(String name) {
         Pattern pattern;
         Matcher matcher;
-        String NAME_PATTERN = "^[A-Za-z0-9_//.]+$";
+        String NAME_PATTERN = "^[A-Za-z]{1,}[\\._]{0,1}[A-Za-z]{0,}$";
         pattern = Pattern.compile(NAME_PATTERN);
         matcher = pattern.matcher(name);
         return matcher.matches();
