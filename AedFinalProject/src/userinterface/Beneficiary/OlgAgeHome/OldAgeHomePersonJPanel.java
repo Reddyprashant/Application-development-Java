@@ -317,25 +317,25 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("*Education Background:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 540, -1, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 540, 180, -1));
 
         buttonGroupEducation.add(rdBtnHighschoolGrad);
         rdBtnHighschoolGrad.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnHighschoolGrad.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnHighschoolGrad.setText("Highschool Graduate");
-        add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 210, -1));
+        add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, 210, -1));
 
         buttonGroupEducation.add(rdBtnCollegeGrad);
         rdBtnCollegeGrad.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnCollegeGrad.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnCollegeGrad.setText("College Graduate");
-        add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, 180, -1));
+        add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, 180, -1));
 
         buttonGroupEducation.add(rdBtnUneducated);
         rdBtnUneducated.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         rdBtnUneducated.setForeground(new java.awt.Color(71, 79, 112));
         rdBtnUneducated.setText("Uneducated");
-        add(rdBtnUneducated, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 530, 150, -1));
+        add(rdBtnUneducated, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 540, 150, -1));
 
         buttonGroupSex.add(rdBtnMale);
         rdBtnMale.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
