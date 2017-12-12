@@ -69,6 +69,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         populateComboBox();
     }
 
+    //Code to populate Organization Combo Box
     public void populateComboBox() {
         reqComboBox.removeAllItems();
         reqComboBox.addItem(Organization.RequestType.Education);
@@ -128,11 +129,6 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         carBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         carBtn.setForeground(new java.awt.Color(71, 79, 112));
         carBtn.setText("Car");
-        carBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carBtnActionPerformed(evt);
-            }
-        });
         add(carBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, 60, -1));
 
         eventNameTextfield.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
@@ -275,7 +271,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 100, -1));
 
         timelabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        timelabel.setForeground(new java.awt.Color(255, 255, 255));
+        timelabel.setForeground(new java.awt.Color(71, 79, 112));
         timelabel.setText("Pickup Time");
         add(timelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, 100, -1));
 
@@ -294,7 +290,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, -1, -1));
 
         lblValue.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
-        add(lblValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, -1, -1));
+        add(lblValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
         lblWarning.setForeground(new java.awt.Color(255, 51, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 730, -1, -1));
@@ -305,10 +301,6 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void carBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_carBtnActionPerformed
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
         // TODO add your handling code here:
@@ -342,6 +334,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
 
     private void btnRequestHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestHelpActionPerformed
         // TODO add your handling code here:
+        //Code to raise Orphanage Request
         try {
             lblWarning.setText("");
             lblName.setText("");
@@ -365,7 +358,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
                                             requests.setEventDate(date);
                                             requests.setSenderOrganization(organization);
 
-                                            //if(Organization.RequestType.Education.getValue()==request.getValue())
+                                            
                                             requests.setRequestType(request);
                                             requests.setEventName(eventName);
                                             requests.setEventDetails(eventDetails);
@@ -422,7 +415,7 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
                                                     }
                                                 }
                                             }
-                                            System.out.println("type is" + request);
+                                            
                                             if (request == Organization.RequestType.ANY) {
                                                 for (Enterprise enter : state.getEnterpriseDirectory().getEnterpriseList()) {
                                                     if (enter instanceof EntityEnterprise) {
@@ -527,12 +520,10 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        //Back Button
         userProcessContainer.remove(this);
-
         Component[] componentArray = userProcessContainer.getComponents();
         OrphanageRequestWorkAreaJPanel orphanageRequestPanel = (OrphanageRequestWorkAreaJPanel) userProcessContainer.getComponent(componentArray.length - 1);
-        // oldAgeRequestPanel.populateUpdatedTable();
-
         orphanageRequestPanel.populateWorkQueueTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

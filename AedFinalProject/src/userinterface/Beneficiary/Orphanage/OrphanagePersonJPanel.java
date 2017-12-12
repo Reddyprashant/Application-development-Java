@@ -5,14 +5,11 @@
 package userinterface.Beneficiary.Orphanage;
 
 import userinterface.Beneficiary.BeneficiaryPersonViewJPanel;
-import userinterface.Beneficiary.Homeless.*;
 import Business.EcoSystem;
-//import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.GovernmentEnterprise;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-//import Business.Organization.ClinicOrganization;
 import Business.Organization.OrphanageOrganization;
 import Business.Person.Person;
 import Business.UserAccount.UserAccount;
@@ -319,7 +316,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(71, 79, 112));
         jLabel8.setText("*Education Background:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 200, -1));
 

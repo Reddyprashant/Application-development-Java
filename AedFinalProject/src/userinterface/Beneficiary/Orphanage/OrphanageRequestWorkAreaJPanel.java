@@ -3,23 +3,18 @@
  *
  * Created on October 10, 2008, 8:50 AM
  */
-
 package userinterface.Beneficiary.Orphanage;
 
-//import Business.Clinic.Pharmacy;
-//import userinterface.Hospital.Clinic.*;
 import Business.EcoSystem;
-//import userinterface.Hospital.*;
 import Business.Enterprise.Enterprise;
 import Business.Event.Event;
 import Business.Event.EventDirectory;
 import Business.Network.CountryNetwork;
-//import Business.Network.Network;
 import Business.Network.StateNetwork;
 import Business.Organization.OrphanageOrganization;
-//import Business.Supplier.Vaccine;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
@@ -29,73 +24,67 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author  raunak
+ * @author raunak
  */
 public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
-    
+
     private JPanel userProcessContainer;
-    private UserAccount account; 
-    private OrphanageOrganization organization; 
-    private Enterprise enterprise; 
+    private UserAccount account;
+    private OrphanageOrganization organization;
+    private Enterprise enterprise;
     private EcoSystem business;
-    private  StateNetwork state;
+    private StateNetwork state;
     private CountryNetwork country;
-    
-    /** Creates new form AdminWorkAreaJPanel */
-    public OrphanageRequestWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise,StateNetwork network,CountryNetwork cNetwork, EcoSystem business) {
+
+    /**
+     * Creates new form AdminWorkAreaJPanel
+     */
+    public OrphanageRequestWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, OrphanageOrganization organization, Enterprise enterprise, StateNetwork network, CountryNetwork cNetwork, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.account=account;
-        this.business=business;
-        this.organization= organization;
-          this.state=network;
-        this.country=cNetwork;
-       // populateCombo();
-        //populateQuantity();
-       //populateWorkQueueTable();
-       //populateAvailable();
-       
+        this.account = account;
+        this.business = business;
+        this.organization = organization;
+        this.state = network;
+        this.country = cNetwork;
+
     }
-    
+    //Code to Populate Work Queue Table
     public void populateWorkQueueTable() {
         try {
             lblWarning.setText("");
             DefaultTableModel model = (DefaultTableModel) requestTable.getModel();
 
             model.setRowCount(0);
-            if (organization != null) {
-                if (organization.getWorkQueue() != null) {
-                    if (organization.getWorkQueue().getWorkRequestList().size() > 0) {
+            if (organization.getWorkQueue() == null) {
+                organization.setWorkQueue(new WorkQueue());
+            }
+            if (organization.getWorkQueue().getWorkRequestList().size() > 0) {
 
-                        lblWarning.setText("");
-                        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
-                            if (work instanceof BeneficiaryWorkRequest) {
-                                if (((BeneficiaryWorkRequest) work).getEventDate().equals(new Date()) || ((BeneficiaryWorkRequest) work).getEventDate().after(new Date())) {
-                                    Object[] row = new Object[6];
-                                    row[0] = ((BeneficiaryWorkRequest) work).getRequestType();
-                                    row[1] = ((BeneficiaryWorkRequest) work).getEventName();
-                                    row[2] = ((BeneficiaryWorkRequest) work).getEventDate();
-                                    row[3] = ((BeneficiaryWorkRequest) work).getNumberOfVolunteersRequest();
-                                    row[4] = work;
-                                    row[5] = ((BeneficiaryWorkRequest) work).isLogisticRequest();
-                                    model.addRow(row);
-                                }
-                            }
+                lblWarning.setText("");
+                for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
+                    if (work instanceof BeneficiaryWorkRequest) {
+                        if (((BeneficiaryWorkRequest) work).getEventDate().equals(new Date()) || ((BeneficiaryWorkRequest) work).getEventDate().after(new Date())) {
+                            Object[] row = new Object[6];
+                            row[0] = ((BeneficiaryWorkRequest) work).getRequestType();
+                            row[1] = ((BeneficiaryWorkRequest) work).getEventName();
+                            row[2] = ((BeneficiaryWorkRequest) work).getEventDate();
+                            row[3] = ((BeneficiaryWorkRequest) work).getNumberOfVolunteersRequest();
+                            row[4] = work;
+                            row[5] = ((BeneficiaryWorkRequest) work).isLogisticRequest();
+                            model.addRow(row);
                         }
-                    } else {
-                        lblWarning.setText("*There are NO WorkRequests for Homeless People Management");
                     }
-                } else {
-                    lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
                 }
             } else {
-                lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
+                lblWarning.setText("*There are NO WorkRequests for Homeless People Management");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
         }
     }
+    //Code to Populate Availabe Table
     public void populateAvailable(int rows) {
 
         try {
@@ -129,10 +118,11 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
         }
     }
 //    
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -259,9 +249,9 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
 
     private void requestTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestTableMouseClicked
         // TODO add your handling code here:
-        int selectedRow= requestTable.getSelectedRow();
-        if(selectedRow >=0){
-            //JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        int selectedRow = requestTable.getSelectedRow();
+        if (selectedRow >= 0) {
+            
             populateAvailable(selectedRow);
 
         }
@@ -269,6 +259,7 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        //Code to Delete the Work Request
         int selectedRow = requestTable.getSelectedRow();
         if (selectedRow >= 0) {
 
@@ -278,7 +269,7 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
 
                 WorkRequest p = (WorkRequest) requestTable.getValueAt(selectedRow, 4);
 
-                // s.getWorkQueue().getWorkRequestList().remove(p);
+                
                 organization.getWorkQueue().getWorkRequestList().remove(p);
                 account.getWorkQueue().getWorkRequestList().remove(p);
                 business.getWorkQueue().getWorkRequestList().remove(p);
@@ -290,7 +281,7 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
 
     private void reqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqBtnActionPerformed
 
-        OrphanageHomeRequestHelpJPanel muajp = new OrphanageHomeRequestHelpJPanel( userProcessContainer,  account,  organization,  enterprise, state,country, business);
+        OrphanageHomeRequestHelpJPanel muajp = new OrphanageHomeRequestHelpJPanel(userProcessContainer, account, organization, enterprise, state, country, business);
         userProcessContainer.add("OrphanageHomeRequestHelpJPanel", muajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -299,13 +290,13 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-       userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-        
+
     }//GEN-LAST:event_btnBackActionPerformed
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable availableTable;
     private javax.swing.JButton btnBack;
@@ -320,5 +311,5 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton reqBtn;
     private javax.swing.JTable requestTable;
     // End of variables declaration//GEN-END:variables
-    
+
 }
