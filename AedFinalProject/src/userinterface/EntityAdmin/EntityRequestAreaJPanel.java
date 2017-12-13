@@ -83,7 +83,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                             
                         }
                     } else {
-                        lblWarning.setText("*Work Request is not Available");
+                        //lblWarning.setText("*Work Request is not Available");
                         
                     }
                 } else {
@@ -91,7 +91,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                     
                 }
             } else {
-                lblWarning.setText("*Enterprise is not Available");
+                //lblWarning.setText("*Enterprise is not Available");
                 
             }
         } catch (Exception ex) {

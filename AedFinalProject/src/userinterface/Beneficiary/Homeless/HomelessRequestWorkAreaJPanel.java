@@ -81,7 +81,7 @@ public class HomelessRequestWorkAreaJPanel extends javax.swing.JPanel {
                 }
 
             } else {
-                lblWarning.setText("*NO Work Request is Available");
+                //lblWarning.setText("*NO Work Request is Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");

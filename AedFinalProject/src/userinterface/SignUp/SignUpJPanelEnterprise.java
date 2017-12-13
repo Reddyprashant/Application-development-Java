@@ -69,7 +69,7 @@ public class SignUpJPanelEnterprise extends javax.swing.JPanel {
             btnFile.setEnabled(false);
             btnCreateState.setEnabled(false);
 //            JOptionPane.showMessageDialog(null, "System is not available for the country, please contact the system administrator");
-            lblWarning.setText("*System is not available for the country, please contact the system administrator");
+            lblWarning.setText("* Country is not available, please raise a request for country  ");
         }
     }
 

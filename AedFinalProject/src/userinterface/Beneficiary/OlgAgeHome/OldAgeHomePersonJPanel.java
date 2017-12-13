@@ -85,7 +85,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
                 for (Person person : organization.getPersonList().getPersonList()) {
 
                     Object[] row = new Object[5];
-                    row[0] = person.getPersonId();
+                    row[0] = person.getName();
                     row[1] = person;
                     row[2] = person.getAge();
                     row[3] = person.getSex();
@@ -164,7 +164,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Name", "Age", "Sex", "Date Of Joining"
+                "Name", "ID", "Age", "Sex", "Date Of Joining"
             }
         ) {
             Class[] types = new Class [] {

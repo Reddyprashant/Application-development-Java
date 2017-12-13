@@ -78,7 +78,7 @@ public class OldAgeHomeRequestWorkAreaJPanel extends javax.swing.JPanel {
                     }
                 }
             } else {
-                lblWarning.setText("*There are NO WorkRequests for Homeless People Management");
+                //lblWarning.setText("*There are NO WorkRequests for Homeless People Management");
             }
 
         } catch (Exception ex) {

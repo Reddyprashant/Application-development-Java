@@ -79,7 +79,7 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
                     }
                 }
             } else {
-                lblWarning.setText("*There are NO WorkRequests for Homeless People Management");
+                //lblWarning.setText("*There are NO WorkRequests for Homeless People Management");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");

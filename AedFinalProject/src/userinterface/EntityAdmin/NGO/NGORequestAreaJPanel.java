@@ -78,7 +78,7 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
 
                 }
             } else {
-                lblWarning.setText("*Work Request is not Available");
+                //lblWarning.setText("*Work Request is not Available");
             }
             if (enterprise.getWorkQueue() == null) {
                 enterprise.setWorkQueue(new WorkQueue());
@@ -98,7 +98,7 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
                     }
                 }
             } else {
-                lblWarning.setText("*Work Request is not Available");
+                //lblWarning.setText("*Work Request is not Available");
 
             }
 

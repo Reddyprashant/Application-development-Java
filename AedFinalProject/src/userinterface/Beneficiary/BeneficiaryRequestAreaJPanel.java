@@ -84,7 +84,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
                     }
                 }
             } else {
-                lblWarning.setText("*NO WorkRequest is Available");
+                //lblWarning.setText("*NO WorkRequest is Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");

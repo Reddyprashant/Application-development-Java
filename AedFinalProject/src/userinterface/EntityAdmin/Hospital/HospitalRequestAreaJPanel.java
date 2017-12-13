@@ -80,7 +80,7 @@ public class HospitalRequestAreaJPanel extends javax.swing.JPanel {
 
                 }
             } else {
-                lblWarning.setText("*NO Work requests Available");
+                //lblWarning.setText("*NO Work requests Available");
             }
             if (enterprise.getWorkQueue() == null) {
                 enterprise.setWorkQueue(new WorkQueue());
@@ -100,7 +100,7 @@ public class HospitalRequestAreaJPanel extends javax.swing.JPanel {
 
                 }
             } else {
-                lblWarning.setText("*NO Work requests Available");
+               // lblWarning.setText("*NO Work requests Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
@@ -130,7 +130,7 @@ public class HospitalRequestAreaJPanel extends javax.swing.JPanel {
                 }
 
             } else {
-                lblWarning.setText("*NO Events Available");
+                //lblWarning.setText("*NO Events Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");

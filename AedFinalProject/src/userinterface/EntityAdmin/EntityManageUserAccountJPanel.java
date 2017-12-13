@@ -119,7 +119,7 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
                                     ((DefaultTableModel) userJTable.getModel()).addRow(row);
                                 }
                             } else {
-                                lblWarning.setText("*User Accounts are not present");
+                               // lblWarning.setText("*User Accounts are not present");
                             }
                         } else {
                             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
@@ -308,6 +308,8 @@ public class EntityManageUserAccountJPanel extends javax.swing.JPanel {
         //Creating User Account for Entity
         try {
             lblWarning.setText("");
+            lblAcceptedUserName.setText("");
+            lblUserName.setText("");
             String userName = nameJTextField.getText();
             String password = String.valueOf(pwdFiledPassword.getPassword());
             if (!(userName.equals(""))) {                                                               // checking whether the username is empty     

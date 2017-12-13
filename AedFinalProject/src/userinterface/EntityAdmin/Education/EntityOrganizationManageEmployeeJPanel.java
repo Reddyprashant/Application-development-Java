@@ -65,7 +65,7 @@ public class EntityOrganizationManageEmployeeJPanel extends javax.swing.JPanel {
                     model.addRow(row);
                 }
             } else {
-                lblWarning.setText("*NO Employees are Available");
+                //lblWarning.setText("*NO Employees are Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");

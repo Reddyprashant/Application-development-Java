@@ -107,7 +107,7 @@ public class EducationRequestAreaJPanel extends javax.swing.JPanel {
                             }
                         }
                     } else {
-                        lblWarning.setText("*Work Request is not present");
+                        //lblWarning.setText("*Work Request is not present");
                     }
                 } else {
                     lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");
@@ -143,7 +143,7 @@ public class EducationRequestAreaJPanel extends javax.swing.JPanel {
                 }
 
             } else {
-                lblWarning.setText("*NO Events are present");
+                //lblWarning.setText("*NO Events are present");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");

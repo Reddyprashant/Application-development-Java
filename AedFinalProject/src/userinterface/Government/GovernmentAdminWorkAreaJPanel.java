@@ -67,7 +67,7 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         userJButton.setBackground(new java.awt.Color(255, 255, 255));
         userJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        userJButton.setForeground(new java.awt.Color(255, 255, 255));
+        userJButton.setForeground(new java.awt.Color(71, 79, 112));
         userJButton.setText("Manage User");
         userJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         userJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -119,8 +119,9 @@ public class GovernmentAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(btnAnalytics, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 700, 170, 80));
 
+        btnRequest.setBackground(new java.awt.Color(255, 255, 255));
         btnRequest.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        btnRequest.setForeground(new java.awt.Color(255, 255, 255));
+        btnRequest.setForeground(new java.awt.Color(71, 79, 112));
         btnRequest.setText("Manage Request");
         btnRequest.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnRequest.addActionListener(new java.awt.event.ActionListener() {

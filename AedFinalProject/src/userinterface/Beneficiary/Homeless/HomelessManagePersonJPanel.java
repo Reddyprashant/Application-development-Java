@@ -98,7 +98,7 @@ public class HomelessManagePersonJPanel extends javax.swing.JPanel {
                     model.addRow(row);
                 }
             } else {
-                lblWarningTable.setText("*NO Data for Person is Available");
+                //lblWarningTable.setText("*NO Data for Person is Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");

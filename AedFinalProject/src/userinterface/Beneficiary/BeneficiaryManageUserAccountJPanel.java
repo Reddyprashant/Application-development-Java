@@ -74,7 +74,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
                 }
 
             } else {
-                lblWarning.setText("*NO Employee is present for this Organization");
+                //lblWarning.setText("*NO Employee is present for this Organization");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
@@ -92,7 +92,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
                     roleJComboBox.addItem(role);
                 }
             } else {
-                lblWarning.setText("*NO Roles are Available in this organization");
+                //lblWarning.setText("*NO Roles are Available in this organization");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");
@@ -123,7 +123,7 @@ public class BeneficiaryManageUserAccountJPanel extends javax.swing.JPanel {
                     }
                 }
             } else {
-                lblWarning.setText("*NO Organization is Available");
+                //lblWarning.setText("*NO Organization is Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it");

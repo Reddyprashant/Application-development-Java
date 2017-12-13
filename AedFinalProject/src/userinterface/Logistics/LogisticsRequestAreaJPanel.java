@@ -80,7 +80,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                     }
                 }
             } else {
-                lblWarning.setText("*Work Request is not Available");
+                //lblWarning.setText("*Work Request is not Available");
             }
         } catch (Exception ex) {
             lblWarning.setText("*Sorry for the inconvinence. System is down, technical team is working on it. Contact -- poojithsShetty@gmail.com");

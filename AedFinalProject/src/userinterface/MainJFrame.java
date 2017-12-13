@@ -31,6 +31,7 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    public static int fail = 0;
 
     public MainJFrame() {
         initComponents();
@@ -179,7 +180,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
-        System.out.println("event" + evt);
+
         String userName = userNameJTextField.getText();
         // Get Password
         char[] passwordCharArray = passwordField.getPassword();
@@ -211,6 +212,8 @@ public class MainJFrame extends javax.swing.JFrame {
                                     inOrganization = organization;
                                     inNetwork = network;
                                     outNetwork = cnetwork;
+                                    userNameJTextField.setEnabled(false);
+                                    passwordField.setEnabled(false);
                                     break;
                                 }
                             }
@@ -218,6 +221,8 @@ public class MainJFrame extends javax.swing.JFrame {
                             inNetwork = network;
                             inEnterprise = enterprise;
                             outNetwork = cnetwork;
+                            userNameJTextField.setEnabled(false);
+                            passwordField.setEnabled(false);
                             break;
                         }
                         if (inOrganization != null) {
@@ -238,7 +243,20 @@ public class MainJFrame extends javax.swing.JFrame {
         }
 
         if (userAccount == null) {
+            fail++;
             JOptionPane.showMessageDialog(null, "Invalid Credentails!");
+            userNameJTextField.setText("");
+            passwordField.setText("");
+            if (fail == 3) {
+                try {
+                    JOptionPane.showMessageDialog(null, "Wrong password 3 times. Try after 30 secs.");
+                   
+                    Thread.sleep(2000);
+
+                } catch (InterruptedException ex) {
+                    return;
+                }
+            }
             return;
         } else {
             CardLayout layout = (CardLayout) container.getLayout();
@@ -249,8 +267,8 @@ public class MainJFrame extends javax.swing.JFrame {
         loginJButton.setEnabled(false);
         btnSignUp.setEnabled(false);
         logoutJButton.setEnabled(true);
-        userNameJTextField.setEnabled(false);
-        passwordField.setEnabled(false);
+//        userNameJTextField.setEnabled(false);
+//        passwordField.setEnabled(false);
 
     }//GEN-LAST:event_loginJButtonActionPerformed
 
@@ -356,6 +374,7 @@ public class MainJFrame extends javax.swing.JFrame {
             logoutJButton.setEnabled(true);
             userNameJTextField.setEnabled(false);
             passwordField.setEnabled(false);
+
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
 
@@ -363,19 +382,19 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
         StateNetwork s = (StateNetwork) comboState.getSelectedItem();
-        if(c!= null && s != null){
-        HomelessFoundJPanel manageOrganizationJPanel = new HomelessFoundJPanel(container, null, null, null, s, c, system);
-        container.add("HomelessFoundJPanel1", manageOrganizationJPanel);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.next(container);
-        }else{
+        if (c != null && s != null) {
+            HomelessFoundJPanel manageOrganizationJPanel = new HomelessFoundJPanel(container, null, null, null, s, c, system);
+            container.add("HomelessFoundJPanel1", manageOrganizationJPanel);
+            CardLayout layout = (CardLayout) container.getLayout();
+            layout.next(container);
+        } else {
             JOptionPane.showMessageDialog(null, "Please select the state and country");
         }
     }//GEN-LAST:event_btnHomelessActionPerformed
 
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
         // TODO add your handling code here:
-        
+
         CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
         if (c != null) {
             comboState.removeAllItems();
