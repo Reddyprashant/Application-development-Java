@@ -69,47 +69,53 @@ public class MainJFrame extends javax.swing.JFrame {
         btnSignUp = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnHomeless = new javax.swing.JButton();
-        lblWelcome = new javax.swing.JLabel();
         comboCountry = new javax.swing.JComboBox();
         comboState = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jSplitPane1.setDividerLocation(200);
-        jSplitPane1.setDividerSize(10);
+        jSplitPane1.setDividerLocation(120);
+        jSplitPane1.setDividerSize(5);
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jPanel1.setBackground(new java.awt.Color(71, 79, 112));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        loginJButton.setBackground(new java.awt.Color(0, 0, 0));
-        loginJButton.setForeground(new java.awt.Color(255, 255, 255));
+        loginJButton.setBackground(new java.awt.Color(255, 255, 255));
+        loginJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        loginJButton.setForeground(new java.awt.Color(71, 79, 112));
         loginJButton.setText("Login");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(loginJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 100, -1));
-        jPanel1.add(userNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 118, -1));
+        jPanel1.add(loginJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 100, 40));
+        jPanel1.add(userNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 118, -1));
 
         passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 passwordFieldKeyPressed(evt);
             }
         });
-        jPanel1.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 118, -1));
+        jPanel1.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 118, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("User Name");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
         jPanel1.add(loginJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, -1));
 
+        logoutJButton.setBackground(new java.awt.Color(0, 0, 0));
+        logoutJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        logoutJButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutJButton.setText("Logout");
         logoutJButton.setEnabled(false);
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -117,15 +123,17 @@ public class MainJFrame extends javax.swing.JFrame {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 100, -1));
+        jPanel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 100, 40));
 
-        btnSignUp.setText("Sign Up");
+        btnSignUp.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnSignUp.setForeground(new java.awt.Color(71, 79, 112));
+        btnSignUp.setText("Register");
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignUpActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 100, -1));
+        jPanel1.add(btnSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 140, 50));
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -135,33 +143,43 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
 
+        btnHomeless.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        btnHomeless.setForeground(new java.awt.Color(213, 10, 18));
         btnHomeless.setText("Homeless Found");
         btnHomeless.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHomelessActionPerformed(evt);
             }
         });
-        jPanel1.add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 110, 30));
-
-        lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 40));
+        jPanel1.add(btnHomeless, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 40, 170, 40));
 
         comboCountry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCountryActionPerformed(evt);
             }
         });
-        jPanel1.add(comboCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 110, -1));
+        jPanel1.add(comboCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, 110, -1));
 
-        jPanel1.add(comboState, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 110, -1));
+        jPanel1.add(comboState, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 70, 110, -1));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Country");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 30, 60, -1));
+
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("State");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 70, 50, -1));
 
         jSplitPane1.setLeftComponent(jPanel1);
 
         container.setBackground(new java.awt.Color(255, 255, 255));
         container.setLayout(new java.awt.CardLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
-        container.add(jLabel3, "card2");
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
+        container.add(jLabel6, "card2");
 
         jSplitPane1.setRightComponent(container);
 
@@ -237,7 +255,7 @@ public class MainJFrame extends javax.swing.JFrame {
             CardLayout layout = (CardLayout) container.getLayout();
             container.add("workArea", userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, inNetwork, outNetwork, system));
             layout.next(container);
-            lblWelcome.setText("Welcome" + userAccount.getEmployee().getName());
+            //lblWelcome.setText("Welcome" + userAccount.getEmployee().getName());
         }
         loginJButton.setEnabled(false);
         btnSignUp.setEnabled(false);
@@ -376,6 +394,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed
         // TODO add your handling code here:
+        
         CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
         if (c != null) {
             comboState.removeAllItems();
@@ -428,10 +447,11 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JLabel lblWelcome;
     private javax.swing.JButton loginJButton;
     private javax.swing.JLabel loginJLabel;
     private javax.swing.JButton logoutJButton;

@@ -144,7 +144,7 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
         jLabel1.setText("Disaster Work Area -Adminstrative Role");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 570, -1));
 
-        reqBtn.setBackground(new java.awt.Color(0, 0, 0));
+        reqBtn.setBackground(new java.awt.Color(255, 255, 255));
         reqBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         reqBtn.setForeground(new java.awt.Color(241, 51, 51));
         reqBtn.setText("Request For Help!!!!  >>>>>");
@@ -291,7 +291,6 @@ public class DisasterManagementRequestWorkAreaJPanel extends javax.swing.JPanel 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable availableTable;
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
