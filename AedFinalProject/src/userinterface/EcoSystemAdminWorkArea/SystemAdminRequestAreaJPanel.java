@@ -237,7 +237,7 @@ public class SystemAdminRequestAreaJPanel extends javax.swing.JPanel {
             if (p.getReceiver() != null) {
                 if (p.getStatus().equals("Pending")) {
                     try{
-                    Validator.sendMessage(p.getEmail());
+                    Validator.sendMessage(p.getEmail(),Validator.ACCOUNT_ACTIVATION);
                     }
                     catch(SendFailedException s){
                         JOptionPane.showMessageDialog(null, "Wrong email Id given in this request.");

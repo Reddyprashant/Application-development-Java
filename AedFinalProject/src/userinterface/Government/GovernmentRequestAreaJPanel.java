@@ -224,7 +224,7 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
                         if (p instanceof SignUpRequestOrganization) {
                             orgRequest = (SignUpRequestOrganization) p;
                              try {
-                                Validator.sendMessage(p.getEmail());
+                                Validator.sendMessage(p.getEmail(), Validator.ACCOUNT_ACTIVATION);
                             } catch (SendFailedException ex) {
                                 JOptionPane.showMessageDialog(null, "User has a wrong email address");
                                 p.setStatus("Cancelled");

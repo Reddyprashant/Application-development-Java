@@ -12,13 +12,10 @@ import Business.Role.CountryAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import userinterface.CountryAdminWorkAreas.CountryAdminWorkAreaJPanel;
 import utility.Validator;
 
 /**
@@ -48,16 +45,13 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (CountryNetwork network : system.getNetworkList()) {
-          //  for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (UserAccount userAccount : system.getUserAccountDirectory().getUserAccountList()) {
                     if(network.getName().equalsIgnoreCase(userAccount.getUsername())){
                     Object[] row = new Object[2];
-                   // row[0] = enterprise.getName();
                     row[0] = network;
                     row[1] = userAccount;
 
                     model.addRow(row);
-           //     }
                     }
             }
         }
@@ -262,7 +256,7 @@ public class ManageCountryAdminJPanel extends javax.swing.JPanel {
                         if (EcoSystem.checkIfUsernameIsUnique(username)) {
                             
                              try {
-                                 Validator.sendMessage(email);
+                                 Validator.sendMessage(email,Validator.ACCOUNT_ACTIVATION);
                              } catch (SendFailedException ex) {
                                   JOptionPane.showMessageDialog(null, "Wrong email id. Requested cannot be processed");
                                  return;

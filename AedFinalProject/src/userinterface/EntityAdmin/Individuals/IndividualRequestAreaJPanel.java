@@ -257,7 +257,7 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
                     if (p.isLogisticRequest() == true && p.getNumberOfVolunteersRequest() == 0) {
                         try {
                             p.setStatus("Complete");
-                            Validator.sendMessage(p.getSender().getEmployee().getEmailId());
+                            Validator.sendMessage(p.getSender().getEmployee().getEmailId(), Validator.EVENT_REQUEST);
                         } catch (SendFailedException ex) {
                             
                         }

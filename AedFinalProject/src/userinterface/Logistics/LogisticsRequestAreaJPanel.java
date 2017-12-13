@@ -236,7 +236,7 @@ public class LogisticsRequestAreaJPanel extends javax.swing.JPanel {
                             }
 
                             try {
-                                Validator.sendMessage(p.getEmail());
+                                Validator.sendMessage(p.getEmail(), Validator.ACCOUNT_ACTIVATION);
                             } catch (SendFailedException ex) {
                                 JOptionPane.showMessageDialog(null, "User has a wrong email address");
                                 p.setStatus("Cancelled");

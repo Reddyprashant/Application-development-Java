@@ -129,38 +129,42 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnBack.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnBack.setText("<< Back ");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, -1, -1));
-        jPanel1.add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 320, 280));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 130, 110, 40));
+        jPanel1.add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 320, 280));
 
-        jButton1.setText("Valid");
+        jButton1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jButton1.setText("Valid Request");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 150, 40));
 
-        jButton2.setText("Invalid");
+        jButton2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        jButton2.setText("Invalid Request");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 160, 40));
 
+        btnHome.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHomeActionPerformed(evt);
             }
         });
-        jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, -1, 30));
+        jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 40, 110, 40));
 
         jSplitPane2.setRightComponent(jPanel1);
 

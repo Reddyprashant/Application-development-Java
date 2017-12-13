@@ -266,7 +266,7 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
                             if (organization.populateDistance(latLong) < 5) {
                                 for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
                                     try {
-                                        Validator.sendMessage(employee.getEmailId());
+                                        Validator.sendMessage(employee.getEmailId(), Validator.HOMELESS_FOUND);
                                     } catch (SendFailedException s) {
 
                                     }
@@ -278,7 +278,7 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
                                 System.out.println("Distance 10 " + organization.getName() + " : " + organization.populateDistance(latLong));
                                 for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
                                     try {
-                                        Validator.sendMessage(employee.getEmailId());
+                                        Validator.sendMessage(employee.getEmailId(),Validator.HOMELESS_FOUND);
                                     } catch (SendFailedException s) {
 
                                     }
@@ -288,7 +288,7 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
                                 System.out.println("Distance " + organization.getName() + " : " + organization.populateDistance(latLong));
                                 for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
                                     try {
-                                        Validator.sendMessage(employee.getEmailId());
+                                        Validator.sendMessage(employee.getEmailId(),Validator.HOMELESS_FOUND);
                                     } catch (SendFailedException s) {
 
                                     }

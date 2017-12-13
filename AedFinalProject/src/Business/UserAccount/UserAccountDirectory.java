@@ -7,6 +7,7 @@ package Business.UserAccount;
 import Business.Employee.Employee;
 import Business.Role.Role;
 import java.util.ArrayList;
+import utility.Validator;
 
 /**
  *
@@ -25,11 +26,13 @@ public class UserAccountDirectory {
     }
     
     public UserAccount authenticateUser(String username, String password){
-        
-        for (UserAccount ua : userAccountList)
-            if (ua.getUsername().equals(username) && ua.getPassword().equals(password)){
+            
+        for (UserAccount ua : userAccountList){
+            
+            if (ua.getUsername().equalsIgnoreCase(username) && ua.getPassword().equals(Validator.generateHash(password))){
                 return ua;
             }
+        }
         
         return null;
     }
@@ -46,7 +49,7 @@ public class UserAccountDirectory {
     
     public boolean checkIfUsernameIsUnique(String username){
         for (UserAccount ua : userAccountList){
-            if (ua.getUsername().equals(username))
+            if (ua.getUsername().equalsIgnoreCase(username))
                 return false;
         }
         return true;

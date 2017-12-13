@@ -295,7 +295,7 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
                     }
                      try {
                            
-                            Validator.sendMessage(p.getSender().getEmployee().getEmailId());
+                            Validator.sendMessage(p.getSender().getEmployee().getEmailId(),Validator.EVENT_REQUEST);
                            
                         } catch (SendFailedException ex) {
                              return;

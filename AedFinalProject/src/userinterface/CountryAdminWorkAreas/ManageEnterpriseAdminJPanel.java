@@ -285,7 +285,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name,email);
         if (EcoSystem.checkIfUsernameIsUnique(username)) {
             try {
-                Validator.sendMessage(txtEmail.getText());
+                Validator.sendMessage(txtEmail.getText(),Validator.ACCOUNT_ACTIVATION);
             } catch (SendFailedException ex) {
                // Logger.getLogger(ManageEnterpriseAdminJPanel.class.getName()).log(Level.SEVERE, null, ex);
                JOptionPane.showMessageDialog(null, "Wrong emailId entered. ");

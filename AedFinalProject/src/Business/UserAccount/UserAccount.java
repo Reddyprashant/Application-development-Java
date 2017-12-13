@@ -7,6 +7,7 @@ package Business.UserAccount;
 import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
+import utility.Validator;
 
 /**
  *
@@ -43,7 +44,7 @@ public class UserAccount {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = Validator.generateHash(password);
     }
 
     public Role getRole() {

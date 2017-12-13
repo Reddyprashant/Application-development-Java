@@ -330,7 +330,7 @@ public class EducationRequestAreaJPanel extends javax.swing.JPanel {
                     if (p.getNumberOfVolunteersRequest() == 0 && p.isLogisticRequest() == true) {
                         try {
                             p.setStatus("Complete");
-                            Validator.sendMessage(p.getSender().getEmployee().getEmailId());
+                            Validator.sendMessage(p.getSender().getEmployee().getEmailId(), Validator.EVENT_REQUEST);
                         } catch (SendFailedException ex) {
                             // Logger.getLogger(EducationRequestAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
                         }

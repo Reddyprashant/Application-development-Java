@@ -139,13 +139,14 @@ public class DisplayNearestOrgJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, 30));
 
+        confirmBtn.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         confirmBtn.setText("Confirm");
         confirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(confirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, -1, -1));
+        jPanel1.add(confirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 100, 40));
 
         jSplitPane2.setRightComponent(jPanel1);
 
@@ -190,7 +191,7 @@ public class DisplayNearestOrgJPanel extends javax.swing.JPanel {
         for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
             
             try {
-                Validator.sendMessage(employee.getEmailId());
+                Validator.sendMessage(employee.getEmailId(),Validator.WILLING_TO_SERVE);
                 JOptionPane.showMessageDialog(null, "Your arrival has been notified the Manager of this organization.");
             } catch (SendFailedException ex) {
                // Logger.getLogger(DisplayNearestOrgJPanel.class.getName()).log(Level.SEVERE, null, ex);

@@ -263,7 +263,7 @@ public class BeneficiaryRequestAreaJPanel extends javax.swing.JPanel {
                             CountryNetwork country = orgRequest.getCountry();
                             StateNetwork state = orgRequest.getState();
                             try {
-                                Validator.sendMessage(p.getEmail());
+                                Validator.sendMessage(p.getEmail(), Validator.ACCOUNT_ACTIVATION);
                             } catch (SendFailedException ex) {
                                 JOptionPane.showMessageDialog(null, "User has a wrong email address");
                                 p.setStatus("Cancelled");

@@ -237,7 +237,7 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
                 if (p.getStatus().equals("Pending")) {
                     if (p instanceof SignUpRequestOrganization) {
                         try {
-                            Validator.sendMessage(p.getEmail());
+                            Validator.sendMessage(p.getEmail(),Validator.ACCOUNT_ACTIVATION);
                         } catch (SendFailedException ex) {
                             JOptionPane.showMessageDialog(null, "User has a wrong email address");
                             p.setStatus("Cancelled");

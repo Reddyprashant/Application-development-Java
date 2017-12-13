@@ -233,7 +233,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
                     } else if (p instanceof SignUpRequestEnterprise) {
                         e = (SignUpRequestEnterprise) p;
                         try {
-                            Validator.sendMessage(p.getEmail());
+                            Validator.sendMessage(p.getEmail(),Validator.ACCOUNT_ACTIVATION);
                         } catch (SendFailedException ex) {
                             JOptionPane.showMessageDialog(null, "User has a wrong email address");
                             p.setStatus("Cancelled");
