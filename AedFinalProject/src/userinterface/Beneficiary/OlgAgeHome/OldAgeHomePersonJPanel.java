@@ -252,7 +252,7 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
         buttonGroupReason.add(ARadioButton);
         ARadioButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        ARadioButton.setForeground(new java.awt.Color(71, 79, 112));
+        ARadioButton.setForeground(new java.awt.Color(255, 255, 255));
         ARadioButton.setText("Individual and relational factors");
         ARadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,13 +321,13 @@ public class OldAgeHomePersonJPanel extends javax.swing.JPanel {
 
         buttonGroupEducation.add(rdBtnHighschoolGrad);
         rdBtnHighschoolGrad.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        rdBtnHighschoolGrad.setForeground(new java.awt.Color(71, 79, 112));
+        rdBtnHighschoolGrad.setForeground(new java.awt.Color(255, 255, 255));
         rdBtnHighschoolGrad.setText("Highschool Graduate");
         add(rdBtnHighschoolGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, 210, -1));
 
         buttonGroupEducation.add(rdBtnCollegeGrad);
         rdBtnCollegeGrad.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        rdBtnCollegeGrad.setForeground(new java.awt.Color(71, 79, 112));
+        rdBtnCollegeGrad.setForeground(new java.awt.Color(255, 255, 255));
         rdBtnCollegeGrad.setText("College Graduate");
         add(rdBtnCollegeGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, 180, -1));
 

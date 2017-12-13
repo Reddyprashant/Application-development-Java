@@ -253,7 +253,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
 
         btnGrpReasons.add(ARadioButton);
         ARadioButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
-        ARadioButton.setForeground(new java.awt.Color(71, 79, 112));
+        ARadioButton.setForeground(new java.awt.Color(255, 255, 255));
         ARadioButton.setText("Individual and relational factors");
         ARadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -388,7 +388,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
                 btnViewDetailsActionPerformed(evt);
             }
         });
-        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 130, 30));
+        add(btnViewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 140, 40));
 
         jLabel11.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(71, 79, 112));
@@ -407,7 +407,7 @@ public class OrphanagePersonJPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 140, 30));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 140, 40));
 
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 820, -1, -1));

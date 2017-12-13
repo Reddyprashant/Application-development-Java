@@ -124,7 +124,6 @@ public class EntityRequestAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane1.setForeground(new java.awt.Color(71, 79, 112));
 
-        tblReq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         tblReq.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

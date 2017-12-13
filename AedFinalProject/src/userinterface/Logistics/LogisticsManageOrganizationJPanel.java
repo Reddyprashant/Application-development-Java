@@ -155,7 +155,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(71, 79, 112));
         jLabel1.setText("Organization Type ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 340, 160, 20));
 
         backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         backJButton.setForeground(new java.awt.Color(71, 79, 112));
@@ -170,7 +170,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(71, 79, 112));
         jLabel2.setText("Organization Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 370, 150, -1));
 
         orgNameTextField.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         orgNameTextField.setForeground(new java.awt.Color(71, 79, 112));
@@ -184,7 +184,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(71, 79, 112));
         jLabel3.setText("Organization City");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 410, 150, -1));
 
         txtcity.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         txtcity.setForeground(new java.awt.Color(71, 79, 112));
@@ -198,7 +198,7 @@ public class LogisticsManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel18.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(71, 79, 112));
         jLabel18.setText("Location :");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, 100, -1));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, 110, -1));
 
         txtLoc.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         txtLoc.setForeground(new java.awt.Color(71, 79, 112));

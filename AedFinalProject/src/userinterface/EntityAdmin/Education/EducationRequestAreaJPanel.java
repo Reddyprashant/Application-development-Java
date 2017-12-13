@@ -178,7 +178,6 @@ public class EducationRequestAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane1.setForeground(new java.awt.Color(71, 79, 112));
 
-        tblReq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         tblReq.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         tblReq.setForeground(new java.awt.Color(71, 79, 112));
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
@@ -203,7 +202,6 @@ public class EducationRequestAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane2.setForeground(new java.awt.Color(71, 79, 112));
 
-        UpdatedJTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         UpdatedJTable.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         UpdatedJTable.setForeground(new java.awt.Color(71, 79, 112));
         UpdatedJTable.setModel(new javax.swing.table.DefaultTableModel(

@@ -156,7 +156,6 @@ public class CountryAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         selectedNodeJLabel.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         selectedNodeJLabel.setForeground(new java.awt.Color(71, 79, 112));
-        selectedNodeJLabel.setText("<view_selected_node>");
         jPanel1.add(selectedNodeJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
 
         btnDisease.setBackground(new java.awt.Color(255, 255, 255));

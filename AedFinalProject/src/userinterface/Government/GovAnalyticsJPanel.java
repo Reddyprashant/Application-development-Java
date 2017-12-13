@@ -166,7 +166,7 @@ try{
         panelGraph.setBackground(new java.awt.Color(153, 153, 153));
         add(panelGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 670, 420));
 
-        btnAge.setBackground(new java.awt.Color(0, 0, 0));
+        btnAge.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(btnAge);
         btnAge.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnAge.setForeground(new java.awt.Color(71, 79, 112));
@@ -178,7 +178,7 @@ try{
         });
         add(btnAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 90, -1));
 
-        btnReason.setBackground(new java.awt.Color(0, 0, 0));
+        btnReason.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(btnReason);
         btnReason.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnReason.setForeground(new java.awt.Color(71, 79, 112));
@@ -190,7 +190,7 @@ try{
         });
         add(btnReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 140, -1));
 
-        btnGender.setBackground(new java.awt.Color(0, 0, 0));
+        btnGender.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(btnGender);
         btnGender.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnGender.setForeground(new java.awt.Color(71, 79, 112));
@@ -202,7 +202,7 @@ try{
         });
         add(btnGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 120, -1));
 
-        btnEthnicity.setBackground(new java.awt.Color(0, 0, 0));
+        btnEthnicity.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(btnEthnicity);
         btnEthnicity.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnEthnicity.setForeground(new java.awt.Color(71, 79, 112));
@@ -214,7 +214,7 @@ try{
         });
         add(btnEthnicity, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 130, -1));
 
-        btnEdu.setBackground(new java.awt.Color(0, 0, 0));
+        btnEdu.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(btnEdu);
         btnEdu.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         btnEdu.setForeground(new java.awt.Color(71, 79, 112));
