@@ -184,11 +184,7 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
             if (dialogResult == JOptionPane.YES_OPTION) {
 
                 WorkRequest p = (WorkRequest) requestTable.getValueAt(selectedRow, 3);
-
-                // s.getWorkQueue().getWorkRequestList().remove(p);
                 account.getWorkQueue().getWorkRequestList().remove(p);
-                // account.getWorkQueue().getWorkRequestList().remove(p);
-                //  business.getWorkQueue().getWorkRequestList().remove(p);
                 JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
                 populateWorkQueueTable();
             }
@@ -206,7 +202,6 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
             SignUpRequest p = (SignUpRequest) requestTable.getValueAt(selectedRow, 3);
 
             if (p.getStatus().equals("Requested")) {
-                //  System.out.println("admin name"+ account.getUsername());
                 p.setStatus("Pending");
                 p.setReceiver(account);
 
@@ -217,14 +212,6 @@ public class CountryAdminRequestAreaJPanel extends javax.swing.JPanel {
             }
 
         }
-        //        SupplierWorkRequest request= new SupplierWorkRequest();
-        //        request.setVaccine((Vaccine)comboVaccine.getSelectedItem());
-        //        request.setQuantity(Integer.parseInt(txtquant.getText()));
-        //        request.setStatus("Requested");
-        //        request.setSender(account);
-        //        //organization.getWorkQueue().getWorkRequestList().add(request);
-        //        s.getWorkQueue().getWorkRequestList().add(request);
-        //        populateWorkQueueTable();
     }//GEN-LAST:event_reqBtnActionPerformed
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed

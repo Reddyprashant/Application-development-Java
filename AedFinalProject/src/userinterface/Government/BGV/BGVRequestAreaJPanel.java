@@ -29,7 +29,7 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form EntityManageRequestJPanel
      */
-    private JPanel container;
+
     private Enterprise enterprise;
     UserAccount account;
     CountryNetwork country;
@@ -242,9 +242,9 @@ public class BGVRequestAreaJPanel extends javax.swing.JPanel {
 
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
         // TODO add your handling code here:
-        container.remove(this);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.previous(container);
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backjButton1ActionPerformed
 
 

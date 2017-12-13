@@ -292,7 +292,7 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
             } else {
                 //Completing the request by providing all the volunteers required
                 BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
-                if (p.getStatus().equals("Complete")) {
+                if (!p.getStatus().equals("Complete")) {
                     if (organization.getEventDirectory() == null) {
                         organization.setEventDirectory(new EventDirectory());
                     }
@@ -302,7 +302,7 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
                     event.setEventName(p.getEventName());
                     event.setRequiredVolunteers(p.getNumberOfVolunteersRequest());
                     event.setServingOrganization(organization);
-
+                    event.setSenderOrganization(p.getSenderOrganization());
                     p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
                     p.getEventDirectory().getEventDirectory().add(event);
                     if (p.getNumberOfVolunteersRequest() == 0 && p.isLogisticRequest() == true) {
@@ -315,6 +315,7 @@ public class NGORequestAreaJPanel extends javax.swing.JPanel {
                     }
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     populateWorkQueueTable();
+                    populateUpdatedTable();
                 } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.");
                 }

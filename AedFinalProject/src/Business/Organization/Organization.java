@@ -31,7 +31,7 @@ private String name;
     private int temp;
     private LatLong latLong;
     
-    private EcoSystem system= EcoSystem.getInstance();
+//    private EcoSystem system= EcoSystem.getInstance();
     public enum Type{
         OldAge("Oldage Home Organization"),Orphanage("Orphanage Organization"),Homeless("Homeless Shelter Organization"), Disaster("Disaster Recovery Organization"),Hospital("Hospital Organization"),Education("Education Organization"),NGO("NGO Organization"),MNC("MNC Organization"),Individuals("Individuals Organization"),Transportation("Transportation Organization"),BGV("BGV Organization");
         private String value;
@@ -60,12 +60,12 @@ private String name;
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
-       
-         if(counter==0){
-            counter= system.orgCount;
-        }
+//       
+//         if(counter==0){
+//            counter= EcoSystem.getInstance().orgCount;
+//        }
         organizationID = ++counter;
-       system.orgCount = counter;
+   //    EcoSystem.getInstance().orgCount = counter;
         roles = new HashSet<>();
         personList= new PersonDirectory();
         eventDirectory= new EventDirectory();

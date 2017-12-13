@@ -5,7 +5,6 @@
 package userinterface;
 
 import Business.EcoSystem;
-import Business.ConfigureASystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.Enterprise.Enterprise;
 import Business.Network.CountryNetwork;
@@ -14,15 +13,9 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import com.sun.glass.events.KeyEvent;
 import java.awt.CardLayout;
-import javafx.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.InputMap;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.KeyStroke;
 import userinterface.SignUp.SignUpWelcome;
 import userinterface.googleApi.DistanceJPanel;
 import userinterface.googleApi.HomelessFoundJPanel;
@@ -84,6 +77,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jSplitPane1.setDividerLocation(200);
         jSplitPane1.setDividerSize(10);
 
         jPanel1.setBackground(new java.awt.Color(71, 79, 112));
@@ -370,10 +364,14 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         CountryNetwork c = (CountryNetwork) comboCountry.getSelectedItem();
         StateNetwork s = (StateNetwork) comboState.getSelectedItem();
+        if(c!= null && s != null){
         HomelessFoundJPanel manageOrganizationJPanel = new HomelessFoundJPanel(container, null, null, null, s, c, system);
         container.add("HomelessFoundJPanel1", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select the state and country");
+        }
     }//GEN-LAST:event_btnHomelessActionPerformed
 
     private void comboCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCountryActionPerformed

@@ -46,7 +46,6 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
         //this.organizationDir = organizationDir;
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.container = container;
         this.system = business;
         this.state = network;
         this.country = cNetwork;
@@ -267,9 +266,9 @@ public class GovernmentRequestAreaJPanel extends javax.swing.JPanel {
 
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
         // TODO add your handling code here:
-        container.remove(this);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.previous(container);
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backjButton1ActionPerformed
 
 

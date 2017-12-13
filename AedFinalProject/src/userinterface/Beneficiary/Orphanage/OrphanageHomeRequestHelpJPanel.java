@@ -255,7 +255,6 @@ public class OrphanageHomeRequestHelpJPanel extends javax.swing.JPanel {
         noVehLabel.setText("Number Of Vehicles");
         add(noVehLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, -1, -1));
 
-        reqComboBox.setBackground(new java.awt.Color(0, 0, 0));
         reqComboBox.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         reqComboBox.setForeground(new java.awt.Color(71, 79, 112));
         add(reqComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 126, -1));

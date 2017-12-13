@@ -11,6 +11,7 @@ import Business.Network.StateNetwork;
 import Business.Organization.Organization;
 import Business.SignUp.SignUpRequestOrganization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -97,6 +98,7 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         txtOrg = new javax.swing.JTextField();
         txtCountry = new javax.swing.JTextField();
         txtCity = new javax.swing.JTextField();
+        backJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -217,8 +219,19 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         txtCity.setEnabled(false);
         add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 280, 170, -1));
 
+        backJButton.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(71, 79, 112));
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, 100, 40));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utility/global-world-map-background-business-template-d-globe-40201747.jpg"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 870));
+        jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 860));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -229,8 +242,16 @@ public class BGVViewDetailsJPane extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCountryKeyPressed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

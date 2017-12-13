@@ -17,6 +17,7 @@ import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 import java.awt.CardLayout;
 import javax.mail.SendFailedException;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import utility.Validator;
 
@@ -111,17 +112,14 @@ public class DisplayNearestOrgJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jSplitPane2 = new javax.swing.JSplitPane();
-        mapContainer = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
         confirmBtn = new javax.swing.JButton();
+        mapContainer = new javax.swing.JPanel();
 
         jSplitPane2.setDividerLocation(600);
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-
-        mapContainer.setLayout(new java.awt.CardLayout());
-        jSplitPane2.setTopComponent(mapContainer);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -151,21 +149,22 @@ public class DisplayNearestOrgJPanel extends javax.swing.JPanel {
 
         jSplitPane2.setRightComponent(jPanel1);
 
+        mapContainer.setLayout(new java.awt.CardLayout());
+        jSplitPane2.setLeftComponent(mapContainer);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1188, Short.MAX_VALUE)
+                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(595, Short.MAX_VALUE)
-                .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -192,6 +191,7 @@ public class DisplayNearestOrgJPanel extends javax.swing.JPanel {
             
             try {
                 Validator.sendMessage(employee.getEmailId());
+                JOptionPane.showMessageDialog(null, "Your arrival has been notified the Manager of this organization.");
             } catch (SendFailedException ex) {
                // Logger.getLogger(DisplayNearestOrgJPanel.class.getName()).log(Level.SEVERE, null, ex);
                return;

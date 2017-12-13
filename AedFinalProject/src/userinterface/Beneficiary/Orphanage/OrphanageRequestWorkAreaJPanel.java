@@ -48,6 +48,7 @@ public class OrphanageRequestWorkAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.state = network;
         this.country = cNetwork;
+        populateWorkQueueTable();
 
     }
     //Code to Populate Work Queue Table

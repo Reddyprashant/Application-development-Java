@@ -293,7 +293,7 @@ public class HospitalRequestAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
-            if (p.getStatus().equals("Complete")) {
+            if (!p.getStatus().equals("Complete")) {
                 if (organization.getEventDirectory() == null) {
                     organization.setEventDirectory(new EventDirectory());
                 }
@@ -304,7 +304,7 @@ public class HospitalRequestAreaJPanel extends javax.swing.JPanel {
                 event.setEventName(p.getEventName());
                 event.setRequiredVolunteers(p.getNumberOfVolunteersRequest());
                 event.setServingOrganization(organization);
-
+                event.setSenderOrganization(p.getSenderOrganization());
                 p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
                 p.getEventDirectory().getEventDirectory().add(event);
                 if (p.getNumberOfVolunteersRequest() == 0 && p.isLogisticRequest() == true) {

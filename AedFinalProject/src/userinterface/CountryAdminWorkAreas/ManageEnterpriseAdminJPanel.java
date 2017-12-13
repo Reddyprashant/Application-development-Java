@@ -17,8 +17,6 @@ import Business.Role.LogisticAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -303,7 +301,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Logistic) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new LogisticAdminRole());
             }
-            JOptionPane.showMessageDialog(null, "Useraccount created successfully", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Useraccount created successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
             usernameJTextField.setText("");
             passwordJPasswordField.setText("");
             nameJTextField.setText("");

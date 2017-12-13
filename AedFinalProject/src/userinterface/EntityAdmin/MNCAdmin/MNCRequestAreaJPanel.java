@@ -306,7 +306,7 @@ public class MNCRequestAreaJPanel extends javax.swing.JPanel {
                     event.setEventName(p.getEventName());
                     event.setRequiredVolunteers(p.getNumberOfVolunteersRequest());
                     event.setServingOrganization(organization);
-
+                    event.setSenderOrganization(p.getSenderOrganization());
                     p.setNumberOfVolunteersRequest(p.getNumberOfVolunteersRequest() - event.getAvailVolunteers());
                     p.getEventDirectory().getEventDirectory().add(event);
                     if (p.getNumberOfVolunteersRequest() == 0 && p.isLogisticRequest() == true) {

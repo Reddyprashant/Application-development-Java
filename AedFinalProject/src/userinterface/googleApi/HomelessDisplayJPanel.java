@@ -16,7 +16,14 @@ import Business.WorkQueue.ShelterWorkRequest;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
+import userinterface.Beneficiary.BeneficiaryManageOrganizationJPanel;
+import userinterface.Beneficiary.ShelterRequestAreaJPanel;
+import userinterface.EntityAdmin.EntityManageOrganizationJPanel;
+import userinterface.Government.GovernmentManageOrganizationJPanel;
+import userinterface.Logistics.LogisticsManageOrganizationJPanel;
+import userinterface.SignUp.SignUpJPanel;
 
 /**
  *
@@ -171,9 +178,16 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+         userProcessContainer.remove(this);
+            Component[] componentArray = userProcessContainer.getComponents();
+            //Populating the previous panel LatLong value from the value elected from the Map
+            if (userProcessContainer.getComponent(componentArray.length - 1) instanceof ShelterRequestAreaJPanel) {
+                ShelterRequestAreaJPanel eduRequestPanel = (ShelterRequestAreaJPanel) userProcessContainer.getComponent(componentArray.length - 1);
+                eduRequestPanel.populateWorkQueueTable();
+            } 
+
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -186,7 +200,7 @@ public class HomelessDisplayJPanel extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         if (temp) {
-            request.setPersonPresent(request.getPersonPresent() - 1);
+            request.setPersonAbsent(request.getPersonAbsent()+ 1);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

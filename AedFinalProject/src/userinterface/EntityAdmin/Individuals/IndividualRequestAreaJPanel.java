@@ -5,46 +5,23 @@
  */
 package userinterface.EntityAdmin.Individuals;
 
-import userinterface.EntityAdmin.Hospital.*;
-import userinterface.EntityAdmin.MNCAdmin.*;
-import userinterface.EntityAdmin.*;
 import Business.EcoSystem;
-import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Event.Event;
 import Business.Event.EventDirectory;
 import Business.Network.CountryNetwork;
 import Business.Network.StateNetwork;
-import Business.Organization.HospitalOrganization;
 import Business.Organization.IndividualOrganization;
 //import Business.Organization.MNCOrganization;
-import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
-import Business.Role.BeneficiaryAdminRole;
-import Business.Role.EducationAdmin;
-import Business.Role.EntityAdminRole;
-import Business.Role.GovtAdminRole;
-import Business.Role.HospitalAdmin;
-import Business.Role.IndividualAdmin;
-import Business.Role.LogisticAdminRole;
-import Business.Role.MNCAdmin;
-import Business.Role.NGOAdmin;
-import Business.SignUp.SignUpRequest;
-import Business.SignUp.SignUpRequestEnterprise;
-import Business.SignUp.SignUpRequestOrganization;
-import Business.SignUp.SignUpRequestState;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BeneficiaryWorkRequest;
 import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.SendFailedException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import userinterface.Beneficiary.ShelterRequestAreaJPanel;
 import utility.Validator;
 
 /**
@@ -261,7 +238,7 @@ public class IndividualRequestAreaJPanel extends javax.swing.JPanel {
                 BeneficiaryWorkRequest p = (BeneficiaryWorkRequest) tblReq.getValueAt(selectedRow, 4);
                 BeneficiaryWorkRequest orgRequest = null;
                 UserAccount acc = null;
-                if (p.getStatus().equals("Complete")) {
+                if (!p.getStatus().equals("Complete")) {
                     if (organization.getEventDirectory() == null) {
                         organization.setEventDirectory(new EventDirectory());
 
